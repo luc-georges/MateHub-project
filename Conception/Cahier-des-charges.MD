@@ -67,6 +67,8 @@ les joueurs de tout age et de tout niveaux cherchant des team mate
 
 ### Arborescence de l'application:
 
+![](./ressources/Arborescence_playTogether.png)
+
 ### Lister les routes:
 
 - Accueil
