@@ -25,7 +25,7 @@ Donner la possibilité à des communautés de joueurs de se créer, notamment en
 - Gestion de profil:
   - pseudo ,Avatar , déscription, jeux, rang réputation, list des teams, récupération des statistics du joueur
 - Recherche:
-  - Recherche de joueurs ou de team (basic ou avancé)
+  - Recherche de joueurs ou de team (basic ou avancé (age, niveaux ...))
 - Matching:
   - Proposition de joueurs ou de team ayant un profil similaire
 - Messagerie: 
@@ -62,6 +62,8 @@ les joueurs de tout age et de tout niveaux cherchant des team mate
 ### Pontentielles évolutions:
 
 - Donner la possibilité de créer des Evènements globaux
+- création de droit de modération pour les teams (inviter des joueurs, kicker des joueurs)
+- proposition de matching de joueur pour la team
 
 ### Arborescence de l'application:
 
