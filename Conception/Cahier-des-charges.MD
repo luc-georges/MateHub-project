@@ -12,6 +12,7 @@ Donner la possibilité à des communautés de joueurs de se créer, notamment en
 
 - Connection au site
 - Creation d'un profil avec la possibilité de paramétrer le niveau du joueur dans chaque jeux séparément
+- créer un evenement
 - Recherche de joueurs en filtrant par jeux et "rang" dans le jeu
 - Proposition de joueurs par "match"
 - Récupération des statistique du joueur via l'api des différent jeux si accessible
