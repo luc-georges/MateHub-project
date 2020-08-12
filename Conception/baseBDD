@@ -1,0 +1,13 @@
+table:
+USER: email, password, pseudo, DOB, reputation_score, description
+REPUTATION: score, name, img
+TEAM: name,img
+SINGLE_EVENT: date, games_id, level
+REGULAR_EVENT: games_id, level
+GAMES:names
+
+user_has_games: user_id, games_id
+team_has_games: team_id, games_id
+team_has_users: team_id, users_id, owner
+
+
