@@ -1,18 +1,17 @@
-CONSERNE1, 11 EVENEMENT_REGULIER, 0N JEUX
-EVENEMENT_REGULIER: level
-CREER1, 0N UTILISATEUR, 11 EVENEMENT_REGULIER
-::
-
-JEUX:names
+JEUX: nom, ordre
 JOUE A, 0N UTILISATEUR, 0N JEUX
-UTILISATEUR: email, password, pseudo, date_de_naissance, reputation_score, description
+UTILISE, 0N UTILISATEUR, 0N CHAT
+CHAT:
+CONTIENT, 0N CHAT, 11 MESSAGE
+
+CONSERNE, 11 EVENEMENT, 0N JEUX
+CREER, 0N UTILISATEUR, 11 EVENEMENT
+UTILISATEUR: email, password, pseudo, date_de_naissance, reputation_score, description, avatar, baniere
 AVOIR, 11 UTILISATEUR, 0N REPUTATION
-REPUTATION: score, name, img
+MESSAGE: date, envoyeur, message
 
-JOUE SUR, 0N EQUIPE, 0N JEUX
-CONSERNE, 11 EVENEMENT_UNIQUE, 0N JEUX
-EVENEMENT_UNIQUE: date, level
-CREER, 0N UTILISATEUR, 11 EVENEMENT_UNIQUE
-EST DANS, 0N UTILISATEUR, ON EQUIPE
-
-EQUIPE: name,img
+:
+EVENEMENT: date et heure, level, durée_estimé, nombre_joueur, description_courte, status
+PARTICIPER, 0N UTILISATEUR, 1N EVENEMENT
+REPUTATION: score, name, icone
+:
