@@ -130,7 +130,7 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 #### MLD
 
 USER (id, email, password, nickname, date_of_birth, reputation_score, description, avatar, banner)  
-EVENT (id, timestamp, level, duration, player_count, description, status, user_id, game_id)  
+EVENT (id, timestamp, level, duration, player_count, description, status, caption, user_id, game_id)  
 GAME (id, order)  
 REPUTATION (id, score, name, ico)  
 CHAT (id)  
