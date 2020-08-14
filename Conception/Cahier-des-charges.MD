@@ -130,7 +130,7 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 
 #### MCD
 
-![](./mcd/Utilisateurs.svg)
+![](./mcd/Users.svg)
 
 #### MLD
 
@@ -160,7 +160,8 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
   - | champ |  type | contrainte | description | commentaire | 
     | ----- | ----- | ---------- | ----------- | ----------- |
     | label | TEXT | NOT NULL | Nom du rang correspondant au jeu |  |
-    | game_id | INT | NOT NULL , foreign key | Référence vers l'id du jeux | |
+    | game_id | INT | NOT NULL , FOREIGN KEY | Référence vers l'id du jeux | |
+    | icon | PATH | NOT NULL | Image représentant le grade | |
 
 - Event 
  
@@ -175,15 +176,16 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
     | description | TEXT | nullable | Déscription de l'évènement |  |
     | status | INT | NOT NULL DEFAULT 0 | Status de la progression de l'évènement | 0 = A venir, 1 = En cours, 2 = Terminé   |
     | language | TEXT | NOT NULL DEFAULT 'EN' | Langue parlé durant l'évènement | Pèrmet de trier suivant les langues parlé par l'utilisatuer |
-    | caption | PATH | NOT NULL | Chemin vers la miniature de l'évènement |  |
+    | image | PATH | NOT NULL | Chemin vers la miniature de l'évènement |  |
     | vocal_channel | TEXT | NOT NULL | Lien vers le channel vocal renseigné par le créateur de l'évènement |  |
 
 - Game
 
   - | champ |  type | contrainte | description | commentaire | 
     | ----- | ----- | ---------- | ----------- | ----------- |
+    | name | TEXT | NOT NULL | nom du jeu |  |
     | order | INT | NOT NULL | definit l'ordre d'apparition des jeux sur la pages d'acceuil | Sert à faciliter l'affichage pour le front |
-    | caption | PATH | NOT NULL | icone du jeux | Servira pour la caption des évenèments |
+    | image | PATH | NOT NULL | icone du jeux | Servira pour la caption des évenèments |
 
 - M_2_M_USER_has_GAME
   - | champ |  type | contrainte | description | commentaire | 
@@ -191,10 +193,12 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
     | game_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un jeu |  |
     | user_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un user |  |
     | level_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un level |  |
+    | Ingame_name | TEXT | NOT NULL | Pseudo de l'utilisateur en jeu |  |
 
 - M_2_M_USER_has_EVENT
   - | champ |  type | contrainte | description | commentaire | 
     | ----- | ----- | ---------- | ----------- | ----------- |
     | event_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un event |  |
     | user_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un user |  |
-    | status | INT | NOT NULL | Status de demande de participation | 0 = En attente ,1 = Accepter, 2 = Refusé |  
+    | status | INT | NOT NULL | Status de demande de participation | 0 = En attente ,1 = Accepter, 2 = Refusé |
+    | message | text | NOT NULL | Envoie un message de contact au créateur de l'évènement | |  

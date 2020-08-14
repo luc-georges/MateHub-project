@@ -1,5 +1,0 @@
-**EVENEMENT** (<ins>date et heure</ins>, durée_estimé, nombre_joueur, description_courte, status, _label_, _email_, _nom_)  
-**PARTICIPER** (<ins>_email_</ins>, <ins>_date et heure_</ins>)  
-**UTILISATEUR** (<ins>email</ins>, password, pseudo, date_de_naissance, reputation_score, description, avatar, baniere)  
-**JEUX** (<ins>nom</ins>, ordre)  
-**LEVEL** (<ins>label</ins>, _email_, _nom_)

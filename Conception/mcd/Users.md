@@ -1,0 +1,5 @@
+**EVENT** (<ins>timestamp</ins>, duration, player_count, description, status, language, image, vocal_channel, _email_, _label_, _name_)  
+**PARTICIPATE** (<ins>_email_</ins>, <ins>_timestamp_</ins>, message)  
+**USER** (<ins>email</ins>, password, nickname, date_of_birth, description, avatar, banner)  
+**LEVEL** (<ins>label</ins>, icon, _email_, _name_, inGame_name)  
+**GAME** (<ins>name</ins>, order, image)

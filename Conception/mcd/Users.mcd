@@ -1,0 +1,13 @@
+SET, 11 EVENT, 0N LEVEL
+CREATE, 0N USER, 11 EVENT
+
+
+EVENT: timestamp, duration, player_count, description, status,language,image,vocal_channel
+PARTICIPATE, 0N USER, 1N EVENT: message
+USER: email, password, nickname, date_of_birth, description, avatar, banner
+
+LEVEL: label,icon
+
+HAS, 11 EVENT, 0N GAME
+GAME: name, order,image
+PLAY, 0N USER, 0N GAME, 11 LEVEL: inGame_name
