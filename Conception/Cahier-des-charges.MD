@@ -140,3 +140,23 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 | Createur d'évenement | accepter un joueur | jouer avec celui ci |
 | Createur d'évenement | decline une demande d'ajout | ne pas jouer avec ce joueur |
 | Createur d'évenement | chater avec les participants | |
+<<<<<<< HEAD
+=======
+
+
+#### MCD
+
+![](./mcd/Utilisateurs.svg)
+
+#### MLD
+
+USER (id, email, password, nickname, date_of_birth, reputation_score, description, avatar, banner)  
+EVENT (id, timestamp, level, duration, player_count, description, status, caption, user_id, game_id)  
+GAME (id, order)  
+REPUTATION (id, score, name, ico)  
+CHAT (id)  
+MESSAGE (id, date, sender, message)  
+M_2_M_USER_has_GAME (id, game_id, user_id, id_for_API)  
+M_2_M_USER_has_EVENT (id, event_id, user_id, status)  
+M_2_M_USER_has_CHAT (id, chat_id, user_id)  
+>>>>>>> 290e706e9c66d6e2eb04b2f1a893f3ccb01cc451
