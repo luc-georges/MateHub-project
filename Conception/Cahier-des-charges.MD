@@ -102,6 +102,7 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 ### Wireframes:
 
 - Version mobile + desktop
+  - https://whimsical.com/UKckCvzW3ZmoEtAiqgoaiZ
 
 ### Maquettes graphique non obligatoires:
 
@@ -109,7 +110,7 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 
 - **User stories** (qui serviront par exemple pour le trello)  
 
-| En tant que | je peut | dans le but de | version |
+| En tant que | je peux | dans le but de | version |
 | ----------- | ------| --------------| ------|
 | Visiteur | créer un compte | acceder aux fonctionnalités de l'app | v1 |
 | Utilisateur | me connecter/déconnecter || v1 |
@@ -142,9 +143,10 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
 #### Dictionnaire de données
 
 - User 
- 
-  - | champ |  type | contrainte | description | commentaire | 
+
+  - | champ |  type | contrainte | description | commentaire |
     | ----- | ----- | ---------- | ----------- | ----------- |
+    |id| INT         |PRIMARY KEY|||
     | email | TEXT | NOT NULL | ... | |
     | password | TEXT | NOT NULL | Mot de passe encrypté | ... |
     | nickname | TEXT | NOT NULL | Pseudo visible sur le site ||
@@ -152,19 +154,21 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
     | description | TEXT | NULLABLE | Déscription en 280 caractères du joueur | |
     | avatar | PATH | NULLABLE | Photo du profil | Importé ou disponible sur le site |
     | banner | PATH | NULLABLE | Image en bannière | Importé par l'utilisateur |
-    
+  
 - Level 
- 
-  - | champ |  type | contrainte | description | commentaire | 
+
+  - | champ |  type | contrainte | description | commentaire |
     | ----- | ----- | ---------- | ----------- | ----------- |
+    |id|INT|PRIMARY KEY|||
     | label | TEXT | NOT NULL | Nom du rang correspondant au jeu |  |
     | game_id | INT | NOT NULL , FOREIGN KEY | Référence vers l'id du jeux | |
     | icon | PATH | NOT NULL | Image représentant le grade | |
 
 - Event 
- 
-  - | champ |  type | contrainte | description | commentaire | 
+
+  - | champ |  type | contrainte | description | commentaire |
     | ----- | ----- | ---------- | ----------- | ----------- |
+    |id| INT         |PRIMARY KEY|||
     | user_id | INT | NOT NULL, foreign key | Référence vers l'id du créateur de l'évènement | |
     | game_id | INT | NOT NULL, foreign key | Référence vers un jeu de la liste | Définit sur quel jeu se déroulera l'évènement |
     | level_id | INT | NOT NULL, foreign key | Référence vers un niveau | Correspond au système de ranking du jeu |
@@ -179,24 +183,27 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
 
 - Game
 
-  - | champ |  type | contrainte | description | commentaire | 
+  - | champ |  type | contrainte | description | commentaire |
     | ----- | ----- | ---------- | ----------- | ----------- |
+    |id| INT  |PRIMARY KEY|||
     | name | TEXT | NOT NULL | nom du jeu |  |
     | order | INT | NOT NULL | définit l'ordre d'apparition des jeux sur la pages d'accueil | Sert à faciliter l'affichage pour le front |
     | image | PATH | NOT NULL | icon du jeux | Servira pour la caption des évènements |
 
 - M_2_M_USER_has_GAME
-  - | champ |  type | contrainte | description | commentaire | 
+  - | champ |  type | contrainte | description | commentaire |
     | ----- | ----- | ---------- | ----------- | ----------- |
+    |id| INT  |PRIMARY KEY|||
     | game_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un jeu |  |
     | user_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un user |  |
     | level_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un level |  |
     | Ingame_name | TEXT | NOT NULL | Pseudo de l'utilisateur en jeu |  |
 
 - M_2_M_USER_has_EVENT
-  - | champ |  type | contrainte | description | commentaire | 
+  - | champ |  type | contrainte | description | commentaire |
     | ----- | ----- | ---------- | ----------- | ----------- |
+    |id|INT|PRIMARY KEY|||
     | event_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un event |  |
     | user_id | INT | NOT NULL FOREIGN KEY | Référence vers l'id d'un user |  |
     | status | INT | NOT NULL | Status de demande de participation | 0 = En attente ,1 = Accepter, 2 = Refusé |
-    | message | text | NOT NULL | Envoie un message de contact au créateur de l'évènement | |  
+    | message | text | NOT NULL | Envoie un message de contact au créateur de l'évènement | |
