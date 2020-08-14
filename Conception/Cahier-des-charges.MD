@@ -6,17 +6,17 @@ Une application qui permet de trouver rapidement et facilement d'autres joueurs 
 
 ### Objectifs du projets:
 
-Donnez la possibilité à des joueurs d'entrer en contact via la création ou la participation à des évenements, afin de jouer à leur jeux favoris ensemble.
+Donnez la possibilité à des joueurs d'entrer en contact via la création ou la participation à des évènements, afin de jouer à leur jeux favoris ensemble.
 
 ### Définition du MVP (Minimum Viable Product):
 
 - Compte utilisateur (inscription, connection)
 - Gestion du profil
-  - Listing des évenement et ajout de jeux avec lien (compte joueur) via l'API de ces derniers
-- Création d'évenement
-- Recherche et consultation d'évenement
+  - Listing des évènement et ajout de jeux avec lien (compte joueur) via l'API de ces derniers
+- Création d'évènement
+- Recherche et consultation d'évènement
 - Pages de jeux (une page par jeux)
-  - Informations et derniers évenements
+  - Informations et derniers évènements
   - Jeux pris en charges V1 :
     - League of Legend 
 
@@ -35,9 +35,9 @@ Donnez la possibilité à des joueurs d'entrer en contact via la création ou la
     - Jeux, miniature du jeux, date / heure, nombre de joueurs, durée estimé,  langue(s), description
 - Messagerie: 
   - Chat entre deux joueurs
-  - Chat d'évenement
+  - Chat d'évènement
 - Page jeu:
-  - Affichage des news du jeu, ainsi qu'une vue des joueurs / prochain évenement sur ce jeu
+  - Affichage des news du jeu, ainsi qu'une vue des joueurs / prochain évènement sur ce jeu
 
 
 ### Lister les technos choisies (specs techniques) (penser à justifier le choix):
@@ -80,13 +80,13 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
   - Overwacth v2
   - PUBG v2
   - escape from Tarkov v2
-- ajout d'un systeme de réputation v 1.3
-- Donner la possibilité de créer des Evènements globaux v2
+- ajout d'un system de réputation v 1.3
+- Donner la possibilité de créer des évènements globaux v2
 - création de tournois v3
 - Matching: v2
-  - Proposition d'évenement correspondant à un évenement créer par la joueur
-- systeme de team v3
-- systeme d'ajout d'"amis" v3
+  - Proposition d'évènement correspondant à un évènement créer par la joueur
+- system de team v3
+- system d'ajout d'"amis" v3
 
 ### Arborescence de l'application:
 
@@ -107,25 +107,23 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 
 ### Docs de conception de la BDD
 
-
-
 - **User stories** (qui serviront par exemple pour le trello)  
 
 | En tant que | je peut | dans le but de | version |
 | ----------- | ------| --------------| ------|
 | Visiteur | créer un compte | acceder aux fonctionnalités de l'app | v1 |
-| Utilisateur | me connecter/deconnecter || v1 |
-| Utilisateur | créer un evenement| trouver d'autre joueur| v1|
+| Utilisateur | me connecter/déconnecter || v1 |
+| Utilisateur | créer un évènement| trouver d'autre joueur| v1|
 | Utilisateur | acceder aux profil des autres joueurs | me renseigner sur leur information | v1 |
-| Utilisateur | rechercher un évenement | trouver des mates avec qui jouer | v1 |
-| Utilisateur | postuler a un evenement | participêer a celui ci | v1 |
+| Utilisateur | rechercher un évènement | trouver des mates avec qui jouer | v1 |
+| Utilisateur | postuler à un évènement | participer à celui ci | v1 |
 | Utilisateur | utiliser un chat | communiquer avec les autres joueur | v2 |
-| Utilisateur | ajouter ou enlever 1 point de reputation a un autre utilisateur | recommander ou inversement le joueur en question | v1.1 |
-| Utilisateur | editer mon profil | inserer/changer des informations | v1 |
+| Utilisateur | ajouter ou enlever 1 point de reputation à un autre utilisateur | recommander ou inversement le joueur en question | v1.1 |
+| Utilisateur | éditer mon profil | insérer/changer des informations | v1 |
 | Utilisateur | contacter les admin du site | de leur dire des mots doux | v1 |
-| Createur d'évenement | accepter un joueur | jouer avec celui ci | v1 |
-| Createur d'évenement | decline une demande d'ajout | ne pas jouer avec ce joueur | v1 |
-| Createur d'évenement | chater avec les participants | | v2 |
+| Créateur d'évènement | accepter un joueur | jouer avec celui ci | v1 |
+| Créateur d'évènement | decline une demande d'ajout | ne pas jouer avec ce joueur | v1 |
+| Créateur d'évènement | chatter avec les participants | | v2 |
 
 
 #### MCD
@@ -135,9 +133,9 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 #### MLD
 
 USER (id, email, password, nickname, date_of_birth, description, avatar, banner)  
-LEVEL (id, label, game_id)  
-EVENT (id, user_id,game_id, timestamp, level_id, duration, player_count, description, status, language, caption, vocal_channel )  
-GAME (id, order, caption)  
+LEVEL (id, label, game_id, icon)  
+EVENT (id, user_id,game_id, timestamp, level_id, duration, player_count, description, status, language, image, vocal_channel )  
+GAME (id, order, image)  
 M_2_M_USER_has_GAME (id, game_id, user_id, level_id, inGame_name)  
 M_2_M_USER_has_EVENT (id, event_id, user_id, status)  
 
@@ -151,9 +149,9 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
     | password | TEXT | NOT NULL | Mot de passe encrypté | ... |
     | nickname | TEXT | NOT NULL | Pseudo visible sur le site ||
     | date_of_birth | TIMESTAMPTZ | NULLABLE | Date de naissance | Servira à matcher les évènements par age des joueurs |
-    | description | TEXT | NULLABLE | Déscription en 280 charactere du joueur | |
+    | description | TEXT | NULLABLE | Déscription en 280 caractères du joueur | |
     | avatar | PATH | NULLABLE | Photo du profil | Importé ou disponible sur le site |
-    | banner | PATH | NULLABLE | Image en banièrre | Importé par l'utilisateur |
+    | banner | PATH | NULLABLE | Image en bannière | Importé par l'utilisateur |
     
 - Level 
  
@@ -175,7 +173,7 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
     | player_count | INT | NOT NULL | Nombre de participant max de l'évènement |  |
     | description | TEXT | nullable | Déscription de l'évènement |  |
     | status | INT | NOT NULL DEFAULT 0 | Status de la progression de l'évènement | 0 = A venir, 1 = En cours, 2 = Terminé   |
-    | language | TEXT | NOT NULL DEFAULT 'EN' | Langue parlé durant l'évènement | Pèrmet de trier suivant les langues parlé par l'utilisatuer |
+    | language | TEXT | NOT NULL DEFAULT 'EN' | Langue parlé durant l'évènement | Pèrmet de trier suivant les langues parlé par l'utilisateur |
     | image | PATH | NOT NULL | Chemin vers la miniature de l'évènement |  |
     | vocal_channel | TEXT | NOT NULL | Lien vers le channel vocal renseigné par le créateur de l'évènement |  |
 
@@ -184,8 +182,8 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
   - | champ |  type | contrainte | description | commentaire | 
     | ----- | ----- | ---------- | ----------- | ----------- |
     | name | TEXT | NOT NULL | nom du jeu |  |
-    | order | INT | NOT NULL | definit l'ordre d'apparition des jeux sur la pages d'acceuil | Sert à faciliter l'affichage pour le front |
-    | image | PATH | NOT NULL | icone du jeux | Servira pour la caption des évenèments |
+    | order | INT | NOT NULL | définit l'ordre d'apparition des jeux sur la pages d'accueil | Sert à faciliter l'affichage pour le front |
+    | image | PATH | NOT NULL | icon du jeux | Servira pour la caption des évènements |
 
 - M_2_M_USER_has_GAME
   - | champ |  type | contrainte | description | commentaire | 
