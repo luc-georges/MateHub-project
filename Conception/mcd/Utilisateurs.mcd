@@ -1,17 +1,13 @@
-JEUX: nom, ordre
-JOUE A, 0N UTILISATEUR, 0N JEUX
-UTILISE, 0N UTILISATEUR, 0N CHAT
-CHAT:
-CONTIENT, 0N CHAT, 11 MESSAGE
+A, 11 EVENEMENT, 0N LEVEL
+CREER, 0N UTILISATEUR, 11 EVENEMENT
+
+EVENEMENT: date et heure, durée_estimé, nombre_joueur, description_courte, status
+PARTICIPER, 0N UTILISATEUR, 1N EVENEMENT
+UTILISATEUR: email, password, pseudo, date_de_naissance, reputation_score, description, avatar, baniere
 
 CONSERNE, 11 EVENEMENT, 0N JEUX
-CREER, 0N UTILISATEUR, 11 EVENEMENT
-UTILISATEUR: email, password, pseudo, date_de_naissance, reputation_score, description, avatar, baniere
-AVOIR, 11 UTILISATEUR, 0N REPUTATION
-MESSAGE: date, envoyeur, message
+JEUX: nom, ordre
+JOUE A, 0N UTILISATEUR, 0N JEUX, 11 LEVEL
 
-:
-EVENEMENT: date et heure, level, durée_estimé, nombre_joueur, description_courte, status
-PARTICIPER, 0N UTILISATEUR, 1N EVENEMENT
-REPUTATION: score, name, icone
-:
+
+LEVEL: label
