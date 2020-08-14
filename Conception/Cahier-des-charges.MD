@@ -6,20 +6,21 @@ Une application qui permet de trouver rapidement et facilement d'autres joueurs 
 
 ### Objectifs du projets:
 
-Donnez la possibilité a des joueur d'entrer en contact via la création ou la participation à des évenements, afin de jouer à leur jeux favoris ensemble.
+Donnez la possibilité à des joueurs d'entrer en contact via la création ou la participation à des évenements, afin de jouer à leur jeux favoris ensemble.
 
 ### Définition du MVP (Minimum Viable Product):
 
-- compte utilisateur (inscription, connection)
-- gestion du profil
-  - listing des évenement et ajout de jeux avec lien via l'API de ces derniers
-- création d'évenement
-- recherche et consultation d'évenement
-- chat 
-  - message entre deux utilisateur
-  - messagerie d'evenement  
-- pages de jeux (une pages pour chaque jeux avec informations et dernier évenements)
-  - Jeux pris en charges V0 :
+- Compte utilisateur (inscription, connection)
+- Gestion du profil
+  - Listing des évenement et ajout de jeux avec lien (compte joueur) via l'API de ces derniers
+- Création d'évenement
+- Recherche et consultation d'évenement
+- Chat 
+  - Message entre deux utilisateurs
+  - Messagerie d'evenement  
+- Pages de jeux (une page par jeux)
+  - Informations et derniers évenements
+  - Jeux pris en charges V0 (nombre à définir) :
     - League of Legend
     - Counter Strike Global Offensive
     - VALORANT
@@ -36,14 +37,19 @@ Donnez la possibilité a des joueur d'entrer en contact via la création ou la p
 
 ### Décrire les fonctionnalités (specs fonctionelles):
 
-- Gestion de compte :
+- Gestion de compte:
   - Connexion, déconnexion, inscription  
 - Gestion de profil:
-  - pseudo ,Avatar , déscription, jeux, rang réputation,  récupération des statistics du joueur via les API des jeux
+  - Pseudo, avatar, description, jeux, rang, réputation,  récupération des statistiques du joueur via les API des jeux
 - Recherche:
-  - Recherche d'évenement ou éventuellement de joueurs
+  - Recherche par nom de joueur
+  - Filtre de recherche:
+    - Jeux, date / heure, nombre de joueurs, durée estimé,  langue(s)
+- Création d'évènements:
+  - A renseigner:
+    - Jeux, miniature du jeux, date / heure, nombre de joueurs, durée estimé,  langue(s), description
 - Messagerie: 
-  - Chat entre joueur 
+  - Chat entre deux joueurs
   - Chat d'évenement
 - Page jeu:
   - Affichage des news du jeu, ainsi qu'une vue des joueurs / prochain évenement sur ce jeu
@@ -52,13 +58,14 @@ Donnez la possibilité a des joueur d'entrer en contact via la création ou la p
 ### Lister les technos choisies (specs techniques) (penser à justifier le choix):
 
 - React
-- (Redux)
+- Redux
+- Sass
+- (Redis)
 - Mongodb(api)
 - Postgres (user db)
 - Sqitch
 - NodeJS
 - Express
-- Sass
 
 
 ### Décrire les rôles de chacun (Prénom NOM : Rôle):
@@ -84,7 +91,7 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 
 ### Arborescence de l'application:
 
-![](./ressources/Arborescence_playTogether.png)
+![](./ressources/Arborescence.png)
 
 ### Lister les routes:
 
@@ -101,11 +108,23 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 
 ### Docs de conception de la BDD
 
-- MCD (modèle conceptuel de données -> entités) https://github.com/O-clock-Alumni/fiches-recap/blob/master/bdd/conception-03-mcd.md
-- Dictionnaire de données
-- MLD (modèle logique de données -> tables) Non obligatoire
-- User stories (qui serviront par exemple pour le trello)  
-  
+- **MCD** (modèle conceptuel de données -> entités) https://github.com/O-clock-Alumni/fiches-recap/blob/master/bdd/conception-03-mcd.md![](./mcd/Utilisateurs.svg)
+
+- **Dictionnaire de données**
+
+- **MLD** (modèle logique de données -> tables) Non obligatoire
+
+  USER (id, email, password, nickname, date_of_birth, reputation_score, description, avatar, banner)  
+  EVENT (id, timestamp, level, duration, player_count, description, status, user_id, game_id)  
+  GAME (id, order)  
+  REPUTATION (id, score, name, ico)  
+  CHAT (id)  
+  MESSAGE (id, date, sender, message)  
+  M_2_M_USER_has_GAME (id, game_id, user_id, id_for_API)  
+  M_2_M_USER_has_EVENT (id, event_id, user_id, status)  
+  M_2_M_USER_has_CHAT (id, chat_id, user_id)  
+
+- **User stories** (qui serviront par exemple pour le trello)  
 | En tant que | je peut | dans le but de |
 | ----------- | ------| --------------|
 | Visiteur | créer un compte | acceder aux fonctionnalités de l'app |
@@ -121,20 +140,3 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 | Createur d'évenement | accepter un joueur | jouer avec celui ci |
 | Createur d'évenement | decline une demande d'ajout | ne pas jouer avec ce joueur |
 | Createur d'évenement | chater avec les participants | |
-
-
-#### MCD
-
-![](./mcd/Utilisateurs.svg)
-
-#### MLD
-
-USER (id, email, password, nickname, date_of_birth, reputation_score, description, avatar, banner)  
-EVENT (id, timestamp, level, duration, player_count, description, status, user_id, game_id)  
-GAME (id, order)  
-REPUTATION (id, score, name, ico)  
-CHAT (id)  
-MESSAGE (id, date, sender, message)  
-M_2_M_USER_has_GAME (id, game_id, user_id, id_for_API)  
-M_2_M_USER_has_EVENT (id, event_id, user_id, status)  
-M_2_M_USER_has_CHAT (id, chat_id, user_id)  
