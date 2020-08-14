@@ -126,21 +126,22 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
   M_2_M_USER_has_CHAT (id, chat_id, user_id)  
 
 - **User stories** (qui serviront par exemple pour le trello)  
-| En tant que | je peut | dans le but de |
-| ----------- | ------| --------------|
-| Visiteur | créer un compte | acceder aux fonctionnalités de l'app |
-| Utilisateur | me connecter/deconnecter ||
-| Utilisateur | créer un evenement| trouver d'autre joueur|
-| Utilisateur | acceder aux profil des autres joueurs | me renseigner sur leur information et/ou leur envoyer un message|
-| Utilisateur | rechercher un évenement | trouver des mates avec qui jouer |
-| Utilisateur | postuler a un evenement | participêer a celui ci |
-| Utilisateur | utiliser un chat | communiquer avec les autres joueur |
-| Utilisateur | ajouter ou enlever 1 point de reputation a un autre utilisateur | recommander ou inversement le joueur en question |
-| Utilisateur | editer mon profil | inserer/changer des informations |
-| Utilisateur | contacter les admin du site | de leur dire des mots doux |
-| Createur d'évenement | accepter un joueur | jouer avec celui ci |
-| Createur d'évenement | decline une demande d'ajout | ne pas jouer avec ce joueur |
-| Createur d'évenement | chater avec les participants | |
+
+| En tant que | je peut | dans le but de | version |
+| ----------- | ------| --------------| ------|
+| Visiteur | créer un compte | acceder aux fonctionnalités de l'app | v1 |
+| Utilisateur | me connecter/deconnecter || v1 |
+| Utilisateur | créer un evenement| trouver d'autre joueur| v1|
+| Utilisateur | acceder aux profil des autres joueurs | me renseigner sur leur information | v1 |
+| Utilisateur | rechercher un évenement | trouver des mates avec qui jouer | v1 |
+| Utilisateur | postuler a un evenement | participêer a celui ci | v1 |
+| Utilisateur | utiliser un chat | communiquer avec les autres joueur | v2 |
+| Utilisateur | ajouter ou enlever 1 point de reputation a un autre utilisateur | recommander ou inversement le joueur en question | v1.1 |
+| Utilisateur | editer mon profil | inserer/changer des informations | v1 |
+| Utilisateur | contacter les admin du site | de leur dire des mots doux | v1 |
+| Createur d'évenement | accepter un joueur | jouer avec celui ci | v1 |
+| Createur d'évenement | decline une demande d'ajout | ne pas jouer avec ce joueur | v1 |
+| Createur d'évenement | chater avec les participants | | v2 |
 
 
 #### MCD
