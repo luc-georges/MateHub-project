@@ -38,26 +38,26 @@ CREATE TABLE "event" (
     "player_count" INT NOT NULL ,
     "description" TEXT,
     "status" INT NOT NULL DEFAULT 0 ,
-    "image" TEXT,
     "vocal" TEXT
 );
-CREATE TABLE "M_2_M_USER_has_GAME" (
+CREATE TABLE "M_USER_has_GAME" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "user_id" INT NOT NULL REFERENCES "user"("id"),
     "game_id" INT NOT NULL REFERENCES "game"("id"),
-    "level_id" INT REFERENCES "game"("id")
+    "IGN" TEXT NOT NULL,
+    "level_id" INT REFERENCES "level"("id")
 );
-CREATE TABLE "M_2_M_USER_has_EVENT" (
+CREATE TABLE "M_USER_has_EVENT" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "event_id" INT NOT NULL REFERENCES "event"("id"),
     "user_id" INT NOT NULL REFERENCES "user"("id"),
     "status" INT NOT NULL DEFAULT 0 ,
     "message" TEXT NOT NULL DEFAULT 'Hey mate, i would love to participate! Check my profile !'
 );
-CREATE TABLE "M_2_M_EVENT_has_LANG" (
+CREATE TABLE "M_EVENT_has_LANG" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "event_id" INT NOT NULL REFERENCES "event"("id"),
-    "lang_id" INT NOT NULL REFERENCES "lang"("id")
+    "lang_id" INT NOT NULL REFERENCES "lang"("id") DEFAULT 2
 );
 
 COMMIT;

@@ -134,7 +134,7 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 
 USER (id, email, password, nickname, date_of_birth, description, avatar, banner)  
 LEVEL (id, label, game_id, icon)  
-EVENT (id, user_id,game_id, timestamp, level_id, duration, player_count, description, status, language, image, vocal_channel )  
+EVENT (id, user_id,game_id, timestamp, level_id, duration, player_count, description, status, language, vocal_channel )  
 GAME (id, name, order, image)  
 M_2_M_USER_has_GAME (id, game_id, user_id, level_id, inGame_name)  
 M_2_M_USER_has_EVENT (id, event_id, user_id, status)  
@@ -174,7 +174,6 @@ M_2_M_USER_has_EVENT (id, event_id, user_id, status)
     | description | TEXT | nullable | Déscription de l'évènement |  |
     | status | INT | NOT NULL DEFAULT 0 | Status de la progression de l'évènement | 0 = A venir, 1 = En cours, 2 = Terminé   |
     | language | TEXT | NOT NULL DEFAULT 'EN' | Langue parlé durant l'évènement | Pèrmet de trier suivant les langues parlé par l'utilisateur |
-    | image | PATH | NOT NULL | Chemin vers la miniature de l'évènement |  |
     | vocal_channel | TEXT | NOT NULL | Lien vers le channel vocal renseigné par le créateur de l'évènement |  |
 
 - Game
