@@ -60,4 +60,5 @@ CREATE TABLE "M_EVENT_has_LANG" (
     "lang_id" INT NOT NULL REFERENCES "lang"("id") DEFAULT 2
 );
 
+
 COMMIT;
