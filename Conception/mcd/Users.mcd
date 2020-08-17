@@ -2,7 +2,7 @@ SET, 11 EVENT, 0N LEVEL
 CREATE, 0N USER, 11 EVENT
 
 
-EVENT: timestamp, duration, player_count, description, status,language,image,vocal_channel
+EVENT: timestamp, duration, player_count, description, status,language,vocal_channel
 PARTICIPATE, 0N USER, 1N EVENT: message
 USER: email, password, nickname, date_of_birth, description, avatar, banner
 
