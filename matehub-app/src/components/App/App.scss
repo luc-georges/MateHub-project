@@ -36,4 +36,15 @@
     transform: rotate(360deg);
   }
 }
- */
+*/
+
+.App {
+  display: flex;
+  justify-content: space-between;
+}
+
+.middle {
+  padding: 2em;
+  width: 80%;
+  margin: 0 10%;
+}

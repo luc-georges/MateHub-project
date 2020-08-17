@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import "semantic-ui-css/semantic.min.css";
 
 /* Import components */
 import NavBar from '../NavBar/NavBar';
@@ -9,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <div className="middle">Temporaire</div>
       <EventBar />
     </div>
   );
