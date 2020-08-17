@@ -4,6 +4,7 @@ SELECT "user".id, "user".nickname ,"game".name AS "playing" ,"level".label AS "R
     JOIN "level" ON "M_USER_has_GAME".level_id = "level".id 
   WHERE "user".id = 1;
 
+
 SELECT "event".id,
         "game".name AS "Playing", 
         "event".description,
