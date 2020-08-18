@@ -60,6 +60,18 @@ class CoreModel {
         }
 
     }
+
+    static async findBy(params){
+
+        const prop = Object.keys(params);
+        const value = Object.values(params);
+
+        console.log(prop[0],value[0])
+
+        const result = await client.query(`SELECT * FROM "${this.tableName}" WHERE ${prop[0]} = $1`,[value[0]]);
+        return new this(result.rows[0]);
+
+    }
     
     /**
      * methode servant a delete un champ
