@@ -7,6 +7,7 @@ module.exports = class Game extends CoreModel  {
     _image;
     _order;
 
+    static schema = 'user_access.';
     static tablename = 'game';
 
     constructor(obj) {

@@ -6,6 +6,7 @@ module.exports = class Lang extends CoreModel  {
     _label;
     _icon;
 
+    static schema = 'user_access.';
     static tablename = 'lang';
 
     constructor(obj) {

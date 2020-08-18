@@ -7,6 +7,7 @@ module.exports = class Level extends CoreModel  {
     _icon;
     _game_id;
 
+    static schema = 'user_access.';
     static tablename = 'level';
 
     constructor(obj) {

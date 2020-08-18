@@ -13,6 +13,7 @@ module.exports = class User extends CoreModel {
     _avatar;
     _banner;
 
+    static schema = 'user_access.'
     static tablename = 'user';
 
     constructor(obj) {

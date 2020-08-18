@@ -25,7 +25,7 @@ class CoreModel {
      */
     static async getAll() {
         try {
-            const query = `SELECT * FROM "${this.tablename}"`;
+            const query = `SELECT * FROM ${this.schema}"${this.tablename}"`;
             const result = await client.query(query);
 
             const formattedResults = result.rows.map((elem) => {
@@ -48,7 +48,7 @@ class CoreModel {
      */
     static async findById(id) {
         try {
-            const result = await client.query(`SELECT * FROM "${this.tablename}" WHERE id = $1`, [id])
+            const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE id = $1`, [id])
             if(result.rows.length === 0){
                 return null
             };
@@ -68,7 +68,7 @@ class CoreModel {
 
         console.log(prop[0],value[0])
 
-        const result = await client.query(`SELECT * FROM "${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
+        const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
         return new this(result.rows[0]);
 
     }
@@ -81,7 +81,7 @@ class CoreModel {
         try {
             const query = {
                 text: `
-                    DELETE FROM "${this.constructor.tablename}"
+                    DELETE FROM ${this.constructor.schema}"${this.constructor.tablename}"
                     WHERE "id" = $1
                 `,
                 values: [this.id]
@@ -133,7 +133,7 @@ class CoreModel {
 
         const preparedQuery = {
             text: `
-                INSERT INTO "${this.constructor.tablename}"
+                INSERT INTO ${this.constructor.schema}"${this.constructor.tablename}"
                 (${columns.join(',')})
                 VALUES(${placeholders.join(',')})
                 RETURNING id
@@ -192,7 +192,7 @@ class CoreModel {
             
             const preparedQuery = {
                 text: `
-                    UPDATE "${this.constructor.tablename}" SET
+                    UPDATE ${this.constructor.schema}"${this.constructor.tablename}" SET
                     ${sets.join(',')}
                     WHERE id = $${indexId}
                 `,

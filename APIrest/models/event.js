@@ -12,6 +12,7 @@ module.exports = class Event extends CoreModel {
     _status;
     _vocal;
 
+    static schema = 'user_access.';
     static tablename = 'event';
 
     constructor(obj) {

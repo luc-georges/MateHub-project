@@ -125,7 +125,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {boolean} true si ok
      */
-    deleteAnEvent: async (request, response, next) => {
+    deleteAnEvent: async (request, response) => {
         try {
             const event = await Event.findById(request.params.id);
             const result = await event.delete();
