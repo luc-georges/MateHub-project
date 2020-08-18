@@ -1,16 +1,21 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import './style.scss';
 
-const TopPlayer = () => {
+const TopPlayer = ({ list }) => {
   return (
     <div className="TopPlayer">
-      <h2>TopPlayer</h2>
-      <div className="TopPlayer-module">
-        <a href="/">
-          <Icon className="user" size="large" />
-          <p>pseudo</p>
-          <p>nbr creat event</p>
-        </a>
+      <h2 className="titre">TopPlayer</h2>
+      <div className="TopPlayer-modules">
+        {list.map((element) => (
+          <a href="/" className="TopPlayer-module">
+            <Icon className="user" size="big" />
+            <div>
+        <div className="user-text"> pseudo {element.user_id}</div>
+        <div className="user-text"> nbr creat event {element.status}</div>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
