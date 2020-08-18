@@ -5,7 +5,7 @@ SELECT "user".id, "user".nickname ,"game".name AS "playing" ,"level".label AS "R
   WHERE "user".id = 1;
 
 
-SELECT "user".nickname, "game".name, "level".label  
+SELECT "user".nickname,"game".name, "level".label  
     FROM "user" 
     JOIN "M_USER_has_GAME" ON "M_USER_has_GAME".user_id = 1 AND "M_USER_has_GAME".game_id =  2
     JOIN "game" ON "game".id = 2
@@ -13,7 +13,29 @@ SELECT "user".nickname, "game".name, "level".label
     WHERE "user".id = 1;
 
 
+SELECT e.id AS "event_id", 
+        u.id AS "user_id", 
+        u.nickname AS "creator", 
+        g.name AS "game_name",
+        e.game_id, 
+        e.event_time AS "starting",
+        e.duration , 
+        e.player_count,
+         e.description, 
+         e.status, 
+         e.vocal
+    FROM user_access."event" e
+    JOIN user_access."user" u ON u.id = e.user_id
+    JOIN user_access."game" g ON g.id = e.game_id
+    JOIN user_access."M_USER_has_GAME" uhg ON u.id = uhg.user_id AND uhg.game_id = e.game_id
+    JOIN user_access."level" l ON l.id = uhg.level_id
+    WHERE e.id = 1;
 
+    JOIN user_access."level" l ON l.id = uhg.level_id AND l.game_id = e.game_id
+
+
+all event 
+    level du user
     
 
   CREATE type UserGameLevel as ("nickname" TEXT ,"name" TEXT, "label" TEXT );

@@ -59,6 +59,8 @@ INSERT INTO "M_EVENT_has_LANG"( "event_id", "lang_id") VALUES
 INSERT INTO "M_USER_has_GAME"( "user_id", "game_id","level_id","IGN") VALUES
         (1,2,4,'IGN1'),
         (1,3,1,'IGN2'),
+        (1,1,4,'IGN2'),
+        (2,2,7,'IGN2'),
         (2,1,8,'IGN3');
 
 -- M_USER_has_EVENT insert

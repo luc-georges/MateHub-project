@@ -4,3 +4,4 @@
 01-matehub-creation 2020-08-16T07:52:01Z "Etudiant O'clock",,, <etudiant@teleporteur> # First Schema for matehub DB
 02-insert-test-data 2020-08-16T09:21:06Z "Etudiant O'clock",,, <etudiant@teleporteur> # insertion of some fake data for test purpose
 03-add-schema 2020-08-17T09:40:51Z "Etudiant O'clock",,, <etudiant@teleporteur> # add schema to bdd
+04-function-event 2020-08-18T14:45:36Z "Etudiant O'clock",,, <etudiant@teleporteur> # create function fo events
