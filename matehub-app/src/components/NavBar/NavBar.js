@@ -8,12 +8,12 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <div className="navbar-logo">MATEUB</div>
-      <div className="navbar-nav">
-        <div className="navbar-nav-link"><a href="/"><Icon className="home" size="large" /> Home</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="user" size="large" />Profile</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="game" size="large" />Games</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="question" size="large" />Tuto / Q&A</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="mail" size="large" />Contact</a></div>
+      <div className="navbar-nav" id="top-menu">
+        <div className="navbar-nav-link"><a href="/"><Icon className="home navbar-nav-link-icon" size="large" /> Home</a></div>
+        <div className="navbar-nav-link"><a href="/"><Icon className="user navbar-nav-link-icon" size="large" />Profile</a></div>
+        <div className="navbar-nav-link"><a href="/"><Icon className="game navbar-nav-link-icon" size="large" />Games</a></div>
+        <div className="navbar-nav-link"><a href="/"><Icon className="question navbar-nav-link-icon" size="large" />Q&A</a></div>
+        <div className="navbar-nav-link"><a href="/"><Icon className="mail navbar-nav-link-icon" size="large" />Contact</a></div>
       </div>
     </div>
 )};
