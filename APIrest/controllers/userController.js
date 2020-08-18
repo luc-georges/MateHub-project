@@ -13,7 +13,7 @@ module.exports = {
     getUserById: async (request, response) => {
         try {
             const result = await User.findById(request.params.id);
-            response.json(result);
+            response.json({data: result});
 
         } catch (error) {
             console.log(error);
@@ -31,7 +31,7 @@ module.exports = {
         try {
             //console.log('laaaaaaaaaaaaaaaaaaaaaaa',request.query);
             const result = await User.findBy(request.query);
-            response.json(result);
+            response.json({data: result});
         } catch (error) {
             console.log('error:', error);
             response.json({message: `pas de resultat pour la recherche`});    
@@ -115,7 +115,7 @@ module.exports = {
     
             const result = await user.update();
             
-            response.json({result});
+            response.json({data: result});
             
         } catch (error) {
             console.log(error)
@@ -133,7 +133,7 @@ module.exports = {
             const user = await User.findById(request.params.id);
             const result = await user.delete();
         
-            response.json({result});
+            response.json({data: result});
                        
         } catch (error) {
             console.log(error)     

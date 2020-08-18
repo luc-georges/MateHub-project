@@ -14,7 +14,7 @@ module.exports = {
         try {
             const result = await Event.getAll();
 
-            response.json(result);
+            response.json({data: result});
 
         } catch (error) {
             console.log('error:', error)
@@ -33,7 +33,7 @@ module.exports = {
             const result = await Event.findById(request.params.id);
 
 
-            response.json(result)
+            response.json({data: result})
 
         } catch (error) {
             console.log('error:', error)
@@ -51,7 +51,8 @@ module.exports = {
         try {
            
             const result = await Event.findBy(request.query);
-            response.json(result);
+            response.json({data: result});
+
         } catch (error) {
             console.log('error:', error);
             response.json({message: `pas de resultat pour la recherche`}); 
@@ -112,7 +113,7 @@ module.exports = {
     
             const result = await event.update();
             
-            response.json({result});
+            response.json({data: result});
             
         } catch (error) {
             console.log(error)
@@ -130,7 +131,7 @@ module.exports = {
             const event = await Event.findById(request.params.id);
             const result = await event.delete();
         
-            response.json({result});
+            response.json({data: result});
                        
         } catch (error) {
             console.log(error)     
