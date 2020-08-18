@@ -9,7 +9,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} tout les events
      */
-    getAllEvent: async (request, response, next) => {
+    getAllEvent: async (request, response) => {
         try {
             const result = await Event.getAll();
 
@@ -27,7 +27,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'event
      */
-    getEventById: async (request, response, next) => {
+    getEventById: async (request, response) => {
         try {
             const result = await Event.findById(request.params.id);
 
@@ -39,6 +39,23 @@ module.exports = {
         }
     },
 
+    /**
+     * middleware express pour rechercher un event par n'importe quel parametre en query string
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'event
+     */ 
+    getEventBy: async (request, response) => {
+        try {
+           
+            const result = await Event.findBy(request.query);
+            response.json(result);
+        } catch (error) {
+            console.log('error:', error);
+            response.json({message: `pas de resultat pour la recherche`}); 
+        }
+    },
+    
     /**
      * middleware express pour créer un event
      * @param {Object} request - Express request object

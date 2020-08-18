@@ -68,7 +68,7 @@ class CoreModel {
 
         console.log(prop[0],value[0])
 
-        const result = await client.query(`SELECT * FROM "${this.tableName}" WHERE ${prop[0]} = $1`,[value[0]]);
+        const result = await client.query(`SELECT * FROM "${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
         return new this(result.rows[0]);
 
     }

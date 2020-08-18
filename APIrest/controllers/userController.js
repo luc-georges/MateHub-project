@@ -10,7 +10,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */
-    getUserById: async (request, response, next) => {
+    getUserById: async (request, response) => {
         try {
             const result = await User.findById(request.params.id);
             response.json(result);
@@ -19,6 +19,23 @@ module.exports = {
             console.log(error);
         }
 
+    },
+
+    /**
+     * middleware express pour rechercher un user par n'importe quel parametre en query string
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user
+     */    
+    getUserBy: async (request, response) => {
+        try {
+            //console.log('laaaaaaaaaaaaaaaaaaaaaaa',request.query);
+            const result = await User.findBy(request.query);
+            response.json(result);
+        } catch (error) {
+            console.log('error:', error);
+            response.json({message: `pas de resultat pour la recherche`});    
+        }
     },
 
     /**
