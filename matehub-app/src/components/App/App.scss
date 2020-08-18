@@ -1,4 +1,8 @@
+<<<<<<< HEAD:matehub-app/src/components/App/App.scss
 /* .App {
+=======
+/*.App {
+>>>>>>> feature/add-homepage-component:matehub-app/src/components/App/App.css
   text-align: center;
 }
 
@@ -35,6 +39,12 @@
   to {
     transform: rotate(360deg);
   }
+}*/
+
+
+.App {
+  display: flex;
+  justify-content: space-between;
 }
 */
 
