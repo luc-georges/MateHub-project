@@ -1,0 +1,28 @@
+@use '../../styles/vars';
+
+.navbar {
+  position: fixed;
+  padding: 1rem 0;
+  width: 10%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 3px 0px 8px 0px rgba(0,0,0,0.20);
+
+  &-logo {
+    font-size: 2em;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
+  }
+
+  &-nav {
+    margin: 1em 0.5em;
+    font-size: 1.2rem;
+
+    &-link {
+      margin-top: 2rem;
+      display: flex;
+    }
+  }
+}
