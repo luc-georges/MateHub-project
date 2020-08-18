@@ -26,6 +26,9 @@ module.exports = class User extends CoreModel {
         this.banner = obj.banner;
 
     }
+    /***** Static  **********/
+
+    
     /**** GETTER ************/
 
     get email() {

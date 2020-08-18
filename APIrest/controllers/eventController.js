@@ -1,4 +1,5 @@
 const Event = require('../models/event');
+const Game = require('../models/game');
 const sanitaze = require('../sanitaze/sanitazer');
 
 module.exports = {
@@ -31,6 +32,7 @@ module.exports = {
         try {
             const result = await Event.findById(request.params.id);
 
+
             response.json(result)
 
         } catch (error) {
@@ -55,7 +57,7 @@ module.exports = {
             response.json({message: `pas de resultat pour la recherche`}); 
         }
     },
-    
+
     /**
      * middleware express pour créer un event
      * @param {Object} request - Express request object
