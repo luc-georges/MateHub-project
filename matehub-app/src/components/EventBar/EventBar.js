@@ -13,8 +13,8 @@ const EventBar = () => {
       <button className="eventbar-logoutbutton">Logout</button>
       <div className="eventbar-eventedition">
         Events
-        <a href="/"><Icon className="add" size=""/></a>
-        <a href="/"><Icon className="search" size=""/></a>
+        <a href="/"><Icon className="add"/></a>
+        <a href="/"><Icon className="search"/></a>
       </div>
     </div>
 )};
