@@ -1,6 +1,5 @@
 const client = require('./client');
 const CoreModel = require('./coreModel');
-const validator = require('validator');
 
 module.exports = class Event extends CoreModel {
 
@@ -64,48 +63,32 @@ module.exports = class Event extends CoreModel {
 /**********SETTER **************/
 
     set user_id(value) {
-        if (!validator.isInt(value)) {
-            throw Error("event.user_id must be an integer");
-        }
         this._user_id = value
     }
 
     set game_id(value) {
-        if (!validator.isInt(value)) {
-            throw Error("event.game_id must be an integer");
-        }
         this._game_id = value
     }
 
     set event_time(value) {
-        if (!validator.isDate(value, "YYYY-MM-DD HH:mm:ssZZ")) {
-            throw Error("event_time must be a validate timstamptz" )
-        }
         this._event_time = value
     }
 
     set duration(value) {
-        if (!validator.isDate(value, "HH:mm:ss")) {
-            throw Error("event_time must be an interval" )
-        }
         this._duration = value
     }
 
     set player_count(value) {
-        if (!validator.isInt(value)) {
-            throw Error("event.player_count must be an integer");
-        }
-        this._label = value
+
+        this._player_count = value
     }
 
     set description(value) {
-        this._label = value
+        this._description = value
     }
 
     set status(value) {
-        if (!validator.isInt(value)) {
-            throw Error("event.status must be an integer");
-        }
+
         this._status = value
     }
 
