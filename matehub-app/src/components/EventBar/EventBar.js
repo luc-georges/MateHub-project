@@ -8,11 +8,11 @@ import { Icon, Button } from "semantic-ui-react";
 import './style.scss'
 
 const EventBar = ({list}) => {
-  console.log(list)
+  // console.log(list)
   return (
     <div className="eventbar">
       <Icon className="user circle" size="massive" />
-      <button className="eventbar-logoutbutton">Logout</button>
+      <Button content="Logout"/>
       <div className="eventbar-eventedition">
         Events
         <a href="/"><Icon className="add"/></a>
@@ -22,12 +22,14 @@ const EventBar = ({list}) => {
         {list.map((event) => {
           return (
           <div className="eventbar-event" key={event.id}>
-            <Icon className="eye" size="large"/>
-            <div>
-              <p>{event.event_time}</p>
-              <p>{event.player_count}</p>
-              <p>{event.description}</p>
-              <p>{event.duration}</p>
+            <a href="/"><Icon className="eye" size="big"/></a>
+            <div className="eventbar-event-infos">
+              <div>Event date :</div>
+              <div>{event.event_time}</div>
+              <div>{event.player_count} players</div>
+              <div>Description :</div>
+              <div>{event.description.length > 30 ? `${event.description.slice(0, 30)}...` : event.description}</div>
+              <div>Duration : {event.duration}</div>
             </div>
           </div>
           )

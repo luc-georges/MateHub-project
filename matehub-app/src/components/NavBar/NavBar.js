@@ -7,7 +7,7 @@ const NavBar = () => {
   console.log('NavBar')
   return (
     <div className="navbar">
-      <div className="navbar-logo">MATEUB</div>
+      <div className="navbar-logo">MATE HUB</div>
       <div className="navbar-nav" id="top-menu">
         <div className="navbar-nav-link"><a href="/"><Icon className="home navbar-nav-link-icon" size="large" /> Home</a></div>
         <div className="navbar-nav-link"><a href="/"><Icon className="user navbar-nav-link-icon" size="large" />Profile</a></div>
