@@ -1,4 +1,5 @@
 const Event = require('../models/event');
+const sanitaze = require('../sanitaze/sanitazer');
 
 module.exports = {
     
@@ -48,6 +49,16 @@ module.exports = {
         try {
             const event = await new Event(request.body);
 
+            if(event.description) {
+                event.description = sanitaze.htmlEntities(event.description);
+            }
+            if(event.status) {
+                event.status = sanitaze.htmlEntities(event.status);
+            }
+            if(event.vocal) {
+                event.vocal = sanitaze.htmlEntities(event.vocal);
+            }
+
             await event.insert();
           
             response.json({event: event});
@@ -69,6 +80,16 @@ module.exports = {
             const event = await Event.findById(request.params.id);
     
             Object.assign(event, request.body);
+
+            if(event.description) {
+                event.description = sanitaze.htmlEntities(event.description);
+            }
+            if(event.status) {
+                event.status = sanitaze.htmlEntities(event.status);
+            }
+            if(event.vocal) {
+                event.vocal = sanitaze.htmlEntities(event.vocal);
+            }
     
             const result = await event.update();
             

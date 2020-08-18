@@ -80,9 +80,6 @@ module.exports = class User extends CoreModel {
     }
 
     set DOB(value) {
-        if (! validator.isDate(value)) {
-            throw Error('User.email must be a date to format YYYY/MM/DD')
-        }
         this._DOB = value
     }
 

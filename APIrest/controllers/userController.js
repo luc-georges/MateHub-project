@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
+const sanitaze = require('../sanitaze/sanitazer');
 
 module.exports = {
 
@@ -28,6 +30,27 @@ module.exports = {
     createAnUser: async (request, response, next) => {
         try {
             const user = new User(request.body);
+
+            const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+            //console.log(user.password);
+            //console.log(user.password.search(regex));
+            if (user.password.search(regex) === -1) {
+                throw Error('password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
+            };
+            const saltRounds = 10;
+            const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
+            user.password = encryptedPassword;
+
+            if(user.description) {
+                user.description = sanitaze.htmlEntities(user.description);
+            }
+            if(user.avatar) {
+                user.avatar = sanitaze.htmlEntities(user.avatar);
+            }
+            if(user.banner) {
+                user.banner = sanitaze.htmlEntities(user.banner);
+            }
+                
     
             await user.insert();
           
@@ -50,6 +73,28 @@ module.exports = {
             const user = await User.findById(request.params.id);
     
             Object.assign(user, request.body);
+
+            if(user.password) {
+                const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+                //console.log(user.password);
+                //console.log(user.password.search(regex));
+                if (user.password.search(regex) === -1) {
+                    throw Error('password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
+                };
+                const saltRounds = 10;
+                const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
+                user.password = encryptedPassword;
+            }
+
+            if(user.description) {
+                user.description = sanitaze.htmlEntities(user.description);
+            }
+            if(user.avatar) {
+                user.avatar = sanitaze.htmlEntities(user.avatar);
+            }
+            if(user.banner) {
+                user.banner = sanitaze.htmlEntities(user.banner);
+            }
     
             const result = await user.update();
             
