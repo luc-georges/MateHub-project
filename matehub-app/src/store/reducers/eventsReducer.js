@@ -1,4 +1,6 @@
-const initialState = {
+import { GET_EVENTS } from '../actions/eventActions';
+
+export const initialState = {
   list: [
     {
       id: 1,
@@ -58,11 +60,15 @@ const initialState = {
   ],
 };
 
-const eventReducer = (state = initialState, action = {}) => {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case GET_EVENTS:
+      return {
+        ...state,
+      }
     default:
       return state;
   }
 }
 
-export default eventReducer;
+// export default eventsReducer;

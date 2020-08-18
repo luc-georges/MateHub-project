@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { Icon, Button } from "semantic-ui-react";
@@ -7,7 +7,10 @@ import { Icon, Button } from "semantic-ui-react";
 
 import './style.scss'
 
-const EventBar = ({list}) => {
+const EventBar = ({list, getEvents}) => {
+  useEffect(() => {
+    getEvents();
+  }, []);
   // console.log(list)
   return (
     <div className="eventbar">
