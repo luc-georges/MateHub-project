@@ -19,6 +19,8 @@ router.post('/event', eventController.createAnEvent);
 router.put('/event/:id', eventController.updateAnEvent);
 router.delete('/event/:id', eventController.deleteAnEvent);
 
+router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickname)
+
 router.get('/games', gameController.getAllGame);
 router.get('/game/:id', gameController.getGameById);
 

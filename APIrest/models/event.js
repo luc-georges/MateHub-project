@@ -50,6 +50,11 @@ module.exports = class Event extends CoreModel {
         return result.rows[0];
     }
 
+    static async getAllEventByNickname(nickname) {
+        const result = await client.query(`SELECT * FROM getalleventdata() WHERE creator = $1`, [nickname]);
+        return result.rows;
+    }
+
     /*********GETTER **********/
 
     get user_id() {

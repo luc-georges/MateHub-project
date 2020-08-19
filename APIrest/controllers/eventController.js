@@ -32,7 +32,6 @@ module.exports = {
         try {
             const result = await Event.findEventById(request.params.id);
 
-
             response.json({data: result})
 
         } catch (error) {
@@ -56,6 +55,18 @@ module.exports = {
         } catch (error) {
             console.log('error:', error);
             response.json({message: `pas de resultat pour la recherche`}); 
+        }
+    },
+
+    getAllEventFromUserByNickname: async (request, response) => {
+        try {
+            
+            const result = await Event.getAllEventByNickname(request.params.nickname);
+            response.json({data: result});
+
+        } catch (error) {
+            console.log('error:', error)
+            
         }
     },
 
