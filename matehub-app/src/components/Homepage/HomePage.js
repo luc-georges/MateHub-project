@@ -4,12 +4,13 @@ import TopPlayer from '../TopPlayers/TopPlayer';
 import LastestNews from '../LastestNews/LastestNews';
 import './style.scss';
 
-const HomePage = () => {
+
+const HomePage = ({list}) => {
   return (
     <div className="HomePage">
-      <h1>Welcome on PlayTogether Connard !</h1>
-      <LastestEvent />
-      <TopPlayer />
+      <h1 className="titre">Welcome on PlayTogether Connard !</h1>
+      <LastestEvent list={list} />
+      <TopPlayer list={list}/>
       <LastestNews />
       <LastestEvent />
       <TopPlayer />

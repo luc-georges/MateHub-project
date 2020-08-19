@@ -2,21 +2,30 @@ import React from 'react';
 import logolol from '../../assets/logolol.png';
 import './style.scss';
 
-const LastestEvent = () => {
+const LastestEvent = ({list}) => {
+  console.log(list)
   return (
     <div className="LastestEvent">
-      <h2>Lastest event</h2>
-      <div className="LastestEvent-module">
-        <img
-          src={logolol}
-          alt="lollogo"
-          className="LastestEvent-module-image"
-        />
-        <a href="/">
-          <p>nom du jeux - createur</p>
-          <p>date - heures</p>
-          <p>nombre de joueurs</p>
-        </a>
+      <h2 className="titre">Lastest event</h2>
+      <div className="LastestEvent-modules">
+        {list.map((element) => {
+          return (
+            <div className="LastestEvent-module">
+              <img
+                src={logolol}
+                alt="lollogo"
+                className="LastestEvent-module-image"
+              />
+              <a href="/">
+                <div className="LatestEvent-text">Game {element.game_id} - Name {element.user_id}
+                </div>
+                <div className="LatestEvent-text"> Date and time {element.event_time}</div>
+                <div className="LatestEvent-text">Number of players {element.player_count}</div>
+              </a>
+            </div>
+          )
+        })}
+        ;
       </div>
     </div>
   );

@@ -1,29 +1,26 @@
-.LastestEvent{
-  margin: 2em;
-  margin-top: 6%;
+.TopPlayer{
+  margin:2em;
 }
 
-.LastestEvent-modules{
+.TopPlayer-modules{
   display:flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.LastestEvent-module{
-  display: flex;
+.TopPlayer-module{
   align-items: center;
   border-radius: 10px;
   border: 3px solid #949494;
   background-color: rgb(173, 173, 173);
   margin: 1.5%;
-  width:150px;
 }
 
-.LastestEvent-module-image{
-  width: 30%;
+.user{
+  max-height: 40%;
 }
 
-.LatestEvent-text{
+.user-text{
   margin-top: 2%;
   margin-left: 10%;
 }
