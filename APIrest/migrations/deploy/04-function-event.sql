@@ -51,7 +51,7 @@ SELECT e.id AS "event_id",
     JOIN user_access."level" l ON l.id = uhg.level_id
      
     WHERE e.id ="EVENT_ID"
-       ORDER BY e.event_time ASC
+       ORDER BY e.event_time DESC
 
 $body$
 
@@ -87,7 +87,7 @@ SELECT e.id AS "event_id",
     JOIN user_access."game" g ON g.id = e.game_id
     JOIN user_access."M_USER_has_GAME" uhg ON u.id = uhg.user_id AND uhg.game_id = e.game_id
     JOIN user_access."level" l ON l.id = uhg.level_id
-    ORDER BY e.event_time ASC
+    ORDER BY e.event_time DESC
     
 
 
