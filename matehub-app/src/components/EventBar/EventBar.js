@@ -22,21 +22,21 @@ const EventBar = ({ list }) => {
       <div className="eventbar-eventlist">
         {list.map((event) => {
           return (
-            <div className="eventbar-event" key={event.event_id}>
+            <div className="eventbar-event" key={event._event_id}>
               <a href="/">
                 <Icon className="eye" size="big" />
               </a>
               <div className="eventbar-event-infos">
                 <div>Event date :</div>
-                <div>{event.starting}</div>
-                <div>{event.player_count} players</div>
+                <div>{event._starting}</div>
+                <div>{event._player_count} players</div>
                 <div>Description :</div>
                 <div>
-                  {event.description.length > 30
-                    ? `${event.description.slice(0, 30)}...`
-                    : event.description}
+                  {event._description.length > 30
+                    ? `${event._description.slice(0, 30)}...`
+                    : event._description}
                 </div>
-                <div>Duration : {event.duration.hours}</div>
+                <div>Duration : {event._duration.hours}</div>
               </div>
             </div>
           );
