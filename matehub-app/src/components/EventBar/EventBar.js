@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Icon, Button } from 'semantic-ui-react';
 
 import './style.scss';
 
-const EventBar = ({ list, getEvents }) => {
-  // eslint-disable-next-line
-  useEffect(() => {
-    getEvents();
-    // eslint-disable-next-line
-  }, []);
-  // console.log(list)
+const EventBar = ({ list }) => {
+  console.log("data dans le component EventBar", list);
+
   return (
     <div className="eventbar">
       <Icon className="user circle" size="massive" />
@@ -28,13 +24,13 @@ const EventBar = ({ list, getEvents }) => {
       <div className="eventbar-eventlist">
         {list.map((event) => {
           return (
-            <div className="eventbar-event" key={event.id}>
+            <div className="eventbar-event" key={event.event_id}>
               <a href="/">
                 <Icon className="eye" size="big" />
               </a>
               <div className="eventbar-event-infos">
                 <div>Event date :</div>
-                <div>{event.event_time}</div>
+                <div>{event.starting}</div>
                 <div>{event.player_count} players</div>
                 <div>Description :</div>
                 <div>
@@ -42,7 +38,7 @@ const EventBar = ({ list, getEvents }) => {
                     ? `${event.description.slice(0, 30)}...`
                     : event.description}
                 </div>
-                <div>Duration : {event.duration}</div>
+                <div>Duration : {event.duration.hours}h</div>
               </div>
             </div>
           );
@@ -59,7 +55,9 @@ EventBar.propTypes = {
       event_time: PropTypes.string,
       player_count: PropTypes.number,
       description: PropTypes.string,
-      duration: PropTypes.string,
+      duration: PropTypes.shape({
+        hours: PropTypes.number,
+      }),
     })
   ),
 };

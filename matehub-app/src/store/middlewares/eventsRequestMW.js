@@ -1,25 +1,34 @@
 import axios from 'axios';
-import { GET_EVENTS } from '../actions/eventActions'
+import {
+  GET_EVENTS,
+  getEventsSuccess,
+  getEventsError,
+} from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
-  console.log("Passage dans le eventsRequestMW");
+  // console.log("Passage dans le eventsRequestMW");
   next(action);
   switch (action.type) {
     case GET_EVENTS:
       axios({
         method: 'get',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+        },
         url: 'http://localhost:3001/events',
       })
         .then((res) => {
-          console.log(res.data);
+          console.log("On passe dans le .then");
+          console.log("res.data dans le MW: ", res.data);
+          store.dispatch(getEventsSuccess(res.data.data));
         })
         .catch((err) => {
+          console.log("On passe dans le .catch");
           console.log(err);
-        })
-        .then(() => {
-          console.log("second catch du eventsRequestMW")
-        })
+          store.dispatch(
+            getEventsError('Impossible des récupérer les données')
+          );
+        });
       break;
     default:
       return;

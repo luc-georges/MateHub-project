@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
 import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 /* Import components */
 import NavBar from '../NavBar/NavBar';
-// import EventBar from '../EventBar/EventBar';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../Homepage/HomePage';
-// import RegistrationPage from '../RegistrationPage/RegistrationPage';
-import "semantic-ui-css/semantic.min.css";
+import RegistrationPage from '../RegistrationPage/RegistrationPage';
 
 const eventList = [
   {
@@ -29,7 +29,8 @@ const eventList = [
     event_time: '2020-08-22 09:00:00',
     duration: '04:00',
     player_count: 2,
-    description: 'En duo Q sur matehub En duo Q sur matehubEn duo Q sur matehubEn duo Q sur matehubEn duo Q sur matehubEn duo Q sur matehub',
+    description:
+      'En duo Q sur matehub En duo Q sur matehubEn duo Q sur matehubEn duo Q sur matehubEn duo Q sur matehubEn duo Q sur matehub',
     status: 3,
     vocal: 'discord.gg/invitenumber',
   },
@@ -68,12 +69,23 @@ const eventList = [
   },
 ];
 
-function App() {
-
+function App({ getEvents }) {
+  // eslint-disable-next-line
+  useEffect(() => {
+    getEvents();
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="App">
       <NavBar />
-      <HomePage list={eventList} />
+      <Switch>
+        <Route exact path="/">
+          <HomePage list={eventList} />
+        </Route>
+        <Route exact path="/registration">
+          <RegistrationPage />
+        </Route>
+      </Switch>
       <EventBar />
     </div>
   );

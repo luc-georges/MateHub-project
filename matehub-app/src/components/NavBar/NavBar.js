@@ -1,21 +1,63 @@
 import React from 'react';
-import { Icon } from "semantic-ui-react";
+import { Icon, Button } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
 const NavBar = () => {
-  console.log('NavBar')
+  console.log('NavBar');
   return (
     <div className="navbar">
       <div className="navbar-logo">MATE HUB</div>
       <div className="navbar-nav" id="top-menu">
-        <div className="navbar-nav-link"><a href="/"><Icon className="home navbar-nav-link-icon" size="large" /> Home</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="user navbar-nav-link-icon" size="large" />Profile</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="game navbar-nav-link-icon" size="large" />Games</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="question navbar-nav-link-icon" size="large" />Q&A</a></div>
-        <div className="navbar-nav-link"><a href="/"><Icon className="mail navbar-nav-link-icon" size="large" />Contact</a></div>
+        <NavLink className="navbar-nav-link" exact to="/">
+          <Button
+            fluid
+            className="home"
+            content="home"
+            icon="home"
+            size="large"
+          />
+        </NavLink>
+        <NavLink className="navbar-nav-link" exact to="/">
+          <Button
+            fluid
+            className="home"
+            content="Profile"
+            icon="user"
+            size="large"
+          />
+        </NavLink>
+        <NavLink className="navbar-nav-link" exact to="/">
+          <Button
+            fluid
+            className="home"
+            content="Games"
+            icon="game"
+            size="large"
+          />
+        </NavLink>
+        <NavLink className="navbar-nav-link" exact to="/">
+          <Button
+            fluid
+            className="home"
+            content="Q&A"
+            icon="question"
+            size="large"
+          />
+        </NavLink>
+        <NavLink className="navbar-nav-link" exact to="/">
+          <Button
+            fluid
+            className="home"
+            content="Contact"
+            icon="mail"
+            size="large"
+          />
+        </NavLink>
       </div>
     </div>
-)};
+  );
+};
 
 export default NavBar;
