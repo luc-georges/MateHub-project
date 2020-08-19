@@ -94,10 +94,42 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 
 ### Lister les routes:
 
-- Accueil
-- Se connecter / s'enregistrer
-- Profil
-- Recherche de mate / jeux 
+#### Route Front :
+- Home
+- login / register
+- Profile
+- Search
+
+#### Route Back: 
+
+##### User: 
+
+| Méthode http | Url | Controller |Méthod| Commentaire |
+| ----------- | ------| --------------|------ |------|
+| POST | /user | userController |Donnée indispensable : email, password, nickname, DOB| Crée un nouvel utilisateur |
+| GET | /:user/:id | userController | | Trouver un utilisateur via l'id |
+| GET | /find/user | userController | query string ?nomDuChamp=valeur | Trouver un utilisateur un champ placé en query string |
+| PUT | /user/:id | userController | 1 ou plusieurs champs | Update un utilisateur en renseignant un ou plusieurs champs dans le body |
+| DELETE | /user/:id | userController | Return true: si réussi, false si failed  | Supprime un utilisateur via son id |
+
+##### Event: 
+
+| Méthode http | Url | Controller |Méthod| Commentaire |
+| ----------- | ------| --------------|------ |------|
+| POST | /event | eventController |Donnée indispensable : user_id, game_id, event_time, duration, player_count| Crée un nouvel Évènement  |
+| GET | /events | eventController | | Trouver tout les Évènements |
+| GET | /event/:id | eventController | |Trouver un évènement via l'id  |
+| GET | /find/event | eventController | query string ?nomDuChamp=valeur | Trouver un Évènement via des champs placé en query string |
+| PUT | /event/:id | eventController | 1 ou plusieurs champs | Update un évènement en renseignant un ou plusieurs champs dans le body |
+| DELETE | /event/:id | eventController | Return true: si réussi, false si failed  | Supprime un évènement via son id |
+
+##### Game: 
+
+| Méthode http | Url | Controller |Méthod| Commentaire |
+| ----------- | ------| --------------|------ |------|
+| GET | /games | gameController | | Trouver tout les jeux |
+| GET | /event/:id | gameController | |Trouver un jeu via l'id  |
+
 
 ### Wireframes:
 
