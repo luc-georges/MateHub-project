@@ -8,5 +8,6 @@ module.exports = Joi.object({
     player_count: Joi.number().integer().min(1),
     description: Joi.string().max(280),
     status: Joi.number().integer().min(0).max(2),
-    vocal: Joi.string()
+    vocal: Joi.string(),
+    player_max: Joi.number().integer().min(1)
 });
