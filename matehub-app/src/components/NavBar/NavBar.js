@@ -46,7 +46,7 @@ const NavBar = () => {
             size="large"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/">
+        <NavLink className="navbar-nav-link" exact to="/contact">
           <Button
             fluid
             className="home"
