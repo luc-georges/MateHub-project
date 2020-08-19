@@ -34,9 +34,7 @@ SELECT e.id AS "event_id",
     JOIN user_access."level" l ON l.id = uhg.level_id AND l.game_id = e.game_id
 
 
-all event 
-    level du user
-    
+
 
   CREATE type UserGameLevel as ("nickname" TEXT ,"name" TEXT, "label" TEXT );
   CREATE FUNCTION getUserGameLevel("USER_ID" INT, "GAME_ID" INT)
