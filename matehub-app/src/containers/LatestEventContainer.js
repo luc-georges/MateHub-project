@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import EventBar from '../components/EventBar/EventBar';
+import LatestEvent from '../components/LastestEvent/LastestEvent';
 
 const  mapStateToProps = (state) => ({
   list: state.events.list,
@@ -7,4 +7,5 @@ const  mapStateToProps = (state) => ({
 
 const mapDispatchToProps = null;
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventBar);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LatestEvent);

@@ -1,4 +1,4 @@
-import { GET_EVENTS, GET_EVENTS_SUCCESS, GET_EVENTS_ERROR } from '../actions/eventsActions';
+import { GET_USERS, GET_USERS_SUCCESS, GET_USERS_ERROR } from '../actions/usersActions';
 
 export const initialState = {
   list: [],
@@ -6,16 +6,16 @@ export const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_EVENTS:
+    case GET_USERS:
       return {
         ...state,
       }
-    case GET_EVENTS_SUCCESS:
+    case GET_USERS_SUCCESS:
         return {
           ...state,
           list: [...action.payload]
         }
-    case GET_EVENTS_ERROR:
+    case GET_USERS_ERROR:
       return {
         ...state,
         list: []
@@ -24,5 +24,3 @@ export default (state = initialState, action = {}) => {
       return state;
   }
 }
-
-// export default eventsReducer;
