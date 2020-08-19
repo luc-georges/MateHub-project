@@ -12,21 +12,6 @@ const HomePage = ({list}) => {
       <LastestEvent list={list} />
       <TopPlayer list={list}/>
       <LastestNews />
-      <LastestEvent />
-      <TopPlayer />
-      <LastestNews />
-      <LastestEvent />
-      <TopPlayer />
-      <LastestNews />
-      <LastestEvent />
-      <TopPlayer />
-      <LastestNews />
-      <LastestEvent />
-      <TopPlayer />
-      <LastestNews />
-      <LastestEvent />
-      <TopPlayer />
-      <LastestNews />
     </div>
   );
 };

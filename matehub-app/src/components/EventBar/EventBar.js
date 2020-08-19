@@ -1,45 +1,56 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Icon, Button } from "semantic-ui-react";
+import { Icon, Button } from 'semantic-ui-react';
 
-// Erreur findDOMNode à cause de l'utilisation de Button L13
+import './style.scss';
 
-import './style.scss'
-
-const EventBar = ({list, getEvents}) => {
+const EventBar = ({ list, getEvents }) => {
+  // eslint-disable-next-line
   useEffect(() => {
     getEvents();
+    // eslint-disable-next-line
   }, []);
   // console.log(list)
   return (
     <div className="eventbar">
       <Icon className="user circle" size="massive" />
-      <Button content="Logout"/>
+      <Button content="Logout" />
       <div className="eventbar-eventedition">
         Events
-        <a href="/"><Icon className="add"/></a>
-        <a href="/"><Icon className="search"/></a>
+        <a href="/">
+          <Icon className="add" />
+        </a>
+        <a href="/">
+          <Icon className="search" />
+        </a>
       </div>
       <div className="eventbar-eventlist">
         {list.map((event) => {
           return (
-          <div className="eventbar-event" key={event.id}>
-            <a href="/"><Icon className="eye" size="big"/></a>
-            <div className="eventbar-event-infos">
-              <div>Event date :</div>
-              <div>{event.event_time}</div>
-              <div>{event.player_count} players</div>
-              <div>Description :</div>
-              <div>{event.description.length > 30 ? `${event.description.slice(0, 30)}...` : event.description}</div>
-              <div>Duration : {event.duration}</div>
+            <div className="eventbar-event" key={event.id}>
+              <a href="/">
+                <Icon className="eye" size="big" />
+              </a>
+              <div className="eventbar-event-infos">
+                <div>Event date :</div>
+                <div>{event.event_time}</div>
+                <div>{event.player_count} players</div>
+                <div>Description :</div>
+                <div>
+                  {event.description.length > 30
+                    ? `${event.description.slice(0, 30)}...`
+                    : event.description}
+                </div>
+                <div>Duration : {event.duration}</div>
+              </div>
             </div>
-          </div>
-          )
+          );
         })}
       </div>
     </div>
-)};
+  );
+};
 
 EventBar.propTypes = {
   list: PropTypes.arrayOf(
@@ -50,7 +61,7 @@ EventBar.propTypes = {
       description: PropTypes.string,
       duration: PropTypes.string,
     })
-  )
-}
+  ),
+};
 
 export default EventBar;

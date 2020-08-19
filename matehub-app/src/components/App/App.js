@@ -7,7 +7,7 @@ import NavBar from '../NavBar/NavBar';
 // import EventBar from '../EventBar/EventBar';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../Homepage/HomePage';
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+// import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import "semantic-ui-css/semantic.min.css";
 
 const eventList = [

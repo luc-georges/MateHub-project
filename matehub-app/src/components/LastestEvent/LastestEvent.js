@@ -10,7 +10,7 @@ const LastestEvent = ({list}) => {
       <div className="LastestEvent-modules">
         {list.map((element) => {
           return (
-            <div className="LastestEvent-module">
+            <div className="LastestEvent-module" key={element.id}>
               <img
                 src={logolol}
                 alt="lollogo"
