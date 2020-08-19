@@ -1,14 +1,14 @@
-@use '../../styles/vars';
+@import 'src/styles/vars';
 
 .navbar {
   position: fixed;
   padding: 1rem 0;
   width: 10%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 3px 0px 8px 0px rgba(0,0,0,0.20);
+  box-shadow: 3px 0px 8px 0px rgba(0, 0, 0, 0.2);
 
   &-logo {
     font-size: 2em;
@@ -17,12 +17,18 @@
   }
 
   &-nav {
-    margin: 1em 0.5em;
     font-size: 1.2rem;
 
     &-link {
-      margin-top: 2rem;
+      width: 100%;
+      margin-top: 3rem;
       display: flex;
+      line-height: 10px;
+      padding: 10px;
+
+      &-icon {
+        padding-right: 1.5em;
+      }
     }
   }
 }

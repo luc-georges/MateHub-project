@@ -11,6 +11,21 @@ const HomePage = () => {
       <LastestEvent />
       <TopPlayer />
       <LastestNews />
+      <LastestEvent />
+      <TopPlayer />
+      <LastestNews />
+      <LastestEvent />
+      <TopPlayer />
+      <LastestNews />
+      <LastestEvent />
+      <TopPlayer />
+      <LastestNews />
+      <LastestEvent />
+      <TopPlayer />
+      <LastestNews />
+      <LastestEvent />
+      <TopPlayer />
+      <LastestNews />
     </div>
   );
 };
