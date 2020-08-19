@@ -99,6 +99,10 @@ les joueurs de tout age et de tout niveaux cherchant des team mates
 - login / register
 - Profile
 - Search
+- CreateEvent
+- GettingStarted
+- Contact
+- Term of use
 
 #### Route Back: 
 
