@@ -21,3 +21,5 @@ function App() {
 }
 
 export default App;
+
+// PG_URL=postgres://matehub:matehub@localhost:5432/matehub
