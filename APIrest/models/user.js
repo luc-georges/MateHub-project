@@ -63,9 +63,7 @@ module.exports = class User extends CoreModel {
      /**** SETTER ************/
 
     set email(value) {
-        if (! validator.isEmail(value)) {
-            throw Error('User.email must be an eMail')
-        }
+
         this._email = value
     }
 
@@ -74,12 +72,7 @@ module.exports = class User extends CoreModel {
     }
 
     set nickname(value) {
-        if (typeof value !== 'string') {
-            throw Error('User.nickname must be a string!');
-        }
-        if (!validator.isLength(value,{min:1, max:30})) {
-            throw Error('User.description must have 30 characters max!');
-        }
+
         this._nickname = value
     }
 

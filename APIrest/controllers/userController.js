@@ -61,12 +61,6 @@ module.exports = {
         try {
             const user = new User(request.body);
 
-            const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
-            //console.log(user.password);
-            //console.log(user.password.search(regex));
-            if (user.password.search(regex) === -1) {
-                return response.status('400').json({error:'password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' });
-            };
             const saltRounds = 10;
             const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
             user.password = encryptedPassword;
@@ -84,7 +78,7 @@ module.exports = {
     
             await user.insert();
           
-            response.status('200').json({user:user});
+            response.status('200').json({data:user});
             
         } catch (error) {
             console.log(error);
@@ -99,7 +93,6 @@ module.exports = {
      */
     updateAnUser: async (request, response, next) => {
         try {
-            //localStorage.setItem("errorMessage","password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number") ;
 
             const user = await User.findById(request.params.id);
     
@@ -109,8 +102,7 @@ module.exports = {
 
             if(request.body.password) {
                 const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
-                //console.log(user.password);
-                //console.log(user.password.search(regex));
+                
                 if (user.password.search(regex) === -1) {
                     return response.status('400').json({error:'password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' });
                     //throw Error('password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
@@ -132,7 +124,7 @@ module.exports = {
     
             const result = await user.update();
             
-            response.status('200').json({data: result});
+            response.status('201').json({data: result});
             
         } catch (error) {
             console.log(error);

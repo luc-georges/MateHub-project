@@ -88,6 +88,11 @@ module.exports = {
     createAnEvent: async (request, response, next) => {
         try {
             const event = await new Event(request.body);
+            console.log('request.body:', request.body)
+
+            if (!event.user_id || !event.game_id || !event.event_time || !event.player_count || event.status !== 0) {
+                return response.status('400').json({error: 'user_id, game_id, event_time, event.status and player_count are required event.status must be equal to 0'});
+            }
 
             if(event.description) {
                 event.description = sanitaze.htmlEntities(event.description);
@@ -101,7 +106,7 @@ module.exports = {
 
             await event.insert();
           
-            response.status('200').json({event: event});
+            response.status('200').json({data: event});
 
         } catch (error) {
             console.log('error:', error)
@@ -133,7 +138,7 @@ module.exports = {
     
             const result = await event.update();
             
-            response.status('200').json({data: result});
+            response.status('201').json({data: result});
             
         } catch (error) {
             console.log(error)

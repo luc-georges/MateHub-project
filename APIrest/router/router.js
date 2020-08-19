@@ -1,12 +1,15 @@
 const express = require('express');
 
+const { validateBody } = require('../validator/validator');
+const postUserSchema = require('../validator/schema/postUser');
+
 const userController = require('../controllers/userController');
 const eventController = require('../controllers/eventController');
 const gameController = require('../controllers/gameController');
 
 const router = express.Router();
 
-router.post('/user', userController.createAnUser);
+router.post('/user',validateBody(postUserSchema), userController.createAnUser);
 router.get('/user/:id', userController.getUserById);
 router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.put('/user/:id', userController.updateAnUser);
