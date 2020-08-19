@@ -42,9 +42,14 @@ INSERT INTO "lang"( "label", "icon") VALUES
 
 -- EVENT insert
 
-INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count","description","status","vocal") VALUES
-        ( 1, 1, timestamp '2020-08-22 09:00:00', '04:00', 5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 2, timestamp '2020-08-16 09:00:00', '04:00', 2,'Duo Q', 3 ,'discord.gg/invitenumber');
+INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count","player_max","description","status","vocal") VALUES
+        ( 1, 1, timestamp '2020-08-22 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 2, timestamp '2020-08-16 09:00:00', '04:00', 1,10,'Duo Q', 3 ,'discord.gg/invitenumber');
+
+--INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count","description","status","vocal") VALUES
+        --( 1, 1, timestamp '2020-10-22 09:00:00', '04:00', 2,'test insert', 0,'discord.gg/invitenumber');
+
+
 
 -- M_2_M_EVENT_has_LANG insert
 
@@ -59,12 +64,13 @@ INSERT INTO "M_EVENT_has_LANG"( "event_id", "lang_id") VALUES
 INSERT INTO "M_USER_has_GAME"( "user_id", "game_id","level_id","IGN") VALUES
         (1,2,4,'IGN1'),
         (1,3,1,'IGN2'),
+        (1,1,4,'IGN2'),
+        (2,2,7,'IGN2'),
         (2,1,8,'IGN3');
 
 -- M_USER_has_EVENT insert
 
 INSERT INTO "M_USER_has_EVENT"( "user_id", "event_id","status","message") VALUES
-        (1,1,0,'Hey mate, i would love to participate! Check my profile ! from id 1'),
         (1,2,1,'Hey mate, i would love to participate! Check my profile ! from id 2'),
         (2,1,2,'Hey mate, i would love to participate! Check my profile ! from id 3'),
         (1,1,1,'Hey mate 2eme, i would love to participate! Check my profile ! from id 1 '),
