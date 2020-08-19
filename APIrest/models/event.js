@@ -27,6 +27,12 @@ module.exports = class Event extends CoreModel {
         this.vocal = obj.vocal;
     }
 
+    /********** STATIC *********/
+    static async findAllEvent() {
+        const result = await client.query(`SELECT * FROM getalleventdata()`);
+        return result.rows;
+    }
+
     /*********GETTER **********/
 
     get user_id() {

@@ -12,7 +12,7 @@ module.exports = {
      */
     getAllEvent: async (request, response) => {
         try {
-            const result = await Event.getAll();
+            const result = await Event.findAllEvent();
 
             response.json({data: result});
 
