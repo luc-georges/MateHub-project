@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
 import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 /* Import components */
 import NavBar from '../NavBar/NavBar';
-// import EventBar from '../EventBar/EventBar';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../Homepage/HomePage';
-// import RegistrationPage from '../RegistrationPage/RegistrationPage';
-import 'semantic-ui-css/semantic.min.css';
+import RegistrationPage from '../RegistrationPage/RegistrationPage';
 
 const eventList = [
   {
@@ -69,7 +69,7 @@ const eventList = [
   },
 ];
 
-function App({getEvents}) {
+function App({ getEvents }) {
   // eslint-disable-next-line
   useEffect(() => {
     getEvents();
@@ -78,7 +78,14 @@ function App({getEvents}) {
   return (
     <div className="App">
       <NavBar />
-      <HomePage list={eventList} />
+      <Switch>
+        <Route exact path="/">
+          <HomePage list={eventList} />
+        </Route>
+        <Route exact path="/registration">
+          <RegistrationPage />
+        </Route>
+      </Switch>
       <EventBar />
     </div>
   );
