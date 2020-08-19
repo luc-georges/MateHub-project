@@ -35,7 +35,8 @@ CREATE TABLE "event" (
     "game_id" INT NOT NULL REFERENCES "game"("id"),
     "event_time" TIMESTAMPTZ NOT NULL,
     "duration" INTERVAL ,
-    "player_count" INT NOT NULL ,
+    "player_count" INT NOT NULL DEFAULT 1  CONSTRAINT max_player CHECK (player_count <= player_max),
+    "player_max" INT NOT NULL ,
     "description" TEXT,
     "status" INT NOT NULL DEFAULT 0 ,
     "vocal" TEXT
