@@ -11,15 +11,15 @@ const RegistrationPage = () => {
       <Form className="form">
         <Form.Field>
           <label>Mail</label>
-          <input placeholder="Your mail" />
+          <input placeholder="Enter your mail" />
         </Form.Field>
         <Form.Field>
           <label>Nickname</label>
-          <input placeholder="Your nickname" />
+          <input placeholder="Enter your nickname" />
         </Form.Field>
         <Form.Field>
           <label>Password</label>
-          <input placeholder="Your password" />
+          <input placeholder="Enter your password" />
         </Form.Field>
         <Form.Field>
           <label>Confirm password</label>
@@ -27,7 +27,7 @@ const RegistrationPage = () => {
         </Form.Field>
         <Form.Field>
           <label> Birthday</label>
-          <input placeholder="Your birthday your password" />
+          <input placeholder="Enter your birthday" />
         </Form.Field>
         <Button type="submit" className="button">
           Submit

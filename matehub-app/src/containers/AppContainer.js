@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getEvents } from '../store/actions/eventActions'
+import { getEvents } from '../store/actions/eventsActions'
 import App from '../components/App/App';
 
 const mapStateToProps = null;

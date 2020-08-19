@@ -30,7 +30,7 @@ const EventBar = ({ list }) => {
               </a>
               <div className="eventbar-event-infos">
                 <div>Event date :</div>
-                <div>{event.event_time}</div>
+                <div>{event.starting}</div>
                 <div>{event.player_count} players</div>
                 <div>Description :</div>
                 <div>

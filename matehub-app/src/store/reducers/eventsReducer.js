@@ -2,7 +2,7 @@ import {
   GET_EVENTS,
   GET_EVENTS_SUCCESS,
   GET_EVENTS_ERROR,
-} from '../actions/eventActions';
+} from '../actions/eventsActions';
 
 export const initialState = {
   error: '',

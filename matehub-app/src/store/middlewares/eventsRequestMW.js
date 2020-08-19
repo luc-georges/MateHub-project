@@ -3,7 +3,7 @@ import {
   GET_EVENTS,
   getEventsSuccess,
   getEventsError,
-} from '../actions/eventActions';
+} from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
   // console.log("Passage dans le eventsRequestMW");
