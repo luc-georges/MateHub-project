@@ -13,7 +13,13 @@ module.exports = {
     getUserById: async (request, response) => {
         try {
             const result = await User.findById(request.params.id);
-            response.json({data: result});
+
+            if (!result) {
+                response.status('404').json({error:'user not found'})
+                //next()
+            }
+
+            response.status('200').json({data: result});
 
         } catch (error) {
             console.log(error);
@@ -31,10 +37,17 @@ module.exports = {
         try {
             //console.log('laaaaaaaaaaaaaaaaaaaaaaa',request.query);
             const result = await User.findBy(request.query);
-            response.json({data: result});
+
+            if (!result) {
+                response.status('404').json({error:'user not found'})
+                //next()
+            }
+
+            response.status('200').json({data: result});
+
         } catch (error) {
             console.log('error:', error);
-            response.json({message: `pas de resultat pour la recherche`});    
+            response.status('404').json({message: `pas de resultat pour la recherche`});    
         }
     },
 
@@ -52,7 +65,7 @@ module.exports = {
             //console.log(user.password);
             //console.log(user.password.search(regex));
             if (user.password.search(regex) === -1) {
-                throw Error('password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
+                return response.status('400').json({error:'password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' });
             };
             const saltRounds = 10;
             const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
@@ -71,11 +84,10 @@ module.exports = {
     
             await user.insert();
           
-            response.json({user:user});
+            response.status('200').json({user:user});
             
         } catch (error) {
             console.log(error);
-            response.json({message: "an error was caught"});
         }
     },
 
@@ -87,38 +99,43 @@ module.exports = {
      */
     updateAnUser: async (request, response, next) => {
         try {
+            //localStorage.setItem("errorMessage","password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number") ;
+
             const user = await User.findById(request.params.id);
     
             Object.assign(user, request.body);
 
-            if(user.password) {
+            console.log('user',user)
+
+            if(request.body.password) {
                 const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
                 //console.log(user.password);
                 //console.log(user.password.search(regex));
                 if (user.password.search(regex) === -1) {
-                    throw Error('password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
+                    return response.status('400').json({error:'password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' });
+                    //throw Error('password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
                 };
                 const saltRounds = 10;
                 const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
                 user.password = encryptedPassword;
             }
 
-            if(user.description) {
+            if(request.body.description) {
                 user.description = sanitaze.htmlEntities(user.description);
             }
-            if(user.avatar) {
+            if(request.body.avatar) {
                 user.avatar = sanitaze.htmlEntities(user.avatar);
             }
-            if(user.banner) {
+            if(request.body.banner) {
                 user.banner = sanitaze.htmlEntities(user.banner);
             }
     
             const result = await user.update();
             
-            response.json({data: result});
+            response.status('200').json({data: result});
             
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     },
 
@@ -133,7 +150,7 @@ module.exports = {
             const user = await User.findById(request.params.id);
             const result = await user.delete();
         
-            response.json({data: result});
+            response.status('200').json({data: result});
                        
         } catch (error) {
             console.log(error)     

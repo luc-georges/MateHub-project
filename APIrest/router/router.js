@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post('/user', userController.createAnUser);
 router.get('/user/:id', userController.getUserById);
-router.get('/find/user', userController.getUserBy);
+router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.put('/user/:id', userController.updateAnUser);
 router.delete('/user/:id', userController.deleteAnUser);
 

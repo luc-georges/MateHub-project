@@ -14,7 +14,7 @@ module.exports = {
         try {
             const result = await Event.findAllEvent();
 
-            response.json({data: result});
+            response.status('200').json({data: result});
 
         } catch (error) {
             console.log('error:', error)
@@ -32,7 +32,12 @@ module.exports = {
         try {
             const result = await Event.findEventById(request.params.id);
 
-            response.json({data: result})
+            if (!result) {
+                response.status('404').json({error:'event not found'})
+                //next()
+            }
+
+            response.status('200').json({data: result})
 
         } catch (error) {
             console.log('error:', error)
@@ -50,11 +55,15 @@ module.exports = {
         try {
            
             const result = await Event.findBy(request.query);
-            response.json({data: result});
+
+            if (!result) {
+                response.status('404').json({error:'event not found'})
+                //next()
+            }
+            response.status('200').json({data: result});
 
         } catch (error) {
             console.log('error:', error);
-            response.json({message: `pas de resultat pour la recherche`}); 
         }
     },
 
@@ -62,7 +71,7 @@ module.exports = {
         try {
             
             const result = await Event.getAllEventByNickname(request.params.nickname);
-            response.json({data: result});
+            response.status('200').json({data: result});
 
         } catch (error) {
             console.log('error:', error)
@@ -92,7 +101,7 @@ module.exports = {
 
             await event.insert();
           
-            response.json({event: event});
+            response.status('200').json({event: event});
 
         } catch (error) {
             console.log('error:', error)
@@ -124,7 +133,7 @@ module.exports = {
     
             const result = await event.update();
             
-            response.json({data: result});
+            response.status('200').json({data: result});
             
         } catch (error) {
             console.log(error)
@@ -142,7 +151,7 @@ module.exports = {
             const event = await Event.findById(request.params.id);
             const result = await event.delete();
         
-            response.json({data: result});
+            response.status('200').json({data: result});
                        
         } catch (error) {
             console.log(error)     
