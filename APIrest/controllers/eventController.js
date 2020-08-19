@@ -30,7 +30,7 @@ module.exports = {
      */
     getEventById: async (request, response) => {
         try {
-            const result = await Event.findById(request.params.id);
+            const result = await Event.findEventById(request.params.id);
 
 
             response.json({data: result})

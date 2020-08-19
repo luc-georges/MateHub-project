@@ -28,9 +28,26 @@ module.exports = class Event extends CoreModel {
     }
 
     /********** STATIC *********/
+
+    /**
+     * Fonction qui appel la fonction SQL getalleventdata() renvoie toute les infos des events en dur
+     * @static
+     * @returns {Array} tout les events
+     */
     static async findAllEvent() {
         const result = await client.query(`SELECT * FROM getalleventdata()`);
         return result.rows;
+    }
+
+    /**
+     * Fonction qui appel la fonction SQL geteventdata(INT) renvoie toute les infos de l'event en dur
+     * @static
+     * @param {int} id
+     * @returns {Array} l'event
+     */
+    static async findEventById(id) {
+        const result = await client.query(`SELECT * FROM geteventdata($1)`, [id]);
+        return result.rows[0];
     }
 
     /*********GETTER **********/
