@@ -46,6 +46,11 @@ INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count"
         ( 1, 1, timestamp '2020-08-22 09:00:00', '04:00', 5,'Compétitif full team', 0,'discord.gg/invitenumber'),
         ( 2, 2, timestamp '2020-08-16 09:00:00', '04:00', 2,'Duo Q', 3 ,'discord.gg/invitenumber');
 
+INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count","description","status","vocal") VALUES
+        ( 1, 1, timestamp '2020-10-22 09:00:00', '04:00', 2,'test insert', 0,'discord.gg/invitenumber');
+
+
+
 -- M_2_M_EVENT_has_LANG insert
 
 INSERT INTO "M_EVENT_has_LANG"( "event_id", "lang_id") VALUES
