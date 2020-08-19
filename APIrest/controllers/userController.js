@@ -46,8 +46,7 @@ module.exports = {
             response.status('200').json({data: result});
 
         } catch (error) {
-            console.log('error:', error);
-            response.status('404').json({message: `pas de resultat pour la recherche`});    
+            console.log('error:', error);  
         }
     },
 
@@ -57,7 +56,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user crée
      */
-    createAnUser: async (request, response, next) => {
+    createAnUser: async (request, response) => {
         try {
             const user = new User(request.body);
 
@@ -91,7 +90,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */
-    updateAnUser: async (request, response, next) => {
+    updateAnUser: async (request, response) => {
         try {
 
             const user = await User.findById(request.params.id);
@@ -101,12 +100,7 @@ module.exports = {
             console.log('user',user)
 
             if(request.body.password) {
-                const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
-                
-                if (user.password.search(regex) === -1) {
-                    return response.status('400').json({error:'password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' });
-                    //throw Error('password must be Minimum eight characters, at least one uppercase letter, one lowercase letter and one number');
-                };
+
                 const saltRounds = 10;
                 const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
                 user.password = encryptedPassword;
@@ -137,7 +131,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {boolean} true si ok
      */
-    deleteAnUser: async (request, response, next) => {
+    deleteAnUser: async (request, response) => {
         try {
             const user = await User.findById(request.params.id);
             const result = await user.delete();

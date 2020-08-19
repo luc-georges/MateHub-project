@@ -85,14 +85,10 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'event
      */
-    createAnEvent: async (request, response, next) => {
+    createAnEvent: async (request, response) => {
         try {
             const event = await new Event(request.body);
             console.log('request.body:', request.body)
-
-            if (!event.user_id || !event.game_id || !event.event_time || !event.player_count || event.status !== 0) {
-                return response.status('400').json({error: 'user_id, game_id, event_time, event.status and player_count are required event.status must be equal to 0'});
-            }
 
             if(event.description) {
                 event.description = sanitaze.htmlEntities(event.description);
@@ -120,7 +116,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'event
      */
-    updateAnEvent: async (request, response, next) => {
+    updateAnEvent: async (request, response) => {
         try {
             const event = await Event.findById(request.params.id);
     
