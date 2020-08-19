@@ -11,6 +11,7 @@ module.exports = class Event extends CoreModel {
     _description;
     _status;
     _vocal;
+    _player_max;
 
     static schema = 'user_access.';
     static tablename = 'event';
@@ -25,6 +26,7 @@ module.exports = class Event extends CoreModel {
         this.description = obj.description;
         this.status = obj.status;
         this.vocal = obj.vocal;
+        this.player_max = obj.player_max;
     }
 
     /********** STATIC *********/
@@ -89,6 +91,10 @@ module.exports = class Event extends CoreModel {
         return this._vocal
     }
 
+    get player_max() {
+        return this._player_max
+    }
+
 /**********SETTER **************/
 
     set user_id(value) {
@@ -125,4 +131,7 @@ module.exports = class Event extends CoreModel {
         this._vocal = value
     }
     
+    set player_max(value) {
+        this._player_max = value
+    }
 }
