@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+=======
+import React, {useEffect} from 'react';
+>>>>>>> feature/data-from-reducer-to-homepage
 import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -8,8 +12,13 @@ import 'semantic-ui-css/semantic.min.css';
 import NavBar from '../NavBar/NavBar';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../Homepage/HomePage';
+<<<<<<< HEAD
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 
+=======
+// import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import "semantic-ui-css/semantic.min.css";
+>>>>>>> feature/data-from-reducer-to-homepage
 const eventList = [
   {
     id: 1,
@@ -69,12 +78,20 @@ const eventList = [
   },
 ];
 
+<<<<<<< HEAD
 function App({ getEvents }) {
+=======
+function App({getEvents}) {
+>>>>>>> feature/data-from-reducer-to-homepage
   // eslint-disable-next-line
   useEffect(() => {
     getEvents();
     // eslint-disable-next-line
   }, []);
+<<<<<<< HEAD
+=======
+  // console.log(list)
+>>>>>>> feature/data-from-reducer-to-homepage
   return (
     <div className="App">
       <NavBar />
