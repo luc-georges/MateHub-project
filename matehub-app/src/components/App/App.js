@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+/**
+ * Import css
+ */
 import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -69,6 +72,11 @@ const eventList = [
   },
 ];
 
+/**
+ * composant principale de l'application
+ * @component
+ * @param {Object} param0 
+ */
 function App({ getEvents }) {
   // eslint-disable-next-line
   useEffect(() => {
