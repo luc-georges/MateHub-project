@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 
 const router = require('./router/router');
+const routerNews = require('./router/routerNews')
 const app = express();
 
 /*cors*/
@@ -21,6 +22,7 @@ app.use(session({
 }));
 
 app.use(router);
+app.use(routerNews);
 
 const port = process.env.PORT || 3000;
 
