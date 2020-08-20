@@ -1,6 +1,11 @@
-import { GET_TOP_USERS, GET_TOP_USERS_SUCCESS, GET_TOP_USERS_ERROR } from '../actions/usersActions';
+import { 
+  GET_TOP_USERS, 
+  GET_TOP_USERS_SUCCESS, 
+  GET_TOP_USERS_ERROR 
+} from '../actions/usersActions';
 
 export const initialState = {
+  error: '',
   topUsersList: [],
 };
 
@@ -13,11 +18,13 @@ export default (state = initialState, action = {}) => {
     case GET_TOP_USERS_SUCCESS:
         return {
           ...state,
-          topUsersList: [...action.payload]
+          topUsersList: [...action.payload],
+          error: '',
         }
     case GET_TOP_USERS_ERROR:
       return {
         ...state,
+        error: action.payload,
         topUsersList: []
       }
     default:

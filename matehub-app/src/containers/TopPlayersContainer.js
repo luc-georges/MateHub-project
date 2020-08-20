@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import  TopPlayers  from '../component/TopPlayers/TopPlayers';
+import  TopPlayers  from '../components/TopPlayers/TopPlayers';
 
 const  mapStateToProps = (state) => ({
-  topUsersList: state.users.topUsersList,
+  topUsersList: state.users.topUsersList
   
 })
 
