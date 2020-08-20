@@ -12,7 +12,8 @@ const usersRequestMW = (store) => (next) => (action) => {
     case GET_TOP_USERS:
       axios({
         method: 'get',
-        url: 'http://ec2-54-242-201-96.compute-1.amazonaws.com/user/top',
+        // url: 'http://ec2-54-242-201-96.compute-1.amazonaws.com/user/top',
+        url: 'http://localhost:3001/user/top',
       })
         .then((res) => {
           console.log(res.data);
