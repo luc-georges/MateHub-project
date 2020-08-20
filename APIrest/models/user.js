@@ -28,10 +28,24 @@ module.exports = class User extends CoreModel {
     }
     /***** STATIC  **********/
 
+
+    /**
+     * Fonction qui appel la vue SQL getTopusers
+     * @static
+     * @returns {Array} l'event
+     */
     static async findTopPlayer() {
-        const result = await client.query(`SELECT * FROM getTopusers FETCH FIRST 10 ROWS ONLY`);
-        return result.rows;
+        try {
+            
+            const result = await client.query(`SELECT * FROM getTopusers FETCH FIRST 10 ROWS ONLY`);
+            return result.rows;
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
     }
+
+
     
     /**** GETTER ************/
 

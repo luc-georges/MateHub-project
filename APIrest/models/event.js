@@ -37,8 +37,15 @@ module.exports = class Event extends CoreModel {
      * @returns {Array} tout les events
      */
     static async findAllEvent() {
-        const result = await client.query(`SELECT * FROM getalleventdata()`);
-        return result.rows;
+        try {
+            
+            const result = await client.query(`SELECT * FROM getalleventdata()`);
+            return result.rows;
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
     }
 
     /**
@@ -48,13 +55,33 @@ module.exports = class Event extends CoreModel {
      * @returns {Array} l'event
      */
     static async findEventById(id) {
-        const result = await client.query(`SELECT * FROM geteventdata($1)`, [id]);
-        return result.rows[0];
+        try {
+            
+            const result = await client.query(`SELECT * FROM geteventdata($1)`, [id]);
+            return result.rows[0];
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
     }
 
+    /**
+     * Fonction qui appel la fonction SQL getallEventData grace au nickname
+     * @static
+     * @param {string} nickname
+     * @returns {Array} les evenements
+     */
     static async getAllEventByNickname(nickname) {
-        const result = await client.query(`SELECT * FROM getalleventdata() WHERE creator = $1`, [nickname]);
-        return result.rows;
+        try {
+            
+            const result = await client.query(`SELECT * FROM getalleventdata() WHERE creator = $1`, [nickname]);
+            return result.rows;
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
     }
 
     /*********GETTER **********/
