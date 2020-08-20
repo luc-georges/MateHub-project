@@ -74,8 +74,47 @@ module.exports = class Event extends CoreModel {
      */
     static async getAllEventByNickname(nickname) {
         try {
-            
+
             const result = await client.query(`SELECT * FROM getalleventdata() WHERE creator = $1`, [nickname]);
+            return result.rows;
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
+    }
+
+    /**
+     * Fonction qui appel la fonction SQL getallEventData 
+     * @static
+     * @param {Object} args
+     * @returns {Array} les evenements
+     */
+    static async getEventByParams(args) {
+        try {
+            
+            let query = `SELECT * FROM getalleventdata()`;
+            
+            const keys = Object.keys(args);
+            //console.log('keys:', keys)
+            const values = Object.values(args);
+            //console.log('values:', values)
+
+            keys.forEach((key,index) => {
+                if(index === 0) {
+                    query += ` WHERE`
+                }
+
+                query += ` ${key}=$${index+1}`;
+
+                if((index+1) !== keys.length) {
+                    query += ` AND`;
+                }
+
+            })
+
+            console.log(query);
+            const result = await client.query(query,values);
             return result.rows;
 
         } catch (error) {
