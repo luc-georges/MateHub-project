@@ -1,17 +1,17 @@
-export const GET_USERS = 'GET_EVENTS';
-export const GET_USERS_SUCCESS = 'GET_EVENTS_SUCCESS';
-export const GET_USERS_ERROR = 'GET_EVENTS_ERROR';
+export const GET_TOP_USERS = 'GET_TOP_USERS';
+export const GET_TOP_USERS_SUCCESS = 'GET_TOP_USERS_SUCCESS';
+export const GET_TOP_USERS_ERROR = 'GET_TOP_USERS_ERROR';
 
-export const getusers = () => ({
-  type: GET_USERS,
+export const getTopUsers = () => ({
+  type: GET_TOP_USERS,
 })
 
-export const getUsersSuccess = (payload) => ({
-  type: GET_USERS_SUCCESS,
+export const getTopUsersSuccess = (payload) => ({
+  type: GET_TOP_USERS_SUCCESS,
   payload
 })
 
-export const getUsersError = (payload) => ({
-  type: GET_USERS_ERROR,
+export const getTopUsersError = (payload) => ({
+  type: GET_TOP_USERS_ERROR,
   payload
 })

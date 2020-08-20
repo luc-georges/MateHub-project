@@ -78,10 +78,11 @@ const eventList = [
  * @component
  * @param {Object} param0 
  */
-function App({ getEvents }) {
+function App({ getEvents, getTopUsers }) {
   // eslint-disable-next-line
   useEffect(() => {
     getEvents();
+    getTopUsers();
     // eslint-disable-next-line
   }, []);
   return (
