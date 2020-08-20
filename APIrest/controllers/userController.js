@@ -4,6 +4,23 @@ const sanitaze = require('../sanitaze/sanitazer');
 
 module.exports = {
 
+    getTopUsers: async (request, response) => {
+        try {
+            const result = await User.findTopPlayer();
+
+            if (!result) {
+                response.status('404').json({error:'user not found'})
+                //next()
+            }
+
+            response.status('200').json({data: result});
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
+    },
+
     /**
      * middleware express pour rechercher un user par l'id
      * @param {Object} request - Express request object
