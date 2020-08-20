@@ -18,7 +18,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -41,7 +41,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -64,6 +64,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -74,8 +75,8 @@ module.exports = {
             response.status('200').json({data: result});
 
         } catch (error) {
-            console.log('error:', error)
-            
+            console.log('error:', error);
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -105,8 +106,8 @@ module.exports = {
             response.status('200').json({data: event});
 
         } catch (error) {
-            console.log('error:', error)
-            
+            console.log('error:', error);
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -137,7 +138,8 @@ module.exports = {
             response.status('201').json({data: result});
             
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -155,10 +157,10 @@ module.exports = {
             response.status('200').json({data: result});
                        
         } catch (error) {
-            console.log(error)     
+            console.log(error);
+            response.status('500').json({error:'Internal Server Error'});
         }
     }
-
 
 
 }

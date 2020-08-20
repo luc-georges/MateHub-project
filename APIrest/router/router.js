@@ -23,7 +23,8 @@ const gameController = require('../controllers/gameController');
 router.get('/user/top', userController.getTopUsers);
 router.get('/user/:id', userController.getUserById);
 router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
-router.post('/user', validateBody(postUserSchema), userController.createAnUser);
+router.post('/user/registration', validateBody(postUserSchema), userController.registration);
+//router.post('/user/login',)
 router.put('/user/:id', validateBody(updateUserSchema), userController.updateAnUser);
 router.delete('/user/:id', userController.deleteAnUser);
 
@@ -37,7 +38,7 @@ router.put('/event/:id', validateBody(updateEventSchema), eventController.update
 router.delete('/event/:id', eventController.deleteAnEvent);
 
 /********** ROUTER EVENT'S USER *********/
-router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickname)
+router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickname);
 
 /********** ROUTER GAME ***************/
 router.get('/games', gameController.getAllGame);

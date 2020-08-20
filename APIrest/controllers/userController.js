@@ -22,8 +22,8 @@ module.exports = {
             response.status('200').json({data: result});
 
         } catch (error) {
-            console.log('error:', error)
-            
+            console.log('error:', error);
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -46,6 +46,7 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
+            response.status('500').json({error:'Internal Server Error'});
         }
 
     },
@@ -70,41 +71,70 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);  
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
     /**
-     * middleware express pour créer un user
+     * middleware express pour créer un user route de signin
      * @param {Object} request - Express request object
      * @param {Object} response - Express response object
      * @returns {json} l'user crée
      */
-    createAnUser: async (request, response) => {
+    registration: async (request, response) => {
         try {
+
+            const tryIfUserExist = await User.findBy(request.body.email);
+            if(tryIfUserExist) {
+                return response.status('409').json({error:'User already Exist'});
+            }
+
+            const tryIfNicknameExist = await User.findBy(request.body.nickname);
+            if(tryIfNicknameExist) {
+                return response.status('409').json({error:'Nickname already Exist'});
+            }
+
+            if(request.body.password !== request.body.passwordConfirm) {
+                return response.status('409').json({error:'password and passwordComfirm must be same'});
+            }
+
             const user = new User(request.body);
 
             const saltRounds = 10;
             const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
             user.password = encryptedPassword;
-
-            if(user.description) {
-                user.description = sanitaze.htmlEntities(user.description);
-            }
-            if(user.avatar) {
-                user.avatar = sanitaze.htmlEntities(user.avatar);
-            }
-            if(user.banner) {
-                user.banner = sanitaze.htmlEntities(user.banner);
-            }
-                
-    
+ 
             await user.insert();
           
             response.status('200').json({data:user});
             
         } catch (error) {
             console.log(error);
+            response.status('500').json({error:'Internal Server Error'});
         }
+    },
+
+    login: async (request, response) => {
+      try {
+        const user = await User.findBy(request.body.email);
+        if(!user) {
+            return response.status('409').json({error:'user not found'});
+        }
+
+        const validPassword = await bcrypt.compare(request.body.password, user.password);
+        if(!validPassword) {
+            return response.status('409').json({error:'incorect password'});
+        }
+
+        request.session.user = user;
+        delete request.session.user.password;
+
+        response.status('200').json({data: user});
+
+      } catch (error) {
+          console.log('error:', error)
+          response.status('500').json({error:'Internal Server Error'});
+      }  
     },
 
     /**
@@ -145,6 +175,7 @@ module.exports = {
             
         } catch (error) {
             console.log(error);
+            response.status('500').json({error:'Internal Server Error'});
         }
     },
 
@@ -162,7 +193,8 @@ module.exports = {
             response.status('200').json({data: result});
                        
         } catch (error) {
-            console.log(error)     
+            console.log(error)
+            response.status('500').json({error:'Internal Server Error'});    
         }
     }
 }

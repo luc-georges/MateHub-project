@@ -12,9 +12,17 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const session = require('express-session');
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: '4701cb7e-28fa-48d0-98e3-d44e177582cf'
+}));
+
 app.use(router);
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.listen(port, _ => {
 console.log(`Running on ${port}`)
