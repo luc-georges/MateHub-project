@@ -1,6 +1,5 @@
 const client = require('./client');
 const CoreModel = require('./coreModel');
-const validator = require('validator');
 
 
 module.exports = class User extends CoreModel {

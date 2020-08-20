@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 
 /****** JOI **************/
 const { validateBody } = require('../validator/validator');
@@ -9,12 +10,14 @@ const updateUserSchema = require('../validator/schema/user/updateUser');
 const postEventSchema = require('../validator/schema/event/postEvent');
 const updateEventSchema = require('../validator/schema/event/updateEvent');
 
-
+/******** CONTROLLERS ***********/
+//user
 const userController = require('../controllers/userController');
+//event
 const eventController = require('../controllers/eventController');
+//game
 const gameController = require('../controllers/gameController');
 
-const router = express.Router();
 
 /********* ROUTER USER ***************/
 router.get('/user/top', userController.getTopUsers);
