@@ -61,15 +61,27 @@ class CoreModel {
 
     }
 
+    /**
+     * methode static permettant de retourné tout les entré d'un champ par une propriété
+     * @static
+     * @param {any} 
+     * @returns {object} instance selectionnée
+     */
     static async findBy(params){
-
-        const prop = Object.keys(params);
-        const value = Object.values(params);
-
-        console.log(prop[0],value[0])
-
-        const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
-        return new this(result.rows[0]);
+        try {
+            
+            const prop = Object.keys(params);
+            const value = Object.values(params);
+    
+            console.log(prop[0],value[0])
+    
+            const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
+            
+            return new this(result.rows[0]);
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
 
     }
     
@@ -210,12 +222,20 @@ class CoreModel {
 
     }
 
+    /**
+     * methode pour update un champ dans une table si il existe et créer si non
+     */
     async save(){
-
-        if(this.id){
-            await this.update()
-        }else{
-            await this.insert()
+        try {
+            if(this.id){
+                await this.update()
+            }else{
+                await this.insert()
+            }
+            
+        } catch (error) {
+            console.log('error:', error)
+            
         }
     }
 

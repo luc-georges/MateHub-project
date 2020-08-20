@@ -83,27 +83,33 @@ module.exports = {
      */
     registration: async (request, response) => {
         try {
-
-            const tryIfUserExist = await User.findBy(request.body.email);
+            //console.log(request.body);
+            const checkEmail = {email : request.body.email};
+            const checkNickname = {nickname : request.body.nickname};
+            console.log(checkEmail);
+            
+            const tryIfUserExist = await User.findBy(checkEmail);
+            console.log('tryIfUserExist:', tryIfUserExist)
+            
             if(tryIfUserExist) {
                 return response.status('409').json({error:'User already Exist'});
             }
-
-            const tryIfNicknameExist = await User.findBy(request.body.nickname);
+            
+            const tryIfNicknameExist = await User.findBy(checkNickname);
             if(tryIfNicknameExist) {
                 return response.status('409').json({error:'Nickname already Exist'});
             }
-
+            
             if(request.body.password !== request.body.passwordConfirm) {
                 return response.status('409').json({error:'password and passwordComfirm must be same'});
             }
-
+           console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
             const user = new User(request.body);
-
+            
             const saltRounds = 10;
             const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
             user.password = encryptedPassword;
- 
+            
             await user.insert();
           
             response.status('200').json({data:user});
@@ -114,6 +120,12 @@ module.exports = {
         }
     },
 
+    /**
+     * middleware express pour loger un user
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user connecté
+     */
     login: async (request, response) => {
       try {
         const user = await User.findBy(request.body.email);
@@ -135,6 +147,23 @@ module.exports = {
           console.log('error:', error)
           response.status('500').json({error:'Internal Server Error'});
       }  
+    },
+
+    /**
+     * middleware express pour logout
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     */
+    logout: async (request, response) => {
+        try {
+            
+            delete request.session.user;
+            response.status('200');
+
+        } catch (error) {
+            console.log('error:', error)
+            response.status('500').json({error:'Internal Server Error'});
+        }
     },
 
     /**
