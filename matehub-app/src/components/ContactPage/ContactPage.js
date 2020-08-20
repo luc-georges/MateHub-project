@@ -14,33 +14,34 @@ const ContactPage = () => {
         </h1>
         <Form.Group widths="equal" /* style={{marginBottom: '2em' }} */>
           <Form.Field
-            id="form-input-control-first-name"
+            id="form-input-control-error-email"
             control={Input}
-            label="First name"
-            placeholder="First name"
+            label="Email"
+            placeholder="joe@schmoe.com"
+            // error={{
+            //   content: 'Please enter a valid email address',
+            //   pointing: 'below',
+            // }}
           />
+
           <Form.Field
-            id="form-input-control-last-name"
+            id="form-input-control-nickname"
             control={Input}
-            label="Last name"
-            placeholder="Last name"
+            label="Nickname"
+            placeholder="Nickname"
           />
         </Form.Group>
         <Form.Field
-          id="form-textarea-control-opinion"
-          control={TextArea}
-          label="Opinion"
-          placeholder="Opinion"
+          id="form-input-control-object"
+          control={Input}
+          label="Object"
+          placeholder="Object"
         />
         <Form.Field
-          id="form-input-control-error-email"
-          control={Input}
-          label="Email"
-          placeholder="joe@schmoe.com"
-          // error={{
-          //   content: 'Please enter a valid email address',
-          //   pointing: 'below',
-          // }}
+          id="form-textarea-control-message"
+          control={TextArea}
+          label="Message"
+          placeholder="Message"
         />
         {/* <Form.Field
           id="form-button-control-public"
@@ -51,7 +52,10 @@ const ContactPage = () => {
           control={Checkbox}
           label={<label>I agree to the Terms and Conditions</label>}
         />
-        <Button style={{ marginTop: '2em', textAlign: 'center' }} content="submit" />
+        <Button
+          style={{ marginTop: '2em', textAlign: 'center' }}
+          content="submit"
+        />
       </Form>
     </div>
   );
