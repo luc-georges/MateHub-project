@@ -1,24 +1,24 @@
-import { GET_USERS, GET_USERS_SUCCESS, GET_USERS_ERROR } from '../actions/usersActions';
+import { GET_TOP_USERS, GET_TOP_USERS_SUCCESS, GET_TOP_USERS_ERROR } from '../actions/usersActions';
 
 export const initialState = {
-  list: [],
+  topUsersList: [],
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_USERS:
+    case GET_TOP_USERS:
       return {
         ...state,
       }
-    case GET_USERS_SUCCESS:
+    case GET_TOP_USERS_SUCCESS:
         return {
           ...state,
-          list: [...action.payload]
+          topUsersList: [...action.payload]
         }
-    case GET_USERS_ERROR:
+    case GET_TOP_USERS_ERROR:
       return {
         ...state,
-        list: []
+        topUsersList: []
       }
     default:
       return state;

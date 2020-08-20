@@ -4,7 +4,7 @@ import { Icon, Button } from 'semantic-ui-react';
 import './style.scss';
 
 const EventBar = ({ list }) => {
-  console.log('data dans le component EventBar', list);
+  // console.log('data dans le component EventBar', list);
   return (
     <div className="eventbar">
       <Icon className="user circle" size="massive" />

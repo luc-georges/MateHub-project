@@ -3,7 +3,7 @@ import logolol from '../../assets/logolol.png';
 import './style.scss';
 
 const LastestEvent = ({ list }) => {
-  console.log(list);
+  // console.log(list);
   return (
     <div className="LastestEvent">
       <h2 className="titre">Lastest event</h2>

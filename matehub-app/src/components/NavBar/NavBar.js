@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 const NavBar = () => {
-  console.log('NavBar');
+  // console.log('NavBar');
   return (
     <div className="navbar">
       <div className="navbar-logo">MATE HUB</div>

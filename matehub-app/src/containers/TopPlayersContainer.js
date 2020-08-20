@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
-import  TopPlayer  from '../component/TopPlayer/TopPlayer';
+import  TopPlayers  from '../component/TopPlayers/TopPlayers';
 
 const  mapStateToProps = (state) => ({
-  list: state.users.list,
+  topUsersList: state.users.topUsersList,
   
 })
 
 const mapDispatchToProps = null;
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopPlayer);
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(TopPlayers);
