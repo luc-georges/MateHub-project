@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+=======
+import App from './containers/AppContainer';
+>>>>>>> feature/data-from-reducer-to-homepage
 import * as serviceWorker from './serviceWorker';
 
 import App from './containers/AppContainer';

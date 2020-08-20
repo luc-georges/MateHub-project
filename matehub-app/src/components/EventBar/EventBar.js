@@ -6,8 +6,11 @@ import { Icon, Button } from 'semantic-ui-react';
 import './style.scss';
 
 const EventBar = ({ list }) => {
+<<<<<<< HEAD
   console.log("data dans le component EventBar", list);
 
+=======
+>>>>>>> feature/data-from-reducer-to-homepage
   return (
     <div className="eventbar">
       <Icon className="user circle" size="massive" />
@@ -38,7 +41,11 @@ const EventBar = ({ list }) => {
                     ? `${event._description.slice(0, 30)}...`
                     : event._description}
                 </div>
+<<<<<<< HEAD
                 <div>Duration : {event._duration.hours}h</div>
+=======
+                <div>Duration : {event._duration.hours}</div>
+>>>>>>> feature/data-from-reducer-to-homepage
               </div>
             </div>
           );
@@ -55,9 +62,13 @@ EventBar.propTypes = {
       event_time: PropTypes.string,
       player_count: PropTypes.number,
       description: PropTypes.string,
+<<<<<<< HEAD
       duration: PropTypes.shape({
         hours: PropTypes.number,
       }),
+=======
+      duration: PropTypes.shape({hours: PropTypes.number,})
+>>>>>>> feature/data-from-reducer-to-homepage
     })
   ),
 };
