@@ -4,6 +4,12 @@ const sanitaze = require('../sanitaze/sanitazer');
 
 module.exports = {
 
+    /**
+     * middleware express pour récupere les user ayant le plus d'évenement
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} 10 users ayant le plus d'event
+     */
     getTopUsers: async (request, response) => {
         try {
             const result = await User.findTopPlayer();
