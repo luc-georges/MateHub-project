@@ -12,6 +12,7 @@ import NavBar from '../NavBar/NavBar';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../Homepage/HomePage';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import ContactPage from '../ContactPage/ContactPage';
 
 const eventList = [
   {
@@ -92,6 +93,9 @@ function App({ getEvents }) {
         </Route>
         <Route exact path="/registration">
           <RegistrationPage />
+        </Route>
+        <Route exact path="/contact">
+          <ContactPage />
         </Route>
       </Switch>
       <EventBar />
