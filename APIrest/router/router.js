@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 
 /****** JOI **************/
 const { validateBody } = require('../validator/validator');
@@ -9,19 +10,23 @@ const updateUserSchema = require('../validator/schema/user/updateUser');
 const postEventSchema = require('../validator/schema/event/postEvent');
 const updateEventSchema = require('../validator/schema/event/updateEvent');
 
-
+/******** CONTROLLERS ***********/
+//user
 const userController = require('../controllers/userController');
+//event
 const eventController = require('../controllers/eventController');
+//game
 const gameController = require('../controllers/gameController');
 
-const router = express.Router();
 
 /********* ROUTER USER ***************/
+router.get('/user/top', userController.getTopUsers);
 router.get('/user/:id', userController.getUserById);
 router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.post('/user', validateBody(postUserSchema), userController.createAnUser);
 router.put('/user/:id', validateBody(updateUserSchema), userController.updateAnUser);
 router.delete('/user/:id', userController.deleteAnUser);
+
 
 /***********ROUTER EVENT *********/
 router.get('/events', eventController.getAllEvent);
@@ -31,7 +36,7 @@ router.post('/event', validateBody(postEventSchema), eventController.createAnEve
 router.put('/event/:id', validateBody(updateEventSchema), eventController.updateAnEvent);
 router.delete('/event/:id', eventController.deleteAnEvent);
 
-/********** ROUTER EVE?T'S USER *********/
+/********** ROUTER EVENT'S USER *********/
 router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickname)
 
 /********** ROUTER GAME ***************/

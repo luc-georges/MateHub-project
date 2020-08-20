@@ -2,6 +2,7 @@
 
 BEGIN;
 
+-- view to get TOP users who created the most events
 
 CREATE VIEW getTopusers AS
 
@@ -10,8 +11,6 @@ CREATE VIEW getTopusers AS
                 us.avatar AS "_avatar",
                 us.banner AS "_banner",
                 COUNT(DISTINCT e.id) as "_total_events",
-                COUNT(*) FILTER (WHERE g.id = 1 ) AS "_total_cs",
-                COUNT(*) FILTER (WHERE g.id = 2) AS "_total_lol",
                  jsonb_build_object('cs', COUNT(*) FILTER (WHERE g.id = 1 ),'lol',  COUNT(*) FILTER (WHERE g.id = 2))  AS "_total_by_game"       
             FROM user_access."user" us 
             JOIN user_access."event" e ON us.id = e.user_id 

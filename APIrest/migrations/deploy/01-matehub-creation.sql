@@ -2,6 +2,7 @@
 
 BEGIN;
 
+-- User table
 CREATE TABLE "user" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "email" TEXT NOT NULL,
@@ -12,23 +13,31 @@ CREATE TABLE "user" (
     "avatar" TEXT,
     "banner" TEXT
 );
+
+--Game Table
 CREATE TABLE "game" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" TEXT NOT NULL,
     "image" TEXT,
     "order" INT
 );
+
+--Level Table
 CREATE TABLE "level" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "label" TEXT NOT NULL,
     "icon" TEXT,
     "game_id" INT NOT NULL REFERENCES "game"("id")
 );
+
+--Lang Table
 CREATE TABLE "lang" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "label" TEXT NOT NULL,
     "icon" TEXT
 );
+
+--Event Table
 CREATE TABLE "event" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "user_id" INT NOT NULL REFERENCES "user"("id"),
@@ -41,6 +50,8 @@ CREATE TABLE "event" (
     "status" INT NOT NULL DEFAULT 0 ,
     "vocal" TEXT
 );
+
+--M_2_M 
 CREATE TABLE "M_USER_has_GAME" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "user_id" INT NOT NULL REFERENCES "user"("id"),
