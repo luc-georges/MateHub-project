@@ -29,6 +29,10 @@ module.exports = class User extends CoreModel {
     }
     /***** STATIC  **********/
 
+    static async findTopPlayer() {
+        const result = await client.query(`SELECT * FROM getTopusers FETCH FIRST 10 ROWS ONLY`);
+        return result.rows;
+    }
     
     /**** GETTER ************/
 

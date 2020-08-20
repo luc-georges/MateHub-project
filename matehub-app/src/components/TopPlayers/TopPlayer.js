@@ -8,11 +8,11 @@ const TopPlayer = ({ list }) => {
       <h2 className="titre">TopPlayer</h2>
       <div className="TopPlayer-modules">
         {list.map((element) => (
-          <a href="/" className="TopPlayer-module" key={element.id}>
+          <a href="/" className="TopPlayer-module" key={element._id}>
             <Icon className="user" size="big" />
             <div>
-        <div className="user-text"> pseudo {element.user_id}</div>
-        <div className="user-text"> nbr creat event {element.status}</div>
+        <div className="user-text"> pseudo {element._nickname}</div>
+        <div className="user-text"> nbr creat event {element._total_events}</div>
             </div>
           </a>
         ))}
