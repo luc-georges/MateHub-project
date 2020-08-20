@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { GET_TOP_USERS, getTopUsersSuccess, getTopUsersError } from '../actions/usersActions'
+import {
+  GET_TOP_USERS,
+  getTopUsersSuccess, 
+  getTopUsersError 
+} from '../actions/usersActions'
 
 const usersRequestMW = (store) => (next) => (action) => {
   // console.log("Passage dans le usersRequestMW");
