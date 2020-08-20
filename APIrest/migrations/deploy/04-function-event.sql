@@ -2,7 +2,7 @@
 
 BEGIN;
 
--- Type of get all data for get event functions
+-- Type for geteventdata functions
 CREATE type event_data as ( "_event_id" INT ,
                             "_user_id" INT, 
                             "_creator" TEXT, 

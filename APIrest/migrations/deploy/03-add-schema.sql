@@ -2,6 +2,7 @@
 
 BEGIN;
 
+-- SCHEMA to secure all table outside the public schema
 CREATE SCHEMA user_access ;
 ALTER TABLE "user" SET SCHEMA user_access ;
 ALTER TABLE "game" SET SCHEMA user_access ;
