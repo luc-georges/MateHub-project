@@ -1,0 +1,41 @@
+.eventbar {
+  position: fixed;
+  right: 0;
+  padding: 1em 0;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: -3px 0px 8px 0px rgba(0,0,0,0.20);
+  height: 100%;
+
+  &-eventedition {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.2em;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  &-eventlist {
+    margin: 1em 0;
+    padding: 0 1em;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+  &-event {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 1em 0;
+    border-bottom: 1px solid black;
+
+    &-infos {
+      margin-left: 1.2em;
+    }
+  }
+}
+
