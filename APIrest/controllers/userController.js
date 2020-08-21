@@ -128,7 +128,9 @@ module.exports = {
      */
     login: async (request, response) => {
       try {
-        const user = await User.findBy(request.body.email);
+        
+        const checkEmail = {email : request.body.email};
+        const user = await User.findBy(checkEmail);
         if(!user) {
             return response.status('409').json({error:'user not found'});
         }
