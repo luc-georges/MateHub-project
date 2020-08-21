@@ -103,7 +103,7 @@ module.exports = {
             if(request.body.password !== request.body.passwordConfirm) {
                 return response.status('409').json({error:'password and passwordComfirm must be same'});
             }
-           console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
+           //console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
             const user = new User(request.body);
             
             const saltRounds = 10;
