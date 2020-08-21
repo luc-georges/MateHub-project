@@ -146,15 +146,31 @@ module.exports = {
         }
 
         request.session.user = user;
+
         delete request.session.user.password;
         delete user._password;
 
-        response.status('200').json({data: { user, session: request.session.user}});
+        response.status('200').json({data: { logged : true, info: request.session.user}});
 
       } catch (error) {
           console.log('error:', error)
           response.status('500').json({error:'Internal Server Error'});
       }  
+    },
+
+    /**
+     * middleware express check si il existe un session
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user connecté
+     */
+    isLogged: (request, response) => {
+        
+        if(request.session.user) {
+            response.status('200').json({data : {logged : true, info: request.session.user}});
+        } else {
+            response.json({logged : false, info: { favourite: []} });
+        }
     },
 
     /**
