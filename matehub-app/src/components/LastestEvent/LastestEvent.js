@@ -1,6 +1,7 @@
 import React from 'react';
 import logolol from '../../assets/logolol.png';
 import './style.scss';
+import Moment from 'react-moment';
 
 const LastestEvent = ({ list }) => {
   // console.log(list);
@@ -22,7 +23,7 @@ const LastestEvent = ({ list }) => {
                 </div>
                 <div className="LatestEvent-text">
                   {' '}
-                  Date and time {element._starting}
+                  Date and time  <Moment format="YYYY/MM/DD HH:MM">{element._starting}</Moment>           
                 </div>
                 <div className="LatestEvent-text">
                   Number of players {element._player_count}

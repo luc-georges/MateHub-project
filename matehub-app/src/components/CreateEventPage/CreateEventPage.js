@@ -3,6 +3,7 @@ import './style.scss';
 import { Form, Flag, TextArea, Button } from 'semantic-ui-react';
 import DateTimePicker from 'react-datetime-picker';
 
+
 const CreateEventPage = () => {
   return (
     <div className="CreatEventPage">
@@ -12,9 +13,8 @@ const CreateEventPage = () => {
             Create event
           </h1>
         </div>
-        <Form.Field label="Game" control="select">
-          <option value="ligue of legend">league of legends</option>
-        </Form.Field>
+        <div className="select">
+       
         <label>language</label>
         <Flag name="france" />
         <Form.Field label="france" control="input" type="checkbox" />
@@ -28,7 +28,11 @@ const CreateEventPage = () => {
         <Form.Field label="Russia" control="input" type="checkbox" />
         <Flag name="de" />
         <Form.Field label="Germany" control="input" type="checkbox" />
-        <Form.Field label="Players" control="select">
+        </div>
+         <Form.Field label="Game" control="select" className="select">
+          <option value="ligue of legend">league of legends</option>
+        </Form.Field>
+        <Form.Field label="Players" control="select" className="select">
           <option value="1">1</option>
           <option value="1">1</option>
           <option value="3">3</option>
@@ -36,7 +40,7 @@ const CreateEventPage = () => {
           <option value="5">5</option>
           <option value="undefined">undefined</option>
         </Form.Field>
-        <Form.Field label="Duration" control="select">
+        <Form.Field label="Duration" control="select" className="select">
           <option value="1">1</option>
           <option value="1">1</option>
           <option value="3">3</option>
@@ -44,16 +48,26 @@ const CreateEventPage = () => {
           <option value="5">5</option>
           <option value="undefined">undefined</option>
         </Form.Field>
-        <label>date time dd/mm/yyyy hh/mm </label>
-        <DateTimePicker className="date" />
+
+        <label> </label>
+        <DateTimePicker
+        amPmAriaLabel="AM/PM"
+        calendarAriaLabel="togle calendar"
+        dayAriaLabel="day"
+        dayPlaceholder="dd"
+
+        />
+
         <Form.Field
           control={TextArea}
           label="About"
           placeholder="Tell us more about ..."
+          className="select"
         />
         <Form.Field
           control={Button}
           style={{ marginTop: '1em', textAlign: 'center' }}
+          className="button"
         >
           Create event
         </Form.Field>

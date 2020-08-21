@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button } from 'semantic-ui-react';
 import './style.scss';
+import Moment from 'react-moment';
+
 
 const EventBar = ({ list }) => {
   // console.log('data dans le component EventBar', list);
@@ -12,7 +14,8 @@ const EventBar = ({ list }) => {
       <div className="eventbar-eventedition">
         Events
         <a href="/">
-          <Icon className="add" />
+          <Icon className="add" />import Moment from 'react-moment';
+
         </a>
         <a href="/">
           <Icon className="search" />
@@ -27,7 +30,7 @@ const EventBar = ({ list }) => {
               </a>
               <div className="eventbar-event-infos">
                 <div>Event date :</div>
-                <div>{event._starting}</div>
+                <div><Moment format="YYYY/MM/DD HH:MM">{event._starting}</Moment> </div>
                 <div>{event._player_count} players</div>
                 <div>Description :</div>
                 <div>

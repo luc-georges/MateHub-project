@@ -13,11 +13,11 @@ const SearchEventPAge = () => (
     </form>
 
     <form className="filter">
-      <Form.Field label="Game" control="select">
+      <Form.Field label="Game" control="select" className="select">
         <option value="ligue of legend">league of legends</option>
       </Form.Field>
 
-      <Form.Field label="Players" control="select">
+      <Form.Field label="Players" control="select" className="select">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -26,33 +26,39 @@ const SearchEventPAge = () => (
         <option value="undefined">undefined</option>
       </Form.Field>
 
-      <Form.Field label="Duration" control="select">
+      <Form.Field label="Duration" control="select" className="select">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
         <option value="undefined">undefined</option>
-      </Form.Field>
-      <label>date time dd/mm/yyyy hh/mm </label>
-      <DateTimePicker className="date" />
 
+      </Form.Field>
+      
+      <DateTimePicker className="select" label="date time dd/mm/yyyy hh/mm" />
+
+      <div className="button">
       <Form.Field
         control={Button}
         style={{ marginTop: '1em', textAlign: 'center' }}
       >
         Apply filters
       </Form.Field>
-      margin-top: 50vh;
+
       <Form.Field
         control={Button}
         style={{ marginTop: '1em', textAlign: 'center' }}
       >
         Reset filters
       </Form.Field>
+      </div>
+
     </form>
 
-    <h2 style={{ marginBottom: '1em', margin: '0 auto 1em auto' }} >Search Result</h2>
+    <h2 style={{ marginBottom: '1em', margin: '0 auto 1em auto' }}>
+      Search Result
+    </h2>
   </div>
 );
 
