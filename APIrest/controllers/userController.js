@@ -149,7 +149,7 @@ module.exports = {
         delete request.session.user.password;
         delete user._password;
 
-        response.status('200').json({data: user});
+        response.status('200').json({data: { user, session: request.session.user}});
 
       } catch (error) {
           console.log('error:', error)
