@@ -138,6 +138,10 @@ module.exports = {
             return response.status('409').json({error:'incorect password'});
         }
 
+        if(request.body.remenber) {
+            request.session.cookie.expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        }
+
         request.session.user = user;
         delete request.session.user.password;
 
