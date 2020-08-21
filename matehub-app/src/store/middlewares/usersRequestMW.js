@@ -12,7 +12,7 @@ const usersRequestMW = (store) => (next) => (action) => {
     case GET_TOP_USERS:
       axios({
         method: 'get',
-        url: 'http://localhost:3001/user/top',
+        url: 'http://localhost:3001/user/top', 
       })
         .then((res) => {
           console.log(res.data);

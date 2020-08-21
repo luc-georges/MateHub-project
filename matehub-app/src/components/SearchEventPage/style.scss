@@ -1,0 +1,28 @@
+.SearchEventPage{
+  width: 100%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.SearchByName{
+  width: 50%;
+  padding: 2em;
+  margin: auto;
+  margin-top: 30vh;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.filter{
+  width: 50%;
+  padding: 2em;
+  margin: auto;
+  margin-top: 10vh;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
