@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const sanitaze = require('../sanitaze/sanitazer');
+const jwtUtils = require('../utils/jwt.utils');
 
 module.exports = {
 
@@ -83,7 +84,7 @@ module.exports = {
      */
     registration: async (request, response) => {
         try {
-            //console.log(request.body);
+
             const checkEmail = {email : request.body.email};
             const checkNickname = {nickname : request.body.nickname};
             //console.log(checkEmail);
@@ -148,7 +149,11 @@ module.exports = {
 
         delete user._password;
         
-        response.status('200').json({data: user});
+        response.status('200').json({data: {
+            user,
+            token : jwtUtils.generateTokenForUser(user)
+            }
+        });
 
       } catch (error) {
           console.log('error:', error)
