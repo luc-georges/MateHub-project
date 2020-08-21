@@ -142,6 +142,7 @@ module.exports = {
 
         request.session.user = user;
         delete request.session.user.password;
+        delete user._password;
 
         response.status('200').json({data: user});
 
