@@ -86,10 +86,10 @@ module.exports = {
             //console.log(request.body);
             const checkEmail = {email : request.body.email};
             const checkNickname = {nickname : request.body.nickname};
-            console.log(checkEmail);
+            //console.log(checkEmail);
             
             const tryIfUserExist = await User.findBy(checkEmail);
-            console.log('tryIfUserExist:', tryIfUserExist)
+            //console.log('tryIfUserExist:', tryIfUserExist)
             
             if(tryIfUserExist) {
                 return response.status('409').json({error:'User already Exist'});
@@ -103,7 +103,7 @@ module.exports = {
             if(request.body.password !== request.body.passwordConfirm) {
                 return response.status('409').json({error:'password and passwordComfirm must be same'});
             }
-           console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
+           
             const user = new User(request.body);
             
             const saltRounds = 10;
@@ -112,7 +112,12 @@ module.exports = {
             
             await user.insert();
           
-            response.status('200').json({data:user});
+            response.status('200').json({data:{
+                _id : user._id,
+                _email : user._email,
+                _nickname : user._nickname,
+                _DOB : user._DOB
+            }});
             
         } catch (error) {
             console.log(error);

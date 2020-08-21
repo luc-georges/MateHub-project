@@ -76,7 +76,11 @@ class CoreModel {
             console.log(prop[0],value[0])
     
             const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
-            
+
+            if(result.rows.length === 0){
+                return null
+            };
+
             return new this(result.rows[0]);
         } catch (error) {
             console.log('error:', error)
@@ -154,7 +158,7 @@ class CoreModel {
         }
 
         const result = await client.query(preparedQuery);
-        console.log('result:', result)
+        //console.log('result:', result)
 
 
         this.id = result.rows[0].id;
