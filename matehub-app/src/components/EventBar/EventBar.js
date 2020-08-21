@@ -14,8 +14,7 @@ const EventBar = ({ list }) => {
       <div className="eventbar-eventedition">
         Events
         <a href="/">
-          <Icon className="add" />import Moment from 'react-moment';
-
+          <Icon className="add" />
         </a>
         <a href="/">
           <Icon className="search" />

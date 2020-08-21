@@ -1,10 +1,11 @@
 import React from 'react';
 import './style.scss';
 import { Form, Flag, TextArea, Button } from 'semantic-ui-react';
-import DateTimePicker from 'react-datetime-picker';
+
 
 
 const CreateEventPage = () => {
+ 
   return (
     <div className="CreatEventPage">
       <form className="form">
@@ -50,13 +51,10 @@ const CreateEventPage = () => {
         </Form.Field>
 
         <label> </label>
-        <DateTimePicker
-        amPmAriaLabel="AM/PM"
-        calendarAriaLabel="togle calendar"
-        dayAriaLabel="day"
-        dayPlaceholder="dd"
+       
 
-        />
+
+
 
         <Form.Field
           control={TextArea}
