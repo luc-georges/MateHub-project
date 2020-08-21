@@ -21,8 +21,8 @@ const gameController = require('../controllers/gameController');
 
 /********* ROUTER USER ***************/
 router.get('/user/top', userController.getTopUsers);
-router.get('/user/:id', userController.getUserById);
-router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
+//router.get('/user/:id', userController.getUserById);
+//router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.post('/registration', validateBody(postUserSchema), userController.registration);
 router.post('/users/login', userController.login);
 router.post('/users/islogged', userController.isLogged);
