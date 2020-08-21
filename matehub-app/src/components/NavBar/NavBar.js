@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 import './style.scss';

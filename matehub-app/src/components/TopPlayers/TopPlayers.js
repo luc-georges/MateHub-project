@@ -3,7 +3,7 @@ import { Icon } from 'semantic-ui-react';
 import './style.scss';
 
 const TopPlayers = ({ topUsersList }) => {
-  console.log(topUsersList);
+  // console.log(topUsersList);
   return (
     <div className="TopPlayers">
       <h2 className="titre">TopPlayers</h2>
