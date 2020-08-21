@@ -57,7 +57,7 @@ CREATE TABLE "M_USER_has_GAME" (
     "user_id" INT NOT NULL REFERENCES "user"("id"),
     "game_id" INT NOT NULL REFERENCES "game"("id"),
     "IGN" TEXT NOT NULL,
-    "level_id" INT REFERENCES "level"("id"),
+    "level_id" INT REFERENCES "level"("id")
 );
 CREATE TABLE "M_USER_has_EVENT" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
