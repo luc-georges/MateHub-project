@@ -6,6 +6,8 @@ import {
   LOGIN_SUBMIT,
   loginSubmitSuccess,
   loginSubmitError,
+  LOGOUT,
+  logoutSuccess,
   CHECK_AUTH,
 } from '../actions/usersActions';
 
@@ -20,7 +22,7 @@ export default (store) => (next) => (action) => {
         url: 'http://localhost:3001/user/top',
       })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           store.dispatch(getTopUsersSuccess(res.data.data));
         })
         .catch((err) => {
@@ -53,6 +55,25 @@ export default (store) => (next) => (action) => {
           );
         });
       break;
+      case LOGOUT:
+        axios({
+          method: 'get',
+          url: 'http://localhost:3001/users/logout',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            withCredentials: true,
+            mode: 'no-cors',
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          store.dispatch(logoutSuccess())
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      break;
       case CHECK_AUTH:
         axios({
           method:"post",
@@ -65,7 +86,7 @@ export default (store) => (next) => (action) => {
           },
         })
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
           if (res.data.logged) {
             store.dispatch(loginSubmitSuccess(res.data.info));
           }

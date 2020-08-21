@@ -6,6 +6,7 @@ import {
   LOGIN_SUBMIT,
   LOGIN_SUBMIT_SUCCESS,
   LOGIN_SUBMIT_ERROR,
+  LOGOUT_SUCCESS
 } from '../actions/usersActions';
 
 export const initialState = {
@@ -70,6 +71,11 @@ export default (state = initialState, action = {}) => {
         isLogged: false,
         loginErrorMessage: action.payload,
       };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isLogged: false,
+      }
     default:
       return state;
   }

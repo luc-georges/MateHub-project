@@ -2,6 +2,7 @@ import React from 'react';
 import './style.scss';
 
 import { Form, Button, Checkbox } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 const LoginPage = ({ loginData, onChangeField, onFormLogin }) => {
   // console.log('LoginPage');

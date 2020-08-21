@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 import './style.scss';
 
-const EventBar = ({ list }) => {
+const EventBar = ({ list, handleLogout }) => {
   // console.log('data dans le component EventBar', list);
   return (
     <div className="eventbar">
-      <Icon className="user circle" size="massive" />
-      <Button content="Logout" />
+      {/* <Icon className="user circle" size="massive" /> */}
+      <Button content="Logout" onClick={handleLogout}/>
+      <NavLink exact to="/login"><Button content="Login"/></NavLink>
       <div className="eventbar-eventedition">
         Events
         <a href="/">
