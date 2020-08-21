@@ -34,7 +34,8 @@ router.delete('/user/:id', userController.deleteAnUser);
 /***********ROUTER EVENT *********/
 router.get('/events', eventController.getAllEvent);
 router.get('/event/:id', eventController.getEventById);
-router.get('/find/event', eventController.getEventBy);
+router.get('/search/events', eventController.getEventByParams);
+router.get('/find/event', eventController.getEventBy);//querystring
 router.post('/event', validateBody(postEventSchema), eventController.createAnEvent);
 router.put('/event/:id', validateBody(updateEventSchema), eventController.updateAnEvent);
 router.delete('/event/:id', eventController.deleteAnEvent);

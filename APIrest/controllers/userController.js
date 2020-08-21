@@ -104,6 +104,7 @@ module.exports = {
                 return response.status('409').json({error:'password and passwordComfirm must be same'});
             }
            
+           //console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
             const user = new User(request.body);
             
             const saltRounds = 10;
@@ -143,6 +144,10 @@ module.exports = {
         const validPassword = await bcrypt.compare(request.body.password, user.password);
         if(!validPassword) {
             return response.status('409').json({error:'incorect password'});
+        }
+
+        if(request.body.remenber) {
+            request.session.cookie.expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
         }
 
         request.session.user = user;

@@ -68,6 +68,20 @@ module.exports = {
         }
     },
 
+    getEventByParams: async (request, response) => {
+      try {
+        
+        console.log(request.body);
+        const result = await Event.getEventByParams(request.body);
+
+        response.status('200').json({data: result});
+
+      } catch (error) {
+          console.log('error:', error)
+          response.status('500').json({error:'Internal Server Error'});
+      }  
+    },
+
     getAllEventFromUserByNickname: async (request, response) => {
         try {
             
