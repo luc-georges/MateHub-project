@@ -8,8 +8,11 @@ const router = require('./router/router');
 const routerNews = require('./router/routerNews')
 const app = express();
 
+const corsOptions = {
+  credentials : true
+}
 /*cors*/
-app.use(cors());
+app.use(cors(corsOption));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
