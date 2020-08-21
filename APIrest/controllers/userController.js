@@ -86,10 +86,10 @@ module.exports = {
             //console.log(request.body);
             const checkEmail = {email : request.body.email};
             const checkNickname = {nickname : request.body.nickname};
-            console.log(checkEmail);
+            //console.log(checkEmail);
             
             const tryIfUserExist = await User.findBy(checkEmail);
-            console.log('tryIfUserExist:', tryIfUserExist)
+            //console.log('tryIfUserExist:', tryIfUserExist)
             
             if(tryIfUserExist) {
                 return response.status('409').json({error:'User already Exist'});
@@ -103,7 +103,8 @@ module.exports = {
             if(request.body.password !== request.body.passwordConfirm) {
                 return response.status('409').json({error:'password and passwordComfirm must be same'});
             }
-           console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
+           
+           //console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
             const user = new User(request.body);
             
             const saltRounds = 10;
@@ -112,7 +113,12 @@ module.exports = {
             
             await user.insert();
           
-            response.status('200').json({data:user});
+            response.status('200').json({data:{
+                _id : user._id,
+                _email : user._email,
+                _nickname : user._nickname,
+                _DOB : user._DOB
+            }});
             
         } catch (error) {
             console.log(error);
@@ -128,7 +134,9 @@ module.exports = {
      */
     login: async (request, response) => {
       try {
-        const user = await User.findBy(request.body.email);
+        
+        const checkEmail = {email : request.body.email};
+        const user = await User.findBy(checkEmail);
         if(!user) {
             return response.status('409').json({error:'user not found'});
         }
@@ -138,15 +146,36 @@ module.exports = {
             return response.status('409').json({error:'incorect password'});
         }
 
-        request.session.user = user;
-        delete request.session.user.password;
+        if(request.body.remenber) {
+            request.session.cookie.expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        }
 
-        response.status('200').json({data: user});
+        request.session.user = user;
+
+        delete request.session.user.password;
+        delete user._password;
+
+        response.status('200').json({data: { logged : true, info: request.session.user}});
 
       } catch (error) {
           console.log('error:', error)
           response.status('500').json({error:'Internal Server Error'});
       }  
+    },
+
+    /**
+     * middleware express check si il existe un session
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user connecté
+     */
+    isLogged: (request, response) => {
+        
+        if(request.session.user) {
+            response.status('200').json({data : {logged : true, info: request.session.user}});
+        } else {
+            response.json({logged : false, info: { favourite: []} });
+        }
     },
 
     /**
