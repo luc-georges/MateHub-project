@@ -6,10 +6,10 @@ import LastestNews from '../LastestNews/LastestNews';
 import './style.scss';
 
 
-const HomePage = ({}) => {
+const HomePage = ({nickname}) => {
   return (
     <div className="HomePage">
-      <h1 className="titre">Welcome on PlayTogether Connard !</h1>
+      <h1 className="titre">Welcome on PlayTogether {nickname} !</h1>
       <LastestEvent />
       <TopPlayers /* list={list} *//>
       <LastestNews />
