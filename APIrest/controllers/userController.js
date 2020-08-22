@@ -145,10 +145,10 @@ module.exports = {
         if(!validPassword) {
             return response.status('409').json({error:'incorect password'});
         }
-
+        request.session.user = user;
+        delete request.session.user.password;
         delete user._password;
-        
-        response.status('200').json({data: user});
+        response.status('200').json({data: { logged : true, info: request.session.user}});
 
       } catch (error) {
           console.log('error:', error)
@@ -163,11 +163,15 @@ module.exports = {
      * @returns {json} l'user connecté
      */
     isLogged: (request, response) => {
-        
-        if(request.session.user) {
-            response.status('200').json({data : {logged : true, info: request.session.user}});
-        } else {
-            response.json({logged : false, info: { favourite: []} });
+        try{
+            if(request.session.user) {
+                response.status('200').json({data : {logged : true, info: request.session.user}});
+            } else {
+                response.json({logged : false, info: { favourite: []} });
+            }
+
+        }catch(e){
+            console.log(e)
         }
     },
 
