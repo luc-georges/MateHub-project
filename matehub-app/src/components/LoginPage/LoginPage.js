@@ -13,11 +13,14 @@ const LoginPage = ({ loginData, onChangeField, onFormLogin }) => {
       [name]: value,
     });
   };
-
+  
   const handleSubmit = (evt) => {
     // evt.preventDefault();
     onFormLogin();
+    
+
   }
+    // <--- The page you want to redirect your user to.
 
   return (
     <div className="loginpage">

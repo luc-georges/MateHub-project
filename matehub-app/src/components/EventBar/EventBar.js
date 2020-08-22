@@ -8,7 +8,7 @@ const EventBar = ({ list, handleLogout }) => {
   // console.log('data dans le component EventBar', list);
   return (
     <div className="eventbar">
-      {/* <Icon className="user circle" size="massive" /> */}
+      <Icon className="user circle" size="massive" />
       <Button content="Logout" onClick={handleLogout}/>
       <NavLink exact to="/login"><Button content="Login"/></NavLink>
       <div className="eventbar-eventedition">
