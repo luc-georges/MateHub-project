@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import HomePage from '../components/Homepage/HomePage';
+import LatestNews from '../components/LastestNews/LastestNews';
 
 const mapStateToProps = (state) => ({
-  nickname: state.users.nickname,
+  nickname: state.users.nickname
 });
 
 const mapDispatchToProps = null;

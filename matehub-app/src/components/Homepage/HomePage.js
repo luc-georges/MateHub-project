@@ -2,7 +2,7 @@ import React from 'react';
 import LastestEvent from '../../containers/LatestEventContainer';
 // import TopPlayer from '../TopPlayers/TopPlayer';
 import TopPlayers from '../../containers/TopPlayersContainer';
-import LastestNews from '../LastestNews/LastestNews';
+import LastestNews from '../../containers/LatestNewsContainer';
 import './style.scss';
 
 

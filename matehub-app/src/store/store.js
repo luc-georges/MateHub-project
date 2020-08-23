@@ -9,6 +9,7 @@ import storage from "redux-persist/lib/storage";
 import rootReducer from './reducers/reducers';
 import eventsRequestMW from './middlewares/eventsRequestMW';
 import usersRequestMW from './middlewares/usersRequestMW';
+import newsRequestMW from './middlewares/newsRequestMW';
 
 // == Configuration redux-persist
 const persistConfig = {
@@ -22,7 +23,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancers = composeEnhancers(
   applyMiddleware(
     eventsRequestMW,
-    usersRequestMW
+    usersRequestMW,
+    newsRequestMW
     // secondMiddleware,
   )
 );

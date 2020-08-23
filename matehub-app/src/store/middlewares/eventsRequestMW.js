@@ -19,7 +19,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
         url: 'http://localhost:3001/events',
       })
         .then((res) => {
-          // console.log("res.data dans le MW: ", res.data);
+          //console.log("res.data dans le MW: ", res.data);
           store.dispatch(getEventsSuccess(res.data.data));
         })
         .catch((err) => {

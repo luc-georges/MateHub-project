@@ -14,15 +14,17 @@ import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
+import LatestNews from '../../containers/LatestNewsContainer';
 
 /**
  * composant principale de l'application
  * @component
  * @param {Object} param0 
  */
-function App({ getEvents, getTopUsers, checkAuth }) {
+function App({ getEvents, getTopUsers, checkAuth,getNews }) {
   // eslint-disable-next-line
   useEffect(() => {
+    getNews();
     getEvents();
     getTopUsers();
     checkAuth();
