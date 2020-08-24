@@ -35,7 +35,8 @@ export default (store) => (next) => (action) => {
     case LOGIN_SUBMIT:
       axios({
         method: 'post',
-        url: 'http://localhost:3001/users/login',
+        url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
+        //url: 'http://localhost:3001/users/login',
         data: store.getState().users.loginData,
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -58,7 +59,7 @@ export default (store) => (next) => (action) => {
       case LOGOUT:
         axios({
           method: 'get',
-          url: 'http://localhost:3001/users/logout',
+          url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/logout',
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
@@ -77,7 +78,7 @@ export default (store) => (next) => (action) => {
       case CHECK_AUTH:
         axios({
           method:"post",
-          url: 'http://localhost:3001/users/isLogged',
+          url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/isLogged',
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',

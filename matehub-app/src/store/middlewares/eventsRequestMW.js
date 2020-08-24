@@ -15,8 +15,8 @@ const eventsRequestMW = (store) => (next) => (action) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        // url: 'http://ec2-54-242-201-96.compute-1.amazonaws.com/events',
-        url: 'http://localhost:3001/events',
+        url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/events',
+        //url: 'http://localhost:3001/events',
       })
         .then((res) => {
           //console.log("res.data dans le MW: ", res.data);
