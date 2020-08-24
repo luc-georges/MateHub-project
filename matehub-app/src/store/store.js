@@ -11,6 +11,7 @@ import eventsRequestMW from './middlewares/eventsRequestMW';
 import usersRequestMW from './middlewares/usersRequestMW';
 import authRequestMW from './middlewares/authRequestMW';
 import newsRequestMW from './middlewares/newsRequestMW';
+import registerRequestMW from './middlewares/registerRequestMW';
 
 // == Configuration redux-persist
 const persistConfig = {
@@ -27,7 +28,8 @@ const enhancers = composeEnhancers(
     eventsRequestMW,
     usersRequestMW,
     authRequestMW,
-    newsRequestMW
+    newsRequestMW,
+    registerRequestMW
     // secondMiddleware,
   )
 );

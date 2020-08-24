@@ -33,7 +33,7 @@ export default (store) => (next) => (action) => {
         .catch((err) => {
           console.log('On passe dans le catch de la requête de login :', err);
           store.dispatch(
-            loginSubmitError("Désolé, cet utilisateur n'existe pas")
+            loginSubmitError("Cet utilisateur n'existe pas")
           );
         });
       break;

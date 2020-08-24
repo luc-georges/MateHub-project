@@ -5,13 +5,14 @@ import {
   REGISTER_SUBMIT_ERROR,
 } from '../actions/registerActions';
 
+
 export const initialState = {
   registerData: {
     email: 'g@gui.fr',
-    password: 'Gui1234',
-    passwordConfirm: 'Gui1234',
+    password: 'Gui12345',
+    passwordConfirm: 'Gui12345',
     nickname: 'Gui',
-    DOB: '2019-12-24',
+    dateOfBirth: "2019-01-01",
   },
   registerErrorMessage: '',
 };

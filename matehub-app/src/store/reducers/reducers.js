@@ -16,6 +16,7 @@ const appReducer = combineReducers({
 const rootReducer = (state, action) => {
   if (action.type === 'LOGOUT') {
     state.auth = undefined;
+    // state.register = undefined;
     // window.location.reload(true);
   }
 

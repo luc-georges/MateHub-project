@@ -11,7 +11,7 @@ const HomePage = ({nickname}) => {
     <div className="HomePage">
       <h1 className="titre">Welcome on Matehub {nickname} !</h1>
       <LastestEvent />
-      <TopPlayers /* list={list} *//>
+      <TopPlayers />
       <LastestNews />
     </div>
   );
