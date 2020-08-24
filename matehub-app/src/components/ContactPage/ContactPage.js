@@ -12,7 +12,7 @@ const ContactPage = () => {
         <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
           Contact form
         </h1>
-        <Form.Group widths="equal" /* style={{marginBottom: '2em' }} */>
+        <Form.Group widths="equal">
           <Form.Field
             id="form-input-control-error-email"
             control={Input}

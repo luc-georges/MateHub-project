@@ -5,19 +5,22 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 import Moment from 'react-moment';
 
-
 const EventBar = ({ list, handleLogout }) => {
   // console.log('data dans le component EventBar', list);
   return (
     <div className="eventbar">
-      <Icon className="user circle" size="massive" />
-      <Button content="Logout" onClick={handleLogout}/>
-      <NavLink exact to="/login"><Button content="Login"/></NavLink>
+      {/* <Icon className="user circle" size="massive" /> */}
+      <NavLink exact to="/login">
+        <Button content="Login" />
+      </NavLink>
+      <NavLink exact to="/registration">
+        <Button content="registration" />
+      </NavLink>
+      <Button content="Logout" onClick={handleLogout} />
       <div className="eventbar-eventedition">
         Events
         <a href="/">
-          <Icon className="add" />import Moment from 'react-moment';
-
+          <Icon className="add" />
         </a>
         <a href="/">
           <Icon className="search" />
@@ -32,7 +35,9 @@ const EventBar = ({ list, handleLogout }) => {
               </a>
               <div className="eventbar-event-infos">
                 <div>Event date :</div>
-                <div><Moment format="YYYY/MM/DD HH:MM">{event._starting}</Moment> </div>
+                <div>
+                  <Moment format="YYYY/MM/DD HH:MM">{event._starting}</Moment>{' '}
+                </div>
                 <div>{event._player_count} players</div>
                 <div>Description :</div>
                 <div>

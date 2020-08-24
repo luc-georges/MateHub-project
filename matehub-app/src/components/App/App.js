@@ -14,7 +14,6 @@ import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
-import CreateEvent from '../CreateEventPage/CreateEventPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
 

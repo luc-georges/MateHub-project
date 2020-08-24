@@ -3,7 +3,6 @@ import './style.scss';
 import { Form, Flag, TextArea, Button } from 'semantic-ui-react';
 import DateTimePicker from 'react-datetime-picker';
 
-
 const CreateEventPage = () => {
   return (
     <div className="CreatEventPage">
@@ -14,22 +13,21 @@ const CreateEventPage = () => {
           </h1>
         </div>
         <div className="select">
-       
-        <label>language</label>
-        <Flag name="france" />
-        <Form.Field label="france" control="input" type="checkbox" />
-        <Flag name="gb" />
-        <Form.Field label="United Kingdom" control="input" type="checkbox" />
-        <Flag name="es" />
-        <Form.Field label="Spain" control="input" type="checkbox" />
-        <Flag name="it" />
-        <Form.Field label="Italy" control="input" type="checkbox" />
-        <Flag name="ru" />
-        <Form.Field label="Russia" control="input" type="checkbox" />
-        <Flag name="de" />
-        <Form.Field label="Germany" control="input" type="checkbox" />
+          <label>language</label>
+          <Flag name="france" />
+          <Form.Field label="france" control="input" type="checkbox" />
+          <Flag name="gb" />
+          <Form.Field label="United Kingdom" control="input" type="checkbox" />
+          <Flag name="es" />
+          <Form.Field label="Spain" control="input" type="checkbox" />
+          <Flag name="it" />
+          <Form.Field label="Italy" control="input" type="checkbox" />
+          <Flag name="ru" />
+          <Form.Field label="Russia" control="input" type="checkbox" />
+          <Flag name="de" />
+          <Form.Field label="Germany" control="input" type="checkbox" />
         </div>
-         <Form.Field label="Game" control="select" className="select">
+        <Form.Field label="Game" control="select" className="select">
           <option value="ligue of legend">league of legends</option>
         </Form.Field>
         <Form.Field label="Players" control="select" className="select">
@@ -51,11 +49,10 @@ const CreateEventPage = () => {
 
         <label> </label>
         <DateTimePicker
-        amPmAriaLabel="AM/PM"
-        calendarAriaLabel="togle calendar"
-        dayAriaLabel="day"
-        dayPlaceholder="dd"
-
+          amPmAriaLabel="AM/PM"
+          calendarAriaLabel="togle calendar"
+          dayAriaLabel="day"
+          dayPlaceholder="dd"
         />
 
         <Form.Field
