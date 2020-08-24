@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
 import { getEvents } from '../store/actions/eventsActions';
-import { getTopUsers, checkAuth } from '../store/actions/usersActions';
+import { getTopUsers } from '../store/actions/usersActions';
+import { checkAuth } from '../store/actions/authActions';
 import App from '../components/App/App';
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({
+  isLogged: state.auth.isLogged,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getEvents: () => {

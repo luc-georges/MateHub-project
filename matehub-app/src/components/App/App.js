@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 /**
  * Import css
@@ -23,7 +23,7 @@ import SearchEventPage from '../SearchEventPage/SearchEventPage';
  * @component
  * @param {Object} param0 
  */
-function App({ getEvents, getTopUsers, checkAuth }) {
+function App({ getEvents, getTopUsers, checkAuth, isLogged }) {
   // eslint-disable-next-line
   useEffect(() => {
     getEvents();
@@ -45,7 +45,7 @@ function App({ getEvents, getTopUsers, checkAuth }) {
           <RegistrationPage />
         </Route>
         <Route exact path="/login">
-          <LoginPage />
+          {isLogged ? <Redirect to="/" /> : <LoginPage />}
         </Route>
         <Route exact path="/createevent">
           <CreateEventPage />

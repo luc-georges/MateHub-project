@@ -1,10 +1,9 @@
 import React from 'react';
 import './style.scss';
-
 import { Form, Button, Checkbox } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
-const LoginPage = ({ loginData, onChangeField, onFormLogin }) => {
+const LoginPage = ({ loginData, onChangeField, onFormLogin, isLogged }) => {
   // console.log('LoginPage');
 
   const handleInputChange = (evt) => {
@@ -13,14 +12,12 @@ const LoginPage = ({ loginData, onChangeField, onFormLogin }) => {
       [name]: value,
     });
   };
-  
+
   const handleSubmit = (evt) => {
     // evt.preventDefault();
     onFormLogin();
-    
-
-  }
-    // <--- The page you want to redirect your user to.
+  };
+  // <--- The page you want to redirect your user to.
 
   return (
     <div className="loginpage">
