@@ -28,6 +28,14 @@ module.exports = {
         }
     },
 
+    getUserProfile: async (request, response) => {
+      try {
+          
+      } catch (error) {
+          console.log('error:', error)
+          
+      }  
+    },
     /**
      * middleware express pour rechercher un user par l'id
      * @param {Object} request - Express request object

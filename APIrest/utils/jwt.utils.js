@@ -12,5 +12,8 @@ module.exports = {
         {
             expiresIn: '4h'
         })
+    },
+    parseAuthorization: (authorization) => {
+        return (authorization != null) ? authorization.replace('Bearer', '') : null;
     }
 };
