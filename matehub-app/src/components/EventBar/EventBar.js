@@ -21,45 +21,54 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
         </NavLink>
       )}
 
+      {!isLogged && <div>Please, connect to see event management</div>}
+
       {isLogged && <Icon className="user circle" size="massive" />}
 
       {isLogged && <Button content="Logout" onClick={handleLogout} />}
 
-      <div className="eventbar-eventedition">
-        Events
-        <NavLink exact to="/createevent">
-          <Icon className="add" />
-        </NavLink>
-        <NavLink exact to="/searchevent">
-          <Icon className="search" />
-        </NavLink>
-      </div>
+      {isLogged && (
+        <div className="eventbar-eventedition">
+          Events
+          <NavLink exact to="/createevent">
+            <Icon className="add" />
+          </NavLink>
+          <NavLink exact to="/searchevent">
+            <Icon className="search" />
+          </NavLink>
+        </div>
+      )}
 
-      <div className="eventbar-eventlist">
-        {list.map((event) => {
-          return (
-            <div className="eventbar-event" key={event._event_id}>
-              <a href="/">
-                <Icon className="eye" size="big" />
-              </a>
-              <div className="eventbar-event-infos">
-                <div>Event date :</div>
-                <div>
-                  <Moment format="YYYY/MM/DD HH:MM">{event._starting}</Moment>{' '}
+      {isLogged && (
+        <div className="eventbar-eventlist">
+          {list.map((event) => {
+            return (
+              <div className="eventbar-event" key={event._event_id}>
+                <a href="/">
+                  <Icon className="eye" size="big" />
+                </a>
+                <div className="eventbar-event-infos">
+                  <div>Event date :</div>
+                  <div>
+                    <Moment
+                      format="YYYY/MM/DD HH:MM"
+                      content={event._starting}
+                    />
+                  </div>
+                  <div>{event._player_count} players</div>
+                  <div>Description :</div>
+                  <div>
+                    {event._description.length > 30
+                      ? `${event._description.slice(0, 30)}...`
+                      : event._description}
+                  </div>
+                  <div>Duration : {event._duration.hours}h</div>
                 </div>
-                <div>{event._player_count} players</div>
-                <div>Description :</div>
-                <div>
-                  {event._description.length > 30
-                    ? `${event._description.slice(0, 30)}...`
-                    : event._description}
-                </div>
-                <div>Duration : {event._duration.hours}h</div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
