@@ -28,17 +28,35 @@ module.exports = {
         }
     },
 
+    /**
+     * middleware express pour acceder au information de l'user par identifiant
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user
+     */
     getUserProfile: async (request, response) => {
       try {
+        const currentUser = { nickname : request.params.nickname };
           
-        const headerAuth = req.headers['authorization'];
+        const headerAuth = request.headers['authorization'];
         const userId = jwtUtils.getUserId(headerAuth);
+        console.log('userId:', userId)
 
         if (userId < 0) {
             return response.status('400').json({error: 'wrong token'});
         }
+
+        const user = await User.findBy(currentUser);
+        if (!user) {
+            response.status('404').json({ error : 'user not found'});
+        }
+
+        delete user._password;
+        response.status('200').json({data : user});
+
       } catch (error) {
-          console.log('error:', error)
+          console.log('error:', error);
+          response.status('500').json({error:'Internal Server Error'});
           
       }  
     },
@@ -162,10 +180,10 @@ module.exports = {
         }
 
         delete user._password;
+        user._token = jwtUtils.generateTokenForUser(user)
         
         response.status('200').json({data: {
-            user,
-            token : jwtUtils.generateTokenForUser(user)
+            user
             }
         });
 
@@ -214,6 +232,13 @@ module.exports = {
      */
     updateAnUser: async (request, response) => {
         try {
+
+            const headerAuth = request.headers['authorization'];
+            const userId = jwtUtils.getUserId(headerAuth);
+    
+            if (userId < 0) {
+                return response.status('400').json({error: 'wrong token'});
+            }
 
             const user = await User.findById(request.params.id);
     

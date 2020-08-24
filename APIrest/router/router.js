@@ -21,13 +21,14 @@ const gameController = require('../controllers/gameController');
 
 /********* ROUTER USER ***************/
 router.get('/user/top', userController.getTopUsers);
+router.get('/user/:nickname/profile/private', userController.getUserProfile);
 //router.get('/user/:id', userController.getUserById);
 //router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.post('/registration', validateBody(postUserSchema), userController.registration);
 router.post('/users/login', userController.login);
 router.post('/users/islogged', userController.isLogged);
 router.get('/users/logout', userController.logout);
-router.put('/user/:id', validateBody(updateUserSchema), userController.updateAnUser);
+router.put('/user/:id/update', validateBody(updateUserSchema), userController.updateAnUser);
 router.delete('/user/:id', userController.deleteAnUser);
 
 

@@ -102,6 +102,14 @@ module.exports = {
      */
     createAnEvent: async (request, response) => {
         try {
+
+            const headerAuth = request.headers['authorization'];
+            const userId = jwtUtils.getUserId(headerAuth);
+    
+            if (userId < 0) {
+                return response.status('400').json({error: 'wrong token'});
+            }
+
             const event = await new Event(request.body);
             console.log('request.body:', request.body)
 
