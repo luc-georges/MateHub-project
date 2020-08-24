@@ -14,6 +14,9 @@ import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
+import CreateEvent from '../CreateEventPage/CreateEventPage';
+import CreateEventPage from '../CreateEventPage/CreateEventPage';
+import SearchEventPage from '../SearchEventPage/SearchEventPage';
 
 /**
  * composant principale de l'application
@@ -43,6 +46,12 @@ function App({ getEvents, getTopUsers, checkAuth }) {
         </Route>
         <Route exact path="/login">
           <LoginPage />
+        </Route>
+        <Route exact path="/createevent">
+          <CreateEventPage />
+        </Route>
+        <Route exact path="/searchevent">
+          <SearchEventPage />
         </Route>
       </Switch>
       <EventBar />
