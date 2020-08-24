@@ -8,10 +8,10 @@ import {
 
 export const initialState = {
   loginData: {
-    email: 'f@fred.fr',
-    password: 'Fred1234',
-    // email: '',
-    // password: '',
+    // email: 'f@fred.fr',
+    // password: 'Fred1234',
+    email: '',
+    password: '',
   },
   isLogged: false,
   nickname: '',

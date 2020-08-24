@@ -19,12 +19,12 @@ const EventBar = ({ list, handleLogout }) => {
       <Button content="Logout" onClick={handleLogout} />
       <div className="eventbar-eventedition">
         Events
-        <a href="/">
+        <NavLink exact to="/createevent">
           <Icon className="add" />
-        </a>
-        <a href="/">
+        </NavLink>
+        <NavLink exact to="/searchevent">
           <Icon className="search" />
-        </a>
+        </NavLink>
       </div>
       <div className="eventbar-eventlist">
         {list.map((event) => {
