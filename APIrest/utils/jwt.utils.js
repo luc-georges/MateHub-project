@@ -15,5 +15,21 @@ module.exports = {
     },
     parseAuthorization: (authorization) => {
         return (authorization != null) ? authorization.replace('Bearer', '') : null;
+    },
+    getUserId: function (authorization) {
+        let userId = -1;
+        let token = this.parseAuthorization(authorization);
+        if(token !== null) {
+            try{
+                let jwtToken = jwt.verify(token, JWT_SIGN_SECRET);
+                if(jwtToken !== null) {
+                    userId = jwtToken.userID
+                }
+            } catch (error) {
+            console.log('error:', error)
+
+            }
+        }
+        return userId;
     }
 };

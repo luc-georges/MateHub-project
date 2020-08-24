@@ -31,6 +31,8 @@ module.exports = {
     getUserProfile: async (request, response) => {
       try {
           
+        const headerAuth = req.headers['authorization'];
+        const userId = jwtUtils.getUserId(headerAuth);
       } catch (error) {
           console.log('error:', error)
           
