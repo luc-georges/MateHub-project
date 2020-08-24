@@ -33,6 +33,10 @@ module.exports = {
           
         const headerAuth = req.headers['authorization'];
         const userId = jwtUtils.getUserId(headerAuth);
+
+        if (userId < 0) {
+            return response.status('400').json({error: 'wrong token'});
+        }
       } catch (error) {
           console.log('error:', error)
           
