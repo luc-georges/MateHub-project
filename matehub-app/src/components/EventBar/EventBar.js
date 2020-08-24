@@ -5,18 +5,26 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 import Moment from 'react-moment';
 
-const EventBar = ({ list, handleLogout }) => {
+const EventBar = ({ list, isLogged, handleLogout }) => {
   // console.log('data dans le component EventBar', list);
   return (
     <div className="eventbar">
-      {/* <Icon className="user circle" size="massive" /> */}
-      <NavLink exact to="/login">
-        <Button content="Login" />
-      </NavLink>
-      <NavLink exact to="/registration">
-        <Button content="registration" />
-      </NavLink>
-      <Button content="Logout" onClick={handleLogout} />
+      {!isLogged && (
+        <NavLink exact to="/login">
+          <Button content="Login" />
+        </NavLink>
+      )}
+
+      {!isLogged && (
+        <NavLink exact to="/registration">
+          <Button content="registration" />
+        </NavLink>
+      )}
+
+      {isLogged && <Icon className="user circle" size="massive" />}
+
+      {isLogged && <Button content="Logout" onClick={handleLogout} />}
+
       <div className="eventbar-eventedition">
         Events
         <NavLink exact to="/createevent">
@@ -26,6 +34,7 @@ const EventBar = ({ list, handleLogout }) => {
           <Icon className="search" />
         </NavLink>
       </div>
+
       <div className="eventbar-eventlist">
         {list.map((event) => {
           return (

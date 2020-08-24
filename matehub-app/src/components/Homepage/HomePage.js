@@ -9,7 +9,7 @@ import './style.scss';
 const HomePage = ({nickname}) => {
   return (
     <div className="HomePage">
-      <h1 className="titre">Welcome on PlayTogether {nickname} !</h1>
+      <h1 className="titre">Welcome on Matehub {nickname} !</h1>
       <LastestEvent />
       <TopPlayers /* list={list} *//>
       <LastestNews />

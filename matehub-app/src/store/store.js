@@ -16,6 +16,7 @@ import newsRequestMW from './middlewares/newsRequestMW';
 const persistConfig = {
   key: "root",
   storage,
+  timeout: 1000,
 };
 
 // == Enhancers

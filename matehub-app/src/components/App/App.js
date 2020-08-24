@@ -20,9 +20,9 @@ import SearchEventPage from '../SearchEventPage/SearchEventPage';
 /**
  * composant principale de l'application
  * @component
- * @param {Object} param0 
+ * @param {Object} param0
  */
-function App({ getEvents, getTopUsers, checkAuth, isLogged,getNews }) {
+function App({ getEvents, getTopUsers, checkAuth, isLogged, getNews }) {
   // eslint-disable-next-line
   useEffect(() => {
     getNews();
@@ -42,7 +42,7 @@ function App({ getEvents, getTopUsers, checkAuth, isLogged,getNews }) {
           <ContactPage />
         </Route>
         <Route exact path="/registration">
-          <RegistrationPage />
+          {isLogged ? <Redirect to="/" /> : <RegistrationPage />}
         </Route>
         <Route exact path="/login">
           {isLogged ? <Redirect to="/" /> : <LoginPage />}

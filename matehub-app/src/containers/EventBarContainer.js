@@ -4,6 +4,7 @@ import { logout } from '../store/actions/authActions';
 
 const  mapStateToProps = (state) => ({
   list: state.events.list,
+  isLogged: state.auth.isLogged,
 })
 
 const mapDispatchToProps = (dispatch) => ({
