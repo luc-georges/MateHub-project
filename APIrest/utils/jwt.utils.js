@@ -1,14 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SIGN_SECRET = '57f681d2e3c911ea87d00242ac130003fzcg58hju2111yhgty659ssf55';
-
 module.exports = {
     generateTokenForUser: function(userData) {
         return jwt.sign({
-            userId: userData.id,
-            userNickname: userData.nickname
+            userId: userData._id,
+            userNickname: userData._nickname
         },
-        JWT_SIGN_SECRET,
+        process.env.JWT_SIGN_SECRET,
         {
             expiresIn: '4h'
         })
@@ -21,9 +19,10 @@ module.exports = {
         let token = this.parseAuthorization(authorization);
         if(token !== null) {
             try{
-                let jwtToken = jwt.verify(token, JWT_SIGN_SECRET);
+                let jwtToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
                 if(jwtToken !== null) {
-                    userId = jwtToken.userID
+                    
+                    userId = jwtToken.userId;
                 }
             } catch (error) {
             console.log('error:', error)

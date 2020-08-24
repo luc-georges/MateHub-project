@@ -36,20 +36,19 @@ module.exports = {
      */
     getUserProfile: async (request, response) => {
       try {
-        const currentUser = { nickname : request.params.nickname };
-          
-        const headerAuth = request.headers['authorization'];
-        const userId = jwtUtils.getUserId(headerAuth);
-        console.log('userId:', userId)
-
-        if (userId < 0) {
-            return response.status('400').json({error: 'wrong token'});
-        }
-
-        const user = await User.findBy(currentUser);
+        
+        const user = await User.findById(request.params.id);
         if (!user) {
             response.status('404').json({ error : 'user not found'});
         }
+
+        const headerAuth = request.headers['authorization'];
+        const userId = await jwtUtils.getUserId(headerAuth);
+
+        if (userId !== user._id ) {
+            return response.status('400').json({error: 'wrong token'});
+        }
+
 
         delete user._password;
         response.status('200').json({data : user});
@@ -232,15 +231,15 @@ module.exports = {
      */
     updateAnUser: async (request, response) => {
         try {
+            const user = await User.findById(request.params.id);
 
             const headerAuth = request.headers['authorization'];
             const userId = jwtUtils.getUserId(headerAuth);
     
-            if (userId < 0) {
+            if (userId !== user.id) {
                 return response.status('400').json({error: 'wrong token'});
             }
 
-            const user = await User.findById(request.params.id);
     
             Object.assign(user, request.body);
 
@@ -282,6 +281,14 @@ module.exports = {
     deleteAnUser: async (request, response) => {
         try {
             const user = await User.findById(request.params.id);
+
+            const headerAuth = request.headers['authorization'];
+            const userId = jwtUtils.getUserId(headerAuth);
+    
+            if (userId !== user.id) {
+                return response.status('400').json({error: 'wrong token'});
+            }
+
             const result = await user.delete();
         
             response.status('200').json({data: result});

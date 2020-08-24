@@ -106,7 +106,7 @@ module.exports = {
             const headerAuth = request.headers['authorization'];
             const userId = jwtUtils.getUserId(headerAuth);
     
-            if (userId < 0) {
+            if (userId !== request.params.userId) {
                 return response.status('400').json({error: 'wrong token'});
             }
 
@@ -141,6 +141,14 @@ module.exports = {
      */
     updateAnEvent: async (request, response) => {
         try {
+
+            const headerAuth = request.headers['authorization'];
+            const userId = jwtUtils.getUserId(headerAuth);
+    
+            if (userId !== request.params.userId) {
+                return response.status('400').json({error: 'wrong token'});
+            }
+
             const event = await Event.findById(request.params.id);
     
             Object.assign(event, request.body);
@@ -173,6 +181,14 @@ module.exports = {
      */
     deleteAnEvent: async (request, response) => {
         try {
+
+            const headerAuth = request.headers['authorization'];
+            const userId = jwtUtils.getUserId(headerAuth);
+    
+            if (userId !== request.params.userId) {
+                return response.status('400').json({error: 'wrong token'});
+            }
+
             const event = await Event.findById(request.params.id);
             const result = await event.delete();
         

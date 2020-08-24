@@ -21,15 +21,15 @@ const gameController = require('../controllers/gameController');
 
 /********* ROUTER USER ***************/
 router.get('/user/top', userController.getTopUsers);
-router.get('/user/:nickname/profile/private', userController.getUserProfile);
-//router.get('/user/:id', userController.getUserById);
+router.get('/user/:id/profile/private', userController.getUserProfile);
+router.get('/user/:id', userController.getUserById);
 //router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.post('/registration', validateBody(postUserSchema), userController.registration);
 router.post('/users/login', userController.login);
 router.post('/users/islogged', userController.isLogged);
 router.get('/users/logout', userController.logout);
 router.put('/user/:id/update', validateBody(updateUserSchema), userController.updateAnUser);
-router.delete('/user/:id', userController.deleteAnUser);
+router.delete('/user/:id/delete', userController.deleteAnUser);
 
 
 /***********ROUTER EVENT *********/
@@ -37,9 +37,9 @@ router.get('/events', eventController.getAllEvent);
 router.get('/event/:id', eventController.getEventById);
 router.get('/search/events', eventController.getEventByParams);
 router.get('/find/event', eventController.getEventBy);//querystring
-router.post('/event', validateBody(postEventSchema), eventController.createAnEvent);
-router.put('/event/:id', validateBody(updateEventSchema), eventController.updateAnEvent);
-router.delete('/event/:id', eventController.deleteAnEvent);
+router.post('/createEvent/user/:id', validateBody(postEventSchema), eventController.createAnEvent);
+router.put('/updateEvent/event/:id/user/:userId', validateBody(updateEventSchema), eventController.updateAnEvent);
+router.delete('/deleteEvent/event/:id/user/:userId', eventController.deleteAnEvent);
 
 /********** ROUTER EVENT'S USER *********/
 router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickname);
