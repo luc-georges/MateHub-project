@@ -10,12 +10,13 @@ import {
 } from '../actions/authActions';
 
 export default (store) => (next) => (action) => {
-  console.log("Passage dans le RequestMW");
+  console.log("Passage dans le authRequestMW");
   next(action);
   switch (action.type) {
     case LOGIN_SUBMIT:
       axios({
         method: 'post',
+        // url: 'http://ec2-54-242-201-96.compute-1.amazonaws.com:3001/users/login',
         url: 'http://localhost:3001/users/login',
         data: store.getState().auth.loginData,
         headers: {
@@ -30,7 +31,7 @@ export default (store) => (next) => (action) => {
           store.dispatch(loginSubmitSuccess(res.data.data.info));
         })
         .catch((err) => {
-          console.log('On passe dans le catch de la requête de login');
+          console.log('On passe dans le catch de la requête de login :', err);
           store.dispatch(
             loginSubmitError("Désolé, cet utilisateur n'existe pas")
           );
