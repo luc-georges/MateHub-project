@@ -182,9 +182,9 @@ module.exports = {
      */
     logout: async (request, response) => {
         try {
-
-            response.status('200');
-
+            request.session.destroy()
+            response.status('200').json({data:'déconnection réussi'});;
+            
         } catch (error) {
             console.log('error:', error)
             response.status('500').json({error:'Internal Server Error'});
