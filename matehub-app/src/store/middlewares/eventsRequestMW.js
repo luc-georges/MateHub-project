@@ -19,7 +19,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
         url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/events',
       })
         .then((res) => {
-          // console.log("res.data dans le MW: ", res.data);
+          //console.log("res.data dans le MW: ", res.data);
           store.dispatch(getEventsSuccess(res.data.data));
         })
         .catch((err) => {

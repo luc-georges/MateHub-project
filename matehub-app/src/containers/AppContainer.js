@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { getEvents } from '../store/actions/eventsActions';
 import { getTopUsers } from '../store/actions/usersActions';
 import { checkAuth } from '../store/actions/authActions';
+import { getNews } from '../store/actions/newsActions';
 import App from '../components/App/App';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +12,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getEvents: () => {
     dispatch(getEvents());
+  },
+  getNews: () => {
+    dispatch(getNews());
   },
   getTopUsers: () => {
     dispatch(getTopUsers());
