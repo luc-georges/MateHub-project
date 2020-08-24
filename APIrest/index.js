@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const router = require('./router/router');
 const routerNews = require('./router/routerNews')
+const routerGameApi = require('./router/routerGameApi')
 const app = express();
 
 const corsOptions = {
@@ -26,6 +27,7 @@ app.use(session({
 
 app.use(router);
 app.use(routerNews);
+app.use(routerGameApi);
 
 const port = process.env.PORT || 3001;
 

@@ -11,6 +11,13 @@ INSERT INTO "user"( "email", "password","nickname","DOB","description","avatar",
         ( 'test2@gmail.com', 'test2','test2login',timestamp '1987-05-10','desc2 ','avatar2.png','banner2.png'),
         ( 'test3@gmail.com', 'test3','test3login',timestamp '1987-07-08','desc3 ','avatar3.png','banner3.png');
 
+
+INSERT INTO user_access."user"( "email", "password","nickname","DOB","description","avatar","banner") VALUES
+        ( 'test6@gmail.com', 'test6','test6login','1987-07-29',' ','avatar1.png','banner1.png');
+
+
+
+
 -- GAME insert
 
 INSERT INTO "game"( "name", "image","order") VALUES
@@ -64,11 +71,9 @@ INSERT INTO "M_EVENT_has_LANG"( "event_id", "lang_id") VALUES
 -- M_USER_has_GAME insert
 
 INSERT INTO "M_USER_has_GAME"( "user_id", "game_id","level_id","IGN") VALUES
-        (1,2,4,'IGN1'),
-        (1,3,1,'IGN2'),
-        (1,1,4,'IGN2'),
-        (2,2,7,'IGN2'),
-        (2,1,8,'IGN3');
+        (1,1,4,'{"id": "IGN3"}'),
+        (2,2,7,'{"id": "IGN4"}'),
+        (2,1,8,'{"id": "IGN5"}');
 
 -- M_USER_has_EVENT insert
 
