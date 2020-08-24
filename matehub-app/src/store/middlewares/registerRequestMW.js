@@ -14,7 +14,13 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'post',
         url: 'http://localhost:3001/registration',
-        data: store.getState().register.registerData,
+        data: {
+          email: store.getState().register.registerData.email,
+          password: store.getState().register.registerData.password,
+          passwordConfirm: store.getState().register.registerData.passwordConfirm,
+          nickname: store.getState().register.registerData.nickname,
+          dateofbirth: store.getState().register.registerData.dateOfBirth
+        },
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
@@ -23,8 +29,8 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log(res.data);
-          store.dispatch(registerSubmitSuccess(res.data.data))
+          console.log("la réponse reçu: " + res.data.error);
+          store.dispatch(registerSubmitSuccess(res.data))
         })
         .catch((err) => {
           console.log('On passe dans le catch de la requête register :', err);

@@ -8,7 +8,7 @@ import {
 
 export const initialState = {
   registerData: {
-    email: 'g@gui.fr',
+    email: 'g@guid.fr',
     password: 'Gui12345',
     passwordConfirm: 'Gui12345',
     nickname: 'Gui',

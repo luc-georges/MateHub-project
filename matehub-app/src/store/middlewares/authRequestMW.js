@@ -14,6 +14,7 @@ export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case LOGIN_SUBMIT:
+    //console.log(store.getState().auth.loginData)
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',

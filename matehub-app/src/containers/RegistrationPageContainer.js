@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
     password: state.register.registerData.password,
     passwordConfirm: state.register.registerData.passwordConfirm,
     nickname: state.register.registerData.nickname,
-    dateOfBirth: moment(state.register.registerData.dateOfBirth).format('YYYY-MM-DD'),
+    dateOfBirth: moment(state.register.dateOfBirth).format('YYYY-MM-DD'),
   },
 });
 
