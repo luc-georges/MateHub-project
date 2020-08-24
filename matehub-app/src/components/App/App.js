@@ -11,7 +11,7 @@ import 'semantic-ui-css/semantic.min.css';
 import NavBar from '../NavBar/NavBar';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../../containers/HomePageContainer';
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import RegistrationPage from '../../containers/RegistrationPageContainer';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
