@@ -2,6 +2,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const sanitaze = require('../sanitaze/sanitazer');
 const jwtUtils = require('../utils/jwt.utils');
+//const authHeader = require('../middleware/authMiddleware');
 
 module.exports = {
 
@@ -36,12 +37,18 @@ module.exports = {
      */
     getUserProfile: async (request, response) => {
       try {
-        
+        console.log('aioli',request.user)
+
         const user = await User.findById(request.params.id);
         if (!user) {
             response.status('404').json({ error : 'user not found'});
         }
 
+        delete user._password;
+        
+        response.status('200').json({data : user});
+
+        /*
         const headerAuth = request.headers['authorization'];
         const userId = await jwtUtils.getUserId(headerAuth);
         const userNickname = await jwtUtils.getUserNickname(headerAuth);
@@ -53,7 +60,7 @@ module.exports = {
         } else {
             
             return response.status('400').json({error: 'wrong token'});
-        }
+        }*/
 
       } catch (error) {
           console.log('error:', error);
@@ -181,12 +188,10 @@ module.exports = {
         }
 
         delete user._password;
-        user._token = jwtUtils.generateTokenForUser(user)
+        user._access_token = jwtUtils.generateAccessToken(user);
+        user._refresh_token = jwtUtils.generateRefreshToken(user);
         
-        response.status('200').json({data: {
-            user
-            }
-        });
+        response.status('200').json({data: { user }});
 
       } catch (error) {
           console.log('error:', error)

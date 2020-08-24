@@ -10,6 +10,10 @@ const updateUserSchema = require('../validator/schema/user/updateUser');
 const postEventSchema = require('../validator/schema/event/postEvent');
 const updateEventSchema = require('../validator/schema/event/updateEvent');
 
+/********* JWT *******************/
+const { authenticateToken } = require('../middleware/authMiddleware');
+const { ownerControl } = require('../middleware/ownerControlMiddleware');
+
 /******** CONTROLLERS ***********/
 //user
 const userController = require('../controllers/userController');
@@ -21,14 +25,14 @@ const gameController = require('../controllers/gameController');
 
 /********* ROUTER USER ***************/
 router.get('/user/top', userController.getTopUsers);
-router.get('/user/:id/profile/private', userController.getUserProfile);
+router.get('/user/:id/profile/private', authenticateToken, ownerControl, userController.getUserProfile);
 router.get('/user/:id', userController.getUserById);
 //router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.post('/registration', validateBody(postUserSchema), userController.registration);
 router.post('/users/login', userController.login);
 router.post('/users/islogged', userController.isLogged);
 router.get('/users/logout', userController.logout);
-router.put('/user/:id/update', validateBody(updateUserSchema), userController.updateAnUser);
+router.put('/user/:id/update',validateBody(updateUserSchema), userController.updateAnUser);
 router.delete('/user/:id/delete', userController.deleteAnUser);
 
 

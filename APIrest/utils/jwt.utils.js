@@ -1,25 +1,49 @@
 const jwt = require('jsonwebtoken');
+const redis = require('../redis/client');
+
+const REDIS_PREFIX = "auth_refresh_tokens";
 
 module.exports = {
-    generateTokenForUser: function(userData) {
-        return jwt.sign({
-            userId: userData._id,
-            userNickname: userData._nickname
-        },
-        process.env.JWT_SIGN_SECRET,
-        {
-            expiresIn: '4h'
-        })
+    generateAccessToken: function(userData) {
+        const user = {
+            id : userData._id,
+            nickname: userData._nickname
+        };
+
+        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '25s' })
     },
+
+    generateRefreshToken: async function(userData) {
+        const user = {
+            id : userData._id,
+            nickname: userData._nickname
+        };
+
+        const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+        await this.saveRefreshToken(userData, refreshToken);
+
+        return refreshToken;
+    },
+
+    saveRefreshToken: async function (userData, token) {
+        return new Promise((resolve, reject) => {
+            redis.client.hmset(REDIS_PREFIX, userData.id, (err,result) => {
+                if (err) return reject(err);
+                resolve(result);
+            });
+        });
+    }
+    /*
     parseAuthorization: (authorization) => {
         return (authorization != null) ? authorization.replace('Bearer ', '') : null;
-    },
+    },*/
+    /*
     getUserId: function (authorization) {
         let userId = -1;
         let token = this.parseAuthorization(authorization);
         if(token !== null) {
             try{
-                let jwtToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
+                let jwtToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
                 if(jwtToken !== null) {
                     
                     userId = jwtToken.userId;
@@ -47,5 +71,5 @@ module.exports = {
             }
         }
         return userNickname;
-    }
+    }*/
 };
