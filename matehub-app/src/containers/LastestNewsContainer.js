@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import LatestNews from '../components/LastestNews/LastestNews';
+import LastestNews from '../components/LastestNews/LastestNews';
 
 const  mapStateToProps = (state) => ({
   list: state.news.list,
@@ -8,4 +8,4 @@ const  mapStateToProps = (state) => ({
 const mapDispatchToProps = null;
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LatestNews);
+export default connect(mapStateToProps, mapDispatchToProps)(LastestNews);

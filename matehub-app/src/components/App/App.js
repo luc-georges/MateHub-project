@@ -16,7 +16,6 @@ import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
-import LatestNews from '../../containers/LatestNewsContainer';
 
 /**
  * composant principale de l'application

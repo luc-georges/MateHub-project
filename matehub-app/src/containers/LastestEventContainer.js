@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import LatestEvent from '../components/LastestEvent/LastestEvent';
+import LastestEvent from '../components/LastestEvent/LastestEvent';
 
 const  mapStateToProps = (state) => ({
   list: state.events.list,
@@ -8,4 +8,4 @@ const  mapStateToProps = (state) => ({
 const mapDispatchToProps = null;
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LatestEvent);
+export default connect(mapStateToProps, mapDispatchToProps)(LastestEvent);

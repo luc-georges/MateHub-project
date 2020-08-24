@@ -1,8 +1,8 @@
 import React from 'react';
-import LastestEvent from '../../containers/LatestEventContainer';
+import LastestEvent from '../../containers/LastestEventContainer';
 // import TopPlayer from '../TopPlayers/TopPlayer';
 import TopPlayers from '../../containers/TopPlayersContainer';
-import LastestNews from '../../containers/LatestNewsContainer';
+import LastestNews from '../../containers/LastestNewsContainer';
 import './style.scss';
 
 

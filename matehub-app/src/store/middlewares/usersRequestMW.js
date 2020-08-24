@@ -12,8 +12,8 @@ export default (store) => (next) => (action) => {
     case GET_TOP_USERS:
       axios({
         method: 'get',
-        url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/user/top',
-        // url: 'http://localhost:3001/user/top', 
+        // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/user/top',
+        url: 'http://localhost:3001/user/top', 
       })
         .then((res) => {
           // console.log(res.data);
