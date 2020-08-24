@@ -30,5 +30,22 @@ module.exports = {
             }
         }
         return userId;
+    },
+    getUserNickname: function (authorization) {
+        let userNickname;
+        let token = this.parseAuthorization(authorization);
+        if(token !== null) {
+            try{
+                let jwtToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
+                if(jwtToken !== null) {
+
+                    userNickname = jwtToken.userNickname;
+                }
+            } catch (error) {
+                console.log('error:', error)
+
+            }
+        }
+        return userNickname;
     }
 };

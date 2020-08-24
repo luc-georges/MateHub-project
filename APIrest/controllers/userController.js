@@ -44,14 +44,16 @@ module.exports = {
 
         const headerAuth = request.headers['authorization'];
         const userId = await jwtUtils.getUserId(headerAuth);
-
-        if (userId !== user._id ) {
+        const userNickname = await jwtUtils.getUserNickname(headerAuth);
+        
+        if (userId === user._id && userNickname === user._nickname) {
+            
+            delete user._password;
+            response.status('200').json({data : user});
+        } else {
+            
             return response.status('400').json({error: 'wrong token'});
         }
-
-
-        delete user._password;
-        response.status('200').json({data : user});
 
       } catch (error) {
           console.log('error:', error);
@@ -235,12 +237,12 @@ module.exports = {
 
             const headerAuth = request.headers['authorization'];
             const userId = jwtUtils.getUserId(headerAuth);
+            const userNickname = jwtUtils.getUserNickname(headerAuth);
     
-            if (userId !== user.id) {
+            if (userId !== user.id || userNickname !== user._nickname ) {
                 return response.status('400').json({error: 'wrong token'});
             }
 
-    
             Object.assign(user, request.body);
 
             console.log('user',user)
@@ -284,8 +286,9 @@ module.exports = {
 
             const headerAuth = request.headers['authorization'];
             const userId = jwtUtils.getUserId(headerAuth);
+            const userNickname = jwtUtils.getUserNickname(headerAuth);
     
-            if (userId !== user.id) {
+            if (userId !== user.id || userNickname !== user._nickname ) {
                 return response.status('400').json({error: 'wrong token'});
             }
 
