@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './style.scss';
 import Moment from 'react-moment';
 
@@ -31,10 +31,10 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
         <div className="eventbar-eventedition">
           Events
           <NavLink exact to="/createevent">
-            <Icon className="add" />
+            <Button circular icon="add" />
           </NavLink>
           <NavLink exact to="/searchevent">
-            <Icon className="search" />
+            <Button circular icon="search" />
           </NavLink>
         </div>
       )}

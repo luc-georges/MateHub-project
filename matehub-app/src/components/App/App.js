@@ -16,6 +16,7 @@ import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
+import GettingStartedPage from '../GettingStartedPage/GettingStartedPage';
 
 /**
  * composant principale de l'application
@@ -37,6 +38,9 @@ function App({ getEvents, getTopUsers, checkAuth, getNews, isLogged, registered 
       <Switch>
         <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route exact path="/start">
+          <GettingStartedPage />
         </Route>
         <Route exact path="/contact">
           <ContactPage />

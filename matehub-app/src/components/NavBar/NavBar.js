@@ -10,13 +10,14 @@ const NavBar = () => {
     <div className="navbar">
       <div className="navbar-logo">MATE HUB</div>
       <div className="navbar-nav" id="top-menu">
-        <NavLink className="navbar-nav-link" exact to="/">
+        <NavLink className="navbar-nav-link" exact to="/" >
           <Button
             fluid
             className="home"
             content="home"
             icon="home"
             size="large"
+            
           />
         </NavLink>
         <NavLink className="navbar-nav-link" exact to="/">
@@ -37,11 +38,11 @@ const NavBar = () => {
             size="large"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/">
+        <NavLink className="navbar-nav-link" exact to="/start">
           <Button
             fluid
             className="home"
-            content="Q&A"
+            content="Start"
             icon="question"
             size="large"
           />
