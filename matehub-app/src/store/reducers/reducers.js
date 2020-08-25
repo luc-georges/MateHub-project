@@ -19,6 +19,9 @@ const rootReducer = (state, action) => {
     // state.register = undefined;
     // window.location.reload(true);
   }
+  if (action.type === 'CHECK_AUTH') {
+    state.register = undefined;
+  }
 
   return appReducer(state, action);
 };

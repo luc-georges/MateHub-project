@@ -46,14 +46,13 @@ const RegistrationPage = ({registerData, onChangeField, onFormSubmit}) => {
             </Grid.Column>
             <Grid.Column width={6}>
               <Form.Input
-                id="form-input-control-error-dob"
-                name="dateOfBirth"
+                id="form-input-control-error-dateofbirth"
+                name="dateofbirth"
                 label="Date of birth"
                 type="date"
                 placeholder="Your date of birth"
-                value={registerData.dateOfBirth}
+                value={registerData.dateofbirth}
                 onChange={handleInputChange}
-                onClick={handleInputChange}
               />
             </Grid.Column>
           </Grid.Row>

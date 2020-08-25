@@ -19,7 +19,7 @@ export default (store) => (next) => (action) => {
           password: store.getState().register.registerData.password,
           passwordConfirm: store.getState().register.registerData.passwordConfirm,
           nickname: store.getState().register.registerData.nickname,
-          dateofbirth: store.getState().register.registerData.dateOfBirth
+          dateofbirth: store.getState().register.registerData.dateofbirth
         },
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -29,7 +29,7 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log("la réponse reçu: " + res.data);
+          // console.log("la réponse reçu: " + res);
           store.dispatch(registerSubmitSuccess(res.data))
         })
         .catch((err) => {

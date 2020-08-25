@@ -17,7 +17,6 @@ import registerRequestMW from './middlewares/registerRequestMW';
 const persistConfig = {
   key: "root",
   storage,
-  timeout: 1000,
 };
 
 // == Enhancers

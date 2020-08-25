@@ -12,9 +12,10 @@ export const initialState = {
     password: 'Gui12345',
     passwordConfirm: 'Gui12345',
     nickname: 'Gui',
-    dateOfBirth: "2019-01-01",
+    dateofbirth: "2019-01-01",
   },
   registerErrorMessage: '',
+  registered: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -39,11 +40,13 @@ export default (state = initialState, action = {}) => {
           ...action.payload,
         },
         registerErrorMessage: '',
+        // registered: true,
       };
     case REGISTER_SUBMIT_ERROR:
       return {
         ...state,
         registerErrorMessage: action.payload,
+        // registered: false,
       };
     default:
       return state;
