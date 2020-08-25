@@ -10,7 +10,7 @@ module.exports = {
             nickname: userData._nickname
         };
 
-        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '25s' })
+        return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '59s' })
     },
 
     generateRefreshToken: async function(userData) {

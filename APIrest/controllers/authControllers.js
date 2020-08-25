@@ -7,6 +7,12 @@ const { testRefreshToken, generateAccessToken } = require('../utils/jwt.utils');
 const { testsecurityString, generateSecurityString, deletesecurityString, saveSecurityString} = require('../utils/newPassword.utils')
 
 module.exports = {
+    /**
+     * middleware express pour refresh l'access_token
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'access token
+     */
     refreshToken : async (request, response) => {
         try {
             const refreshToken = request.body.refreshToken;
@@ -34,6 +40,12 @@ module.exports = {
 
     },
 
+    /**
+     * middleware express pour récupere un code secret qui permet de modifier notre mot de passe
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} message de confirmation 
+     */
     forgotPassword : async (request, response, next) => {
         try {
             
@@ -83,6 +95,12 @@ module.exports = {
         }
     },
 
+    /**
+     * middleware express pour changer de mot de passe
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} message de confirmations
+     */
     createNewPassword: async (request, response, next) => {
         try {
             const userEmail = { email : request.body.email }
