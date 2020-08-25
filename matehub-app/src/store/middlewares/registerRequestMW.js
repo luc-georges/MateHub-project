@@ -7,10 +7,10 @@ import {
 } from '../actions/registerActions';
 
 export default (store) => (next) => (action) => {
-  console.log(store.getState().register.registerData);
   next(action);
   switch (action.type) {
     case REGISTER_SUBMIT:
+      console.log(store.getState().register.registerData);
       axios({
         method: 'post',
         url: 'http://localhost:3001/registration',
@@ -29,7 +29,7 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log("la réponse reçu: " + res.data.error);
+          console.log("la réponse reçu: " + res.data);
           store.dispatch(registerSubmitSuccess(res.data))
         })
         .catch((err) => {

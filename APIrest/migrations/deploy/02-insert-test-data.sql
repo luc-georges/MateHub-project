@@ -6,7 +6,7 @@ BEGIN;
 
 -- USER insert
 
-INSERT INTO "user"( "email", "password","nickname","DOB","description","avatar","banner") VALUES
+INSERT INTO "user"( "email", "password","nickname","dateofbirth","description","avatar","banner") VALUES
         ( 'test1@gmail.com', 'test1','test1login',timestamp '1987-07-29',' ','avatar1.png','banner1.png'),
         ( 'test2@gmail.com', 'test2','test2login',timestamp '1987-05-10','desc2 ','avatar2.png','banner2.png'),
         ( 'test3@gmail.com', 'test3','test3login',timestamp '1987-07-08','desc3 ','avatar3.png','banner3.png');

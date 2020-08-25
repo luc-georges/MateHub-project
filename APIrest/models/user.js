@@ -7,7 +7,7 @@ module.exports = class User extends CoreModel {
     _email;
     _password;
     _nickname;
-    _DOB;
+    _dateofbirth;
     _description;
     _avatar;
     _banner;
@@ -20,7 +20,7 @@ module.exports = class User extends CoreModel {
         this.email = obj.email;
         this.password = obj.password;
         this.nickname = obj.nickname;
-        this.DOB = obj.DOB;
+        this.dateofbirth = obj.dateofbirth;
         this.description = obj.description;
         this.avatar = obj.avatar;
         this.banner = obj.banner;
@@ -61,8 +61,8 @@ module.exports = class User extends CoreModel {
         return this._nickname
     }
 
-    get DOB() {
-        return this._DOB
+    get dateofbirth() {
+        return this._dateofbirth
     }
 
     get description() {
@@ -93,8 +93,8 @@ module.exports = class User extends CoreModel {
         this._nickname = value
     }
 
-    set DOB(value) {
-        this._DOB = value
+    set dateofbirth(value) {
+        this._dateofbirth = value
     }
 
     set description(value) {
