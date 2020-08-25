@@ -8,8 +8,8 @@ import {
 
 export const initialState = {
   loginData: {
-    email: 'f@fred.fr',
-    password: 'Fred1234',
+    email: '',
+    password: '',
     // email: '',
     // password: '',
   },
@@ -40,8 +40,7 @@ export default (state = initialState, action = {}) => {
         isLogged: true,
         loginData: {
           ...state.loginData,
-          ...action.payload,
-        },
+        }
       };
     case LOGIN_SUBMIT_ERROR:
       return {

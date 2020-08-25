@@ -5,14 +5,13 @@ import {
   REGISTER_SUBMIT_ERROR,
 } from '../actions/registerActions';
 
-
 export const initialState = {
   registerData: {
-    email: 'g@guid.fr',
-    password: 'Gui12345',
-    passwordConfirm: 'Gui12345',
-    nickname: 'Gui',
-    dateofbirth: "2019-01-01",
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    nickname: '',
+    dateofbirth: '',
   },
   registerErrorMessage: '',
   registered: false,
@@ -35,11 +34,14 @@ export default (state = initialState, action = {}) => {
     case REGISTER_SUBMIT_SUCCESS:
       return {
         ...state,
-        registerData: {
-          ...state.registerData,
-          ...action.payload,
-        },
         registerErrorMessage: '',
+        registerData: {
+          email: '',
+          password: '',
+          passwordConfirm: '',
+          nickname: '',
+          dateofbirth: '',
+        },
         // registered: true,
       };
     case REGISTER_SUBMIT_ERROR:

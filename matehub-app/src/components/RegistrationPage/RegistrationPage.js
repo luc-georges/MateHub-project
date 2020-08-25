@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Button, Grid, Checkbox } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
-const RegistrationPage = ({registerData, onChangeField, onFormSubmit}) => {
-  // console.log(registerData);
+const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
     onChangeField({
@@ -13,6 +13,7 @@ const RegistrationPage = ({registerData, onChangeField, onFormSubmit}) => {
   const handleSubmit = () => {
     onFormSubmit();
   };
+  const [checked, setChecked] = React.useState(false);
   return (
     <div className="global">
       <Form onSubmit={handleSubmit}>
@@ -80,12 +81,32 @@ const RegistrationPage = ({registerData, onChangeField, onFormSubmit}) => {
               />
             </Grid.Column>
           </Grid.Row>
-          <Form.Field
-            control={Checkbox}
-            label="I agree to the terms and conditions"
-            style={{ marginTop: '2em', textAlign: 'center' }}
-          />
-          <Button content="submit" type="submit" />
+          {!checked && (
+            <div>
+            <Form.Input
+                id="form-input-control-error-checkbox"
+                control={Checkbox}
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+                label="I agree to the terms and conditions"
+                style={{ marginTop: '2em', textAlign: 'center' }}
+              />
+              <Button content="submit" type="submit" disabled />
+            </div>
+          )}
+          {checked && (
+            <div>
+              <Form.Input
+                id="form-input-control-error-checkbox"
+                control={Checkbox}
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+                label="I agree to the terms and conditions"
+                style={{ marginTop: '2em', textAlign: 'center' }}
+              />
+              <Button content="Submit" type="submit" />
+            </div>
+          )}
         </Grid>
       </Form>
     </div>

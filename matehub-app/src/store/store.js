@@ -17,6 +17,7 @@ import registerRequestMW from './middlewares/registerRequestMW';
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ['auth']
 };
 
 // == Enhancers

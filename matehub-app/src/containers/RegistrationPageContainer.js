@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import RegistrationPage from '../components/RegistrationPage/RegistrationPage';
 import { changeField, registerSubmit } from '../store/actions/registerActions';
-import moment from 'moment';
 
 
 const mapStateToProps = (state) => ({
@@ -10,7 +9,7 @@ const mapStateToProps = (state) => ({
     password: state.register.registerData.password,
     passwordConfirm: state.register.registerData.passwordConfirm,
     nickname: state.register.registerData.nickname,
-    dateofbirth: moment(state.register.registerData.dateofbirth).format('YYYY-MM-DD'),
+    dateofbirth: state.register.registerData.dateofbirth,
   },
 });
 

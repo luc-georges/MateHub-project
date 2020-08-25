@@ -16,12 +16,17 @@ const appReducer = combineReducers({
 const rootReducer = (state, action) => {
   if (action.type === 'LOGOUT') {
     state.auth = undefined;
-    // state.register = undefined;
-    // window.location.reload(true);
-  }
-  if (action.type === 'CHECK_AUTH') {
     state.register = undefined;
   }
+  if (action.type === 'REGISTER_SUBMIT_SUCCESS') {
+    state.auth = undefined;
+  }
+  if (action.type === 'LOGIN_SUBMIT_SUCCESS') {
+    state.auth = undefined;
+  }
+  // if (action.type === 'CHECK_AUTH') {
+  //   state.register = undefined;
+  // }
 
   return appReducer(state, action);
 };
