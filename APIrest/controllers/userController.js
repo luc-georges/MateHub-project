@@ -37,7 +37,6 @@ module.exports = {
      */
     getUserProfile: async (request, response) => {
       try {
-        console.log('aioli',request.user)
 
         const user = await User.findById(request.params.id);
         if (!user) {
@@ -47,20 +46,6 @@ module.exports = {
         delete user._password;
         
         response.status('200').json({data : user});
-
-        /*
-        const headerAuth = request.headers['authorization'];
-        const userId = await jwtUtils.getUserId(headerAuth);
-        const userNickname = await jwtUtils.getUserNickname(headerAuth);
-        
-        if (userId === user._id && userNickname === user._nickname) {
-            
-            delete user._password;
-            response.status('200').json({data : user});
-        } else {
-            
-            return response.status('400').json({error: 'wrong token'});
-        }*/
 
       } catch (error) {
           console.log('error:', error);
@@ -189,7 +174,7 @@ module.exports = {
 
         delete user._password;
         user._access_token = jwtUtils.generateAccessToken(user);
-        user._refresh_token = jwtUtils.generateRefreshToken(user);
+        user._refresh_token = await jwtUtils.generateRefreshToken(user);
         
         response.status('200').json({data: { user }});
 
@@ -240,14 +225,6 @@ module.exports = {
         try {
             const user = await User.findById(request.params.id);
 
-            const headerAuth = request.headers['authorization'];
-            const userId = jwtUtils.getUserId(headerAuth);
-            const userNickname = jwtUtils.getUserNickname(headerAuth);
-    
-            if (userId !== user.id || userNickname !== user._nickname ) {
-                return response.status('400').json({error: 'wrong token'});
-            }
-
             Object.assign(user, request.body);
 
             console.log('user',user)
@@ -288,14 +265,6 @@ module.exports = {
     deleteAnUser: async (request, response) => {
         try {
             const user = await User.findById(request.params.id);
-
-            const headerAuth = request.headers['authorization'];
-            const userId = jwtUtils.getUserId(headerAuth);
-            const userNickname = jwtUtils.getUserNickname(headerAuth);
-    
-            if (userId !== user.id || userNickname !== user._nickname ) {
-                return response.status('400').json({error: 'wrong token'});
-            }
 
             const result = await user.delete();
         

@@ -25,11 +25,20 @@ module.exports = {
         return refreshToken;
     },
 
-    saveRefreshToken: async function (userData, token) {
+    saveRefreshToken: function (userData, token) {
         return new Promise((resolve, reject) => {
-            redis.client.hmset(REDIS_PREFIX, userData.id, (err,result) => {
+            redis.hmset(REDIS_PREFIX, userData.id, token, (err,result) => {
                 if (err) return reject(err);
                 resolve(result);
+            });
+        });
+    },
+
+    testRefreshToken: function (userData, token) {
+        return new Promise((resolve, reject) => {
+            redis.hget(REDIS_PREFIX, userData.id, (err,result) => {
+                if (err) return reject(err);
+                resolve(result === token);
             });
         });
     }
