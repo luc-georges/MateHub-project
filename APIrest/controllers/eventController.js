@@ -167,7 +167,7 @@ module.exports = {
      */
     deleteAnEvent: async (request, response) => {
         try {
-
+            
             const event = await Event.findById(request.params.id);
             const result = await event.delete();
         

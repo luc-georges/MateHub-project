@@ -67,6 +67,8 @@ module.exports = {
                 response.status('404').json({error:'user not found'})
                 //next()
             }
+            delete result._password;
+            delete result._DOB;
 
             response.status('200').json({data: result});
 
@@ -85,7 +87,6 @@ module.exports = {
      */    
     getUserBy: async (request, response) => {
         try {
-            //console.log('laaaaaaaaaaaaaaaaaaaaaaa',request.query);
             const result = await User.findBy(request.query);
 
             if (!result) {
@@ -112,10 +113,8 @@ module.exports = {
 
             const checkEmail = {email : request.body.email};
             const checkNickname = {nickname : request.body.nickname};
-            //console.log(checkEmail);
             
             const tryIfUserExist = await User.findBy(checkEmail);
-            //console.log('tryIfUserExist:', tryIfUserExist)
             
             if(tryIfUserExist) {
                 return response.status('409').json({error:'User already Exist'});
@@ -130,7 +129,6 @@ module.exports = {
                 return response.status('409').json({error:'password and passwordComfirm must be same'});
             }
            
-           //console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
             const user = new User(request.body);
             
             const saltRounds = 10;
@@ -206,8 +204,10 @@ module.exports = {
      */
     logout: async (request, response) => {
         try {
+            const refreshToken = request.body.refreshToken;
+            await jwtUtils.deleteRefreshToken(refreshToken);
 
-            response.status('200');
+            response.status('200').json({logout: 'ok'});
 
         } catch (error) {
             console.log('error:', error)
@@ -227,7 +227,6 @@ module.exports = {
 
             Object.assign(user, request.body);
 
-            console.log('user',user)
 
             if(request.body.password) {
 

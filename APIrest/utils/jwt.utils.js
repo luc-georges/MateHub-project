@@ -41,44 +41,19 @@ module.exports = {
                 resolve(result === token);
             });
         });
-    }
-    /*
-    parseAuthorization: (authorization) => {
-        return (authorization != null) ? authorization.replace('Bearer ', '') : null;
-    },*/
-    /*
-    getUserId: function (authorization) {
-        let userId = -1;
-        let token = this.parseAuthorization(authorization);
-        if(token !== null) {
-            try{
-                let jwtToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-                if(jwtToken !== null) {
-                    
-                    userId = jwtToken.userId;
-                }
-            } catch (error) {
-            console.log('error:', error)
-
-            }
-        }
-        return userId;
     },
-    getUserNickname: function (authorization) {
-        let userNickname;
-        let token = this.parseAuthorization(authorization);
-        if(token !== null) {
-            try{
-                let jwtToken = jwt.verify(token, process.env.JWT_SIGN_SECRET);
-                if(jwtToken !== null) {
 
-                    userNickname = jwtToken.userNickname;
-                }
-            } catch (error) {
-                console.log('error:', error)
+    deleteRefreshToken: function (token) {
+        return new Promise((resolve, reject) => {
+            jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+                if (err) return reject(err)
 
-            }
-        }
-        return userNickname;
-    }*/
+                redis.hdel(REDIS_PREFIX, user.id, (err, result) => {
+                    if (err) return reject(err);
+                    resolve(result);
+                })
+            })
+        })
+    }
+
 };

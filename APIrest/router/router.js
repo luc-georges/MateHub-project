@@ -34,7 +34,7 @@ router.post('/registration', validateBody(postUserSchema), userController.regist
 router.post('/users/login', userController.login);
 router.post('/refreshToken', authController.refreshToken);
 router.post('/users/islogged', userController.isLogged);
-router.get('/users/logout', userController.logout);
+router.post('/user/:id/logout', authenticateToken, ownerControl, userController.logout);
 router.put('/user/:id/update', authenticateToken, ownerControl, validateBody(updateUserSchema), userController.updateAnUser);
 router.delete('/user/:id/delete', authenticateToken, ownerControl, userController.deleteAnUser);
 

@@ -11,7 +11,6 @@ module.exports = {
             }
                       
             jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET,async (err, user) => {
-                console.log('user:', user)
                 if(err) return response.status('403').json({ error: 'invalid refresh token'});
                 
                 const tokenIsValid = await testRefreshToken(user, refreshToken);
