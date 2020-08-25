@@ -20,10 +20,12 @@ $body$
 
 SELECT u.id AS "_user_id",  
         u.nickname AS "_nickname", 
+        --get age  from date of birth
         (SELECT EXTRACT(YEAR FROM AGE(u."dateofbirth" ))) AS "_age",
         u.description AS "_description",
         u.avatar AS "_avatar",
         u.banner AS "_banner", 
+        -- Game object containing Gameid's and game stats  from each games 
        (SELECT 
                 json_agg(
                     json_build_object(
@@ -36,9 +38,10 @@ SELECT u.id AS "_user_id",
                             JOIN user_access."game" g ON g.id = uhg.game_id
                             WHERE uhg.user_id = u.id
             GROUP by u.id) AS games,
+            --  object containing all event created for this user 
              (SELECT 
                 array_to_json(array_agg(
-                    row_to_json(r))) FROM( SELECT
+                    r.*)) FROM( SELECT
                          e."id" AS "event_id", 
                          g."name" AS "game_name",
                          g."id" AS "game_id", 
@@ -49,8 +52,9 @@ SELECT u.id AS "_user_id",
                          e."player_max",
                          e."description",
                          e."status",
+                        --  object containing languages link to this event
                          (SELECT  array_to_json(array_agg(
-                    row_to_json(langs))) FROM(
+                                langs.*)) FROM(
                              SELECT l.id,l.label ,l.icon
                               FROM user_access."lang" l 
                         JOIN user_access."M_EVENT_has_LANG" ehl ON ehl.event_id = e.id 
@@ -63,9 +67,10 @@ SELECT u.id AS "_user_id",
                                 GROUP by e.id,u.id,g.name,g.id
                         )r 
                         ) AS "_event_created" ,
+                        --  object containing all event  this user is tagged in
             (SELECT  
                 array_to_json(array_agg(
-                    row_to_json(z))) FROM( SELECT 
+                    z.*)) FROM( SELECT 
                         uhe."id" AS "id",
                         g."name" AS "game_name",
                         g."id"   AS "game_id",  
@@ -77,8 +82,9 @@ SELECT u.id AS "_user_id",
                         evvt."player_max", 
                         evvt."description", 
                         evvt."status",
+                        --  object containing languages link to this event
                         (SELECT  array_to_json(array_agg(
-                    row_to_json(events_lang))) FROM(
+                    events_lang.*)) FROM(
                              SELECT l.id,l.label ,l.icon
                               FROM user_access."lang" l 
                         JOIN user_access."event" evt ON evt.id = uhe.event_id
@@ -95,7 +101,7 @@ SELECT u.id AS "_user_id",
              ) AS "_has_events"
             
                                 FROM user_access."user" u
-                        WHERE u.id =1;
+                        WHERE u.id =1\x\g\x
 
 
 $body$
