@@ -44,7 +44,14 @@ module.exports = class User extends CoreModel {
             
         }
     }
-
+    static async findProfileById(id){
+        try{
+            const result = await client.query(`SELECT * FROM getUserData($1)`,[id]);
+            return result.rows[0]
+        }catch(error){
+            console.log('error:', error)
+        }
+    }
 
     
     /**** GETTER ************/

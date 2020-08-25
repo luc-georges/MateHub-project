@@ -50,6 +50,24 @@ module.exports = {
         }
 
     },
+    findProfilByPk: async (request, response) => {
+        try {
+            const result = await User.findProfileById(request.params.id);
+
+            if (!result) {
+                response.status('404').json({error:'user not found'})
+                //next()
+            }
+
+            response.status('200').json({data: result});
+
+        } catch (error) {
+            console.log(error);
+            response.status('500').json({error:'Internal Server Error'});
+        }
+
+    },
+
 
     /**
      * middleware express pour rechercher un user par n'importe quel parametre en query string
