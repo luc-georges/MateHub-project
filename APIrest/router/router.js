@@ -55,6 +55,10 @@ router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickna
 router.get('/games', gameController.getAllGame);
 router.get('/game/:id', gameController.getGameById);
 
+/********** ROUTER PASSWORD *****************/
+router.post('/password/forgot', authController.forgotPassword);
+router.put('/password/createNew', authController.createNewPassword);
+
 
 module.exports = router;
 

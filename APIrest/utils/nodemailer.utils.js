@@ -1,5 +1,42 @@
 const nodemailer = require("nodemailer");
 
+module.exports = {
+
+  mailOptions: function (user) {
+    return  mailOptions = {
+    from: process.env.EMAIL,
+    to: `${user.email}`,
+    subject: `Welcome on MateHub ✔`, // Subject line
+    text: `Hey ${user.nickname}, thank you for creating an account at matehub.gg.<br>We are doing everything we can to make your experience on the site as pleasant as possible, and if you have anything to tell us about it, you can contact us via the contact page. We hope that you will find a lot of teammates to play your favorite games.`, // plain text body
+    html: `<h1>Hey ${user.nickname}</h1>
+    <p>Thank you for creating an account at <strong>matehub.gg</strong> . We are doing everything we can to make your experience on the site as pleasant as possible, and if you have anything to tell us about it, you can contact us via the contact page. We hope that you will find a lot of teammates to play your favorite games</p>
+    <h3>Enjoy</h3>`, // html body
+  }},
+
+  mailOptionsPassword: function (email, securityString) {
+    return  mailOptions = {
+    from: process.env.EMAIL,
+    to: `${email}`,
+    subject: `forgot password ✔`, // Subject line
+    text: `hey ,here is the code to change your password`, // plain text body
+    html: `<h1>Hey </h1>
+    <p>here is the code to change your password:<br>${securityString}</p>` // html body
+  }},
+}
+  
+
+
+/*
+
+transporter.sendMail(mailOptions, (err, data) => {
+  if (err) {
+    console.log('error', err)
+  } else {
+    console.log('email send')
+  }
+})*/
+
+/*
 // async..await is not allowed in global scope, must use a wrapper
 async function main() {
     // Generate test SMTP service account from ethereal.email
@@ -36,4 +73,4 @@ async function main() {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
   
-  main().catch(console.error);
+  main().catch(console.error);*/

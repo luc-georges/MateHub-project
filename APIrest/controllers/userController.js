@@ -2,6 +2,8 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const sanitaze = require('../sanitaze/sanitazer');
 const jwtUtils = require('../utils/jwt.utils');
+const { mailOptions } = require('../utils/nodemailer.utils');
+const nodemailer = require("nodemailer");
 //const authHeader = require('../middleware/authMiddleware');
 
 module.exports = {
@@ -121,6 +123,7 @@ module.exports = {
             }
             
             const tryIfNicknameExist = await User.findBy(checkNickname);
+            
             if(tryIfNicknameExist) {
                 return response.status('409').json({error:'Nickname already Exist'});
             }
@@ -134,7 +137,23 @@ module.exports = {
             const saltRounds = 10;
             const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
             user.password = encryptedPassword;
-            
+
+            /****** send mail at new user *********/  
+            transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
+                }
+            });
+            const options = mailOptions(user) ;
+            transporter.sendMail(options, (err, _) => {
+                if (err) {
+                  console.log('error', err)
+                }
+            });
+            /*************************************/
+
             await user.insert();
           
             response.status('200').json({data:{
@@ -171,6 +190,7 @@ module.exports = {
         }
 
         delete user._password;
+
         user._access_token = jwtUtils.generateAccessToken(user);
         user._refresh_token = await jwtUtils.generateRefreshToken(user);
         

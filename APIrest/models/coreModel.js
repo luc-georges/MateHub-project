@@ -73,8 +73,6 @@ class CoreModel {
             const prop = Object.keys(params);
             const value = Object.values(params);
     
-            console.log(prop[0],value[0])
-    
             const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
 
             if(result.rows.length === 0){
