@@ -101,7 +101,7 @@ SELECT u.id AS "_user_id",
              ) AS "_has_events"
             
                                 FROM user_access."user" u
-                        WHERE u.id =1\x\g\x
+                        WHERE u.id ="USER_ID"
 
 
 $body$
