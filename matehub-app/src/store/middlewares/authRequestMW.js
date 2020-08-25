@@ -16,8 +16,8 @@ export default (store) => (next) => (action) => {
     case LOGIN_SUBMIT:
       axios({
         method: 'post',
-        url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
-        // url: 'http://localhost:3001/users/login',
+        // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
+        url: 'http://localhost:3001/users/login',
         data: store.getState().auth.loginData,
         headers: {
           'Access-Control-Allow-Origin': '*',

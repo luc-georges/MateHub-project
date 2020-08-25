@@ -1,5 +1,4 @@
 import React from 'react';
-import titrelol from '../../assets/titrelol.png';
 import './style.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -72,7 +71,7 @@ export default LastestNews;
 //   );
 // }
 
-{/* <div className="inner-div">
+/*{ <div className="inner-div">
 <img
         src="https://cdn1.dotesports.com/wp-content/uploads/2020/03/31154847/49645845107_a741a49ad9_k-768x539.jpg"
         alt="lollogo"
@@ -116,4 +115,4 @@ export default LastestNews;
         <h3>Santorin and FlyQuest are here to prove that they're a team fans can believe in.</h3>  
         <h4>League of Legends</h4>  
         <p>Santorin on qualifying for Worlds: “I know [FlyQuest] has had the same mindset as me—we both feel really underrated and want to prove that we’re here to compete and dominate</p>
-</div> */}
+</div> }*/
