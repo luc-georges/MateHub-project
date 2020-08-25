@@ -16,6 +16,7 @@ export const initialState = {
   isLogged: false,
   nickname: '',
   loginErrorMessage: '',
+  connectedUserData: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -40,7 +41,11 @@ export default (state = initialState, action = {}) => {
         isLogged: true,
         loginData: {
           ...state.loginData,
-        }
+        },
+        connectedUserData: {
+          ...state.connectedUserData,
+          ...action.payload,
+        },
       };
     case LOGIN_SUBMIT_ERROR:
       return {

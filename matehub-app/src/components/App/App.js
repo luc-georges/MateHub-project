@@ -16,13 +16,21 @@ import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
+import ProfilePage from '../../containers/ProfilePageContainer';
 
 /**
  * composant principale de l'application
  * @component
  * @param {Object} param0
  */
-function App({ getEvents, getTopUsers, checkAuth, getNews, isLogged, registered }) {
+function App({
+  getEvents,
+  getTopUsers,
+  checkAuth,
+  getNews,
+  isLogged,
+  registered,
+}) {
   // eslint-disable-next-line
   useEffect(() => {
     getNews();
@@ -38,6 +46,7 @@ function App({ getEvents, getTopUsers, checkAuth, getNews, isLogged, registered 
         <Route exact path="/">
           <HomePage />
         </Route>
+        <Route exact path="/profile/:id" component={ProfilePage} />
         <Route exact path="/contact">
           <ContactPage />
         </Route>
