@@ -15,7 +15,9 @@ module.exports = {
      */
     refreshToken : async (request, response) => {
         try {
-            const refreshToken = request.body.refreshToken;
+            const authHeader = request.headers['authorization'];
+            const refreshToken = authHeader && authHeader.split(' ')[1];
+            //const refreshToken = request.body.refreshToken;
 
             if (!refreshToken) {
                 return response.status('401').json({error : 'need refreshToken'});
