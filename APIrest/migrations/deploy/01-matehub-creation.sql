@@ -8,7 +8,7 @@ CREATE TABLE "user" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "nickname" TEXT NOT NULL,
-    "DOB" TIMESTAMPTZ NOT NULL,
+    "dateofbirth" TIMESTAMPTZ NOT NULL,
     "description" TEXT,
     "avatar" TEXT,
     "banner" TEXT

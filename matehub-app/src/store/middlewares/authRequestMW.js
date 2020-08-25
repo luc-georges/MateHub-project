@@ -14,6 +14,7 @@ export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case LOGIN_SUBMIT:
+    //console.log(store.getState().auth.loginData)
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
@@ -33,7 +34,7 @@ export default (store) => (next) => (action) => {
         .catch((err) => {
           console.log('On passe dans le catch de la requête de login :', err);
           store.dispatch(
-            loginSubmitError("Désolé, cet utilisateur n'existe pas")
+            loginSubmitError("Cet utilisateur n'existe pas")
           );
         });
       break;

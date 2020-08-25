@@ -112,12 +112,12 @@ module.exports = {
             user.password = encryptedPassword;
             
             await user.insert();
-          
+            console.log(user)
             response.status('200').json({data:{
                 _id : user._id,
                 _email : user._email,
                 _nickname : user._nickname,
-                _DOB : user._DOB
+                _dateofbirth : user._dateofbirth
             }});
             
         } catch (error) {

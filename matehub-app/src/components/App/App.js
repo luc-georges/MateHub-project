@@ -11,7 +11,7 @@ import 'semantic-ui-css/semantic.min.css';
 import NavBar from '../NavBar/NavBar';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../../containers/HomePageContainer';
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import RegistrationPage from '../../containers/RegistrationPageContainer';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
@@ -22,7 +22,7 @@ import SearchEventPage from '../SearchEventPage/SearchEventPage';
  * @component
  * @param {Object} param0
  */
-function App({ getEvents, getTopUsers, checkAuth, isLogged, getNews }) {
+function App({ getEvents, getTopUsers, checkAuth, getNews, isLogged, registered }) {
   // eslint-disable-next-line
   useEffect(() => {
     getNews();
@@ -42,7 +42,7 @@ function App({ getEvents, getTopUsers, checkAuth, isLogged, getNews }) {
           <ContactPage />
         </Route>
         <Route exact path="/registration">
-          {isLogged ? <Redirect to="/" /> : <RegistrationPage />}
+          {registered ? <Redirect to="/login" /> : <RegistrationPage />}
         </Route>
         <Route exact path="/login">
           {isLogged ? <Redirect to="/" /> : <LoginPage />}

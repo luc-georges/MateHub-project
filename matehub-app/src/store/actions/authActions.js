@@ -1,4 +1,3 @@
-// Form actions
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const LOGIN_SUBMIT_SUCCESS = 'LOGIN_SUBMIT_SUCCESS';

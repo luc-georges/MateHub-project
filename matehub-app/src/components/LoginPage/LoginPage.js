@@ -1,9 +1,8 @@
 import React from 'react';
 import './style.scss';
 import { Form, Button, Checkbox } from 'semantic-ui-react';
-// import { NavLink } from 'react-router-dom';
 
-const LoginPage = ({ loginData, onChangeField, onFormLogin, isLogged }) => {
+const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged }) => {
   // console.log('LoginPage');
 
   const handleInputChange = (evt) => {
@@ -15,7 +14,7 @@ const LoginPage = ({ loginData, onChangeField, onFormLogin, isLogged }) => {
 
   const handleSubmit = (evt) => {
     // evt.preventDefault();
-    onFormLogin();
+    onFormSubmit();
   };
   // <--- The page you want to redirect your user to.
 
@@ -45,12 +44,14 @@ const LoginPage = ({ loginData, onChangeField, onFormLogin, isLogged }) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Field control={Checkbox} label="Remember me" />
-        <Button
-          style={{ marginTop: '2em', textAlign: 'center' }}
-          content="submit"
-          type="submit"
-        />
+        <div>
+          <Form.Field control={Checkbox} label="Remember me" />
+          <Button
+            style={{ marginTop: '2em', textAlign: 'center' }}
+            content="submit"
+            type="submit"
+          />
+        </div>
       </Form>
     </div>
   );

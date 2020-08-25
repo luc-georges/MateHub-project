@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import LoginPage from '../components/LoginPage/LoginPage';
 import { changeField, loginSubmit } from '../store/actions/authActions';
 
@@ -12,15 +12,15 @@ const mapStateToProps = (state) => ({
   isLogged: state.auth.isLogged,
 });
 
-const mapDispatchToProps = (dispatch) =>  ({
+const mapDispatchToProps = (dispatch) => ({
   onChangeField: (changedData) => {
     console.log(changedData);
     dispatch(changeField(changedData));
   },
-  onFormLogin: () => {
+  onFormSubmit: () => {
     console.log('Il y a eu un submit !');
     dispatch(loginSubmit());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
