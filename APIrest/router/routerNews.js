@@ -1,6 +1,6 @@
 const express = require('express');
 const routerNews = express.Router();
-const lolNewsController = require('../controllers/newsApi/lolNewsController');
+
 const url = require('url');
 
 routerNews.get('/lol/news',function(req, res) {
@@ -11,6 +11,7 @@ routerNews.get('/lol/news',function(req, res) {
           "offset": 0,
           "limit":10
        }}))});
+
 
        
 

@@ -6,3 +6,4 @@
 03-add-schema 2020-08-17T09:40:51Z "Etudiant O'clock",,, <etudiant@teleporteur> # add schema to bdd
 04-function-event 2020-08-18T14:45:36Z "Etudiant O'clock",,, <etudiant@teleporteur> # create function fo events
 05-view-global-users 2020-08-19T15:27:16Z "Etudiant O'clock",,, <etudiant@teleporteur> # add view to get the top users
+06-insert-user-details 2020-08-24T12:57:47Z "Etudiant O'clock",,, <etudiant@teleporteur> # insert details function

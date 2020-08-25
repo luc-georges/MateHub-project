@@ -52,13 +52,17 @@ CREATE TABLE "event" (
 );
 
 --M_2_M 
+
 CREATE TABLE "M_USER_has_GAME" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "user_id" INT NOT NULL REFERENCES "user"("id"),
     "game_id" INT NOT NULL REFERENCES "game"("id"),
-    "IGN" TEXT NOT NULL,
+    "IGN" JSON ,
+    "stats" JSON,
     "level_id" INT REFERENCES "level"("id")
 );
+
+
 CREATE TABLE "M_USER_has_EVENT" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "event_id" INT NOT NULL REFERENCES "event"("id"),
@@ -66,6 +70,7 @@ CREATE TABLE "M_USER_has_EVENT" (
     "status" INT NOT NULL DEFAULT 0 ,
     "message" TEXT NOT NULL DEFAULT 'Hey mate, i would love to participate! Check my profile !'
 );
+
 CREATE TABLE "M_EVENT_has_LANG" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "event_id" INT NOT NULL REFERENCES "event"("id"),
