@@ -30,7 +30,7 @@ export default (store) => (next) => (action) => {
         });
       break;
     case GET_USER:
-      const {selectedUser} = store.getState().users;
+      const { selectedUser } = store.getState().users;
       axios({
         method: 'get',
         url: `http://localhost:3001/user/${selectedUser}`,

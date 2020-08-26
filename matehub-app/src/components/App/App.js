@@ -8,7 +8,7 @@ import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 /* Import components */
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../../containers/NavBarContainer';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../../containers/RegistrationPageContainer';

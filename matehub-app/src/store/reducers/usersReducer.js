@@ -7,7 +7,6 @@ import {
   GET_USER_ERROR,
   GET_SELECTED_USER,
 } from '../actions/usersActions';
-import { StatisticLabel } from 'semantic-ui-react';
 
 export const initialState = {
   userData: {},
@@ -230,7 +229,7 @@ export const initialState = {
   // },
   topUsersList: [],
   error: '',
-  selectedUser: "",
+  selectedUser: '',
 };
 
 export default (state = initialState, action = {}) => {

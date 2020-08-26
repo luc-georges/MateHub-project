@@ -4,8 +4,13 @@ import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
-const NavBar = () => {
+const NavBar = ({ isLogged, connectedUserData, getSelectedUser }) => {
   // console.log('NavBar');
+
+  const handleGetSelectedUser = (evt) => {
+    getSelectedUser(evt.currentTarget.id);
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-logo">MATE HUB</div>
@@ -19,15 +24,23 @@ const NavBar = () => {
             size="large"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/profile">
-          <Button
-            fluid
-            className="home"
-            content="Profile"
-            icon="user"
-            size="large"
-          />
-        </NavLink>
+        {isLogged && (
+          <NavLink
+            id={connectedUserData._id}
+            className="navbar-nav-link"
+            exact
+            to={`/profile/${connectedUserData._nickname}`}
+            onClick={handleGetSelectedUser}
+          >
+            <Button
+              fluid
+              className="home"
+              content="Profile"
+              icon="user"
+              size="large"
+            />
+          </NavLink>
+        )}
         <NavLink className="navbar-nav-link" exact to="/">
           <Button
             fluid
