@@ -23,7 +23,7 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
       <div className="profilepage-header">  
       <div className="container-avatar"></div>
        <div className="container-banner">
-       {personnalData._games &&
+       {personnalData._banner &&
             <img
             src={require(`../../assets/${personnalData._banner}`)}
             alt="lollogo"
@@ -31,7 +31,7 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
           />
               
             }
-      {personnalData._games &&
+      {personnalData._avatar &&
            <img
        
            src={icon}
