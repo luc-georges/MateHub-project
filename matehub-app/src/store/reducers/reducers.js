@@ -14,16 +14,16 @@ const appReducer = combineReducers({
 });
 
 const rootReducer = (state, action) => {
-  if (action.type === 'LOGOUT') {
+  if (action.type === 'LOGOUT_SUCCESS') {
     state.auth = undefined;
     state.register = undefined;
   }
-  if (action.type === 'REGISTER_SUBMIT_SUCCESS') {
-    state.auth = undefined;
-  }
-  if (action.type === 'LOGIN_SUBMIT_SUCCESS') {
-    state.auth = undefined;
-  }
+  // if (action.type === 'REGISTER_SUBMIT_SUCCESS') {
+  //   state.auth = undefined;
+  // }
+  // if (action.type === 'LOGIN_SUBMIT_SUCCESS') {
+  //   state.auth = undefined;
+  // }
   // if (action.type === 'GET_USER')
   // {
   //   state.users.userData = undefined;

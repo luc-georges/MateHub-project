@@ -217,11 +217,11 @@ module.exports = {
         delete request.session.user.password;
         delete user._password;
         //response.status('200').json({data: { logged : true, info: request.session.user}});
-        let tokens = {};
-        tokens._access_token = jwtUtils.generateAccessToken(user);
-        tokens._refresh_token = await jwtUtils.generateRefreshToken(user);
+        // let tokens = {};
+        // tokens._access_token = jwtUtils.generateAccessToken(user);
+        // tokens._refresh_token = await jwtUtils.generateRefreshToken(user);
         
-        response.status('200').json({data :{tokens:  tokens ,  logged : true, info: request.session.user}});
+        response.status('200').json({data :{/* tokens:  tokens  ,*/  logged : true, info: request.session.user}});
 
       } catch (error) {
           console.log('error:', error)
@@ -257,8 +257,8 @@ module.exports = {
     logout: async (request, response, next) => {
         try {
             
-            const refreshToken = request.body.refreshToken;
-            await jwtUtils.deleteRefreshToken(refreshToken);
+            // const refreshToken = request.body.refreshToken;
+            // await jwtUtils.deleteRefreshToken(refreshToken);
             request.session.destroy();
 
             response.status('200').json({logout: 'ok'});
