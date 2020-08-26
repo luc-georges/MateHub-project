@@ -33,7 +33,7 @@ export default (store) => (next) => (action) => {
       const { selectedUser } = store.getState().users;
       axios({
         method: 'get',
-        url: `http://localhost:3001/user/${selectedUser}`,
+        url: `http://localhost:3001/user/profile/${selectedUser}`,
       })
         .then((res) => {
           // console.log(res.data.data);

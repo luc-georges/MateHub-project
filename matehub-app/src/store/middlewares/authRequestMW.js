@@ -20,7 +20,7 @@ export default (store) => (next) => (action) => {
       const { connectedUserId } = store.getState().auth;
       axios({
         method: 'get',
-        url: `http://localhost:3001/user/${connectedUserId}`,
+        url: `http://localhost:3001/user/${connectedUserId}/profile/private`,
       })
         .then((res) => {
           // console.log(res.data.data);
