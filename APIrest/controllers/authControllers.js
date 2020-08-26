@@ -13,7 +13,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'access token
      */
-    refreshToken : async (request, response) => {
+    refreshToken : async (request, response, next) => {
         try {
             const authHeader = request.headers['authorization'];
             const refreshToken = authHeader && authHeader.split(' ')[1];
@@ -37,7 +37,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
 
     },
@@ -93,7 +93,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -133,7 +133,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     }   
         

@@ -14,7 +14,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} 10 users ayant le plus d'event
      */
-    getTopUsers: async (request, response) => {
+    getTopUsers: async (request, response, next) => {
         try {
             const result = await User.findTopPlayer();
 
@@ -27,7 +27,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -37,7 +37,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */
-    getUserProfile: async (request, response) => {
+    getUserProfile: async (request, response, next) => {
       try {
 
         const user = await User.findById(request.params.id);
@@ -51,7 +51,7 @@ module.exports = {
 
       } catch (error) {
           console.log('error:', error);
-          response.status('500').json({error:'Internal Server Error'});
+          next(error);
           
       }  
     },
@@ -61,7 +61,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */
-    getUserById: async (request, response) => {
+    getUserById: async (request, response, next) => {
         try {
             const result = await User.findById(request.params.id);
 
@@ -76,7 +76,7 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
 
     },
@@ -87,7 +87,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */    
-    getUserBy: async (request, response) => {
+    getUserBy: async (request, response, next) => {
         try {
             const result = await User.findBy(request.query);
 
@@ -100,7 +100,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);  
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -110,7 +110,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user crée
      */
-    registration: async (request, response) => {
+    registration: async (request, response, next) => {
         try {
 
             const checkEmail = {email : request.body.email};
@@ -165,7 +165,7 @@ module.exports = {
             
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -175,7 +175,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user connecté
      */
-    login: async (request, response) => {
+    login: async (request, response, next) => {
       try {
         
         const checkEmail = {email : request.body.email};
@@ -198,7 +198,7 @@ module.exports = {
 
       } catch (error) {
           console.log('error:', error)
-          response.status('500').json({error:'Internal Server Error'});
+          next(error);
       }  
     },
 
@@ -208,7 +208,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user connecté
      */
-    isLogged: (request, response) => {
+    isLogged: (request, response, next) => {
         
         if(request.session.user) {
             response.status('200').json({data : {logged : true, info: request.session.user}});
@@ -222,7 +222,7 @@ module.exports = {
      * @param {Object} request - Express request object
      * @param {Object} response - Express response object
      */
-    logout: async (request, response) => {
+    logout: async (request, response, next) => {
         try {
             const refreshToken = request.body.refreshToken;
             await jwtUtils.deleteRefreshToken(refreshToken);
@@ -231,7 +231,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -241,7 +241,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */
-    updateAnUser: async (request, response) => {
+    updateAnUser: async (request, response, next) => {
         try {
             const user = await User.findById(request.params.id);
 
@@ -271,7 +271,7 @@ module.exports = {
             
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -281,7 +281,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {boolean} true si ok
      */
-    deleteAnUser: async (request, response) => {
+    deleteAnUser: async (request, response, next) => {
         try {
             const user = await User.findById(request.params.id);
 
@@ -291,7 +291,7 @@ module.exports = {
                        
         } catch (error) {
             console.log(error)
-            response.status('500').json({error:'Internal Server Error'});    
+            next(error);
         }
     }
 }

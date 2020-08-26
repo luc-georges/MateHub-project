@@ -10,6 +10,10 @@ const updateUserSchema = require('../validator/schema/user/updateUser');
 const postEventSchema = require('../validator/schema/event/postEvent');
 const updateEventSchema = require('../validator/schema/event/updateEvent');
 
+/*********** 500 ******************/
+const serverError = require('../middleware/serverErrorMiddleware');
+
+
 /********* JWT *******************/
 const { authenticateToken } = require('../middleware/authMiddleware');
 const { ownerControl } = require('../middleware/ownerControlMiddleware');
@@ -26,7 +30,7 @@ const authController = require('../controllers/authControllers');
 
 
 /********* ROUTER USER ***************/
-router.get('/user/top', userController.getTopUsers);
+router.get('/users/top', userController.getTopUsers);
 router.get('/user/:id/profile/private', authenticateToken, ownerControl, userController.getUserProfile);
 router.get('/user/:id', userController.getUserById);
 //router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
@@ -59,6 +63,7 @@ router.get('/game/:id', gameController.getGameById);
 router.post('/password/forgot', authController.forgotPassword);
 router.put('/password/createNew', authController.createNewPassword);
 
-
+/*********** ERROR 500 midleware ************/
+router.use(serverError);
 module.exports = router;
 
