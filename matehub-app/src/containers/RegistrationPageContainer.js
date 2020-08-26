@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import RegistrationPage from '../components/RegistrationPage/RegistrationPage';
 import { changeField, registerSubmit } from '../store/actions/registerActions';
-
+// import { push } from 'react-router-redux'
 
 const mapStateToProps = (state) => ({
   registerData: {
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
   onFormSubmit: () => {
     console.log('Submit dans register');
     dispatch(registerSubmit());
+    // dispatch(push('/login'))
   },
 });
 

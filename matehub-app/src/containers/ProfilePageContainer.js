@@ -4,11 +4,10 @@ import { getUser } from '../store/actions/usersActions';
 
 // import { getUserById } from '../store/reducers/usersReducer';
 
-const mapStateToProps = (state, ownProps) => {
-  // const id = ownProps.match.params.id;
-  return { userData: state.users.userData, };
-  // return { userData: getUserById(state, id), };
-};
+const mapStateToProps = (state) => ({
+  userData: state.users.userData,
+  userById: state.users.userById,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getUser: () => {

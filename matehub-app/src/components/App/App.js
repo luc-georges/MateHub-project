@@ -17,6 +17,7 @@ import ContactPage from '../ContactPage/ContactPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
 import ProfilePage from '../../containers/ProfilePageContainer';
+import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 
 /**
  * composant principale de l'application
@@ -49,6 +50,7 @@ function App({
           <HomePage />
         </Route>
         <Route exact path="/profile/:name" component={ProfilePage} />
+        <Route exact path="/personnalprofile" component={PersonnalProfilePage} />
         <Route exact path="/contact">
           <ContactPage />
         </Route>

@@ -4,7 +4,7 @@ import { getSelectedUser } from '../store/actions/usersActions';
 
 const mapStateToProps = (state) => ({
   isLogged: state.auth.isLogged,
-  connectedUserData: state.auth.connectedUserData,
+  connectedUserId: state.auth.connectedUserId,
 });
 
 const mapDispatchToProps = (dispatch) => ({

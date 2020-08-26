@@ -3,7 +3,10 @@ import {
   LOGIN_SUBMIT,
   LOGIN_SUBMIT_SUCCESS,
   LOGIN_SUBMIT_ERROR,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  GET_PERSONNAL_DATA,
+  GET_PERSONNAL_DATA_SUCCESS,
+  GET_PERSONNAL_DATA_ERROR,
 } from '../actions/authActions';
 
 export const initialState = {
@@ -16,11 +19,36 @@ export const initialState = {
   isLogged: false,
   nickname: '',
   loginErrorMessage: '',
-  connectedUserData: {},
+  connectedUserId: {},
+  personnalData: {},
+  error: '',
 };
+
+
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case GET_PERSONNAL_DATA:
+      return {
+        ...state,
+      };
+    case GET_PERSONNAL_DATA_SUCCESS:
+      return {
+        ...state,
+        personnalData: {
+          ...state.personnalData,
+          ...action.payload,
+        },
+        error: '',
+      };
+    case GET_PERSONNAL_DATA_ERROR:
+      return {
+        ...state,
+        personnalData: {
+          ...state.personnalData,
+        },
+        error: action.payload,
+      };
     case CHANGE_FIELD:
       return {
         ...state,
@@ -42,10 +70,7 @@ export default (state = initialState, action = {}) => {
         loginData: {
           ...state.loginData,
         },
-        connectedUserData: {
-          ...state.connectedUserData,
-          ...action.payload,
-        },
+        connectedUserId: action.payload,
       };
     case LOGIN_SUBMIT_ERROR:
       return {

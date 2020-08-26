@@ -1,49 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './style.scss';
 import { Button, Header, Modal, Form } from 'semantic-ui-react';
 // import Banner from '../../assets/LoL-Banner.png';
 
-const ProfilePage = ({ userData, getUser, connectedUserId }) => {
+const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
+
+  // eslint-disable-next-line
+  useEffect(() => {
+    getPersonnalData();
     // eslint-disable-next-line
-    useEffect(() => {
-      getUser();
-      // eslint-disable-next-line
-    }, []);
+  }, []);
 
   const [open, setOpen] = React.useState(false);
-  const [open2, setopen2] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
 
   return (
     <div className="profilepage">
       <div className="profilepage-header">
+        <img src={`${personnalData._banner}`} alt="" />
+        <img src={`${personnalData._avatar}`} alt="" />
 
-        <h1>{userData._nickname}</h1>
-      <div>{userData._age}</div>
-
+        <h1>{personnalData._nickname}</h1>
+        <div>age</div>
       </div>
       <div className="profilepage-body">
         <div className="profilepage-button">
+
           <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button>Event invitation</Button>}
+            trigger={<Button>Update informations</Button>}
           >
-            <Modal.Header>Event invitation</Modal.Header>
+            <Modal.Header>Update informations</Modal.Header>
             <Modal.Description>
-              <Header>Events</Header>
-      <div>{userData._event_created.map((event)=>{
-        return(
-        <div key={event.game_id}>
-          <div>{event.game_name}</div>
-          <div>{event.event_time}</div>
-          <div>{event.duration}</div>
-          <div>{event.player_count}</div>
-          <div>{event.player_max}</div>
-          <div>{event.description}</div>
-        </div>
-        );
-      })};</div>
+              <Header>Update</Header>
+              <Form.Input
+                fluid
+                label="Nickname"
+                placeholder="change your nickname"
+              />
+              <Form.Input fluid label="years" placeholder="how old are you" />
+              <label htmlFor="banner">Choose a banner picture:</label>
+
+              <input
+                type="file"
+                id="banner"
+                name="banner"
+                accept="image/png, image/jpeg"
+              ></input>
             </Modal.Description>
             <Modal.Actions>
               <Button color="black" onClick={() => setOpen(false)}>
@@ -58,30 +63,30 @@ const ProfilePage = ({ userData, getUser, connectedUserId }) => {
               />
             </Modal.Actions>
           </Modal>
-
         </div>
         <div className="profilepage-description">
           <h2>Description</h2>
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec
-            sem ante. Pellentesque vitae sollicitudin erat. Aliquam lacinia nisi
-            eu dui bibendum condimentum. Suspendisse sed ante egestas, semper
-            leo id, tempus libero. Proin in suscipit purus. Quisque sit amet
-            sollicitudin sapien.
-          </div>
+          <div>{personnalData.description}</div>
         </div>
         <div className="profilepage-game">
-          <h2>Game</h2>
-          <div className="profilepage-game-user">
-            <div>game name</div>
-            <div>game ranking</div>
-          </div>
-          <div className="profilepage-game-event">
-            <div>starting</div>
-          </div>
+          {personnalData._games &&
+            personnalData._games.map((game) => {
+              return (
+                <div key= {game.id} >
+                  <h2>{game.game_name}</h2>
+                  <div className="profilepage-game-user">
+                    <div>game ranking</div>
+                  </div>
+                  <div className="profilepage-game-event">
+                    <div>starting</div>
+                  </div>
+                </div>
+              );
+            })}
+
           <Modal
-            onClose={() => setopen2(false)}
-            onOpen={() => setopen2(true)}
+            onClose={() => setOpen2(false)}
+            onOpen={() => setOpen2(true)}
             open={open2}
             trigger={<Button>Select game</Button>}
           >
@@ -93,14 +98,14 @@ const ProfilePage = ({ userData, getUser, connectedUserId }) => {
               </Form.Field>
             </Modal.Description>
             <Modal.Actions>
-              <Button color="black" onClick={() => setopen2(false)}>
+              <Button color="black" onClick={() => setOpen2(false)}>
                 Cancel
               </Button>
               <Button
                 content="ok"
                 labelPosition="right"
                 icon="checkmark"
-                onClick={() => setopen2(false)}
+                onClick={() => setOpen2(false)}
                 positive
               />
             </Modal.Actions>
@@ -116,4 +121,4 @@ const ProfilePage = ({ userData, getUser, connectedUserId }) => {
   );
 };
 
-export default ProfilePage;
+export default PersonnalProfilePage;

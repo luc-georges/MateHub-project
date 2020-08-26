@@ -11,6 +11,7 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
   };
   const handleSubmit = () => {
     onFormSubmit();
+   
   };
   const [checked, setChecked] = React.useState(false);
   return (
