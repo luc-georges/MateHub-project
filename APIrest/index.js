@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-
+const fs = require('fs');
+const path = require('path');
+const morgan = require('morgan');
 /*cors*/
 const cors = require('cors');
 
@@ -8,6 +10,17 @@ const router = require('./router/router');
 const routerNews = require('./router/routerNews')
 const routerGameApi = require('./router/routerGameApi')
 const app = express();
+
+/*Logs FIle*/
+
+const logStream = fs.createWriteStream(path.join("logs", "access.log"), { flags: "a" });
+morgan.token("error", (_, res) => res.data.error);
+app.use(
+  morgan(
+    ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"\n:err',
+    { stream: logStream }
+  )
+);
 
 const corsOptions = {
   credentials : true
