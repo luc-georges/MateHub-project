@@ -80,7 +80,14 @@ module.exports = {
         }
 
     },
-    findProfilByPk: async (request, response) => {
+
+    /**
+     * middleware express pour rechercher un user par l'id
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user
+     */
+    findProfilByPk: async (request, response, next) => {
         try {
             const result = await User.findProfileById(request.params.id);
 
@@ -93,7 +100,7 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error)
         }
 
     },
