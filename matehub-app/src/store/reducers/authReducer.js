@@ -19,7 +19,7 @@ export const initialState = {
   isLogged: false,
   nickname: '',
   loginErrorMessage: '',
-  connectedUserId: {},
+  connectedUserId: "",
   personnalData: {},
   error: '',
 };

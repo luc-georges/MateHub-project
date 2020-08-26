@@ -55,10 +55,12 @@ export default (store) => (next) => (action) => {
         });
       break;
     case LOGOUT:
+      // const {  } = store.getState().auth.connectedUserId;
+      console.log(store.getState().auth.connectedUserId);
       axios({
-        method: 'get',
+        method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/logout',
-        url: 'http://localhost:3001/users/logout',
+        url: `http://localhost:3001/user/${store.getState().auth.connectedUserId}/logout`,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
