@@ -31,16 +31,16 @@ const authController = require('../controllers/authControllers');
 
 /********* ROUTER USER ***************/
 router.get('/users/top', userController.getTopUsers);
-router.get('/user/:id/profile/private', authenticateToken, ownerControl, userController.getUserProfile);
+router.get('/user/:id/profile/private', /*authenticateToken, ownerControl,*/ userController.getUserProfile);
 router.get('/user/:id', userController.getUserById);
 //router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 router.post('/registration', validateBody(postUserSchema), userController.registration);
 router.post('/users/login', userController.login);
 router.post('/refreshToken', authController.refreshToken);
 router.post('/users/islogged', userController.isLogged);
-router.post('/user/:id/logout', authenticateToken, ownerControl, userController.logout);
-router.put('/user/:id/update', authenticateToken, ownerControl, validateBody(updateUserSchema), userController.updateAnUser);
-router.delete('/user/:id/delete', authenticateToken, ownerControl, userController.deleteAnUser);
+router.post('/user/:id/logout', /*authenticateToken, ownerControl,*/ userController.logout);
+router.put('/user/:id/update', /*authenticateToken, ownerControl,*/ validateBody(updateUserSchema), userController.updateAnUser);
+router.delete('/user/:id/delete', /*authenticateToken, ownerControl,*/ userController.deleteAnUser);
 
 
 /***********ROUTER EVENT *********/
@@ -48,9 +48,9 @@ router.get('/events', eventController.getAllEvent);
 router.get('/event/:id', eventController.getEventById);
 router.get('/search/events', eventController.getEventByParams);
 router.get('/find/event', eventController.getEventBy);//querystring
-router.post('/createEvent/user/:id', authenticateToken, ownerControl, validateBody(postEventSchema), eventController.createAnEvent);
-router.put('/updateEvent/event/:eventId/user/:Id', authenticateToken, ownerControl, validateBody(updateEventSchema), eventController.updateAnEvent);
-router.delete('/deleteEvent/event/:eventId/user/:id', authenticateToken, ownerControl, eventController.deleteAnEvent);
+router.post('/createEvent/user/:id', /*authenticateToken, ownerControl,*/ validateBody(postEventSchema), eventController.createAnEvent);
+router.put('/updateEvent/event/:eventId/user/:Id', /*authenticateToken, ownerControl,*/ validateBody(updateEventSchema), eventController.updateAnEvent);
+router.delete('/deleteEvent/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ eventController.deleteAnEvent);
 
 /********** ROUTER EVENT'S USER *********/
 router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickname);
@@ -65,5 +65,6 @@ router.put('/password/createNew', authController.createNewPassword);
 
 /*********** ERROR 500 midleware ************/
 router.use(serverError);
+
 module.exports = router;
 
