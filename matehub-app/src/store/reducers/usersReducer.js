@@ -5,7 +5,9 @@ import {
   GET_USER,
   GET_USER_SUCCESS,
   GET_USER_ERROR,
+  GET_SELECTED_USER,
 } from '../actions/usersActions';
+import { StatisticLabel } from 'semantic-ui-react';
 
 export const initialState = {
   userData: {},
@@ -228,11 +230,16 @@ export const initialState = {
   // },
   topUsersList: [],
   error: '',
-  selectedUser: {},
+  selectedUser: "",
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case GET_SELECTED_USER:
+      return {
+        ...state,
+        selectedUser: action.payload,
+      }
     case GET_USER:
       return {
         ...state,

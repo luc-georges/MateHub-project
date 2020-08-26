@@ -14,7 +14,7 @@ const ProfilePage = ({ userData, getUser }) => {
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
 
-  console.log(userData);
+  // console.log(userData);
   // console.log(data._user_id);
   // console.log(ownProps.match);
 

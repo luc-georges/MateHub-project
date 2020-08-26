@@ -30,13 +30,13 @@ export default (store) => (next) => (action) => {
         });
       break;
     case GET_USER:
-      const userId = 1;
+      const {selectedUser} = store.getState().users;
       axios({
         method: 'get',
-        url: `http://localhost:3001/user/${userId}`,
+        url: `http://localhost:3001/user/${selectedUser}`,
       })
         .then((res) => {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           store.dispatch(getUserSuccess(res.data.data));
         })
         .catch((err) => {
