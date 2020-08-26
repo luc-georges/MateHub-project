@@ -1,6 +1,10 @@
+@import 'src/styles/vars';
 .profilepage{
   width: 75%;
   box-sizing: border-box;
+  background-color: #0B0C10;
+  color: rgb(226, 220, 220);
+  background-image: url(../../assets/04322d63.png);
 }
 .profilepage h3{
   padding: 20px;
@@ -16,7 +20,6 @@
   align-items: center;
   border-radius: 10px;
   border: 3px solid #949494;
-  background-color: rgb(173, 173, 173);
 
   width:200px;
 }
