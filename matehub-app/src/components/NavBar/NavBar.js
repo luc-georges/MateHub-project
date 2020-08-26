@@ -38,19 +38,10 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
               content="Profile"
               icon="user"
               size="large"
+              inverted color="teal"
             />
           </NavLink>
         )}
-        <NavLink className="navbar-nav-link" exact to="/">
-          <Button
-            fluid
-            className="home"
-            content="Profile"
-            icon="user"
-            size="large"
-            inverted color="teal"
-          />
-        </NavLink>
         <NavLink className="navbar-nav-link" exact to="/">
           <Button
             fluid
