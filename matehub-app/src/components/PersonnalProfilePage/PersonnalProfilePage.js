@@ -16,9 +16,9 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
 
   return (
     <div className="profilepage">
-      <div className="profilepage-header">
-        <img src={`${personnalData._banner}`} alt="" />
-        <img src={`${personnalData._avatar}`} alt="" />
+      <div className="profilepage-header">  
+            <img src={`${personnalData._banner}`} alt="" />
+              <img src={`${personnalData._avatar}`} alt="" />
 
         <h1>{personnalData._nickname}</h1>
         <div>age</div>
