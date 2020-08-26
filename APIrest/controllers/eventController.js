@@ -10,7 +10,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} tout les events
      */
-    getAllEvent: async (request, response) => {
+    getAllEvent: async (request, response, next) => {
         try {
             const result = await Event.findAllEvent();
 
@@ -18,7 +18,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -28,7 +28,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'event
      */
-    getEventById: async (request, response) => {
+    getEventById: async (request, response, next) => {
         try {
             const result = await Event.findEventById(request.params.id);
 
@@ -41,7 +41,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error)
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -51,7 +51,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'event
      */ 
-    getEventBy: async (request, response) => {
+    getEventBy: async (request, response, next) => {
         try {
            
             const result = await Event.findBy(request.query);
@@ -64,11 +64,11 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
-    getEventByParams: async (request, response) => {
+    getEventByParams: async (request, response, next) => {
       try {
         
         console.log(request.body);
@@ -78,11 +78,11 @@ module.exports = {
 
       } catch (error) {
           console.log('error:', error)
-          response.status('500').json({error:'Internal Server Error'});
+          next(error);
       }  
     },
 
-    getAllEventFromUserByNickname: async (request, response) => {
+    getAllEventFromUserByNickname: async (request, response, next) => {
         try {
             
             const result = await Event.getAllEventByNickname(request.params.nickname);
@@ -90,7 +90,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -100,8 +100,9 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'event
      */
-    createAnEvent: async (request, response) => {
+    createAnEvent: async (request, response, next) => {
         try {
+
             const event = await new Event(request.body);
             console.log('request.body:', request.body)
 
@@ -121,7 +122,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -131,9 +132,10 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'event
      */
-    updateAnEvent: async (request, response) => {
+    updateAnEvent: async (request, response, next) => {
         try {
-            const event = await Event.findById(request.params.id);
+
+            const event = await Event.findById(request.params.eventId);
     
             Object.assign(event, request.body);
 
@@ -153,7 +155,7 @@ module.exports = {
             
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -163,8 +165,9 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {boolean} true si ok
      */
-    deleteAnEvent: async (request, response) => {
+    deleteAnEvent: async (request, response, next) => {
         try {
+            
             const event = await Event.findById(request.params.id);
             const result = await event.delete();
         
@@ -172,7 +175,7 @@ module.exports = {
                        
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     }
 

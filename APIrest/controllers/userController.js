@@ -1,6 +1,10 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const sanitaze = require('../sanitaze/sanitazer');
+const jwtUtils = require('../utils/jwt.utils');
+const { mailOptions } = require('../utils/nodemailer.utils');
+const nodemailer = require("nodemailer");
+//const authHeader = require('../middleware/authMiddleware');
 
 module.exports = {
 
@@ -10,7 +14,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} 10 users ayant le plus d'event
      */
-    getTopUsers: async (request, response) => {
+    getTopUsers: async (request, response, next) => {
         try {
             const result = await User.findTopPlayer();
 
@@ -23,8 +27,58 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
+    },
+
+    /**
+     * middleware express pour acceder au information de l'user par identifiant
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user
+     */
+    getUserProfile: async (request, response, next) => {
+      try {
+
+        const user = await User.findById(request.params.id);
+        if (!user) {
+            response.status('404').json({ error : 'user not found'});
+        }
+
+        delete user._password;
+        
+        response.status('200').json({data : user});
+
+      } catch (error) {
+          console.log('error:', error);
+          next(error);
+          
+      }  
+    },
+    /**
+     * middleware express pour rechercher un user par l'id
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {json} l'user
+     */
+    getUserById: async (request, response, next) => {
+        try {
+            const result = await User.findById(request.params.id);
+
+            if (!result) {
+                response.status('404').json({error:'user not found'})
+                //next()
+            }
+            delete result._password;
+            delete result._DOB;
+
+            response.status('200').json({data: result});
+
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
+
     },
 
     /**
@@ -33,24 +87,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */
-    getUserById: async (request, response) => {
-        try {
-            const result = await User.findById(request.params.id);
-
-            if (!result) {
-                response.status('404').json({error:'user not found'})
-                //next()
-            }
-
-            response.status('200').json({data: result});
-
-        } catch (error) {
-            console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
-        }
-
-    },
-    findProfilByPk: async (request, response) => {
+    findProfilByPk: async (request, response, next) => {
         try {
             const result = await User.findProfileById(request.params.id);
 
@@ -63,7 +100,7 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error)
         }
 
     },
@@ -75,9 +112,8 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */    
-    getUserBy: async (request, response) => {
+    getUserBy: async (request, response, next) => {
         try {
-            //console.log('laaaaaaaaaaaaaaaaaaaaaaa',request.query);
             const result = await User.findBy(request.query);
 
             if (!result) {
@@ -89,7 +125,7 @@ module.exports = {
 
         } catch (error) {
             console.log('error:', error);  
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -99,21 +135,20 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user crée
      */
-    registration: async (request, response) => {
+    registration: async (request, response, next) => {
         try {
-            //console.log(request.body);
+
             const checkEmail = {email : request.body.email};
             const checkNickname = {nickname : request.body.nickname};
-            //console.log(checkEmail);
             
             const tryIfUserExist = await User.findBy(checkEmail);
-            //console.log('tryIfUserExist:', tryIfUserExist)
             
             if(tryIfUserExist) {
                 return response.status('409').json({error:'User already Exist'});
             }
             
             const tryIfNicknameExist = await User.findBy(checkNickname);
+            
             if(tryIfNicknameExist) {
                 return response.status('409').json({error:'Nickname already Exist'});
             }
@@ -122,13 +157,28 @@ module.exports = {
                 return response.status('409').json({error:'password and passwordComfirm must be same'});
             }
            
-           //console.log('dddjkjdkjkdjdkdjkdjdkjdkj');
             const user = new User(request.body);
             
             const saltRounds = 10;
             const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
             user.password = encryptedPassword;
-            
+
+            /****** send mail at new user *********/  
+            transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
+                }
+            });
+            const options = mailOptions(user) ;
+            transporter.sendMail(options, (err, _) => {
+                if (err) {
+                  console.log('error', err)
+                }
+            });
+            /*************************************/
+
             await user.insert();
             console.log(user)
             response.status('200').json({data:{
@@ -140,7 +190,7 @@ module.exports = {
             
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -150,7 +200,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user connecté
      */
-    login: async (request, response) => {
+    login: async (request, response, next) => {
       try {
         
         const checkEmail = {email : request.body.email};
@@ -166,11 +216,16 @@ module.exports = {
         request.session.user = user;
         delete request.session.user.password;
         delete user._password;
-        response.status('200').json({data: { logged : true, info: request.session.user}});
+        //response.status('200').json({data: { logged : true, info: request.session.user}});
+        let tokens = {};
+        tokens._access_token = jwtUtils.generateAccessToken(user);
+        tokens._refresh_token = await jwtUtils.generateRefreshToken(user);
+        
+        response.status('200').json({data :{tokens:  tokens ,  logged : true, info: request.session.user}});
 
       } catch (error) {
           console.log('error:', error)
-          response.status('500').json({error:'Internal Server Error'});
+          next(error);
       }  
     },
 
@@ -180,7 +235,7 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user connecté
      */
-    isLogged: (request, response) => {
+    isLogged: (request, response, next) => {
         try{
             if(request.session.user) {
                 response.status('200').json({data : {logged : true, info: request.session.user}});
@@ -188,8 +243,9 @@ module.exports = {
                 response.json({logged : false, info: { favourite: []} });
             }
 
-        }catch(e){
-            console.log(e)
+        }catch(error){
+            console.log(error)
+            next(error);
         }
     },
 
@@ -198,14 +254,18 @@ module.exports = {
      * @param {Object} request - Express request object
      * @param {Object} response - Express response object
      */
-    logout: async (request, response) => {
+    logout: async (request, response, next) => {
         try {
-            request.session.destroy()
-            response.status('200').json({data:'déconnection réussi'});;
             
+            const refreshToken = request.body.refreshToken;
+            await jwtUtils.deleteRefreshToken(refreshToken);
+            request.session.destroy();
+
+            response.status('200').json({logout: 'ok'});
+
         } catch (error) {
             console.log('error:', error)
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -215,14 +275,12 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {json} l'user
      */
-    updateAnUser: async (request, response) => {
+    updateAnUser: async (request, response, next) => {
         try {
-
             const user = await User.findById(request.params.id);
-    
+
             Object.assign(user, request.body);
 
-            console.log('user',user)
 
             if(request.body.password) {
 
@@ -247,7 +305,7 @@ module.exports = {
             
         } catch (error) {
             console.log(error);
-            response.status('500').json({error:'Internal Server Error'});
+            next(error);
         }
     },
 
@@ -257,16 +315,17 @@ module.exports = {
      * @param {Object} response - Express response object
      * @returns {boolean} true si ok
      */
-    deleteAnUser: async (request, response) => {
+    deleteAnUser: async (request, response, next) => {
         try {
             const user = await User.findById(request.params.id);
+
             const result = await user.delete();
         
             response.status('200').json({data: result});
                        
         } catch (error) {
             console.log(error)
-            response.status('500').json({error:'Internal Server Error'});    
+            next(error);
         }
     }
 }
