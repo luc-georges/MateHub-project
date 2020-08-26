@@ -9,19 +9,28 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
   // console.log('data dans le component EventBar', list);
   return (
     <div className="eventbar">
-      {!isLogged && (
-        <NavLink exact to="/login">
-          <Button content="Login" />
+      {!isLogged && ( 
+        <NavLink className="regist" exact to="/registration">
+          <Button 
+          content="registration"
+          inverted color="teal"
+           />
         </NavLink>
       )}
 
+    {!isLogged && <div className="pOr">Or</div>}
+
       {!isLogged && (
-        <NavLink exact to="/registration">
-          <Button content="registration" />
+        <NavLink className="login" exact to="/login">
+          <Button
+          content="Login"
+          inverted color="teal"
+           />
         </NavLink>
       )}
+        
 
-      {!isLogged && <div>Please, connect to see event management</div>}
+      {!isLogged && <div className="pOr">Please, connect to see event management</div>}
 
       {isLogged && <Icon className="user circle" size="massive" />}
 

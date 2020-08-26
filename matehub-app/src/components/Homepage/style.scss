@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 .HomePage{
   display:flex;
   flex-direction: column;
@@ -6,4 +8,13 @@
   margin-left: 10%;
   margin-right: 15%;
   padding: 2em;
+  background-image: url(../../assets/bgimg.jpg);
+  background-position: center;
+  background-size: 80%;
+  background-attachment: fixed;
+  color: $color-bleu-fonce;
+}
+
+.titre {
+  font-family: 'Orbitron', sans-serif;
 }

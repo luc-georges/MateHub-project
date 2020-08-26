@@ -17,6 +17,7 @@ const NavBar = () => {
             content="home"
             icon="home"
             size="large"
+            inverted color="teal"
           />
         </NavLink>
         <NavLink className="navbar-nav-link" exact to="/">
@@ -26,6 +27,7 @@ const NavBar = () => {
             content="Profile"
             icon="user"
             size="large"
+            inverted color="teal"
           />
         </NavLink>
         <NavLink className="navbar-nav-link" exact to="/">
@@ -35,6 +37,7 @@ const NavBar = () => {
             content="Games"
             icon="game"
             size="large"
+            inverted color="teal"
           />
         </NavLink>
         <NavLink className="navbar-nav-link" exact to="/">
@@ -44,6 +47,7 @@ const NavBar = () => {
             content="Q&A"
             icon="question"
             size="large"
+            inverted color="teal"
           />
         </NavLink>
         <NavLink className="navbar-nav-link" exact to="/contact">
@@ -53,6 +57,7 @@ const NavBar = () => {
             content="Contact"
             icon="mail"
             size="large"
+            inverted color="teal"
           />
         </NavLink>
       </div>
