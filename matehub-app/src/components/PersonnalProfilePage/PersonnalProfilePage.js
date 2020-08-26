@@ -23,18 +23,24 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
       <div className="profilepage-header">  
       <div className="container-avatar"></div>
        <div className="container-banner">
+       {personnalData._games &&
+            <img
+            src={require(`../../assets/${personnalData._banner}`)}
+            alt="lollogo"
+            className="banner"
+          />
+              
+            }
+      {personnalData._games &&
+           <img
        
-      <img
-        src={require(`../../assets/${personnalData._banner}`)}
-        alt="lollogo"
-        className="banner"
-      />
-      <img
-       
-       src={icon}
-       alt="lollogo"
-       className="avatar"
-     />
+           src={icon}
+           alt="lollogo"
+           className="avatar"
+         />
+              
+            }
+      
       </div>
     <div className="details">
         <h1>{personnalData._nickname}</h1>
@@ -135,7 +141,7 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
           {personnalData._event_created &&
             personnalData._event_created.map((event) => {
               return (
-                <div key= {event._event_id} className="LastestEvent-module" >
+                <div key={`C_event${event.event_id}`} className="LastestEvent-module" >
                   <img
                 src={logolol}
                 alt="lollogo"
@@ -162,7 +168,7 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
         {personnalData.has_events &&
             personnalData.has_events.map((h_event) => {
               return (
-                <div key= {`he${h_event.id}`} className="LastestEvent-module">
+                <div key= {`H_event${h_event.event_id}`} className="LastestEvent-module">
                     <img
                 src={logolol}
                 alt="lollogo"
