@@ -28,6 +28,7 @@ function App({
   getTopUsers,
   checkAuth,
   getNews,
+  getUser,
   isLogged,
   registered,
 }) {
@@ -37,6 +38,7 @@ function App({
     getEvents();
     getTopUsers();
     checkAuth();
+    // getUser();
     // eslint-disable-next-line
   }, []);
   return (
@@ -46,7 +48,7 @@ function App({
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route exact path="/profile/:id" component={ProfilePage} />
+        <Route exact path="/profile/:name" component={ProfilePage} />
         <Route exact path="/contact">
           <ContactPage />
         </Route>

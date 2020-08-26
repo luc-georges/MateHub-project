@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.scss';
 import { Button, Header, Modal, Form } from 'semantic-ui-react';
 // import Banner from '../../assets/LoL-Banner.png';
 
-const ProfilePage = ({ userData, ownProps }) => {
+const ProfilePage = ({ userData, getUser }) => {
+    // eslint-disable-next-line
+    useEffect(() => {
+      getUser();
+      // eslint-disable-next-line
+    }, []);
+
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
-  const { data } = userData;
-  // console.log(data);
+
+  console.log(userData);
   // console.log(data._user_id);
   // console.log(ownProps.match);
-  console.log(userData.data);
 
   return (
     <div className="profilepage">
       <div className="profilepage-header">
+
         {/* {data._games.map((game) => {
           return console.log(game);
         })} */}
-        {<h1>{userData.data._nickname}</h1>}
+
+        <h1>{userData._nickname}</h1>
         <div>age</div>
-        {/* <img src={Banner} alt="banner"></img> */}
+
       </div>
       <div className="profilepage-body">
         <div className="profilepage-button">

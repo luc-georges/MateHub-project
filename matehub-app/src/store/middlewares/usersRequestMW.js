@@ -3,6 +3,9 @@ import {
   GET_TOP_USERS,
   getTopUsersSuccess,
   getTopUsersError,
+  GET_USER,
+  getUserSuccess,
+  getUserError,
 } from '../actions/usersActions';
 
 export default (store) => (next) => (action) => {
@@ -13,7 +16,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'get',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/user/top',
-        url: 'http://localhost:3001/user/top', 
+        url: 'http://localhost:3001/user/top',
       })
         .then((res) => {
           // console.log(res.data);
@@ -24,6 +27,21 @@ export default (store) => (next) => (action) => {
           store.dispatch(
             getTopUsersError('Impossible de récupérer les user...')
           );
+        });
+      break;
+    case GET_USER:
+      const userId = 1;
+      axios({
+        method: 'get',
+        url: `http://localhost:3001/user/${userId}`,
+      })
+        .then((res) => {
+          console.log(res.data.data);
+          store.dispatch(getUserSuccess(res.data.data));
+        })
+        .catch((err) => {
+          console.log(err);
+          store.dispatch(getUserError("L'utilisateur n'a pas été trouvé"));
         });
       break;
     default:
