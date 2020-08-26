@@ -29,7 +29,7 @@ app.use(router);
 app.use(routerNews);
 app.use(routerGameApi);
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.listen(port, _ => {
 console.log(`Running on ${port}`)
