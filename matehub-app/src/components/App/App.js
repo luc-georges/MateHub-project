@@ -8,7 +8,7 @@ import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 /* Import components */
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../../containers/NavBarContainer';
 import EventBar from '../../containers/EventBarContainer';
 import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../../containers/RegistrationPageContainer';
@@ -16,19 +16,30 @@ import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import CreateEventPage from '../CreateEventPage/CreateEventPage';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
+import ProfilePage from '../../containers/ProfilePageContainer';
+import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 
 /**
  * composant principale de l'application
  * @component
  * @param {Object} param0
  */
-function App({ getEvents, getTopUsers, checkAuth, getNews, isLogged, registered }) {
+function App({
+  getEvents,
+  getTopUsers,
+  checkAuth,
+  getNews,
+  getUser,
+  isLogged,
+  registered,
+}) {
   // eslint-disable-next-line
   useEffect(() => {
     getNews();
     getEvents();
     getTopUsers();
     checkAuth();
+    // getUser();
     // eslint-disable-next-line
   }, []);
   return (
@@ -38,6 +49,8 @@ function App({ getEvents, getTopUsers, checkAuth, getNews, isLogged, registered 
         <Route exact path="/">
           <HomePage />
         </Route>
+        <Route exact path="/profile/:name" component={ProfilePage} />
+        <Route exact path="/personnalprofile" component={PersonnalProfilePage} />
         <Route exact path="/contact">
           <ContactPage />
         </Route>

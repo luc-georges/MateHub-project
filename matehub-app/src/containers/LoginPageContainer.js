@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   loginErrorMessage: state.auth.loginErrorMessage,
   nickname: state.auth.nickname,
   isLogged: state.auth.isLogged,
+  connectedUserData: state.auth.connectedUserData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
