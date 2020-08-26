@@ -40,7 +40,7 @@ module.exports = {
     getUserProfile: async (request, response, next) => {
       try {
 
-        const user = await User.findById(request.params.id);
+        const user = await User.findProfileById(request.params.id);
         if (!user) {
             response.status('404').json({ error : 'user not found'});
         }
