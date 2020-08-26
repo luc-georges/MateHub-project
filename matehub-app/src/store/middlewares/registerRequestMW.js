@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+// import { push } from 'react-router-redux';
 import {
   REGISTER_SUBMIT,
   registerSubmitSuccess,
@@ -31,6 +31,7 @@ export default (store) => (next) => (action) => {
         .then((res) => {
           // console.log("la réponse reçu: " + res);
           store.dispatch(registerSubmitSuccess(res.data))
+          // store.dispatch(push('/login'));
         })
         .catch((err) => {
           console.log('On passe dans le catch de la requête register :', err);

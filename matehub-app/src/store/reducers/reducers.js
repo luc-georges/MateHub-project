@@ -24,6 +24,10 @@ const rootReducer = (state, action) => {
   if (action.type === 'LOGIN_SUBMIT_SUCCESS') {
     state.auth = undefined;
   }
+  // if (action.type === 'GET_USER')
+  // {
+  //   state.users.userData = undefined;
+  // }
   // if (action.type === 'CHECK_AUTH') {
   //   state.register = undefined;
   // }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Button, Grid, Checkbox } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import './style.scss';
 
 const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
@@ -12,6 +11,7 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
   };
   const handleSubmit = () => {
     onFormSubmit();
+   
   };
   const [checked, setChecked] = React.useState(false);
   return (
