@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import './style.scss';
 import { Button, Header, Modal, Form } from 'semantic-ui-react';
+import Moment from 'react-moment';
+import logolol from '../../assets/logolol.png';
+import icon from '../../assets/test.ico';
+
 // import Banner from '../../assets/LoL-Banner.png';
 
 const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
-
+ 
   // eslint-disable-next-line
   useEffect(() => {
     getPersonnalData();
@@ -17,11 +21,30 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
   return (
     <div className="profilepage">
       <div className="profilepage-header">  
-            <img src={`${personnalData._banner}`} alt="" />
-              <img src={`${personnalData._avatar}`} alt="" />
-
+      <div className="container-avatar"></div>
+       <div className="container-banner">
+       {personnalData._games &&
+            <img
+            src={require(`../../assets/${personnalData._banner}`)}
+            alt="lollogo"
+            className="banner"
+          />
+              
+            }
+      {personnalData._games &&
+           <img
+       
+           src={icon}
+           alt="lollogo"
+           className="avatar"
+         />
+              
+            }
+      
+      </div>
+    <div className="details">
         <h1>{personnalData._nickname}</h1>
-        <div>age</div>
+        </div>
       </div>
       <div className="profilepage-body">
         <div className="profilepage-button">
@@ -66,20 +89,21 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
         </div>
         <div className="profilepage-description">
           <h2>Description</h2>
-          <div>{personnalData.description}</div>
+          <div>{personnalData._description}</div>
         </div>
         <div className="profilepage-game">
           {personnalData._games &&
             personnalData._games.map((game) => {
               return (
                 <div key= {game.id} >
+                  
                   <h2>{game.game_name}</h2>
                   <div className="profilepage-game-user">
-                    <div>game ranking</div>
+                  <div>Pseudo : {game.ign.name}</div>
+                  <div>level : {game.ign.summonerLevel}</div>
+                  <div>Rank : {game.stats.tier} / {game.stats.rank} </div>
                   </div>
-                  <div className="profilepage-game-event">
-                    <div>starting</div>
-                  </div>
+                  
                 </div>
               );
             })}
@@ -111,11 +135,61 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
             </Modal.Actions>
           </Modal>
         </div>
-        <div className="profilepage-history-"></div>
-        <h2>Event history</h2>
-        <div>game name</div>
-        <div>starting</div>
-        <div>creator</div>
+          <h2>Created Events</h2>
+        <div className="LastestEvent-modules">
+          
+          {personnalData._event_created &&
+            personnalData._event_created.map((event) => {
+              return (
+                <div key={`C_event${event.event_id}`} className="LastestEvent-module" >
+                  <img
+                src={logolol}
+                alt="lollogo"
+                className="LastestEvent-module-image"
+              />
+                   <div>
+                  Date and time  <Moment format="YYYY/MM/DD HH:MM">{event._starting}</Moment>
+                  </div>
+                  <div className="profilepage-event_created">
+                  <div>{event.game_name} </div>
+                  <div>player:{event.player_count}</div>
+                  <div>party :{event.player_max}</div>
+                  </div>
+                  
+                </div>
+            
+
+              );
+            })}
+
+                  </div>
+                  <h3>Event Registered: </h3>
+        <div className="LastestEvent-modules">
+        {personnalData.has_events &&
+            personnalData.has_events.map((h_event) => {
+              return (
+                <div key= {`H_event${h_event.event_id}`} className="LastestEvent-module">
+                    <img
+                src={logolol}
+                alt="lollogo"
+                className="LastestEvent-module-image"
+              />
+                  <div>
+                  Date and time  <Moment format="YYYY/MM/DD HH:MM">{h_event._starting}</Moment>
+                  </div>
+                  <div className="profilepage-has_event">
+                  <div>{h_event.game_name} </div>
+                  <div>player :{h_event.player_count}</div>
+                  <div>party :{h_event.player_max}</div>
+              
+                  </div>
+                  
+                </div>
+                
+
+              );
+            })}
+            </div>
       </div>
     </div>
   );

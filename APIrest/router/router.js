@@ -31,8 +31,8 @@ const authController = require('../controllers/authControllers');
 
 /********* ROUTER USER ***************/
 router.get('/users/top', userController.getTopUsers);
-router.get('/user/:id/profile/private', /*authenticateToken, ownerControl,*/ userController.getUserProfile);
 router.get('/user/:id', userController.getUserById);
+router.get('/user/:id/profile/private', /*authenticateToken, ownerControl,*/ userController.findProfilByPk);
 router.get('/user/profile/:id', userController.findProfilByPk);
 router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
 //router.get('/find/user', userController.getUserBy);//find/user?nickname=test2login
