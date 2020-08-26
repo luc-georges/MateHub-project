@@ -36,7 +36,7 @@ SELECT u.id AS "_user_id",
                                             )) as games
                         FROM user_access."M_USER_has_GAME" uhg 
                             JOIN user_access."game" g ON g.id = uhg.game_id
-                            WHERE uhg.user_id = u.id
+                            WHERE uhg.user_id = "USER_ID"
             GROUP by u.id) AS games,
             --  object containing all event created for this user 
              (SELECT 
@@ -63,7 +63,7 @@ SELECT u.id AS "_user_id",
                         FROM user_access."event" e
                         JOIN user_access."game" g ON g.id = e.game_id
                         JOIN user_access."user" u ON e.user_id = u.id
-                         WHERE e.user_id = u.id
+                         WHERE e.user_id = 4
                                 GROUP by e.id,u.id,g.name,g.id
                         )r 
                         ) AS "_event_created" ,
@@ -94,7 +94,7 @@ SELECT u.id AS "_user_id",
                         FROM user_access."M_USER_has_EVENT" uhe
                         JOIN user_access."event" evvt ON evvt.id = uhe.event_id
                         JOIN user_access."game" g ON g.id = evvt.game_id
-                            WHERE uhe.user_id = u.id 
+                            WHERE uhe.user_id = u.id
                                 GROUP by u.id, uhe.id,g.name, g.id, evvt.event_time, evvt.duration, evvt.player_count, evvt.player_max,
                                 evvt.description, evvt.status, evvt.vocal
                                  ) z

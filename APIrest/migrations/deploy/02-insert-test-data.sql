@@ -85,3 +85,6 @@ INSERT INTO "M_USER_has_EVENT"( "user_id", "event_id","status","message") VALUES
 COMMIT;
 
 
+INSERT INTO user_access."M_USER_has_EVENT"( "user_id", "event_id","status","message") VALUES
+        (4,2,1,'Hey mate, i would love to participate! Check my profile ! from id 2'),
+        (4,1,2,'Hey mate, i would love to participate! Check my profile ! from id 3')
