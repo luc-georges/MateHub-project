@@ -2,7 +2,7 @@ import React from 'react';
 import './style.scss';
 import { Form, Flag, TextArea, Button, Select } from 'semantic-ui-react';
 
-const CreateEventPage = ({ onChangeField, eventCreationData }) => {
+const CreateEventPage = ({ onChangeField, eventCreationData, onFormSubmit }) => {
   console.log(eventCreationData);
 
   const handleInputChange = (evt) => {
@@ -12,15 +12,28 @@ const CreateEventPage = ({ onChangeField, eventCreationData }) => {
     });
   };
 
+  const handleSelectInputChange = (evt, data) => {
+    console.log('select name :', data.name);
+    console.log('select value :', data.value);
+    const { name, value } = data;
+    onChangeField({
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = () => {
+    onFormSubmit();
+  }
+
   // Options for select input
   const selectGameOptions = [
     {
-      key: 'choice1',
+      key: '2',
       text: 'League of Legends',
       value: 2,
     },
     {
-      key: 'choice2',
+      key: '1',
       text: 'CS : Global Offensive',
       value: 1,
     },
@@ -32,7 +45,7 @@ const CreateEventPage = ({ onChangeField, eventCreationData }) => {
     { key: '01:30:00', text: '1h30', value: '01:30:00' },
     { key: '02:00:00', text: '2h', value: '02:00:00' },
     { key: '02:30:00', text: '2h30', value: '02:30:00' },
-    { key: '03:00:00', text: '3h', value: '03:00' },
+    { key: '03:00:00', text: '3h', value: '03:00:00' },
     { key: '03:30:00', text: '3h30', value: '03:30:00' },
     { key: '04:00:00', text: '4h', value: '04:00:00' },
     { key: '04:30:00', text: '4h30', value: '04:30:00' },
@@ -49,13 +62,12 @@ const CreateEventPage = ({ onChangeField, eventCreationData }) => {
 
   return (
     <div className="CreateEventPage">
-      <Form className="form">
+      <Form className="form" onSubmit={handleSubmit}>
         <div className="titreCreateEventPage">
           <h1 style={{ marginBottom: '1em', margin: '0 auto 1em auto' }}>
             Create event
           </h1>
         </div>
-
         <div className="form-select">
           <div className="form-select-title">Language</div>
           <Form.Group>
@@ -85,17 +97,15 @@ const CreateEventPage = ({ onChangeField, eventCreationData }) => {
             </Form.Group>
           </Form.Group>
         </div>
-
         <Form.Input
           name="game_id"
           label="Select game"
           control={Select}
           options={selectGameOptions}
           placeholder="Select game"
-          onChange={handleInputChange}
+          onChange={handleSelectInputChange}
           value={eventCreationData.game_id}
         />
-
         <Form.Group widths="equal">
           <Form.Input
             label="Maximum players"
@@ -103,7 +113,7 @@ const CreateEventPage = ({ onChangeField, eventCreationData }) => {
             control={Select}
             options={maxPlayerOptions}
             placeholder="Maximum players"
-            onChange={handleInputChange}
+            onChange={handleSelectInputChange}
             value={eventCreationData.player_max}
           />
 
@@ -113,19 +123,28 @@ const CreateEventPage = ({ onChangeField, eventCreationData }) => {
             control={Select}
             options={durationOptions}
             placeholder="Event duration"
-            onChange={handleInputChange}
+            onChange={handleSelectInputChange}
             value={eventCreationData.duration}
           />
         </Form.Group>
-
-        <Form.Input
-          id="form-input-control-error-eventstart"
-          name="event_time"
-          label="Event start"
-          type="datetime-local"
-          onChange={handleInputChange}
-          value={eventCreationData.event_time}
-        />
+        <Form.Group widths="equal">
+          <Form.Input
+            id="form-input-control-error-eventstart"
+            name="event_time"
+            label="Event start"
+            type="datetime-local"
+            onChange={handleInputChange}
+            value={eventCreationData.event_time}
+          />
+  
+          <Form.Input
+            label="vocal"
+            name="vocal"
+            placeholder="Event vocal"
+            onChange={handleInputChange}
+            value={eventCreationData.vocal}
+          />
+        </Form.Group>
 
         <Form.Field
           control={TextArea}
@@ -135,7 +154,6 @@ const CreateEventPage = ({ onChangeField, eventCreationData }) => {
           onChange={handleInputChange}
           value={eventCreationData.description}
         />
-
         <Button content="Create event" type="submit" />
       </Form>
     </div>

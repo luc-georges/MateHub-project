@@ -2,14 +2,14 @@ export const GET_EVENTS = 'GET_EVENTS';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
 export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
 
-export const CHANGE_FIELD = 'CHANGE_FIELD';
+export const EVENT_CHANGE_FIELD = 'EVENT_CHANGE_FIELD';
 
 export const CREATE_EVENT_SUBMIT = 'CREATE_EVENT_SUBMIT';
 export const CREATE_EVENT_SUBMIT_SUCCESS = 'CREATE_EVENT_SUCCESS_SUBMIT';
 export const CREATE_EVENT_SUBMIT_ERROR = 'CREATE_EVENT_ERROR_SUBMIT';
 
-export const changeField = (payload) => ({
-  type: CHANGE_FIELD,
+export const eventChangeField = (payload) => ({
+  type: EVENT_CHANGE_FIELD,
   payload,
 });
 
