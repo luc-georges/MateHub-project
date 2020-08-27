@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import { Button, Header, Modal, Form } from 'semantic-ui-react';
 // import Banner from '../../assets/LoL-Banner.png';
+import Moment from 'react-moment';
 
 const ProfilePage = ({ userData, getUser, connectedUserId }) => {
     // eslint-disable-next-line
@@ -35,12 +36,12 @@ const ProfilePage = ({ userData, getUser, connectedUserId }) => {
       <div>{userData._event_created.map((event)=>{
         return(
         <div key={event.game_id}>
-          <div>{event.game_name}</div>
-          <div>{event.event_time}</div>
-          <div>{event.duration}</div>
-          <div>{event.player_count}</div>
-          <div>{event.player_max}</div>
-          <div>{event.description}</div>
+          <div>Game: {event.game_name}</div>
+          <div>Event time: <Moment format="YYYY/MM/DD HH:MM">{event.event_time}</Moment></div>
+          <div>Durtion: {event.duration}</div>
+          <div>Player count: {event.player_count}</div>
+          <div>Player max: {event.player_max}</div>
+          <div>Description: {event.description}</div>
         </div>
         );
       })};</div>
