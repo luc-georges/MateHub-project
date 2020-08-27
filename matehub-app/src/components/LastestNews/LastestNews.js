@@ -3,8 +3,8 @@ import './style.scss';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-const LastestNews = ({ list }) => {
+//LastestNews = ()
+const LastestNews = () => {
   let settings = {
     className: 'test',
     useCSS: false,
@@ -18,26 +18,40 @@ const LastestNews = ({ list }) => {
     slidesToScroll: 1,
   };
 
-  let renderSlides = () =>
-    list.map((element) => (
-      <div className="slide_container" key={element.uid}>
-        <div className="slider_first">
-          <img className="slider_image" src={element.img} alt={element.title} />
-        </div>
-        <div className="slider_second">
-          <a className="slider_link" href={element.title_link_link}>
-            <h3>{element.title}</h3>
-            <h4>{element.game}</h4>
-            <p>{element.title_link}</p>
-          </a>
-        </div>
-      </div>
-    ));
+
+    
 
   return (
     <div className="LastestNews">
       <h2 className="titre">Lastest News</h2>
-      <Slider {...settings}>{renderSlides()}</Slider>
+      <Slider {...settings}>
+      <div className="slide_container">
+  <div className="slider_first">
+    <img className="slider_image" src={"https://cdn1.dotesports.com/wp-content/uploads/2019/09/25021744/2-3-768x432.jpg"} alt={"Only one more month to go."} />
+  </div>
+  <div className="slider_second">
+    <a className="slider_link" href={"https://dotesports.com/league-of-legends/news/league-of-legends-worlds-2020-dates-revealed-for-each-stage-during-tencent-esports-conference"}>
+      <h3>{"Only one more month to go."}</h3>
+      <h4>{"League of Legends"}</h4>
+      <p>{"League of Legends Worlds 2020 dates revealed for each stage during Tencent Esports Conference"}</p>
+    </a>
+  </div>
+  
+</div>
+<div className="slide_container" >
+  <div className="slider_first">
+    <img className="slider_image" src={"https://cdn1.dotesports.com/wp-content/uploads/2020/08/23140643/49632059962_ac65f1dc5e_k-768x512.jpg.webp"} />
+  </div>
+  <div className="slider_second">
+    <a className="slider_link" href={"https://dotesports.com/league-of-legends/news/fnatic-take-down-rogue-in-lec-summer-split-playoffs-secure-spot-at-worlds-2020"}>
+      <h3>{"Fnatic take down Rogue in LEC Summer Split playoffs, secure spot at Worlds 2020"}</h3>
+      <h4>{"League of Legends"}</h4>
+      <p>{"Rogue may have gotten more than they bargained for when they chose Fnatic for their first match of playoffs."}</p>
+    </a>
+  </div>
+  
+</div>
+        </Slider>
     </div>
   );
 };
