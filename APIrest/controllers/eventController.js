@@ -104,8 +104,10 @@ module.exports = {
         try {
 
             const event = await new Event(request.body);
-            console.log('request.body:', request.body)
-
+            
+            delete event.language;
+          
+            
             if(event.description) {
                 event.description = sanitaze.htmlEntities(event.description);
             }
@@ -115,10 +117,26 @@ module.exports = {
             if(event.vocal) {
                 event.vocal = sanitaze.htmlEntities(event.vocal);
             }
-
+            
             await event.insert();
-          
-            response.status('200').json({data: event});
+            
+            const languages = request.body.language;
+            let arrayLang = [];
+            
+            for(const [key, value] of Object.entries(languages)) {
+                if (value) {
+                    arrayLang = [...arrayLang, parseInt(key[2],10)]
+                }
+            }
+            
+            result = []
+            
+            for (elm of arrayLang) {
+                let res = await Event.addLangOnEvent([event._id, elm]);
+                result = [...result, res];
+            }
+
+            response.status('200').json({data: {event , result}});
 
         } catch (error) {
             console.log('error:', error);

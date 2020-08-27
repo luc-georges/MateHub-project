@@ -123,6 +123,24 @@ module.exports = class Event extends CoreModel {
         }
     }
 
+    static async addLangOnEvent(val) {
+        try {
+            
+            let query = `INSERT INTO ${this.schema}"M_EVENT_has_LANG" (event_id,lang_id)
+            VALUES ($1,$2) RETURNING *;`
+            let values = [...val];
+            
+
+            const result = await client.query(query,values);
+            //console.log('result:', result.rows[0]);
+            return result.rows[0];
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
+    }
+
     static async addUserOnEvent(val) {
         try {
             
