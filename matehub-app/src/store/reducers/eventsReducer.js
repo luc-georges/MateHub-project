@@ -13,14 +13,14 @@ export const initialState = {
   list: [],
   eventCreationErrorMessage: '',
   eventCreationData: {
-    user_id: 1,
-    game_id: 2,
-    player_count: 1, // Tout le temps 1
-    player_max: 5,
-    duration: '02:30:00',
-    event_time: '2020-08-22 09:00:00',
-    status: 0, // Tout le temps 0
-    description: 'Ceci est l exemple d une description',
+    user_id: '',
+    game_id: '',
+    player_count: '', // Tout le temps 1
+    player_max: '',
+    duration: '',
+    event_time: '2020-08-22 09:00',
+    status: '', // Tout le temps 0
+    description: '',
     vocal: '',
     language: {
       fr1: false,
@@ -41,10 +41,10 @@ export default (state = initialState, action = {}) => {
         eventCreationData: {
           ...state.eventCreationData,
           ...action.payload,
-          language : {
+          language: {
             ...state.eventCreationData.language,
-            ...action.payload
-          }
+            ...action.payload,
+          },
         },
       };
     case CREATE_EVENT_SUBMIT:

@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
-import { Form, Flag, TextArea, Button, Select, Checkbox } from 'semantic-ui-react';
+import {
+  Form,
+  Flag,
+  TextArea,
+  Button,
+  Select,
+  Checkbox,
+  Message,
+} from 'semantic-ui-react';
 
 const CreateEventPage = ({
   onChangeField,
   eventCreationData,
   onFormSubmit,
+  errors,
 }) => {
   // console.log(eventCreationData);
 
@@ -32,7 +41,34 @@ const CreateEventPage = ({
     });
   };
 
+  const [durationError, setDurationError] = useState(false);
+  const [gameIdError, setgameIdError] = useState(false);
+  const [playerMaxError, setplayerMaxError] = useState(false);
+
   const handleSubmit = () => {
+    let error = false;
+
+    if (eventCreationData.duration === '') {
+      setDurationError(true);
+      error = true;
+    } else {
+      setDurationError(false);
+    }
+
+    if (eventCreationData.game_id === '') {
+      setgameIdError(true);
+      error = true;
+    } else {
+      setgameIdError(false);
+    }
+
+    if (eventCreationData.player_max === '') {
+      setplayerMaxError(true);
+      error = true;
+    } else {
+      setplayerMaxError(false);
+    }
+
     onFormSubmit();
   };
 
@@ -73,16 +109,24 @@ const CreateEventPage = ({
 
   return (
     <div className="CreateEventPage">
-      <Form className="form" onSubmit={handleSubmit}>
+      <Form className="form" onSubmit={handleSubmit} error>
         <div className="titreCreateEventPage">
           <h1 style={{ marginBottom: '1em', margin: '0 auto 1em auto' }}>
             Create event
           </h1>
         </div>
+
+        {gameIdError ? (
+          <Message
+            error
+            header="Select game error"
+            content="You did not specify on which game your event is created"
+          />
+        ) : null}
+
         <div className="form-select">
           <div className="form-select-title">Language</div>
           <Form.Group>
-
             <Form.Group className="form-select-language">
               <Flag name="france" />
               <Form.Input
@@ -142,7 +186,6 @@ const CreateEventPage = ({
                 onChange={handleAddFlag}
               />
             </Form.Group>
-
           </Form.Group>
         </div>
         <Form.Input
@@ -153,6 +196,8 @@ const CreateEventPage = ({
           placeholder="Select game"
           onChange={handleSelectInputChange}
           value={eventCreationData.game_id}
+          error={gameIdError}
+          required
         />
         <Form.Group widths="equal">
           <Form.Input
@@ -163,6 +208,8 @@ const CreateEventPage = ({
             placeholder="Maximum players"
             onChange={handleSelectInputChange}
             value={eventCreationData.player_max}
+            error={playerMaxError}
+            required
           />
 
           <Form.Input
@@ -173,6 +220,8 @@ const CreateEventPage = ({
             placeholder="Event duration"
             onChange={handleSelectInputChange}
             value={eventCreationData.duration}
+            error={durationError}
+            required
           />
         </Form.Group>
         <Form.Group widths="equal">
@@ -202,7 +251,15 @@ const CreateEventPage = ({
           onChange={handleInputChange}
           value={eventCreationData.description}
         />
-        <Button content="Create event" type="submit" />
+        <Button
+          content="Create event"
+          type="submit"
+          // disabled={
+          //   !eventCreationData.duration ||
+          //   !eventCreationData.game_id ||
+          //   !eventCreationData.player_max
+          // }
+        />
       </Form>
     </div>
   );

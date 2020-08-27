@@ -4,7 +4,7 @@ import { eventChangeField, CreateEventSubmit } from '../store/actions/eventsActi
 import moment from 'moment';
 
 const mapStateToProps = (state) => {
-  // console.log(state.events.eventCreationData);
+  console.log(state.events);
   return {
     eventCreationData: {
       user_id: state.events.eventCreationData.user_id,
@@ -17,8 +17,17 @@ const mapStateToProps = (state) => {
       description: state.events.eventCreationData.description,
       flag: state.events.eventCreationData.flag,
     },
+    // errors: {
+    //   durationError: state.events.errors.durationError,
+    //   game_idError: state.events.errors.game_idError,
+    //   player_maxError: state.events.errors.player_maxError,
+    // },
+    errors: {
+      durationError: true,
+      game_idError: true,
+      player_maxError: true,
+    }
   };
-  // return {eventCreationData: state.events.eventCreationData,}
 };
 
 const mapDispatchToProps = (dispatch) => ({
