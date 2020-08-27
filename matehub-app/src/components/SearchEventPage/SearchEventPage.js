@@ -1,7 +1,6 @@
 import React from 'react';
 import './style.scss';
 import { Input, Form, Button } from 'semantic-ui-react';
-import DateTimePicker from 'react-datetime-picker';
 
 const SearchEventPAge = () => (
   <div className="SearchEventPage">
@@ -36,7 +35,6 @@ const SearchEventPAge = () => (
 
       </Form.Field>
       
-      <DateTimePicker className="select" label="date time dd/mm/yyyy hh/mm" />
 
       <div className="button">
       <Form.Field

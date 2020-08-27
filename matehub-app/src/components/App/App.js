@@ -14,7 +14,7 @@ import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../../containers/RegistrationPageContainer';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
-import CreateEventPage from '../CreateEventPage/CreateEventPage';
+import CreateEventPage from '../../containers/CreateEventPageContainer';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
 import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
@@ -29,7 +29,6 @@ function App({
   getTopUsers,
   checkAuth,
   getNews,
-  getUser,
   isLogged,
   registered,
 }) {
@@ -60,9 +59,7 @@ function App({
         <Route exact path="/login">
           {isLogged ? <Redirect to="/" /> : <LoginPage />}
         </Route>
-        <Route exact path="/createevent">
-          <CreateEventPage />
-        </Route>
+        <Route exact path="/createevent" component={CreateEventPage} />
         <Route exact path="/searchevent">
           <SearchEventPage />
         </Route>

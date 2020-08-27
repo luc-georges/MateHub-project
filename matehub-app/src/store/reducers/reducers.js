@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import eventReducer from './eventsReducer';
+import eventsReducer from './eventsReducer';
 import usersReducer from './usersReducer';
 import authReducer from './authReducer';
 import newsReducer from './newsReducer';
 import registerReducer from './registerReducer';
 
 const appReducer = combineReducers({
-  events: eventReducer,
+  events: eventsReducer,
   users: usersReducer,
   auth: authReducer,
   news: newsReducer,
