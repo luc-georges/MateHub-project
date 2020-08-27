@@ -59,7 +59,8 @@ CREATE TABLE "M_USER_has_GAME" (
     "game_id" INT NOT NULL REFERENCES "game"("id"),
     "IGN" JSON ,
     "stats" JSON,
-    "level_id" INT REFERENCES "level"("id")
+    "level_id" INT REFERENCES "level"("id"),
+    PRIMARY KEY ("user_id","game_id")
 );
 
 
@@ -68,13 +69,15 @@ CREATE TABLE "M_USER_has_EVENT" (
     "event_id" INT NOT NULL REFERENCES "event"("id"),
     "user_id" INT NOT NULL REFERENCES "user"("id"),
     "status" INT NOT NULL DEFAULT 0 ,
-    "message" TEXT NOT NULL DEFAULT 'Hey mate, i would love to participate! Check my profile !'
+    "message" TEXT NOT NULL DEFAULT 'Hey mate, i would love to participate! Check my profile !',
+    PRIMARY KEY ("event_id","user_id")
 );
 
 CREATE TABLE "M_EVENT_has_LANG" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "event_id" INT NOT NULL REFERENCES "event"("id"),
-    "lang_id" INT NOT NULL REFERENCES "lang"("id") DEFAULT 2
+    "lang_id" INT NOT NULL REFERENCES "lang"("id") DEFAULT 2,
+    PRIMARY KEY ("event_id","lang_id")
 );
 
 

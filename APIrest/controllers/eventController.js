@@ -1,5 +1,5 @@
 const Event = require('../models/event');
-const Game = require('../models/game');
+//const Game = require('../models/game');
 const sanitaze = require('../sanitaze/sanitazer');
 
 module.exports = {
@@ -157,6 +157,51 @@ module.exports = {
             console.log(error);
             next(error);
         }
+    },
+
+    applyEvent: async (request, response, next) => {
+        try {
+            
+            const values = [request.params.eventId, request.params.id,0,'Hey mate, i would love to participate! Check my profile !'];
+            if (request.body.message) {
+                values[3] = request.body.message;
+            }
+
+            const result = await Event.addUserOnEvent(values);
+            response.status('201').json({data: result});
+
+        } catch (error) {
+            console.log('error:', error)
+            next(error);
+        }
+    },
+
+    acceptUserOnEvent: async (request, response, next) => {
+     try {
+        const values = [1,request.params.eventId,request.params.id];
+        const UpUserHasEvent = await Event.updateUserOnEvent(values);
+
+        const event = await Event.findById(request.params.eventId);
+        event._player_count += 1;
+        const eventResult = await event.update();
+
+        response.status('201').json({data:{UpUserHasEvent,eventResult}});
+
+     } catch (error) {
+        console.log('error:', error)
+        next(error);
+     }   
+    },
+
+    kickUserOnEvent: async (request, response, next) => {
+      try {
+          
+        
+
+      } catch (error) {
+          console.log('error:', error)
+          next(error);
+      }  
     },
 
     /**

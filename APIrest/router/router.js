@@ -42,6 +42,7 @@ router.post('/refreshToken', authController.refreshToken);
 router.post('/users/islogged', userController.isLogged);
 router.post('/user/:id/logout', /*authenticateToken, ownerControl,*/ userController.logout);
 router.put('/user/:id/update', /*authenticateToken, ownerControl,*/ validateBody(updateUserSchema), userController.updateAnUser);
+//router.post('user/:id/addGame', userController.addGame);
 router.delete('/user/:id/delete', /*authenticateToken, ownerControl,*/ userController.deleteAnUser);
 
 
@@ -51,7 +52,9 @@ router.get('/event/:id', eventController.getEventById);
 router.get('/search/events', eventController.getEventByParams);
 router.get('/find/event', eventController.getEventBy);//querystring
 router.post('/createEvent/user/:id', /*authenticateToken, ownerControl,*/ validateBody(postEventSchema), eventController.createAnEvent);
-router.put('/updateEvent/event/:eventId/user/:Id', /*authenticateToken, ownerControl,*/ validateBody(updateEventSchema), eventController.updateAnEvent);
+router.put('/updateEvent/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ validateBody(updateEventSchema), eventController.updateAnEvent);
+router.post('/eventApply/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ eventController.applyEvent);
+router.put('/updateEvent/event/:eventId/addUserOn/:id',/*authenticateToken, ownerControl,*/ eventController.acceptUserOnEvent);
 router.delete('/deleteEvent/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ eventController.deleteAnEvent);
 
 /********** ROUTER EVENT'S USER *********/
@@ -66,7 +69,7 @@ router.post('/password/forgot', authController.forgotPassword);
 router.put('/password/createNew', authController.createNewPassword);
 
 /*********** ERROR 500 midleware ************/
-router.use(serverError);
+//router.use(serverError);
 
 module.exports = router;
 

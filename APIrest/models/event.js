@@ -123,6 +123,42 @@ module.exports = class Event extends CoreModel {
         }
     }
 
+    static async addUserOnEvent(val) {
+        try {
+            
+            let query = `INSERT INTO ${this.schema}"M_USER_has_EVENT" (event_id,user_id,status,message)
+            VALUES ($1,$2,$3,$4) RETURNING *;`
+            let values = [...val];
+            
+
+            const result = await client.query(query,values);
+            //console.log('result:', result.rows[0]);
+            return result.rows[0];
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
+    }
+
+    static async updateUserOnEvent(val) {
+        try {
+            
+            let query = `UPDATE ${this.schema}"M_USER_has_EVENT"
+            SET status = $1
+            WHERE event_id = $2 AND user_id = $3 RETURNING *`;
+            let values = [...val];
+
+            const result = await client.query(query,values);
+            //console.log('result:', result.rows[0]);
+            return result.rows[0];
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
+    }
+
     /*********GETTER **********/
 
     get user_id() {
