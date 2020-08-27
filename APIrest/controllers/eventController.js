@@ -161,13 +161,13 @@ module.exports = {
 
     applyEvent: async (request, response, next) => {
         try {
-            /*
+            
             const checkValues = [request.params.eventId,request.params.id];
             const check = await Event.getUserOnEvent(checkValues);
 
-            if (check.event_id == request.params.eventId && check.user_id == request.params.id) {
+            if (check) {
                 return response.status('400').json({error:'user was already on this event'});
-            }*/
+            }
 
             const values = [request.params.eventId, request.params.id,0,'Hey mate, i would love to participate! Check my profile !'];
             if (request.body.message) {
