@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
       event_time: moment(state.events.eventCreationData.event_time).format("yyyy-MM-DDThh:mm:ss"),
       status: 0, // Tout le temps 0
       description: state.events.eventCreationData.description,
+      flag: state.events.eventCreationData.flag,
     },
   };
   // return {eventCreationData: state.events.eventCreationData,}

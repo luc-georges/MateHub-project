@@ -10,7 +10,7 @@ import {
 
 const eventsRequestMW = (store) => (next) => (action) => {
   // console.log("Passage dans le eventsRequestMW");
-  const {connectedUserId} = store.getState().auth;
+  const { connectedUserId } = store.getState().auth;
   // console.log(connectedUserId);
   next(action);
   switch (action.type) {
@@ -28,7 +28,15 @@ const eventsRequestMW = (store) => (next) => (action) => {
           status: 0,
           description: store.getState().events.eventCreationData.description,
           vocal: store.getState().events.eventCreationData.vocal,
-        }
+          language: {
+          fr1: store.getState().events.eventCreationData.language.fr1,
+          uk2: store.getState().events.eventCreationData.language.uk2,
+          it3: store.getState().events.eventCreationData.language.it3,
+          es4: store.getState().events.eventCreationData.language.es4,
+          ru5: store.getState().events.eventCreationData.language.ru5,
+          de6: store.getState().events.eventCreationData.language.de6,
+          },
+        },
       })
         .then((res) => {
           console.log(res.data);

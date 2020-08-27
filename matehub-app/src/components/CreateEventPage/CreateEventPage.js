@@ -1,9 +1,13 @@
 import React from 'react';
 import './style.scss';
-import { Form, Flag, TextArea, Button, Select } from 'semantic-ui-react';
+import { Form, Flag, TextArea, Button, Select, Checkbox } from 'semantic-ui-react';
 
-const CreateEventPage = ({ onChangeField, eventCreationData, onFormSubmit }) => {
-  console.log(eventCreationData);
+const CreateEventPage = ({
+  onChangeField,
+  eventCreationData,
+  onFormSubmit,
+}) => {
+  // console.log(eventCreationData);
 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -13,17 +17,24 @@ const CreateEventPage = ({ onChangeField, eventCreationData, onFormSubmit }) => 
   };
 
   const handleSelectInputChange = (evt, data) => {
-    console.log('select name :', data.name);
-    console.log('select value :', data.value);
+    // console.log('objet data entier :', data);
     const { name, value } = data;
     onChangeField({
       [name]: value,
     });
   };
 
+  const handleAddFlag = (evt, data) => {
+    // console.log('objet data entier :', data);
+    const { name, checked } = data;
+    onChangeField({
+      [name]: checked,
+    });
+  };
+
   const handleSubmit = () => {
     onFormSubmit();
-  }
+  };
 
   // Options for select input
   const selectGameOptions = [
@@ -71,30 +82,67 @@ const CreateEventPage = ({ onChangeField, eventCreationData, onFormSubmit }) => 
         <div className="form-select">
           <div className="form-select-title">Language</div>
           <Form.Group>
+
             <Form.Group className="form-select-language">
               <Flag name="france" />
-              <Form.Field label="France" control="input" type="checkbox" />
+              <Form.Input
+                label="France"
+                control={Checkbox}
+                name="fr1"
+                onChange={handleAddFlag}
+              />
             </Form.Group>
+
             <Form.Group className="form-select-language">
               <Flag name="gb" />
-              <Form.Field label="UK" control="input" type="checkbox" />
+              <Form.Input
+                label="UK"
+                control={Checkbox}
+                name="uk2"
+                onChange={handleAddFlag}
+              />
             </Form.Group>
-            <Form.Group className="form-select-language">
-              <Flag name="es" />
-              <Form.Field label="Spain" control="input" type="checkbox" />
-            </Form.Group>
+
             <Form.Group className="form-select-language">
               <Flag name="it" />
-              <Form.Field label="Italy" control="input" type="checkbox" />
+              <Form.Input
+                label="Italy"
+                control={Checkbox}
+                name="it3"
+                onChange={handleAddFlag}
+              />
             </Form.Group>
+
+            <Form.Group className="form-select-language">
+              <Flag name="es" />
+              <Form.Input
+                label="Spain"
+                control={Checkbox}
+                name="es4"
+                onChange={handleAddFlag}
+              />
+            </Form.Group>
+
             <Form.Group className="form-select-language">
               <Flag name="ru" />
-              <Form.Field label="Russia" control="input" type="checkbox" />
+              <Form.Input
+                label="Russia"
+                control={Checkbox}
+                name="ru5"
+                onChange={handleAddFlag}
+              />
             </Form.Group>
+
             <Form.Group className="form-select-language">
               <Flag name="de" />
-              <Form.Field label="Germany" control="input" type="checkbox" />
+              <Form.Input
+                label="Germany"
+                control={Checkbox}
+                name="de6"
+                onChange={handleAddFlag}
+              />
             </Form.Group>
+
           </Form.Group>
         </div>
         <Form.Input
@@ -136,7 +184,7 @@ const CreateEventPage = ({ onChangeField, eventCreationData, onFormSubmit }) => 
             onChange={handleInputChange}
             value={eventCreationData.event_time}
           />
-  
+
           <Form.Input
             label="vocal"
             name="vocal"

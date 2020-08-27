@@ -18,10 +18,18 @@ export const initialState = {
     player_count: 1, // Tout le temps 1
     player_max: 5,
     duration: '02:30:00',
-    event_time: "2020-08-22 09:00:00",
+    event_time: '2020-08-22 09:00:00',
     status: 0, // Tout le temps 0
-    description: "Ceci est l exemple d une description",
-    vocal: "",
+    description: 'Ceci est l exemple d une description',
+    vocal: '',
+    language: {
+      fr1: false,
+      uk2: false,
+      it3: false,
+      es4: false,
+      ru5: false,
+      de6: false,
+    },
   },
 };
 
@@ -33,6 +41,10 @@ export default (state = initialState, action = {}) => {
         eventCreationData: {
           ...state.eventCreationData,
           ...action.payload,
+          language : {
+            ...state.eventCreationData.language,
+            ...action.payload
+          }
         },
       };
     case CREATE_EVENT_SUBMIT:
