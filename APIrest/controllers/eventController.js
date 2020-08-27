@@ -161,10 +161,17 @@ module.exports = {
 
     applyEvent: async (request, response, next) => {
         try {
-            
+            /*
+            const checkValues = [request.params.eventId,request.params.id];
+            const check = await Event.getUserOnEvent(checkValues);
+
+            if (check.event_id == request.params.eventId && check.user_id == request.params.id) {
+                return response.status('400').json({error:'user was already on this event'});
+            }*/
+
             const values = [request.params.eventId, request.params.id,0,'Hey mate, i would love to participate! Check my profile !'];
             if (request.body.message) {
-                values[3] = request.body.message;
+                values[3] = sanitaze.htmlEntities(request.body.message);
             }
 
             const result = await Event.addUserOnEvent(values);
@@ -195,8 +202,30 @@ module.exports = {
 
     kickUserOnEvent: async (request, response, next) => {
       try {
-          
-        
+        const values = [request.params.eventId,request.params.id];
+        const result = await Event.getUserOnEvent(values);
+
+        const updateValues = [2,request.params.eventId,request.params.id];
+        const kickUserHasEvent = await Event.updateUserOnEvent(updateValues);
+
+        const event = await Event.findById(request.params.eventId);
+
+        switch (result.status) {
+            case 0:
+                break;
+            
+            case 1:
+                event._player_count -= 1;
+                break;
+
+            case 2:
+                return response.status('400').json({error:'user was already kicked'});
+            default:
+                return response.status('400').json({error:'status code not accepted'});
+        }
+        const eventResult = await event.update();
+
+        response.status('201').json({data:{eventResult,kickUserHasEvent}});
 
       } catch (error) {
           console.log('error:', error)

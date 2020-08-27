@@ -31,7 +31,9 @@ INSERT INTO "lang"( "label", "icon") VALUES
         ('Fr', 'fr.png'),
         ('En', 'en.png'),
         ('It', 'it.png'),
-        ('Es', 'es.png');
+        ('Es', 'es.png'),
+        ('Rs', 'rs.png'),
+        ('Gr', 'gr.png');
 
 -- EVENT insert
 
@@ -82,7 +84,7 @@ INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count"
 -- M_2_M_EVENT_has_LANG insert
 
 INSERT INTO "M_EVENT_has_LANG"( "event_id", "lang_id") VALUES
-        (1,1),(1,2),(1,3),(2,1),(1,2),(3,1),(4,1),(4,2),(4,3),(4,2),
+        (1,1),(1,2),(1,3),(2,1),(2,2),(3,1),(4,1),(4,2),(4,3),
         (5,2),(5,1),(6,3),(7,4),(8,1),(8,2),(9,1),(9,2),(10,2),(11,1),
         (12,2),(12,3),(13,1),(14,2),(15,2),(16,2),(17,2),(18,2),(19,2),(20,2),
         (21,1),(21,2),(22,2),(23,2),(24,2),(25,2),(26,2),(27,1),(28,2),(29,2),

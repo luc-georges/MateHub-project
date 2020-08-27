@@ -55,6 +55,7 @@ router.post('/createEvent/user/:id', /*authenticateToken, ownerControl,*/ valida
 router.put('/updateEvent/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ validateBody(updateEventSchema), eventController.updateAnEvent);
 router.post('/eventApply/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ eventController.applyEvent);
 router.put('/updateEvent/event/:eventId/addUserOn/:id',/*authenticateToken, ownerControl,*/ eventController.acceptUserOnEvent);
+router.put('/updateEvent/event/:eventId/kickUser/:id', /*authenticateToken, ownerControl,*/ eventController.kickUserOnEvent);
 router.delete('/deleteEvent/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ eventController.deleteAnEvent);
 
 /********** ROUTER EVENT'S USER *********/

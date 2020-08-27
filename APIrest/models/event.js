@@ -159,6 +159,22 @@ module.exports = class Event extends CoreModel {
         }
     }
 
+    static async getUserOnEvent(val) {
+        try {
+            
+            let query = `SELECT * FROM ${this.schema}"M_USER_has_EVENT"
+            WHERE event_id = $1 AND user_id = $2`
+            let values = [...val];
+
+            const result = await client.query(query,values);
+            //console.log('result:', result.rows[0]);
+            return result.rows[0];
+
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
+    }
     /*********GETTER **********/
 
     get user_id() {
