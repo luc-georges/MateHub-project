@@ -18,7 +18,9 @@ export const initialState = {
     player_count: '', // Tout le temps 1
     player_max: '',
     duration: '',
-    event_time: '2020-08-22 09:00',
+    event_time: '',
+    event_time_date: '',
+    event_time_hour: '',
     status: '', // Tout le temps 0
     description: '',
     vocal: '',
@@ -52,11 +54,29 @@ export default (state = initialState, action = {}) => {
         ...state,
       };
     case CREATE_EVENT_SUBMIT_SUCCESS:
+      console.log('NIQUE TOI APPARAIT PUTAIN DE PUTE')
       return {
         ...state,
-        eventCreationData: {
-          ...state.eventCreationData,
-          ...action.payload,
+        eventCreationData: { 
+          user_id: '',
+          game_id: '',
+          player_count: '', // Tout le temps 1
+          player_max: '',
+          duration: '',
+          event_time: '',
+          event_time_date: '',
+          event_time_hour: '',
+          status: '', // Tout le temps 0
+          description: '',
+          vocal: '',
+          language: {
+            fr1: false,
+            uk2: false,
+            it3: false,
+            es4: false,
+            ru5: false,
+            de6: false,
+          },
         },
       };
     case CREATE_EVENT_SUBMIT_ERROR:

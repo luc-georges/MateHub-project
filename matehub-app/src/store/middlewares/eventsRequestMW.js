@@ -15,6 +15,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case CREATE_EVENT_SUBMIT:
+      const eventTime = `${store.getState().events.eventCreationData.event_time_date} ${store.getState().events.eventCreationData.event_time_hour}:00`;
       axios({
         method: 'post',
         url: `http://localhost:3001/createEvent/user/${connectedUserId}`,
@@ -24,7 +25,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
           player_count: 1,
           player_max: store.getState().events.eventCreationData.player_max,
           duration: store.getState().events.eventCreationData.duration,
-          event_time: store.getState().events.eventCreationData.event_time,
+          event_time: eventTime,
           status: 0,
           description: store.getState().events.eventCreationData.description,
           vocal: store.getState().events.eventCreationData.vocal,
@@ -40,12 +41,14 @@ const eventsRequestMW = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res.data);
+          store.dispatch(CreateEventSubmitSuccess(res.data.data));
         })
         .catch((err) => {
           console.log(
             "On passe dans le catch de la requete de création d'event >>>",
             err
           );
+          store.dispatch(CreateEventSubmitError());
         });
       break;
     case GET_EVENTS:

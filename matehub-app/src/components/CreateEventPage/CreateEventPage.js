@@ -44,6 +44,8 @@ const CreateEventPage = ({
   const [durationError, setDurationError] = useState(false);
   const [gameIdError, setgameIdError] = useState(false);
   const [playerMaxError, setplayerMaxError] = useState(false);
+  const [eventStartDateError, setEventStartDateError] = useState(false);
+  const [eventStartHourError, setEventStartHourError] = useState(false);
 
   const handleSubmit = () => {
     let error = false;
@@ -67,6 +69,20 @@ const CreateEventPage = ({
       error = true;
     } else {
       setplayerMaxError(false);
+    }
+
+    if (eventCreationData.event_time_date === '') {
+      setEventStartDateError(true);
+      error = true;
+    } else {
+      setEventStartDateError(false);
+    }
+
+    if (eventCreationData.event_time_hour === '') {
+      setEventStartHourError(true);
+      error = true;
+    } else {
+      setEventStartHourError(false);
     }
 
     onFormSubmit();
@@ -121,6 +137,30 @@ const CreateEventPage = ({
             error
             header="Select game error"
             content="You did not specify on which game your event is created"
+          />
+        ) : null}
+
+        {playerMaxError ? (
+          <Message
+            error
+            header="Maximum players error"
+            content="You did not specify how many players you want on your event"
+          />
+        ) : null}
+
+        {durationError ? (
+          <Message
+            error
+            header="Duration error"
+            content="You did not specify a duration for your event"
+          />
+        ) : null}
+
+        {eventStartDateError ? (
+          <Message
+            error
+            header="Duration error"
+            content="You did not specify the starting time of your event"
           />
         ) : null}
 
@@ -188,6 +228,7 @@ const CreateEventPage = ({
             </Form.Group>
           </Form.Group>
         </div>
+
         <Form.Input
           name="game_id"
           label="Select game"
@@ -224,14 +265,28 @@ const CreateEventPage = ({
             required
           />
         </Form.Group>
+
         <Form.Group widths="equal">
           <Form.Input
             id="form-input-control-error-eventstart"
-            name="event_time"
-            label="Event start"
-            type="datetime-local"
+            name="event_time_date"
+            label="Event start date"
+            type="date"
             onChange={handleInputChange}
-            value={eventCreationData.event_time}
+            value={eventCreationData.event_time_date}
+            error={eventStartDateError}
+            required
+          />
+
+          <Form.Input
+            id="form-input-control-error-eventstart"
+            name="event_time_hour"
+            label="Event start time"
+            type="time"
+            onChange={handleInputChange}
+            value={eventCreationData.event_time_hour}
+            error={eventStartHourError}
+            required
           />
 
           <Form.Input
@@ -251,15 +306,7 @@ const CreateEventPage = ({
           onChange={handleInputChange}
           value={eventCreationData.description}
         />
-        <Button
-          content="Create event"
-          type="submit"
-          // disabled={
-          //   !eventCreationData.duration ||
-          //   !eventCreationData.game_id ||
-          //   !eventCreationData.player_max
-          // }
-        />
+        <Button content="Create event" type="submit" />
       </Form>
     </div>
   );
