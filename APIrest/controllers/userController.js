@@ -292,6 +292,8 @@ module.exports = {
             if(request.body.description) {
                 user.description = sanitaze.htmlEntities(user.description);
             }
+
+            if(request.files){
             if(request.files.avatar) {
          
 
@@ -322,10 +324,11 @@ module.exports = {
     
 
                 user.banner = sanitaze.htmlEntities(bannerImg.name);
-            }
+            }}
     
             const result = await user.update();
             
+            delete user._password;
             response.status('201').json({data: result});
             
         } catch (error) {
