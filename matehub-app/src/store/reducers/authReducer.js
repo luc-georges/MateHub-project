@@ -24,9 +24,7 @@ export const initialState = {
   loginErrorMessage: '',
   connectedUserId: "",
   personnalData: {},
-  modifyPersonnalData: {
-    nickname: '',
-  },
+  modifyPersonnalData: {},
   error: '',
 };
 
@@ -49,6 +47,9 @@ export default (state = initialState, action = {}) => {
           ...state.personnalData,
           ...action.payload,
         },
+        modifyPersonnalData : {
+          ...state.modifyPersonnalData = initialState.modifyPersonnalData,
+          },
         error: '',
       };
     case GET_PERSONNAL_DATA_ERROR:

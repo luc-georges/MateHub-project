@@ -107,13 +107,18 @@ export default (store) => (next) => (action) => {
       case GET_PERSONNAL_DATA_SUBMIT:
         let insertObject = {
         }
-        if(store.getState().auth.modifyPersonnalData.nickname){
+        if(store.getState().auth.modifyPersonnalData.nickname && store.getState().auth.modifyPersonnalData.nickname.length > 0 ){
           insertObject.nickname = store.getState().auth.modifyPersonnalData.nickname;
         }
-        if(store.getState().auth.modifyPersonnalData.description){
+        if(store.getState().auth.modifyPersonnalData.description && store.getState().auth.modifyPersonnalData.description.length > 0 ){
           insertObject.description = store.getState().auth.modifyPersonnalData.description;
         }
-
+        if(store.getState().auth.modifyPersonnalData.avatar  ){
+          insertObject.avatar = store.getState().auth.modifyPersonnalData.avatar;
+        }
+        if(store.getState().auth.modifyPersonnalData.banner){
+          insertObject.banner = store.getState().auth.modifyPersonnalData.banner;
+        }
         //console.log(store.getState().auth.loginData)
         axios({
           method: 'put',
@@ -129,9 +134,7 @@ export default (store) => (next) => (action) => {
           },
         })
           .then((res) => {
-            console.log(res.data.data);
-            store.dispatch(getPersonnalDataSuccess(res.data.data));
-
+            store.dispatch(getPersonnalDataSuccess(res.data.data))
           })
           .catch((err) => {
             console.log('On passe dans le catch de la requête update user :', err);

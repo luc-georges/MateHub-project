@@ -3,17 +3,13 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
-const fileUpload = require('express-fileupload');
-const bodyParser = require('body-parser');
 /*cors*/
 const cors = require('cors');
-const bodyParser = require('body-parser')
+
 const router = require('./router/router');
 const routerNews = require('./router/routerNews')
 const routerGameApi = require('./router/routerGameApi')
 const app = express();
-
-
 
 /*Logs FIle*/
 
@@ -26,29 +22,14 @@ const app = express();
 //   )
 // );
 
-app.use(fileUpload({
-  createParentPath: true
-}));
-app.use(express.static('../matehub-app/public/src/assets/uploads'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 const corsOptions = {
   credentials : true
 }
 /*cors*/
 app.use(cors(corsOptions));
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-<<<<<<< HEAD
-=======
-
-app.use(bodyParser.urlencoded({ extended: false }))
-
-app.use(bodyParser.json())
-
-
->>>>>>> feature/add-update-information
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const session = require('express-session');
 app.use(session({
@@ -66,5 +47,4 @@ const port = process.env.PORT || 3001;
 app.listen(port, _ => {
 console.log(`Running on ${port}`)
 });
-
 
