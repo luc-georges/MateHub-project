@@ -7,7 +7,7 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 /*cors*/
 const cors = require('cors');
-
+const bodyParser = require('body-parser')
 const router = require('./router/router');
 const routerNews = require('./router/routerNews')
 const routerGameApi = require('./router/routerGameApi')
@@ -40,6 +40,15 @@ app.use(cors(corsOptions));
 
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
+<<<<<<< HEAD
+=======
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json())
+
+
+>>>>>>> feature/add-update-information
 
 const session = require('express-session');
 app.use(session({

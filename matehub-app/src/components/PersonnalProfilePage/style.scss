@@ -23,6 +23,12 @@
 
   width:200px;
 }
+.loginpage {
+  margin-left: 10%;
+  margin-right: 15%;
+  width: 100%;
+}
+
 
 .details{
   position: absolute;
@@ -45,7 +51,16 @@
 }
 .container-avatar{
   position: relative;
-
+}
+.information-form{
+  display: flex;
+  width:90%
+}
+.information-form input{
+  width:200px
+}
+.form-input{
+  width:400px;
 }
 .container-banner{
   position: relative;
