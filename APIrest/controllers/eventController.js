@@ -136,7 +136,7 @@ module.exports = {
                 result = [...result, res];
             }
 
-            response.status('200').json({data: {event , lang: result}});
+            response.status('200').json({data: {event , result}});
 
         } catch (error) {
             console.log('error:', error);
@@ -226,6 +226,60 @@ module.exports = {
         const values = [request.params.eventId,request.params.userId];
         const result = await Event.getUserOnEvent(values);
 
+        if (!result) {
+            response.status('400').json({error:'bad request user not on events'});
+        }
+
+        const updateValues = [2,request.params.eventId,request.params.userId];
+        const kickUserHasEvent = await Event.updateUserOnEvent(updateValues);
+
+        const event = await Event.findById(request.params.eventId);
+
+        switch (result.status) {
+            case 0:
+                break;
+            
+            case 1:
+                event._player_count -= 1;
+                break;
+
+            case 2:
+                return response.status('400').json({error:'user was already kicked'});
+            default:
+                return response.status('400').json({error:'status code not accepted'});
+        }
+        const eventResult = await event.update();
+
+        response.status('201').json({data:{eventResult,kickUserHasEvent}});
+
+      } catch (error) {
+          console.log('error:', error)
+          next(error);
+      }  
+    },
+
+    /**
+     * middleware express pour delete un event par l'id
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {boolean} true si ok
+     */
+    deleteAnEvent: async (request, response, next) => {
+        try {
+            
+            const event = await Event.findById(request.params.id);
+            const result = await event.delete();
+        
+            response.status('200').json({data: result});
+                       
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
+    }
+
+
+}
         if (!result) {
             response.status('400').json({error:'bad request user not on events'});
         }

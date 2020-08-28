@@ -6,6 +6,6 @@ module.exports = Joi.object({
     nickname: Joi.string().alphanum().min(3).max(30),
     dateofbirth: Joi.date(),
     description: Joi.string(),
-    avatar: Joi.string().pattern(/(^.+).(jpe?g|png|gif)$/),
-    banner: Joi.string().pattern(/(^.+).(jpe?g|png|gif)$/)
+    // avatar: Joi.string().pattern(/(^.+).(jpe?g|png|gif)$/),
+    // banner: Joi.string().pattern(/(^.+).(jpe?g|png|gif)$/)
 });

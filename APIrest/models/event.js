@@ -271,3 +271,37 @@ module.exports = class Event extends CoreModel {
         this._player_max = value
     }
 }
+    set game_id(value) {
+        this._game_id = value
+    }
+
+    set event_time(value) {
+        this._event_time = value
+    }
+
+    set duration(value) {
+        this._duration = value
+    }
+
+    set player_count(value) {
+
+        this._player_count = value
+    }
+
+    set description(value) {
+        this._description = value
+    }
+
+    set status(value) {
+
+        this._status = value
+    }
+
+    set vocal(value) {
+        this._vocal = value
+    }
+    
+    set player_max(value) {
+        this._player_max = value
+    }
+}

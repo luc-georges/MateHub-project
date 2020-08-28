@@ -292,8 +292,6 @@ module.exports = {
             if(request.body.description) {
                 user.description = sanitaze.htmlEntities(user.description);
             }
-
-            if(request.files){
             if(request.files.avatar) {
          
 
@@ -324,11 +322,38 @@ module.exports = {
     
 
                 user.banner = sanitaze.htmlEntities(bannerImg.name);
-            }}
+            }
     
             const result = await user.update();
             
-            delete user._password;
+            response.status('201').json({data: result});
+            
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
+    },
+
+    /**
+     * middleware express pour delete un user par l'id
+     * @param {Object} request - Express request object
+     * @param {Object} response - Express response object
+     * @returns {boolean} true si ok
+     */
+    deleteAnUser: async (request, response, next) => {
+        try {
+            const user = await User.findById(request.params.id);
+
+            const result = await user.delete();
+        
+            response.status('200').json({data: result});
+                       
+        } catch (error) {
+            console.log(error)
+            next(error);
+        }
+    }
+}           delete user._password;
             response.status('201').json({data: result});
             
         } catch (error) {
