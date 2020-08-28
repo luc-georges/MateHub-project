@@ -40,7 +40,7 @@ const LastestNews = () => {
 </div>
 <div className="slide_container" >
   <div className="slider_first">
-    <img className="slider_image" src={"https://cdn1.dotesports.com/wp-content/uploads/2020/08/23140643/49632059962_ac65f1dc5e_k-768x512.jpg.webp"} />
+    <img className="slider_image" src={"https://cdn1.dotesports.com/wp-content/uploads/2020/08/23140643/49632059962_ac65f1dc5e_k-768x512.jpg.webp"} alt={"league of legends news"} />
   </div>
   <div className="slider_second">
     <a className="slider_link" href={"https://dotesports.com/league-of-legends/news/fnatic-take-down-rogue-in-lec-summer-split-playoffs-secure-spot-at-worlds-2020"}>

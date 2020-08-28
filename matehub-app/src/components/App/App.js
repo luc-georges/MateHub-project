@@ -14,6 +14,7 @@ import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../../containers/RegistrationPageContainer';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
+import EventPage from '../../containers/EventPageContainer';
 import CreateEventPage from '../../containers/CreateEventPageContainer';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
 import ProfilePage from '../../containers/ProfilePageContainer';
@@ -25,7 +26,7 @@ import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer
  * @param {Object} param0
  */
 function App({
-  getEvents,
+  getAllEvents,
   getTopUsers,
   checkAuth,
   getNews,
@@ -35,7 +36,7 @@ function App({
   // eslint-disable-next-line
   useEffect(() => {
     getNews();
-    getEvents();
+    getAllEvents();
     getTopUsers();
     checkAuth();
     // getUser();
@@ -63,6 +64,7 @@ function App({
         <Route exact path="/login">
           {isLogged ? <Redirect to="/" /> : <LoginPage />}
         </Route>
+        <Route exact path="/event/:id" component={EventPage} />
         <Route exact path="/createevent">
           {isLogged ? <CreateEventPage /> : <Redirect to="/" />}
         </Route>

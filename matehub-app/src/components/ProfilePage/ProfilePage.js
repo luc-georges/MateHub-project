@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
-import { Button, Header, Modal, Form } from 'semantic-ui-react';
+import { Button, Header, Modal } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
@@ -14,7 +14,7 @@ const ProfilePage = ({ userData, getUser, connectedUserId }) => {
     }, []);
 
   const [open, setOpen] = useState(false);
-  const [open2, setopen2] = useState(false);
+  // const [open2, setopen2] = useState(false);
 
   return (
     <div className="profilepage">
