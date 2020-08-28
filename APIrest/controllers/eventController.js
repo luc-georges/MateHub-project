@@ -203,10 +203,13 @@ module.exports = {
 
     acceptUserOnEvent: async (request, response, next) => {
      try {
-        const values = [1,request.params.eventId,request.params.id];
+        const event = await Event.findById(request.params.eventId);
+        
+        if (event._player_max === event._player_count) return response.status('403').json({error:'impossible to add a player the event is already full'});
+
+        const values = [1,request.params.eventId,request.params.userId];
         const UpUserHasEvent = await Event.updateUserOnEvent(values);
 
-        const event = await Event.findById(request.params.eventId);
         event._player_count += 1;
         const eventResult = await event.update();
 
@@ -220,10 +223,14 @@ module.exports = {
 
     kickUserOnEvent: async (request, response, next) => {
       try {
-        const values = [request.params.eventId,request.params.id];
+        const values = [request.params.eventId,request.params.userId];
         const result = await Event.getUserOnEvent(values);
 
-        const updateValues = [2,request.params.eventId,request.params.id];
+        if (!result) {
+            response.status('400').json({error:'bad request user not on events'});
+        }
+
+        const updateValues = [2,request.params.eventId,request.params.userId];
         const kickUserHasEvent = await Event.updateUserOnEvent(updateValues);
 
         const event = await Event.findById(request.params.eventId);
