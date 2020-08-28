@@ -7,13 +7,26 @@ import icon from '../../assets/test.ico';
 
 // import Banner from '../../assets/LoL-Banner.png';
 
-const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
+const PersonnalProfilePage = ({ personnalData, getPersonnalData, onChangeField, onFormSubmit, modifyPersonnalData }) => {
  
   // eslint-disable-next-line
   useEffect(() => {
     getPersonnalData();
     // eslint-disable-next-line
   }, []);
+
+  const handleInputChange = (evt) => {
+    const { name, value } = evt.target;
+    onChangeField({
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onFormSubmit();
+    setOpen(false);
+  };
 
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
@@ -58,32 +71,47 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
             <Modal.Header>Update informations</Modal.Header>
             <Modal.Description>
               <Header>Update</Header>
+              <div className="loginpage">
+              <Form className="information-form" onSubmit={handleSubmit}>
               <Form.Input
                 fluid
                 label="Nickname"
                 placeholder="change your nickname"
+                name="nickname"
+                value={modifyPersonnalData.nickname}
+                onChange={handleInputChange}
               />
-              <Form.Input fluid label="years" placeholder="how old are you" />
-              <label htmlFor="banner">Choose a banner picture:</label>
+             
 
+              <label htmlFor="banner">Choose a banner picture:</label>
               <input
                 type="file"
                 id="banner"
                 name="banner"
                 accept="image/png, image/jpeg"
+                onChange={handleInputChange}
               ></input>
-            </Modal.Description>
-            <Modal.Actions>
-              <Button color="black" onClick={() => setOpen(false)}>
-                Cancel
-              </Button>
+
               <Button
+              style={{ marginTop: '2em', textAlign: 'center' }}
+                className="eventData buttonData"
+                type="submit"
                 content="ok"
                 labelPosition="right"
                 icon="checkmark"
-                onClick={() => setOpen(false)}
                 positive
               />
+              </Form>
+              </div>
+            </Modal.Description>
+            <Modal.Actions >
+              <Button 
+              style={{ marginTop: '2em', textAlign: 'center' }}
+              color="black" 
+              onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+             
             </Modal.Actions>
           </Modal>
         </div>
