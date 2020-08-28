@@ -24,7 +24,7 @@ export const initialState = {
   connectedUserId: "",
   personnalData: {},
   modifyPersonnalData: {
-    nickname: "Nick Name"
+    nickname: '',
   },
   error: '',
 };

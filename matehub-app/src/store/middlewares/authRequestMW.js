@@ -105,16 +105,22 @@ export default (store) => (next) => (action) => {
         });
       break;
       case GET_PERSONNAL_DATA_SUBMIT:
-        let test = store.getState().auth.personnalData._user_id;
-    
-        console.log(test)
+        let insertObject = {
+        }
+        if(store.getState().auth.modifyPersonnalData.nickname){
+          insertObject.nickname = store.getState().auth.modifyPersonnalData.nickname;
+        }
+        if(store.getState().auth.modifyPersonnalData.description){
+          insertObject.description = store.getState().auth.modifyPersonnalData.description;
+        }
 
         //console.log(store.getState().auth.loginData)
         axios({
           method: 'put',
           // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
           url: `http://localhost:3001/user/${store.getState().auth.connectedUserId}/update`,
-          data: store.getState().auth.personnalData,
+          data:{...insertObject
+          },
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
@@ -128,7 +134,7 @@ export default (store) => (next) => (action) => {
           })
           .catch((err) => {
             console.log('On passe dans le catch de la requête update user :', err);
-            store.dispatch(getPersonnalDataError("Cet utilisateur n'existe pas"));
+            store.dispatch(getPersonnalDataError(err));
           });
     default:
       return;

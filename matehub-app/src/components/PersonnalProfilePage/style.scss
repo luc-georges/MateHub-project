@@ -29,13 +29,6 @@
   width: 100%;
 }
 
-.information-form {
-  padding: 2em;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .details{
   position: absolute;
@@ -58,7 +51,16 @@
 }
 .container-avatar{
   position: relative;
-
+}
+.information-form{
+  display: flex;
+  width:90%
+}
+.information-form input{
+  width:200px
+}
+.form-input{
+  width:400px;
 }
 .container-banner{
   position: relative;
