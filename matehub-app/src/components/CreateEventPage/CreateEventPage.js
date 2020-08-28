@@ -91,15 +91,15 @@ const CreateEventPage = ({
   // Options for select input
   const selectGameOptions = [
     {
-      key: '2',
-      text: 'League of Legends',
-      value: 2,
-    },
-    {
       key: '1',
-      text: 'CS : Global Offensive',
+      text: 'League of Legends',
       value: 1,
     },
+    // {
+    //   key: '2',
+    //   text: 'CS : Global Offensive',
+    //   value: 2,
+    // },
   ];
 
   const durationOptions = [
