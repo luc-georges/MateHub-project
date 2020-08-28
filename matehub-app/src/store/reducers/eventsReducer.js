@@ -1,4 +1,7 @@
 import {
+  APPLY_TO_EVENT,
+  APPLY_TO_EVENT_SUCCESS,
+  APPLY_TO_EVENT_ERROR,
   GET_SELECTED_EVENT,
   GET_EVENT_BY_ID,
   GET_EVENT_BY_ID_SUCCESS,
@@ -72,11 +75,31 @@ export const initialState = {
     _end: '2020-09-22T11:00:00.000Z',
     _vocal: 'discord.gg/invitenumber',
   },
+  applyToEventData: {
+    user_id: '',
+    event_id: '',
+  },
   selectedEvent: 5,
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case APPLY_TO_EVENT:
+      return {
+        ...state,
+        applyToEventData: {
+          ...state.applyToEventData,
+          ...action.payload,
+        },
+      };
+    case APPLY_TO_EVENT_SUCCESS:
+      return {
+        ...state,
+      };
+    case APPLY_TO_EVENT_ERROR:
+      return {
+        ...state,
+      };
     case GET_SELECTED_EVENT:
       return {
         ...state,

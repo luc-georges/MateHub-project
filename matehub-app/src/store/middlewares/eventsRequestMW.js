@@ -8,14 +8,32 @@ import {
   CREATE_EVENT_SUBMIT,
   CreateEventSubmitSuccess,
   CreateEventSubmitError,
+  APPLY_TO_EVENT,
 } from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
   // console.log("Passage dans le eventsRequestMW");
   const { connectedUserId } = store.getState().auth;
+  const { event_id } = store.getState().events.applyToEventData;
   // console.log(connectedUserId);
   next(action);
   switch (action.type) {
+    case APPLY_TO_EVENT:
+    axios({
+      method: 'post',
+      url: `http://localhost:3001/eventApply/event/${event_id}/user/${connectedUserId}`,
+      data: {
+        user_id: connectedUserId,
+        event_id: event_id,
+      }
+    })
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    });  
+    break;
     case CREATE_EVENT_SUBMIT:
       const eventTime = `${
         store.getState().events.eventCreationData.event_time_date
