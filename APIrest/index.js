@@ -5,7 +5,7 @@ const path = require('path');
 const morgan = require('morgan');
 /*cors*/
 const cors = require('cors');
-
+const bodyParser = require('body-parser')
 const router = require('./router/router');
 const routerNews = require('./router/routerNews')
 const routerGameApi = require('./router/routerGameApi')
@@ -28,8 +28,14 @@ const corsOptions = {
 /*cors*/
 app.use(cors(corsOptions));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json())
+
+
 
 const session = require('express-session');
 app.use(session({

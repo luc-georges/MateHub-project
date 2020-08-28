@@ -131,6 +131,7 @@ export default (store) => (next) => (action) => {
           .then((res) => {
             console.log(res.data.data);
             store.dispatch(getPersonnalDataSuccess(res.data.data));
+
           })
           .catch((err) => {
             console.log('On passe dans le catch de la requête update user :', err);
