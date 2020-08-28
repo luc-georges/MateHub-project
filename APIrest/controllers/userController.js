@@ -292,11 +292,26 @@ module.exports = {
             if(request.body.description) {
                 user.description = sanitaze.htmlEntities(user.description);
             }
-            if(request.body.avatar) {
-                user.avatar = sanitaze.htmlEntities(user.avatar);
+            if(request.files.avatar) {
+         
+                    //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+                    let avatarImg = request.files.avatar;
+                    console.log(avatarImg.name)
+                    //Use the mv() method to place the file in upload directory (i.e. "uploads")
+                    await avatarImg.mv('../matehub-app/public/src/assets/uploads/' + avatarImg.name);
+                
+
+                user.avatar = sanitaze.htmlEntities(avatarImg.name);
             }
-            if(request.body.banner) {
-                user.banner = sanitaze.htmlEntities(user.banner);
+            if(request.files.banner) {
+
+                    //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+                    let bannerImg = request.files.banner;
+                    //Use the mv() method to place the file in upload directory (i.e. "uploads")
+                    avatarImg.mv('../matehub-app/public/src/assets/uploads/' + bannerImg.name);
+    
+
+                user.banner = sanitaze.htmlEntities(bannerImg.name);
             }
     
             const result = await user.update();

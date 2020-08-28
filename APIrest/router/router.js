@@ -57,16 +57,20 @@ router.post('/eventApply/event/:eventId/user/:id', /*authenticateToken, ownerCon
 router.put('/updateEvent/event/:eventId/addUserOn/:id',/*authenticateToken, ownerControl,*/ eventController.acceptUserOnEvent);
 router.delete('/deleteEvent/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ eventController.deleteAnEvent);
 
-/********** ROUTER EVENT'S USER *********/
+/********** ROUTER EVENT'S USER **************/
 router.get('/user/:nickname/events', eventController.getAllEventFromUserByNickname);
 
-/********** ROUTER GAME ***************/
+/********** ROUTER GAME **********************/
 router.get('/games', gameController.getAllGame);
 router.get('/game/:id', gameController.getGameById);
 
 /********** ROUTER PASSWORD *****************/
 router.post('/password/forgot', authController.forgotPassword);
 router.put('/password/createNew', authController.createNewPassword);
+
+
+
+
 
 /*********** ERROR 500 midleware ************/
 //router.use(serverError);
