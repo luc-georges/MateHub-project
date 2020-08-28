@@ -136,7 +136,7 @@ module.exports = {
                 result = [...result, res];
             }
 
-            response.status('200').json({data: {event , result}});
+            response.status('200').json({data: {event , lang: result}});
 
         } catch (error) {
             console.log('error:', error);
