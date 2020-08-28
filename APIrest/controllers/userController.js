@@ -304,7 +304,7 @@ module.exports = {
                     let avatarImg = request.files.avatar;
                     console.log(avatarImg.name)
                     //Use the mv() method to place the file in upload directory (i.e. "uploads")
-                    await avatarImg.mv('../matehub-app/public/src/assets/uploads/' + avatarImg.name);
+                    avatarImg.mv('../matehub-app/public/src/assets/uploads/' + avatarImg.name);
                 
 
                 user.avatar = sanitaze.htmlEntities(avatarImg.name);
