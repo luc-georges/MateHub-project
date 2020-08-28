@@ -72,7 +72,6 @@ SELECT u.id AS "_user_id",
                 array_to_json(array_agg(
                     z.*)) FROM( SELECT 
                         uhe."event_id" AS "event_id",
-                        uhe."id" AS "uhe_id",
                         g."name" AS "game_name",
                         g."id"   AS "game_id",  
                         uhe."message", 
@@ -96,13 +95,13 @@ SELECT u.id AS "_user_id",
                         JOIN user_access."event" evvt ON evvt.id = uhe.event_id
                         JOIN user_access."game" g ON g.id = evvt.game_id
                             WHERE uhe.user_id = u.id
-                                GROUP by u.id, uhe.id,uhe.event_id,g.name, g.id, evvt.event_time, evvt.duration, evvt.player_count, evvt.player_max,
-                                evvt.description, evvt.status, evvt.vocal
+                                GROUP by u.id, uhe.event_id,g.name, g.id, evvt.event_time, evvt.duration, evvt.player_count, evvt.player_max,
+                                evvt.description, evvt.status, evvt.vocal,uhe.message
                                  ) z
              ) AS "_has_events"
             
                                 FROM user_access."user" u
-                        WHERE u.id ="USER_ID"
+                        WHERE u.id ="USER_ID";
 
 
 $body$

@@ -104,8 +104,10 @@ module.exports = {
         try {
 
             const event = await new Event(request.body);
-            console.log('request.body:', request.body)
-
+            
+            delete event.language;
+          
+            
             if(event.description) {
                 event.description = sanitaze.htmlEntities(event.description);
             }
@@ -115,10 +117,26 @@ module.exports = {
             if(event.vocal) {
                 event.vocal = sanitaze.htmlEntities(event.vocal);
             }
-
+            
             await event.insert();
-          
-            response.status('200').json({data: event});
+            
+            const languages = request.body.language;
+            let arrayLang = [];
+            
+            for(const [key, value] of Object.entries(languages)) {
+                if (value) {
+                    arrayLang = [...arrayLang, parseInt(key[2],10)]
+                }
+            }
+            
+            result = []
+            
+            for (elm of arrayLang) {
+                let res = await Event.addLangOnEvent([event._id, elm]);
+                result = [...result, res];
+            }
+
+            response.status('200').json({data: {event , result}});
 
         } catch (error) {
             console.log('error:', error);
@@ -162,9 +180,16 @@ module.exports = {
     applyEvent: async (request, response, next) => {
         try {
             
+            const checkValues = [request.params.eventId,request.params.id];
+            const check = await Event.getUserOnEvent(checkValues);
+
+            if (check) {
+                return response.status('400').json({error:'user was already on this event'});
+            }
+
             const values = [request.params.eventId, request.params.id,0,'Hey mate, i would love to participate! Check my profile !'];
             if (request.body.message) {
-                values[3] = request.body.message;
+                values[3] = sanitaze.htmlEntities(request.body.message);
             }
 
             const result = await Event.addUserOnEvent(values);
@@ -178,10 +203,13 @@ module.exports = {
 
     acceptUserOnEvent: async (request, response, next) => {
      try {
-        const values = [1,request.params.eventId,request.params.id];
+        const event = await Event.findById(request.params.eventId);
+        
+        if (event._player_max === event._player_count) return response.status('403').json({error:'impossible to add a player the event is already full'});
+
+        const values = [1,request.params.eventId,request.params.userId];
         const UpUserHasEvent = await Event.updateUserOnEvent(values);
 
-        const event = await Event.findById(request.params.eventId);
         event._player_count += 1;
         const eventResult = await event.update();
 
@@ -195,8 +223,34 @@ module.exports = {
 
     kickUserOnEvent: async (request, response, next) => {
       try {
-          
-        
+        const values = [request.params.eventId,request.params.userId];
+        const result = await Event.getUserOnEvent(values);
+
+        if (!result) {
+            response.status('400').json({error:'bad request user not on events'});
+        }
+
+        const updateValues = [2,request.params.eventId,request.params.userId];
+        const kickUserHasEvent = await Event.updateUserOnEvent(updateValues);
+
+        const event = await Event.findById(request.params.eventId);
+
+        switch (result.status) {
+            case 0:
+                break;
+            
+            case 1:
+                event._player_count -= 1;
+                break;
+
+            case 2:
+                return response.status('400').json({error:'user was already kicked'});
+            default:
+                return response.status('400').json({error:'status code not accepted'});
+        }
+        const eventResult = await event.update();
+
+        response.status('201').json({data:{eventResult,kickUserHasEvent}});
 
       } catch (error) {
           console.log('error:', error)

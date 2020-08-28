@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LoginPage from '../components/LoginPage/LoginPage';
-import { changeField, loginSubmit } from '../store/actions/authActions';
+import { authChangeField, loginSubmit } from '../store/actions/authActions';
 
 const mapStateToProps = (state) => ({
   loginData: {
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onChangeField: (changedData) => {
     console.log(changedData);
-    dispatch(changeField(changedData));
+    dispatch(authChangeField(changedData));
   },
   onFormSubmit: () => {
     console.log('Il y a eu un submit !');

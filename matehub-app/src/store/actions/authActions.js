@@ -1,4 +1,4 @@
-export const CHANGE_FIELD = 'CHANGE_FIELD';
+export const AUTH_CHANGE_FIELD = 'AUTH_CHANGE_FIELD';
 
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const LOGIN_SUBMIT_SUCCESS = 'LOGIN_SUBMIT_SUCCESS';
@@ -26,8 +26,8 @@ export const getPersonnalDataError = (payload) => ({
   payload,
 });
 
-export const changeField = (payload) => ({
-  type: CHANGE_FIELD,
+export const authChangeField = (payload) => ({
+  type: AUTH_CHANGE_FIELD,
   payload,
 });
 
