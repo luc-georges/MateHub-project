@@ -174,6 +174,7 @@ const CreateEventPage = ({
                 control={Checkbox}
                 name="fr1"
                 onChange={handleAddFlag}
+                checked={eventCreationData.language.fr1}
               />
             </Form.Group>
 
@@ -184,6 +185,7 @@ const CreateEventPage = ({
                 control={Checkbox}
                 name="uk2"
                 onChange={handleAddFlag}
+                checked={eventCreationData.language.uk2}
               />
             </Form.Group>
 
@@ -194,6 +196,7 @@ const CreateEventPage = ({
                 control={Checkbox}
                 name="it3"
                 onChange={handleAddFlag}
+                checked={eventCreationData.language.it3}
               />
             </Form.Group>
 
@@ -204,6 +207,7 @@ const CreateEventPage = ({
                 control={Checkbox}
                 name="es4"
                 onChange={handleAddFlag}
+                checked={eventCreationData.language.es4}
               />
             </Form.Group>
 
@@ -214,6 +218,7 @@ const CreateEventPage = ({
                 control={Checkbox}
                 name="ru5"
                 onChange={handleAddFlag}
+                checked={eventCreationData.language.ru5}
               />
             </Form.Group>
 
@@ -224,6 +229,7 @@ const CreateEventPage = ({
                 control={Checkbox}
                 name="de6"
                 onChange={handleAddFlag}
+                checked={eventCreationData.language.de6}
               />
             </Form.Group>
           </Form.Group>
