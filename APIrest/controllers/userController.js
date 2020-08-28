@@ -294,6 +294,12 @@ module.exports = {
             }
             if(request.files.avatar) {
          
+
+                if(request.files.avatar.size > 2000000){
+
+                    response.status('413').json({error:'your file is too large'});
+
+                }
                     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
                     let avatarImg = request.files.avatar;
                     console.log(avatarImg.name)
@@ -304,7 +310,11 @@ module.exports = {
                 user.avatar = sanitaze.htmlEntities(avatarImg.name);
             }
             if(request.files.banner) {
+                if(request.files.banner.size > 3000000){
 
+                    response.status('413').json({error:'your file is too large'});
+
+                }
                     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
                     let bannerImg = request.files.banner;
                     //Use the mv() method to place the file in upload directory (i.e. "uploads")
