@@ -14,7 +14,7 @@ import HomePage from '../../containers/HomePageContainer';
 import RegistrationPage from '../../containers/RegistrationPageContainer';
 import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
-import CreateEventPage from '../CreateEventPage/CreateEventPage';
+import CreateEventPage from '../../containers/CreateEventPageContainer';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
 import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
@@ -29,7 +29,6 @@ function App({
   getTopUsers,
   checkAuth,
   getNews,
-  getUser,
   isLogged,
   registered,
 }) {
@@ -50,7 +49,11 @@ function App({
           <HomePage />
         </Route>
         <Route exact path="/profile/:name" component={ProfilePage} />
-        <Route exact path="/personnalprofile" component={PersonnalProfilePage} />
+        <Route
+          exact
+          path="/personnalprofile"
+          component={PersonnalProfilePage}
+        />
         <Route exact path="/contact">
           <ContactPage />
         </Route>
@@ -61,7 +64,7 @@ function App({
           {isLogged ? <Redirect to="/" /> : <LoginPage />}
         </Route>
         <Route exact path="/createevent">
-          <CreateEventPage />
+          {isLogged ? <CreateEventPage /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/searchevent">
           <SearchEventPage />

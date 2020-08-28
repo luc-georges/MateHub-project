@@ -2,6 +2,17 @@ export const GET_EVENTS = 'GET_EVENTS';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
 export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
 
+export const EVENT_CHANGE_FIELD = 'EVENT_CHANGE_FIELD';
+
+export const CREATE_EVENT_SUBMIT = 'CREATE_EVENT_SUBMIT';
+export const CREATE_EVENT_SUBMIT_SUCCESS = 'CREATE_EVENT_SUBMIT_SUCCESS';
+export const CREATE_EVENT_SUBMIT_ERROR = 'CREATE_EVENT_SUBMIT_ERROR';
+
+export const eventChangeField = (payload) => ({
+  type: EVENT_CHANGE_FIELD,
+  payload,
+});
+
 export const getEvents = () => ({
   type: GET_EVENTS,
 })
@@ -15,3 +26,16 @@ export const getEventsError = (payload) => ({
   type: GET_EVENTS_ERROR,
   payload
 })
+
+export const CreateEventSubmit = () => ({
+  type: CREATE_EVENT_SUBMIT,
+});
+
+export const CreateEventSubmitSuccess = () => ({
+  type: CREATE_EVENT_SUBMIT_SUCCESS,
+});
+
+export const CreateEventSubmitError = (payload) => ({
+  type: CREATE_EVENT_SUBMIT_ERROR,
+  payload,
+});

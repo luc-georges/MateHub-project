@@ -6,8 +6,8 @@ module.exports = Joi.object({
     event_time: Joi.date(),
     duration: Joi.string().pattern(/(^\d{2}):(0|3)(0):0{2}$/),
     player_count: Joi.number().integer().min(1),
-    description: Joi.string().max(280),
+    description: Joi.string().allow('').max(280),
     status: Joi.number().integer().min(0).max(2),
-    vocal: Joi.string(),
+    vocal: Joi.string().allow(''),
     player_max: Joi.number().integer().min(1)
 });

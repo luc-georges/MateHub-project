@@ -1,43 +1,51 @@
-.CreatEventPage{
+.CreateEventPage {
   width: 100%;
-  margin-left: 15%;
+  margin-left: 10%;
   margin-right: 15%;
 }
 
-.titreCreateEventPage{
+.titreCreateEventPage {
   width: 100%;
   padding: 2em;
   margin: auto;
   display: flex;
-  justify-content: center
- 
-}
-
-.form{
-    width: 50%;
-    padding: 2em;
-    margin: auto;
-    margin-top: 50vh;
-    transform: translateY(-50%);
-    display: flex;
-flex-wrap: wrap;
-}
-
-
-.select{
-  width: 50%;
-  padding: 2em;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 
-.button{
+.form {
+  width: 50%;
+  padding: 2em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+  &-select {
+    padding: 2em;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    &-title {
+      padding-bottom: 1em;
+      font-size: 1.5em;
+    }
+
+    &-language {
+      display: flex;
+      flex-direction: column !important;
+      align-items: center;
+      margin-right: 1em !important;
+    }
+  }
+}
+
+.button {
   width: 100%;
   padding: 2em;
   margin: auto;
   display: flex;
-  justify-content: center
-  ;
+  justify-content: center;
 }

@@ -1,5 +1,5 @@
 import {
-  CHANGE_FIELD,
+  AUTH_CHANGE_FIELD,
   LOGIN_SUBMIT,
   LOGIN_SUBMIT_SUCCESS,
   LOGIN_SUBMIT_ERROR,
@@ -49,7 +49,7 @@ export default (state = initialState, action = {}) => {
         },
         error: action.payload,
       };
-    case CHANGE_FIELD:
+    case AUTH_CHANGE_FIELD:
       return {
         ...state,
         loginData: {
