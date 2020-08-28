@@ -9,5 +9,13 @@ module.exports = Joi.object({
     description: Joi.string().max(280),
     status: Joi.number().integer().min(0).max(0),
     vocal: Joi.string(),
-    player_max: Joi.number().integer().min(1).required()
+    player_max: Joi.number().integer().min(1).required(),
+    language: Joi.object({
+        fr1: Joi.boolean(),
+        uk2: Joi.boolean(),
+        it3: Joi.boolean(),
+        es4: Joi.boolean(),
+        ru5: Joi.boolean(),
+        de6: Joi.boolean()
+    }).required()
 });
