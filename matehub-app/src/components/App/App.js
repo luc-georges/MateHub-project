@@ -49,7 +49,11 @@ function App({
           <HomePage />
         </Route>
         <Route exact path="/profile/:name" component={ProfilePage} />
-        <Route exact path="/personnalprofile" component={PersonnalProfilePage} />
+        <Route
+          exact
+          path="/personnalprofile"
+          component={PersonnalProfilePage}
+        />
         <Route exact path="/contact">
           <ContactPage />
         </Route>
@@ -59,7 +63,9 @@ function App({
         <Route exact path="/login">
           {isLogged ? <Redirect to="/" /> : <LoginPage />}
         </Route>
-        <Route exact path="/createevent" component={CreateEventPage} />
+        <Route exact path="/createevent">
+          {isLogged ? <CreateEventPage /> : <Redirect to="/" />}
+        </Route>
         <Route exact path="/searchevent">
           <SearchEventPage />
         </Route>
