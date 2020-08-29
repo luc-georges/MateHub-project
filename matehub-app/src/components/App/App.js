@@ -18,7 +18,7 @@ import CreateEventPage from '../../containers/CreateEventPageContainer';
 import SearchEventPage from '../SearchEventPage/SearchEventPage';
 import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
-
+import GettingStarted from '../GettingStarted/GettingStarted';
 /**
  * composant principale de l'application
  * @component
@@ -68,6 +68,9 @@ function App({
         </Route>
         <Route exact path="/searchevent">
           <SearchEventPage />
+        </Route>
+        <Route exact path="/gettingstarted">
+          <GettingStarted />
         </Route>
       </Switch>
       <EventBar />

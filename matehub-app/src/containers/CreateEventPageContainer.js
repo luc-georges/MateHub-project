@@ -21,7 +21,14 @@ const mapStateToProps = (state) => {
       event_time_hour: state.events.eventCreationData.event_time_hour,
       status: 0, // Tout le temps 0
       description: state.events.eventCreationData.description,
-      flag: state.events.eventCreationData.flag,
+      language: {
+        fr1: state.events.eventCreationData.language.fr1,
+        uk2: state.events.eventCreationData.language.uk2,
+        it3: state.events.eventCreationData.language.it3,
+        es4: state.events.eventCreationData.language.es4,
+        ru5: state.events.eventCreationData.language.ru5,
+        de6: state.events.eventCreationData.language.de6,
+        },
     },
 
     errors: {

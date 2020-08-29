@@ -11,11 +11,12 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
     getSelectedUser(evt.currentTarget.id);
   };
 
+
   return (
     <div className="navbar">
-      <div className="navbar-logo">MATE HUB</div>
+      <div className="navbar-logo ">MATE HUB</div>
       <div className="navbar-nav" id="top-menu">
-        <NavLink className="navbar-nav-link" exact to="/">
+        <NavLink className="navbar-nav-link " exact to="/">
           <Button
             fluid
             className="home"
@@ -24,11 +25,12 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             size="large"
             inverted color="teal"
           />
+          
         </NavLink>
         {isLogged && (
           <NavLink
             id={connectedUserId}
-            className="navbar-nav-link"
+            className="navbar-nav-link "
             exact
             to={`/personnalprofile/`}
             onClick={handleGetSelectedUser}
@@ -42,7 +44,7 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             />
           </NavLink>
         )}
-        <NavLink className="navbar-nav-link" exact to="/">
+        <NavLink className="navbar-nav-link " exact to="/">
           <Button
             fluid
             className="home"
@@ -52,7 +54,7 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             inverted color="teal"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/">
+        <NavLink className="navbar-nav-link " exact to="/">
           <Button
             fluid
             className="home"
@@ -62,7 +64,7 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             inverted color="teal"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/contact">
+        <NavLink className="navbar-nav-link " exact to="/contact">
           <Button
             fluid
             className="home"

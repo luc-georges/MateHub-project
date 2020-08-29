@@ -13,8 +13,8 @@ const ProfilePage = ({ userData, getUser, connectedUserId }) => {
       // eslint-disable-next-line
     }, []);
 
-  const [open, setOpen] = useState(false);
-  const [open2, setopen2] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [open2, setopen2] = React.useState(false);
 
   return (
     <div className="profilepage">
