@@ -9,6 +9,8 @@ import {
   CreateEventSubmitSuccess,
   CreateEventSubmitError,
   APPLY_TO_EVENT,
+  applyToEventSuccess,
+  applyToEventError,
 } from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
@@ -25,13 +27,16 @@ const eventsRequestMW = (store) => (next) => (action) => {
       data: {
         user_id: connectedUserId,
         event_id: event_id,
+        status: 0,
       }
     })
     .then((res) => {
-      console.log(res)
+      console.log(res.data.data)
+      store.dispatch(applyToEventSuccess(res.data.data));
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
+      store.dispatch(applyToEventError("Can't apply to event"));
     });  
     break;
     case CREATE_EVENT_SUBMIT:
@@ -101,7 +106,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
         url: `http://localhost:3001/event/${selectedEvent}`,
       })
         .then((res) => {
-          // console.log(res.data);
+          console.log(res.data.data);
           store.dispatch(getEventByIdSuccess(res.data.data));
         })
         .catch((err) => {
