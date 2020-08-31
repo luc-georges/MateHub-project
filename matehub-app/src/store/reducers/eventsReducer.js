@@ -41,40 +41,7 @@ export const initialState = {
     },
   },
   eventDataErrorMessage: '',
-  eventData: {
-    _event_id: 1,
-    _user_id: 1,
-    _creator: 'Fred',
-    _game_name: 'League of legend',
-    _game_id: 1,
-    _starting: '2020-09-22T07:00:00.000Z',
-    _duration: {
-      hours: 4,
-    },
-    _player_count: 1,
-    _player_max: 5,
-    _description: 'Compétitif full team',
-    _status: 0,
-    _langs: [
-      {
-        id: 1,
-        label: 'Fr',
-        icon: 'fr.png',
-      },
-      {
-        id: 2,
-        label: 'En',
-        icon: 'en.png',
-      },
-      {
-        id: 3,
-        label: 'It',
-        icon: 'it.png',
-      },
-    ],
-    _end: '2020-09-22T11:00:00.000Z',
-    _vocal: 'discord.gg/invitenumber',
-  },
+  eventData: {},
   applyToEventData: {
     user_id: '',
     event_id: '',
@@ -95,6 +62,7 @@ export default (state = initialState, action = {}) => {
     case APPLY_TO_EVENT_SUCCESS:
       return {
         ...state,
+        // Voir ce qu'il faut renvoyer pour tenter d'avoir les data sans refresh
       };
     case APPLY_TO_EVENT_ERROR:
       return {

@@ -25,9 +25,9 @@ const eventsRequestMW = (store) => (next) => (action) => {
       method: 'post',
       url: `http://localhost:3001/eventApply/event/${event_id}/user/${connectedUserId}`,
       data: {
-        user_id: connectedUserId,
-        event_id: event_id,
-        status: 0,
+        // user_id: connectedUserId,
+        // event_id: event_id,
+        // status: 0,
       }
     })
     .then((res) => {
