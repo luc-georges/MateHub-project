@@ -1,12 +1,9 @@
-import React, { useEffect,useState,useCallback } from 'react';
-import { Button, Header, Modal, Form,Icon} from 'semantic-ui-react';
+import React, { useEffect } from 'react';
+import { Button, Header, Modal, Form, Icon } from 'semantic-ui-react';
 import './style.scss';
 import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
-import Cropper from 'react-easy-crop'
-import 'react-easy-crop/react-easy-crop.css'
-// import Banner from '../../assets/LoL-Banner.png';
 
 const PersonnalProfilePage = ({
   personnalData,
@@ -16,7 +13,6 @@ const PersonnalProfilePage = ({
   modifyPersonnalData,
   editProfilBanner,
 }) => {
-
   // eslint-disable-next-line
   useEffect(() => {
     getPersonnalData();
@@ -26,18 +22,17 @@ const PersonnalProfilePage = ({
   const handleInputChange = (evt) => {
     console.log('name >>', evt.target.name);
     console.log('value >>', evt.target.value);
-    const { name, value} = evt.target;
+    const { name, value } = evt.target;
 
     // console.log(name)
     // console.log(evt.target.files[0])
 
     if (evt.target.files) {
-      console.log(evt.target.files[0])
+      console.log(evt.target.files[0]);
     }
     onChangeField({
       [name]: value || [evt.target.files[0]],
     });
-    
   };
 
   const handleSubmit = (evt) => {
@@ -45,73 +40,67 @@ const PersonnalProfilePage = ({
     onFormSubmit();
     setOpen(false);
   };
-  
+
   const handleUpload = (evt) => {
     if (evt.target.files) {
-      editProfilBanner(evt.target.files[0])
-      console.log(evt.target.files)
+      editProfilBanner(evt.target.files[0]);
+      console.log(evt.target.files);
     }
-    
   };
 
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
 
-  
   return (
     <div className="profilepage">
       <div className="profilepage-header">
         <div className="container-modal-banner">
-          
-        <Modal
-        className="banner-modal"
-            size='large'
+          <Modal
+            className="banner-modal"
+            size="large"
             onClose={() => setOpen3(false)}
             onOpen={() => setOpen3(true)}
             open={open3}
-            trigger={<Button className="Button-banner"><Icon name='edit' size='large'/></Button>}
+            trigger={
+              <Button className="Button-banner">
+                <Icon name="edit" size="large" />
+              </Button>
+            }
           >
             <Modal.Header>Update</Modal.Header>
             <Modal.Description>
               <Header>banner</Header>
               {personnalData._banner && (
                 <div className="modal-img">
-            <img
-              src={require(`../../assets/${personnalData._banner}`)}
-              alt="lollogo"
-              className="banner-modal-img"
-
-            />
-            </div>
-          )}
-          <div className="banner-input">
-              <label htmlFor="banner">Choose a banner picture:</label>
-                             <input
-                        
-                               type="file"
-                               id="banner"
-                               name="banner"
-                               accept="image/png, image/jpeg"
-                               onChange={handleUpload}
-
-                             >
-                             </input>
-                             </div>
-                            
+                  <img
+                    src={require(`../../assets/${personnalData._banner}`)}
+                    alt="lollogo"
+                    className="banner-modal-img"
+                  />
+                </div>
+              )}
+              <div className="banner-input">
+                <label htmlFor="banner">Choose a banner picture:</label>
+                <input
+                  type="file"
+                  id="banner"
+                  name="banner"
+                  accept="image/png, image/jpeg"
+                  onChange={handleUpload}
+                ></input>
+              </div>
             </Modal.Description>
             <Modal.Actions>
-            
-          
               <Button
-                    style={{ marginTop: '2em', textAlign: 'center' }}
-                    className="eventData buttonData"
-                    content="ok"
-                    labelPosition="right"
-                    icon="checkmark"
-                    positive
-                    onClick={() => setOpen3(false)}
-                  />
+                style={{ marginTop: '2em', textAlign: 'center' }}
+                className="eventData buttonData"
+                content="ok"
+                labelPosition="right"
+                icon="checkmark"
+                positive
+                onClick={() => setOpen3(false)}
+              />
               <Button
                 style={{ marginTop: '2em', textAlign: 'center' }}
                 color="black"
@@ -121,9 +110,8 @@ const PersonnalProfilePage = ({
               </Button>
             </Modal.Actions>
           </Modal>
-          
-          </div>
-        <div className="container-banner" >
+        </div>
+        <div className="container-banner">
           {personnalData._banner && (
             <img
               src={require(`../../assets/${personnalData._banner}`)}
@@ -131,12 +119,11 @@ const PersonnalProfilePage = ({
               className="banner"
             />
           )}
-          
+
           {personnalData._avatar && (
             <img src={icon} alt="lollogo" className="avatar" />
-            )}
-       
-          </div>
+          )}
+        </div>
         <div className="details">
           <h1>{personnalData._nickname}</h1>
         </div>
@@ -153,10 +140,8 @@ const PersonnalProfilePage = ({
             <Modal.Description>
               <Header>Update</Header>
               <div className="loginpage">
-                <Form className="information-form" onSubmit={handleSubmit} >
-          
-               
-                  <div >
+                <Form className="information-form" onSubmit={handleSubmit}>
+                  <div>
                     <Form.Input
                       className="form-input"
                       fluid
@@ -166,12 +151,11 @@ const PersonnalProfilePage = ({
                       value={modifyPersonnalData.nickname}
                       onChange={handleInputChange}
                     />
-                    
                   </div>
-               
-                  <div >
+
+                  <div>
                     <Form.Input
-                    className="form-input"
+                      className="form-input"
                       fluid
                       label="Description"
                       placeholder="change your Description"
@@ -180,11 +164,8 @@ const PersonnalProfilePage = ({
                       onChange={handleInputChange}
                     />
                   </div>
-                
-                  <div>
-                  
-                    
-                  </div>
+
+                  <div></div>
                   <Button
                     style={{ marginTop: '2em', textAlign: 'center' }}
                     className="eventData buttonData"
@@ -194,7 +175,6 @@ const PersonnalProfilePage = ({
                     icon="checkmark"
                     positive
                   />
-                 
                 </Form>
               </div>
             </Modal.Description>
@@ -217,7 +197,7 @@ const PersonnalProfilePage = ({
           {personnalData._games &&
             personnalData._games.map((game) => {
               return (
-                <div key={game.id}>
+                <div key={game.game_id}>
                   <h2>{game.game_name}</h2>
                   <div className="profilepage-game-user">
                     <div>Pseudo : {game.ign.name}</div>
