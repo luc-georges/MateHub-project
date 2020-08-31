@@ -54,7 +54,7 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             inverted color="teal"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link " exact to="/">
+        <NavLink className="navbar-nav-link " exact to="/gettingstarted">
           <Button
             fluid
             className="home"
