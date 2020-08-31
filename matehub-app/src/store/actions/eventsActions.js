@@ -28,6 +28,9 @@ export const APPLY_TO_EVENT_ERROR = 'APPLY_TO_EVENT_ERROR';
 export const APPLY_ACCEPT = 'APPLY_ACCEPT';
 export const APPLY_REFUSE = 'APPLY_REFUSE';
 
+// == DELETE EVENT
+export const DELETE_EVENT = 'DELETE_EVENT';
+
 // ****** ACTION CREATORS
 
 // == GET ALL EVENTS
@@ -119,4 +122,10 @@ export const applyToEventSuccess = (payload) => ({
 
 export const applyToEventError = () => ({
   type: APPLY_TO_EVENT_ERROR,
+});
+
+// == DELETE EVENT
+
+export const deleteEvent = () => ({
+  type: DELETE_EVENT,
 })

@@ -95,7 +95,7 @@ class CoreModel {
             const query = {
                 text: `
                     DELETE FROM ${this.constructor.schema}"${this.constructor.tablename}"
-                    WHERE "id" = $1
+                    WHERE "id" = $1 
                 `,
                 values: [this.id]
             };

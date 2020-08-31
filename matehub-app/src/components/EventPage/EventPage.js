@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import { Button, Input, Icon } from 'semantic-ui-react';
+import { Button, Input } from 'semantic-ui-react';
 
 const EventPage = ({
   eventData,
@@ -11,13 +11,32 @@ const EventPage = ({
   applyMessage,
   onApplyAccept,
   onApplyRefuse,
+  selectPlayerToAcceptOrRefuseInEvent,
+  onDeleteEvent
 }) => {
   // console.log(eventData._participant);
-  // console.log(eventData);
 
   useEffect(() => {
     getEventById();
   }, []);
+
+  console.log(eventData);
+
+  const handleSelectPlayerToAcceptOrRefuseInEvent = (evt, data) => {
+    console.log(evt);
+    console.log(data);
+    selectPlayerToAcceptOrRefuseInEvent(evt.target.id);
+  };
+
+  const handleSelectAndAcceptPlayerInEvent = (evt, data) => {
+    handleSelectPlayerToAcceptOrRefuseInEvent(evt, data);
+    onApplyAccept();
+  };
+
+  const handleSelectAndRefuseplayerInEvent = (evt, data) => {
+    handleSelectPlayerToAcceptOrRefuseInEvent(evt, data);
+    onApplyRefuse();
+  };
 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -37,6 +56,11 @@ const EventPage = ({
   return (
     <div className="eventpage">
       <div className="event">
+        <Button
+          negative
+          content="delete event"
+          onClick={onDeleteEvent}
+        />
         <div>Event creator : {eventData._creator} </div>
         <div>Event game :</div>
         <div>Event starting time :</div>
@@ -63,6 +87,12 @@ const EventPage = ({
               .map((filteredUser) => (
                 <div key={filteredUser.user_id}>
                   <div>{filteredUser.nickname}</div>
+                  <Button
+                    id={filteredUser.user_id}
+                    negative
+                    onClick={handleSelectAndRefuseplayerInEvent}
+                    icon="thumbs down"
+                  />
                 </div>
               ))}
             {/* ! Postulant à l'événement */}
@@ -73,12 +103,18 @@ const EventPage = ({
                 <div key={filteredUser.user_id}>
                   <div>{filteredUser.nickname}</div>
                   <Button.Group icon>
-                    <Button positive onClick={onApplyAccept}>
-                      <Icon name="thumbs up" />
-                    </Button>
-                    <Button negative onClick={onApplyRefuse}>
-                      <Icon name="thumbs down" />
-                    </Button>
+                    <Button
+                      id={filteredUser.user_id}
+                      positive
+                      onClick={handleSelectAndAcceptPlayerInEvent}
+                      icon="thumbs up"
+                    />
+                    <Button
+                      id={filteredUser.user_id}
+                      negative
+                      onClick={handleSelectAndRefuseplayerInEvent}
+                      icon="thumbs down"
+                    />
                   </Button.Group>
                 </div>
               ))}

@@ -1,4 +1,6 @@
 import {
+  DELETE_EVENT,
+  SELECT_PLAYER_TO_ACCEPT_OR_REFUSE_IN_EVENT,
   APPLY_ACCEPT,
   APPLY_REFUSE,
   APPLY_EVENT_CHANGE_FIELD,
@@ -113,7 +115,17 @@ export const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    // * DELETE EVENT
+    case DELETE_EVENT:
+      return {
+        ...state,
+      }
     // * APPLY
+    case SELECT_PLAYER_TO_ACCEPT_OR_REFUSE_IN_EVENT:
+      return {
+        ...state,
+        playerToAcceptOrRefuseInEvent: action.payload,
+      }
     case APPLY_ACCEPT:
       return {
         ...state,

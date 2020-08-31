@@ -14,6 +14,7 @@ import {
   getEventById,
   APPLY_ACCEPT,
   APPLY_REFUSE,
+  DELETE_EVENT,
 } from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
@@ -21,10 +22,22 @@ const eventsRequestMW = (store) => (next) => (action) => {
   const { connectedUserId } = store.getState().auth;
   next(action);
   switch (action.type) {
+    case DELETE_EVENT:
+      axios({
+        method: 'delete',
+        url: `http://localhost:3001/deleteEvent/event/${store.getState().events.eventData._event_id}/user/${store.getState().events.eventData._user_id}`
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      break;
     case APPLY_ACCEPT:
       axios({
         method: 'put',
-        url: `http://localhost:3001/updateEvent/event/${store.getState().events.eventData._event_id}/owner/${store.getState().events.eventData._user_id}/addUserOn/${store.getState().auth.connectedUserId}`
+        url: `http://localhost:3001/updateEvent/event/${store.getState().events.eventData._event_id}/owner/${store.getState().events.eventData._user_id}/addUserOn/${store.getState().events.playerToAcceptOrRefuseInEvent}`
       })
       .then((res) => {
         console.log(res);
@@ -37,7 +50,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     case APPLY_REFUSE:
       axios({
         method: 'put',
-        url: `http://localhost:3001/updateEvent/event/${store.getState().events.eventData._event_id}/owner/${store.getState().events.eventData._user_id}/kickUser/${store.getState().auth.connectedUserId}`
+        url: `http://localhost:3001/updateEvent/event/${store.getState().events.eventData._event_id}/owner/${store.getState().events.eventData._user_id}/kickUser/${store.getState().events.playerToAcceptOrRefuseInEvent}`
       })
       .then((res) => {
         console.log(res);
