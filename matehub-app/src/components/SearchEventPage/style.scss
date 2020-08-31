@@ -44,3 +44,33 @@
   justify-content: space-around
   ;
 }
+
+.Event{
+  margin: 2em;
+  margin-top: 6%;
+}
+
+.Event-modules{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Event-module{
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 3px solid #949494;
+  background-color: rgb(173, 173, 173);
+  margin: 1.5%;
+  width:200px;
+}
+
+.Event-module-image{
+  width: 30%;
+}
+
+.Event-text{
+  margin-top: 2%;
+  margin-left: 10%;
+}
