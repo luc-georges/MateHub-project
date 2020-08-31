@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import { Form, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 const EventPage = ({
   eventData,
@@ -9,7 +9,7 @@ const EventPage = ({
   connectedUserId,
 }) => {
   // console.log(eventData._participant);
-  console.log(eventData);
+  // console.log(eventData);
 
   useEffect(() => {
     getEventById();

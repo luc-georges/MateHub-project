@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeField: (changedData) => {
-    console.log(changedData);
+    // console.log(changedData);
     dispatch(authChangeField(changedData));
   },
   onFormSubmit: () => {

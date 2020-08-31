@@ -11,9 +11,7 @@ import {
   getPersonnalDataSuccess,
   getPersonnalDataError,
   GET_PERSONNAL_DATA_SUBMIT,
-  getPersonnalDataSubmit,
-  EDIT_PROFIL_BANNER
-  
+  EDIT_PROFIL_BANNER,
 } from '../actions/authActions';
 
 export default (store) => (next) => (action) => {
@@ -21,7 +19,6 @@ export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case GET_PERSONNAL_DATA:
-    
       let { connectedUserId } = store.getState().auth;
       axios({
         method: 'get',
@@ -33,7 +30,9 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.log(err);
-          store.dispatch(getPersonnalDataError("L'utilisateur n'a pas été trouvé"));
+          store.dispatch(
+            getPersonnalDataError("L'utilisateur n'a pas été trouvé")
+          );
         });
       break;
     case LOGIN_SUBMIT:
@@ -64,7 +63,9 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/logout',
-        url: `http://localhost:3001/user/${store.getState().auth.connectedUserId}/logout`,
+        url: `http://localhost:3001/user/${
+          store.getState().auth.connectedUserId
+        }/logout`,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
@@ -105,55 +106,64 @@ export default (store) => (next) => (action) => {
           );
         });
       break;
-      case GET_PERSONNAL_DATA_SUBMIT:  
-
-          // if (modifyPersonnalData.banner){        
-          //   const file = new File([modifyPersonnalData.banner],'banner')        
-          //   modifyPersonnalData.banner = file;
-          // }
-         axios({
-          method: 'put',
-          // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
-          url: `http://localhost:3001/user/${store.getState().auth.connectedUserId}/update`,
-          data:store.getState().auth.modifyPersonnalData,
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            withCredentials: true,
-            mode: 'no-cors',
-          },
+    case GET_PERSONNAL_DATA_SUBMIT:
+      // if (modifyPersonnalData.banner){
+      //   const file = new File([modifyPersonnalData.banner],'banner')
+      //   modifyPersonnalData.banner = file;
+      // }
+      axios({
+        method: 'put',
+        // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
+        url: `http://localhost:3001/user/${
+          store.getState().auth.connectedUserId
+        }/update`,
+        data: store.getState().auth.modifyPersonnalData,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          withCredentials: true,
+          mode: 'no-cors',
+        },
+      })
+        .then((res) => {
+          store.dispatch(getPersonnalDataSuccess(res.data.data));
         })
-          .then((res) => {
-            store.dispatch(getPersonnalDataSuccess(res.data.data))
-          })
-          .catch((err) => {
-            console.log('On passe dans le catch de la requête update user :', err);
-            store.dispatch(getPersonnalDataError(err));
-          });
-          break;
-      case EDIT_PROFIL_BANNER:       
-        const formData = new FormData();
-        formData.append("banner", action.payload);
-         axios({
-          method: 'put',
-          // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
-          url: `http://localhost:3001/user/${store.getState().auth.connectedUserId}/update`,
-          data: formData,
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'multipart/form-data',
-            withCredentials: true,
-            mode: 'no-cors',
-          },
+        .catch((err) => {
+          console.log(
+            'On passe dans le catch de la requête update user :',
+            err
+          );
+          store.dispatch(getPersonnalDataError(err));
+        });
+      break;
+    case EDIT_PROFIL_BANNER:
+      const formData = new FormData();
+      formData.append('banner', action.payload);
+      axios({
+        method: 'put',
+        // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
+        url: `http://localhost:3001/user/${
+          store.getState().auth.connectedUserId
+        }/update`,
+        data: formData,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'multipart/form-data',
+          withCredentials: true,
+          mode: 'no-cors',
+        },
+      })
+        .then((res) => {
+          console.log(res.data.data);
+          store.dispatch(getPersonnalDataSuccess(res.data.data));
         })
-          .then((res) => {
-            console.log(res.data.data)
-            store.dispatch(getPersonnalDataSuccess(res.data.data))
-          })
-          .catch((err) => {
-            console.log('On passe dans le catch de la requête update user :', err);
-            store.dispatch(getPersonnalDataError(err));
-          });
-          break;
+        .catch((err) => {
+          console.log(
+            'On passe dans le catch de la requête update user :',
+            err
+          );
+          store.dispatch(getPersonnalDataError(err));
+        });
+      break;
     default:
       return;
   }
