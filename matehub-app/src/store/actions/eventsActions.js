@@ -15,14 +15,21 @@ export const CREATE_EVENT_SUBMIT_ERROR = 'CREATE_EVENT_SUBMIT_ERROR';
 
 // == INPUT CHANGE
 export const EVENT_CHANGE_FIELD = 'EVENT_CHANGE_FIELD';
+export const APPLY_EVENT_CHANGE_FIELD = 'APPLY_EVENT_CHANGE_FIELD';
 
 // == SELECT EVENT AT CLICK
 export const GET_SELECTED_EVENT = 'GET_SELECTED_EVENT';
 
 // == APPLY EVENT
+export const SELECT_PLAYER_TO_ACCEPT_OR_REFUSE_IN_EVENT = 'SELECT_PLAYER_TO_ACCEPT_OR_REFUSE_IN_EVENT';
 export const APPLY_TO_EVENT = 'APPLY_TO_EVENT';
 export const APPLY_TO_EVENT_SUCCESS = 'APPLY_TO_EVENT_SUCCESS';
 export const APPLY_TO_EVENT_ERROR = 'APPLY_TO_EVENT_ERROR';
+export const APPLY_ACCEPT = 'APPLY_ACCEPT';
+export const APPLY_REFUSE = 'APPLY_REFUSE';
+
+// == DELETE EVENT
+export const DELETE_EVENT = 'DELETE_EVENT';
 
 // ****** ACTION CREATORS
 
@@ -76,6 +83,11 @@ export const eventChangeField = (payload) => ({
   payload,
 });
 
+export const applyEventChangeField = (payload) => ({
+  type: APPLY_EVENT_CHANGE_FIELD,
+  payload,
+});
+
 // == SELECT EVENT AT CLICK
 export const getSelectedEvent = (payload) => ({
   type: GET_SELECTED_EVENT,
@@ -85,6 +97,19 @@ export const getSelectedEvent = (payload) => ({
 
 
 // == APPLY EVENT
+export const selectPlayerToAcceptOrRefuseInEvent = (payload) => ({
+  type: SELECT_PLAYER_TO_ACCEPT_OR_REFUSE_IN_EVENT,
+  payload,
+});
+
+export const applyAccept = () => ({
+  type: APPLY_ACCEPT,
+});
+
+export const applyRefuse = () => ({
+  type: APPLY_REFUSE,
+}); 
+
 export const applyToEvent = (payload) => ({
   type: APPLY_TO_EVENT,
   payload,
@@ -97,4 +122,10 @@ export const applyToEventSuccess = (payload) => ({
 
 export const applyToEventError = () => ({
   type: APPLY_TO_EVENT_ERROR,
+});
+
+// == DELETE EVENT
+
+export const deleteEvent = () => ({
+  type: DELETE_EVENT,
 })

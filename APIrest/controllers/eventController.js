@@ -268,9 +268,11 @@ module.exports = {
     deleteAnEvent: async (request, response, next) => {
         try {
             
-            const event = await Event.findById(request.params.id);
+            const event = await Event.findById(request.params.eventId);
+            console.log(event)
             const result = await event.delete();
-        
+            console.log(result)
+            console.log("passé par le delete")
             response.status('200').json({data: result});
                        
         } catch (error) {
