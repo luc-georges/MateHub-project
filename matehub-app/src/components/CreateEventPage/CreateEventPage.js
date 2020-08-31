@@ -48,39 +48,39 @@ const CreateEventPage = ({
   const [eventStartHourError, setEventStartHourError] = useState(false);
 
   const handleSubmit = () => {
-    let error = false;
+    // let error = false;
 
     if (eventCreationData.duration === '') {
       setDurationError(true);
-      error = true;
+      // error = true;
     } else {
       setDurationError(false);
     }
 
     if (eventCreationData.game_id === '') {
       setgameIdError(true);
-      error = true;
+      // error = true;
     } else {
       setgameIdError(false);
     }
 
     if (eventCreationData.player_max === '') {
       setplayerMaxError(true);
-      error = true;
+      // error = true;
     } else {
       setplayerMaxError(false);
     }
 
     if (eventCreationData.event_time_date === '') {
       setEventStartDateError(true);
-      error = true;
+      // error = true;
     } else {
       setEventStartDateError(false);
     }
 
     if (eventCreationData.event_time_hour === '') {
       setEventStartHourError(true);
-      error = true;
+      // error = true;
     } else {
       setEventStartHourError(false);
     }
