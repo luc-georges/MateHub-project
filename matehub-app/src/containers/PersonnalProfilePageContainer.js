@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PersonnalProfilePage from '../components/PersonnalProfilePage/PersonnalProfilePage';
-import { getPersonnalData, modifyPersonnalDataChangeField, getPersonnalDataSubmit } from '../store/actions/authActions';
+import { getPersonnalData, modifyPersonnalDataChangeField, getPersonnalDataSubmit,editProfilBanner } from '../store/actions/authActions';
 
 // import { getUserById } from '../store/reducers/usersReducer';
 
@@ -14,13 +14,16 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getPersonnalData());
   },
   onChangeField: (changedData) => {
-    console.log(changedData);
+    // console.log(changedData);
     dispatch(modifyPersonnalDataChangeField(changedData));
   },
   onFormSubmit: () => {
     console.log('Il y a eu un submit !');
     dispatch(getPersonnalDataSubmit());
   },
+  editProfilBanner: (bannerImg) => {
+    dispatch(editProfilBanner(bannerImg))
+  }
 });
 
 export default connect(

@@ -29,6 +29,9 @@
   width: 100%;
 }
 
+.form-input{
+margin-top: 300px;
+}
 
 .details{
   position: absolute;
@@ -62,16 +65,48 @@
 .form-input{
   width:400px;
 }
-.container-banner{
-  position: relative;
+.banner-modal{
+
+}
+.crop-container{
+  height: 60vh;
+}
+.Button-banner{
+ width:50px;
+ position: absolute;
+ right: 10px;
+ bottom: 10px;
+ z-index: 1;
+ display: none!important;
+ background: none!important;
+ border-radius: 50%!important;
+ color: white!important;
+}
+
+.container-modal-banner{
+ 
+  position: absolute;
+  height: 35vh;
+  width: 100%;
+  z-index: 1;
+}
+.container-modal-banner:hover>.Button-banner{
+  display: block!important;
+
+}
+.container-banner{ 
   height: 35vh;
 }
 .profilepage-header{
   position: relative;
 } 
-
+.banner-modal-img{
+  max-height: 260px;
+  width: 100%;
+}
 .banner{
   height: 35vh;
   width: 100%;
-  position: absolute;
+  z-index: 0;
+
 }

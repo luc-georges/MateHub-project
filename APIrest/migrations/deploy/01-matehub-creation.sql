@@ -77,5 +77,32 @@ CREATE TABLE "M_EVENT_has_LANG" (
     PRIMARY KEY ("event_id","lang_id")
 );
 
+CREATE TABLE "QUEST" (
+    "id" INT NOT NULL REFERENCES "user"("id"),
+    "name" INT NOT NULL REFERENCES "game"("id"),
+    "" JSON ,
+    "stats" JSON,
+    "level_id" INT REFERENCES "level"("id"),
+    PRIMARY KEY ("user_id","game_id")
+);
+
+
+CREATE TABLE "M_USER_has_QUEST" (
+    "user_id" INT NOT NULL REFERENCES "user"("id"),
+    "quest_id" INT NOT NULL REFERENCES "quest"("id"),
+    "done" BOOLEAN DEFAULT FALSE ,
+    "follow" BOOLEAN DEFAULT false,
+    "level_id" INT REFERENCES "level"("id"),
+    PRIMARY KEY ("user_id","game_id")
+);
+1 
+2
+3
+
+
+
+
+
+
 
 COMMIT;

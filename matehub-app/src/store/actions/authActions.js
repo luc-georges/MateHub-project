@@ -1,6 +1,8 @@
 export const AUTH_CHANGE_FIELD = 'AUTH_CHANGE_FIELD';
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const MODIFY_PERSONNAL_DATA_CHANGE_FIELD = 'MODIFY_PERSONNAL_DATA_CHANGE_FIELD';
+export const EDIT_PROFIL_BANNER = 'EDIT_PROFIL_BANNER';
+
 
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const LOGIN_SUBMIT_SUCCESS = 'LOGIN_SUBMIT_SUCCESS';
@@ -15,8 +17,8 @@ export const GET_PERSONNAL_DATA = 'GET_PERSONNAL_DATA';
 export const GET_PERSONNAL_DATA_SUCCESS = 'GET_PERSONNAL_DATA_SUCCESS';
 export const GET_PERSONNAL_DATA_ERROR = 'GET_PERSONNAL_DATA_ERROR';
 
-export const getPersonnalDataSubmit = () => ({
-  type: GET_PERSONNAL_DATA_SUBMIT,
+export const getPersonnalDataSubmit = (payload) => ({
+  type: GET_PERSONNAL_DATA_SUBMIT,payload
 })
 
 export const getPersonnalData = () => ({
@@ -41,6 +43,11 @@ export const modifyPersonnalDataChangeField = (payload) => ({
   type: MODIFY_PERSONNAL_DATA_CHANGE_FIELD,
   payload,
 });
+
+export const editProfilBanner = (payload) => ({
+  type: EDIT_PROFIL_BANNER,
+  payload
+})
 
 export const loginSubmit = () => ({
   type: LOGIN_SUBMIT,

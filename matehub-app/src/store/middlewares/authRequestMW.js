@@ -12,6 +12,7 @@ import {
   getPersonnalDataError,
   GET_PERSONNAL_DATA_SUBMIT,
   getPersonnalDataSubmit,
+  EDIT_PROFIL_BANNER
   
 } from '../actions/authActions';
 
@@ -20,6 +21,7 @@ export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case GET_PERSONNAL_DATA:
+    
       let { connectedUserId } = store.getState().auth;
       axios({
         method: 'get',
@@ -43,7 +45,6 @@ export default (store) => (next) => (action) => {
         data: store.getState().auth.loginData,
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
           withCredentials: true,
           mode: 'no-cors',
         },
@@ -104,31 +105,19 @@ export default (store) => (next) => (action) => {
           );
         });
       break;
-      case GET_PERSONNAL_DATA_SUBMIT:
-        let insertObject = {
-        }
-        if(store.getState().auth.modifyPersonnalData.nickname && store.getState().auth.modifyPersonnalData.nickname.length > 0 ){
-          insertObject.nickname = store.getState().auth.modifyPersonnalData.nickname;
-        }
-        if(store.getState().auth.modifyPersonnalData.description && store.getState().auth.modifyPersonnalData.description.length > 0 ){
-          insertObject.description = store.getState().auth.modifyPersonnalData.description;
-        }
-        if(store.getState().auth.modifyPersonnalData.avatar  ){
-          insertObject.avatar = store.getState().auth.modifyPersonnalData.avatar;
-        }
-        if(store.getState().auth.modifyPersonnalData.banner){
-          insertObject.banner = store.getState().auth.modifyPersonnalData.banner;
-        }
-        //console.log(store.getState().auth.loginData)
-        axios({
+      case GET_PERSONNAL_DATA_SUBMIT:  
+
+          // if (modifyPersonnalData.banner){        
+          //   const file = new File([modifyPersonnalData.banner],'banner')        
+          //   modifyPersonnalData.banner = file;
+          // }
+         axios({
           method: 'put',
           // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
           url: `http://localhost:3001/user/${store.getState().auth.connectedUserId}/update`,
-          data:{...insertObject
-          },
+          data:store.getState().auth.modifyPersonnalData,
           headers: {
             'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
             withCredentials: true,
             mode: 'no-cors',
           },
@@ -140,6 +129,31 @@ export default (store) => (next) => (action) => {
             console.log('On passe dans le catch de la requête update user :', err);
             store.dispatch(getPersonnalDataError(err));
           });
+          break;
+      case EDIT_PROFIL_BANNER:       
+        const formData = new FormData();
+        formData.append("banner", action.payload);
+         axios({
+          method: 'put',
+          // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
+          url: `http://localhost:3001/user/${store.getState().auth.connectedUserId}/update`,
+          data: formData,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'multipart/form-data',
+            withCredentials: true,
+            mode: 'no-cors',
+          },
+        })
+          .then((res) => {
+            console.log(res.data.data)
+            store.dispatch(getPersonnalDataSuccess(res.data.data))
+          })
+          .catch((err) => {
+            console.log('On passe dans le catch de la requête update user :', err);
+            store.dispatch(getPersonnalDataError(err));
+          });
+          break;
     default:
       return;
   }

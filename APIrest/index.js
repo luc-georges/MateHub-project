@@ -29,7 +29,7 @@ const app = express();
 app.use(fileUpload({
   createParentPath: true
 }));
-app.use(express.static('../matehub-app/public/src/assets/uploads'));
+app.use(express.static('../matehub-app/src/assets'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 const corsOptions = {
