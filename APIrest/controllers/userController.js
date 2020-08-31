@@ -277,6 +277,7 @@ module.exports = {
      */
     updateAnUser: async (request, response, next) => {
         try {
+            console.log("UPDATED",request.files)
             const user = await User.findById(request.params.id);
 
             Object.assign(user, request.body);
@@ -292,10 +293,11 @@ module.exports = {
             if(request.body.description) {
                 user.description = sanitaze.htmlEntities(user.description);
             }
-
             if(request.files){
+                // console.log("passing files")
+                // console.log(request.files)
             if(request.files.avatar) {
-         
+                console.log("passing files avatar")
 
                 if(request.files.avatar.size > 2000000){
 
@@ -304,23 +306,24 @@ module.exports = {
                 }
                     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
                     let avatarImg = request.files.avatar;
-                    console.log(avatarImg.name)
+                    console.log(avatarImg)
                     //Use the mv() method to place the file in upload directory (i.e. "uploads")
                     avatarImg.mv('../matehub-app/public/src/assets/uploads/' + avatarImg.name);
                 
 
                 user.avatar = sanitaze.htmlEntities(avatarImg.name);
             }
+
             if(request.files.banner) {
                 if(request.files.banner.size > 3000000){
-
+                    console.log("passing files banner")
                     response.status('413').json({error:'your file is too large'});
 
                 }
                     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
                     let bannerImg = request.files.banner;
                     //Use the mv() method to place the file in upload directory (i.e. "uploads")
-                    avatarImg.mv('../matehub-app/public/src/assets/uploads/' + bannerImg.name);
+                    bannerImg.mv('../matehub-app/src/assets/' + bannerImg.name);
     
 
                 user.banner = sanitaze.htmlEntities(bannerImg.name);
@@ -328,7 +331,6 @@ module.exports = {
     
             const result = await user.update();
             
-            delete user._password;
             response.status('201').json({data: result});
             
         } catch (error) {
@@ -356,4 +358,4 @@ module.exports = {
             next(error);
         }
     }
-}
+}     

@@ -78,4 +78,6 @@ CREATE TABLE "M_EVENT_has_LANG" (
 );
 
 
+
+
 COMMIT;

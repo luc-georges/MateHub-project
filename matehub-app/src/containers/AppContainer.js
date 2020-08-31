@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getEvents } from '../store/actions/eventsActions';
+import { getAllEvents } from '../store/actions/eventsActions';
 import { getTopUsers, getUser } from '../store/actions/usersActions';
 import { checkAuth } from '../store/actions/authActions';
 import { getNews } from '../store/actions/newsActions';
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getEvents: () => {
-    dispatch(getEvents());
+  getAllEvents: () => {
+    dispatch(getAllEvents());
   },
   getNews: () => {
     dispatch(getNews());

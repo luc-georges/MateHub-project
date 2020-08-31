@@ -1,54 +1,135 @@
 import React, { useEffect } from 'react';
+import { Button, Header, Modal, Form, Icon } from 'semantic-ui-react';
 import './style.scss';
-import { Button, Header, Modal, Form } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
 
-// import Banner from '../../assets/LoL-Banner.png';
-
-const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
- 
+const PersonnalProfilePage = ({
+  personnalData,
+  getPersonnalData,
+  onChangeField,
+  onFormSubmit,
+  modifyPersonnalData,
+  editProfilBanner,
+}) => {
   // eslint-disable-next-line
   useEffect(() => {
     getPersonnalData();
     // eslint-disable-next-line
   }, []);
 
+  const handleInputChange = (evt) => {
+    console.log('name >>', evt.target.name);
+    console.log('value >>', evt.target.value);
+    const { name, value } = evt.target;
+
+    // console.log(name)
+    // console.log(evt.target.files[0])
+
+    if (evt.target.files) {
+      console.log(evt.target.files[0]);
+    }
+    onChangeField({
+      [name]: value || [evt.target.files[0]],
+    });
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onFormSubmit();
+    setOpen(false);
+  };
+
+  const handleUpload = (evt) => {
+    if (evt.target.files) {
+      editProfilBanner(evt.target.files[0]);
+      console.log(evt.target.files);
+    }
+  };
+
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
+  const [open3, setOpen3] = React.useState(false);
 
   return (
     <div className="profilepage">
-      <div className="profilepage-header">  
-      <div className="container-avatar"></div>
-       <div className="container-banner">
-       {personnalData._banner &&
+      <div className="profilepage-header">
+        <div className="container-modal-banner">
+          <Modal
+            className="banner-modal"
+            size="large"
+            onClose={() => setOpen3(false)}
+            onOpen={() => setOpen3(true)}
+            open={open3}
+            trigger={
+              <Button className="Button-banner">
+                <Icon name="edit" size="large" />
+              </Button>
+            }
+          >
+            <Modal.Header>Update</Modal.Header>
+            <Modal.Description>
+              <Header>banner</Header>
+              {personnalData._banner && (
+                <div className="modal-img">
+                  <img
+                    src={require(`../../assets/${personnalData._banner}`)}
+                    alt="lollogo"
+                    className="banner-modal-img"
+                  />
+                </div>
+              )}
+              <div className="banner-input">
+                <label htmlFor="banner">Choose a banner picture:</label>
+                <input
+                  type="file"
+                  id="banner"
+                  name="banner"
+                  accept="image/png, image/jpeg"
+                  onChange={handleUpload}
+                ></input>
+              </div>
+            </Modal.Description>
+            <Modal.Actions>
+              <Button
+                style={{ marginTop: '2em', textAlign: 'center' }}
+                className="eventData buttonData"
+                content="ok"
+                labelPosition="right"
+                icon="checkmark"
+                positive
+                onClick={() => setOpen3(false)}
+              />
+              <Button
+                style={{ marginTop: '2em', textAlign: 'center' }}
+                color="black"
+                onClick={() => setOpen3(false)}
+              >
+                Cancel
+              </Button>
+            </Modal.Actions>
+          </Modal>
+        </div>
+        <div className="container-banner">
+          {personnalData._banner && (
             <img
-            src={require(`../../assets/${personnalData._banner}`)}
-            alt="lollogo"
-            className="banner"
-          />
-              
-            }
-      {personnalData._avatar &&
-           <img
-       
-           src={icon}
-           alt="lollogo"
-           className="avatar"
-         />
-              
-            }
-      
-      </div>
-    <div className="details">
-        <h1>{personnalData._nickname}</h1>
+              src={require(`../../assets/${personnalData._banner}`)}
+              alt="lollogo"
+              className="banner"
+            />
+          )}
+
+          {personnalData._avatar && (
+            <img src={icon} alt="lollogo" className="avatar" />
+          )}
+        </div>
+        <div className="details">
+          <h1>{personnalData._nickname}</h1>
         </div>
       </div>
       <div className="profilepage-body">
         <div className="profilepage-button">
-
           <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
@@ -58,32 +139,53 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
             <Modal.Header>Update informations</Modal.Header>
             <Modal.Description>
               <Header>Update</Header>
-              <Form.Input
-                fluid
-                label="Nickname"
-                placeholder="change your nickname"
-              />
-              <Form.Input fluid label="years" placeholder="how old are you" />
-              <label htmlFor="banner">Choose a banner picture:</label>
+              <div className="loginpage">
+                <Form className="information-form" onSubmit={handleSubmit}>
+                  <div>
+                    <Form.Input
+                      className="form-input"
+                      fluid
+                      label="Nickname"
+                      placeholder="change your nickname"
+                      name="nickname"
+                      value={modifyPersonnalData.nickname}
+                      onChange={handleInputChange}
+                    />
+                  </div>
 
-              <input
-                type="file"
-                id="banner"
-                name="banner"
-                accept="image/png, image/jpeg"
-              ></input>
+                  <div>
+                    <Form.Input
+                      className="form-input"
+                      fluid
+                      label="Description"
+                      placeholder="change your Description"
+                      name="description"
+                      value={modifyPersonnalData.description}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div></div>
+                  <Button
+                    style={{ marginTop: '2em', textAlign: 'center' }}
+                    className="eventData buttonData"
+                    type="submit"
+                    content="ok"
+                    labelPosition="right"
+                    icon="checkmark"
+                    positive
+                  />
+                </Form>
+              </div>
             </Modal.Description>
             <Modal.Actions>
-              <Button color="black" onClick={() => setOpen(false)}>
+              <Button
+                style={{ marginTop: '2em', textAlign: 'center' }}
+                color="black"
+                onClick={() => setOpen(false)}
+              >
                 Cancel
               </Button>
-              <Button
-                content="ok"
-                labelPosition="right"
-                icon="checkmark"
-                onClick={() => setOpen(false)}
-                positive
-              />
             </Modal.Actions>
           </Modal>
         </div>
@@ -95,15 +197,15 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
           {personnalData._games &&
             personnalData._games.map((game) => {
               return (
-                <div key= {game.id} >
-                  
+                <div key={game.game_id}>
                   <h2>{game.game_name}</h2>
                   <div className="profilepage-game-user">
-                  <div>Pseudo : {game.ign.name}</div>
-                  <div>level : {game.ign.summonerLevel}</div>
-                  <div>Rank : {game.stats.tier} / {game.stats.rank} </div>
+                    <div>Pseudo : {game.ign.name}</div>
+                    <div>level : {game.ign.summonerLevel}</div>
+                    <div>
+                      Rank : {game.stats.tier} / {game.stats.rank}{' '}
+                    </div>
                   </div>
-                  
                 </div>
               );
             })}
@@ -135,61 +237,62 @@ const PersonnalProfilePage = ({ personnalData, getPersonnalData }) => {
             </Modal.Actions>
           </Modal>
         </div>
-          <h2>Created Events</h2>
+        <h2>Created Events</h2>
         <div className="LastestEvent-modules">
-          
           {personnalData._event_created &&
             personnalData._event_created.map((event) => {
               return (
-                <div key={`C_event${event.event_id}`} className="LastestEvent-module" >
+                <div
+                  key={`C_event${event.event_id}`}
+                  className="LastestEvent-module"
+                >
                   <img
-                src={logolol}
-                alt="lollogo"
-                className="LastestEvent-module-image"
-              />
-                   <div>
-                  Date and time  <Moment format="YYYY/MM/DD HH:MM">{event._starting}</Moment>
+                    src={logolol}
+                    alt="lollogo"
+                    className="LastestEvent-module-image"
+                  />
+                  <div>
+                    Date and time{' '}
+                    <Moment format="YYYY/MM/DD HH:MM">{event.event_time}</Moment>
                   </div>
                   <div className="profilepage-event_created">
-                  <div>{event.game_name} </div>
-                  <div>player:{event.player_count}</div>
-                  <div>party :{event.player_max}</div>
+                    <div>{event.game_name} </div>
+                    <div>player:{event.player_count}</div>
+                    <div>party :{event.player_max}</div>
                   </div>
-                  
                 </div>
-            
-
               );
             })}
-
-                  </div>
-                  <h3>Event Registered: </h3>
+        </div>
+        <h3>Event Registered: </h3>
         <div className="LastestEvent-modules">
-        {personnalData.has_events &&
+          {personnalData.has_events &&
             personnalData.has_events.map((h_event) => {
               return (
-                <div key= {`H_event${h_event.event_id}`} className="LastestEvent-module">
-                    <img
-                src={logolol}
-                alt="lollogo"
-                className="LastestEvent-module-image"
-              />
+                <div
+                  key={`H_event${h_event.event_id}`}
+                  className="LastestEvent-module"
+                >
+                  <img
+                    src={logolol}
+                    alt="lollogo"
+                    className="LastestEvent-module-image"
+                  />
                   <div>
-                  Date and time  <Moment format="YYYY/MM/DD HH:MM">{h_event._starting}</Moment>
+                    Date and time{' '}
+                    <Moment format="YYYY/MM/DD HH:MM">
+                      {h_event._starting}
+                    </Moment>
                   </div>
                   <div className="profilepage-has_event">
-                  <div>{h_event.game_name} </div>
-                  <div>player :{h_event.player_count}</div>
-                  <div>party :{h_event.player_max}</div>
-              
+                    <div>{h_event.game_name} </div>
+                    <div>player :{h_event.player_count}</div>
+                    <div>party :{h_event.player_max}</div>
                   </div>
-                  
                 </div>
-                
-
               );
             })}
-            </div>
+        </div>
       </div>
     </div>
   );

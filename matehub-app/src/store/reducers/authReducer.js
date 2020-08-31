@@ -1,9 +1,11 @@
 import {
   AUTH_CHANGE_FIELD,
+  MODIFY_PERSONNAL_DATA_CHANGE_FIELD,
   LOGIN_SUBMIT,
   LOGIN_SUBMIT_SUCCESS,
   LOGIN_SUBMIT_ERROR,
   LOGOUT_SUCCESS,
+  GET_PERSONNAL_DATA_SUBMIT,
   GET_PERSONNAL_DATA,
   GET_PERSONNAL_DATA_SUCCESS,
   GET_PERSONNAL_DATA_ERROR,
@@ -21,6 +23,7 @@ export const initialState = {
   loginErrorMessage: '',
   connectedUserId: "",
   personnalData: {},
+  modifyPersonnalData: {},
   error: '',
 };
 
@@ -32,6 +35,10 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
       };
+    case GET_PERSONNAL_DATA_SUBMIT:
+      return {
+        ...state
+      }
     case GET_PERSONNAL_DATA_SUCCESS:
       return {
         ...state,
@@ -39,6 +46,9 @@ export default (state = initialState, action = {}) => {
           ...state.personnalData,
           ...action.payload,
         },
+        modifyPersonnalData : {
+          ...state.modifyPersonnalData = initialState.modifyPersonnalData,
+          },
         error: '',
       };
     case GET_PERSONNAL_DATA_ERROR:
@@ -54,6 +64,14 @@ export default (state = initialState, action = {}) => {
         ...state,
         loginData: {
           ...state.loginData,
+          ...action.payload,
+        },
+      };
+    case MODIFY_PERSONNAL_DATA_CHANGE_FIELD:
+      return {
+        ...state,
+        modifyPersonnalData: {
+          ...state.modifyPersonnalData,
           ...action.payload,
         },
       };

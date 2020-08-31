@@ -271,3 +271,4 @@ module.exports = class Event extends CoreModel {
         this._player_max = value
     }
 }
+   
