@@ -1,14 +1,25 @@
 import {
+  // * SEARCH EVENTS
+  FILTERED_EVENTS,
+  SEARCH_EVENT_CHANGE_FIELD,
+
+  // * APPLY TO EVENT
   APPLY_TO_EVENT,
   APPLY_TO_EVENT_SUCCESS,
   APPLY_TO_EVENT_ERROR,
+
+  // * GET EVENT
   GET_SELECTED_EVENT,
   GET_EVENT_BY_ID,
   GET_EVENT_BY_ID_SUCCESS,
   GET_EVENT_BY_ID_ERROR,
+
+  // * GET ALL EVENTS
   GET_ALL_EVENTS,
   GET_ALL_EVENTS_SUCCESS,
   GET_ALL_EVENTS_ERROR,
+
+  // * CREATE EVENT
   EVENT_CHANGE_FIELD,
   CREATE_EVENT_SUBMIT,
   CREATE_EVENT_SUBMIT_SUCCESS,
@@ -16,98 +27,46 @@ import {
 } from '../actions/eventsActions';
 
 export const initialState = {
-  error: '',
-  list: [],
-  eventCreationErrorMessage: '',
-  eventCreationData: {
-    user_id: '',
-    game_id: '',
-    player_count: '', // Tout le temps 1
-    player_max: '',
-    duration: '',
-    event_time: '',
-    event_time_date: '',
-    event_time_hour: '',
-    status: '', // Tout le temps 0
-    description: '',
-    vocal: '',
-    language: {
-      fr1: false,
-      uk2: false,
-      it3: false,
-      es4: false,
-      ru5: false,
-      de6: false,
-    },
-  },
-  eventDataErrorMessage: '',
-  eventData: {
-    _event_id: '',
-    _user_id: '',
-    _creator: '',
-    _game_name: '',
-    _game_id: '',
-    _starting: '',
-    _duration: {
-      hours: '',
-    },
-    _player_count: '',
-    _player_max: '',
-    _description: '',
-    _status: '',
-    _langs: [
-      {
-        id: '',
-        label: '',
-        icon: '',
-      },
-      {
-        id: '',
-        label: '',
-        icon: '',
-      },
-      {
-        id: '',
-        label: '',
-        icon: '',
-      },
-    ],
-    _end: '',
-    _vocal: '',
-    _participant: [
-      {
-        user_id: '',
-        event_id: '',
-        status: '',
-        message: '',
-        nickname: '',
-        stats: {
-          leagueId: '',
-          queueType: '',
-          tier: '',
-          rank: '',
-          summonerId: '',
-          summonerName: '',
-          leaguePoints: '',
-          wins: '',
-          losses: '',
-          veteran: '',
-          inactive: '',
-          freshBlood: '',
-          hotStreak: '',
-        },
-      },
-    ],
-  },
+  // * SEARCH EVENT
+  searchEventData: {},
+
+  // * APPLY TO EVENT
   applyToEventData: {
     user_id: '',
     event_id: '',
   },
-  selectedEvent: 5,
+
+  // * GET EVENT
+  eventDataErrorMessage: '',
+  eventData: {},
+  selectedEvent: '',
+
+  // * GET ALL EVENTS
+  error: '',
+  list: [],
+
+  // * CREATE EVENT
+  eventCreationErrorMessage: '',
+  eventCreationData: {},
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    // * SEARCH EVENT
+    case FILTERED_EVENTS:
+      return {
+        ...state,
+      };
+    case SEARCH_EVENT_CHANGE_FIELD:
+      return {
+        ...state,
+        searchEventData: {
+          ...state.searchEventData,
+          ...action.payload,
+        },
+      };
+
+    // * APPLY TO EVENT
     case APPLY_TO_EVENT:
       return {
         ...state,
@@ -122,16 +81,20 @@ export default (state = initialState, action = {}) => {
         ...state,
         eventData: {
           ...state.eventData,
-          _participant: [{
-            ...state.eventData._participant,
-            ...action.payload,
-          }]
+          _participant: [
+            {
+              ...state.eventData._participant,
+              ...action.payload,
+            },
+          ],
         },
       };
     case APPLY_TO_EVENT_ERROR:
       return {
         ...state,
       };
+
+    // * GET EVENT
     case GET_SELECTED_EVENT:
       return {
         ...state,
@@ -158,6 +121,8 @@ export default (state = initialState, action = {}) => {
         },
         eventDataErrorMessage: action.payload,
       };
+
+    // * CREATE EVENT
     case EVENT_CHANGE_FIELD:
       return {
         ...state,
@@ -204,6 +169,8 @@ export default (state = initialState, action = {}) => {
         ...state,
         eventCreationErrorMessage: action.payload,
       };
+
+    // * GET ALL EVENT
     case GET_ALL_EVENTS:
       return {
         ...state,
@@ -224,5 +191,3 @@ export default (state = initialState, action = {}) => {
       return state;
   }
 };
-
-// export default eventsReducer;

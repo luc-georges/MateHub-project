@@ -84,16 +84,20 @@ const SearchEventPage = ({
           placeholder="Select game"
           onChange={handleSelectInputChange}
           // value={eventCreationData.game_id}
+          // error={gameIdError}
+          required
         />
         <Form.Group widths="equal">
           <Form.Input
-            label="Team size"
+            label="Maximum players"
             name="player_max"
             control={Select}
             options={maxPlayerOptions}
             placeholder="Maximum players"
             onChange={handleSelectInputChange}
             // value={eventCreationData.player_max}
+            // error={playerMaxError}
+            required
           />
 
           <Form.Input
@@ -104,23 +108,8 @@ const SearchEventPage = ({
             placeholder="Event duration"
             onChange={handleSelectInputChange}
             // value={eventCreationData.duration}
-          />
-        </Form.Group>
-        <Form.Group widths="equal">
-          <Form.Input
-            name="event_time_date"
-            label="Event day"
-            type="date"
-            onChange={handleInputChange}
-            value={searchEventData.event_time_date}
-          />
-
-          <Form.Input
-            name="event_time_hour"
-            label="From (hour)"
-            type="time"
-            onChange={handleInputChange}
-            value={searchEventData.event_time_hour}
+            // error={durationError}
+            required
           />
         </Form.Group>
       </Form>
@@ -128,44 +117,39 @@ const SearchEventPage = ({
       <h2 style={{ marginBottom: '1em' }}>Search Result</h2>
       <div className="Event-modules">
         <Card.Group centered>
-          {list.map((element) => {
-            return (
-              <Card key={element._event_id}>
-                <Card.Content>
-                  <Card.Header>
-                    <Moment format="YYYY/MM/DD HH:MM">
-                      {element._starting}
-                    </Moment>
-                  </Card.Header>
-                  <Card.Meta>{element._game_name}</Card.Meta>
-                  <Card.Meta>
-                    <strong>Event creator :</strong> {element._creator}
-                  </Card.Meta>
-                  <Card.Description>
-                    {element._player_count} players
-                  </Card.Description>
-                  <Card.Description>
-                    Looking for {element._player_max - element._player_count}{' '}
-                    more players
-                  </Card.Description>
-                  {/* {element._langs && (
-                      <div>
-                        {element._langs.forEach((flag) => {
-                          return (<Flag name={flag.label.toLowerCase()} />)
-                        })}
-                      </div>
-                    )} */}
-                  <Link
-                    id={element._event_id}
-                    to={`/event/${element._event_id}`}
-                    onClick={handleGetSelectedEvent}
-                  >
-                    <Button content="Go" size="mini" />
-                  </Link>
-                </Card.Content>
-              </Card>
-            );
-          })}
+          {list
+            .filter((event) => event.duration === searchEventData.duration)
+            .map((element) => {
+              return (
+                <Card key={element._event_id}>
+                  <Card.Content>
+                    <Card.Header>
+                      <Moment format="YYYY/MM/DD HH:MM">
+                        {element._starting}
+                      </Moment>
+                    </Card.Header>
+                    <Card.Meta>{element._game_name}</Card.Meta>
+                    <Card.Meta>
+                      <strong>Event creator :</strong> {element._creator}
+                    </Card.Meta>
+                    <Card.Description>
+                      {element._player_count} players
+                    </Card.Description>
+                    <Card.Description>
+                      Looking for {element._player_max - element._player_count}{' '}
+                      more players
+                    </Card.Description>
+                    <Link
+                      id={element._event_id}
+                      to={`/event/${element._event_id}`}
+                      onClick={handleGetSelectedEvent}
+                    >
+                      <Button content="Go" size="mini" />
+                    </Link>
+                  </Card.Content>
+                </Card>
+              );
+            })}
         </Card.Group>
       </div>
     </div>

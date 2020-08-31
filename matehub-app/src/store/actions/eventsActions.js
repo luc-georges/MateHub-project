@@ -15,6 +15,7 @@ export const CREATE_EVENT_SUBMIT_ERROR = 'CREATE_EVENT_SUBMIT_ERROR';
 
 // == INPUT CHANGE
 export const EVENT_CHANGE_FIELD = 'EVENT_CHANGE_FIELD';
+export const SEARCH_EVENT_CHANGE_FIELD = 'SEARCH_EVENT_CHANGE_FIELD';
 
 // == SELECT EVENT AT CLICK
 export const GET_SELECTED_EVENT = 'GET_SELECTED_EVENT';
@@ -24,7 +25,15 @@ export const APPLY_TO_EVENT = 'APPLY_TO_EVENT';
 export const APPLY_TO_EVENT_SUCCESS = 'APPLY_TO_EVENT_SUCCESS';
 export const APPLY_TO_EVENT_ERROR = 'APPLY_TO_EVENT_ERROR';
 
+// == SEARCH EVENT
+export const FILTERED_EVENTS = 'FILTERED_EVENTS'
+
 // ****** ACTION CREATORS
+
+// == SEARCH EVENT
+export const filteredEvents = () => ({
+  type: FILTERED_EVENTS,
+});
 
 // == GET ALL EVENTS
 export const getAllEvents = () => ({
@@ -73,6 +82,11 @@ export const CreateEventSubmitError = (payload) => ({
 // == INPUT CHANGE
 export const eventChangeField = (payload) => ({
   type: EVENT_CHANGE_FIELD,
+  payload,
+});
+
+export const searchEventChangeField = (payload) => ({
+  type: SEARCH_EVENT_CHANGE_FIELD,
   payload,
 });
 

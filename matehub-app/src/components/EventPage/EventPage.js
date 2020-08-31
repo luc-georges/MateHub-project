@@ -9,7 +9,7 @@ const EventPage = ({
   connectedUserId,
 }) => {
   // console.log(eventData._participant);
-  // console.log(eventData);
+  console.log(eventData);
 
   useEffect(() => {
     getEventById();
