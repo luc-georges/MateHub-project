@@ -123,6 +123,12 @@ module.exports = class Event extends CoreModel {
         }
     }
 
+    /**
+     * Fonction pour ajouter une langue a un event
+     * @static
+     * @param {Object} args
+     * @returns {Object} 
+     */
     static async addLangOnEvent(val) {
         try {
             
@@ -141,6 +147,12 @@ module.exports = class Event extends CoreModel {
         }
     }
 
+    /**
+     * Fonction pour ajouter un user a un event
+     * @static
+     * @param {Object} args
+     * @returns {Object} 
+     */
     static async addUserOnEvent(val) {
         try {
             
@@ -159,6 +171,12 @@ module.exports = class Event extends CoreModel {
         }
     }
 
+    /**
+     * Fonction pour update le status d'un joueur dans un event
+     * @static
+     * @param {Object} args
+     * @returns {Object} 
+     */
     static async updateUserOnEvent(val) {
         try {
             
@@ -177,6 +195,12 @@ module.exports = class Event extends CoreModel {
         }
     }
 
+    /**
+     * Fonction pour récuperer un joueur présent dans un event
+     * @static
+     * @param {Object} args
+     * @returns {Object} 
+     */
     static async getUserOnEvent(val) {
         try {
             
@@ -193,6 +217,29 @@ module.exports = class Event extends CoreModel {
             
         }
     }
+
+    /**
+     * Fonction pour suprimer les row de M_USER_has_Event
+     * @static
+     * @param {Object} args
+     * @returns {Object} 
+     */
+    static async deleteRowUserHasEvent(id) {
+        try {
+            
+            let query = `DELETE FROM ${this.schema}"M_USER_has_EVENT"
+            WHERE event_id = $1`
+
+            const result = await client.query(query, [id]);
+
+            return true;
+            
+        } catch (error) {
+            console.log('error:', error)
+            
+        }
+    }
+
     /*********GETTER **********/
 
     get user_id() {

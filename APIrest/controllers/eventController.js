@@ -268,7 +268,13 @@ module.exports = {
     deleteAnEvent: async (request, response, next) => {
         try {
             
-            const event = await Event.findById(request.params.id);
+            const event = await Event.findById(request.params.eventId);
+            console.log('event:', event)
+
+            if (event._player_count > 0) {
+                await Event.deleteRowUserHasEvent(request.params.eventId);
+            }
+
             const result = await event.delete();
         
             response.status('200').json({data: result});
