@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import EventPage from '../components/EventPage/EventPage';
-import { getEventById, applyToEvent, applyEventChangeField} from '../store/actions/eventsActions';
+import { getEventById, applyToEvent, applyEventChangeField, applyAccept, applyRefuse} from '../store/actions/eventsActions';
 
 const mapStateToProps = (state) => ({
   eventData: state.events.eventData,
@@ -12,13 +12,26 @@ const mapDispatchToProps = (dispatch) => ({
   getEventById: () => {
     dispatch(getEventById());
   },
+  
   getApplyToEvent: (changedData) => {
     // console.log(changedData)
     dispatch(applyToEvent(changedData));
   },
+  
   onChangeField: (changedData) => {
     dispatch(applyEventChangeField(changedData));
-  }
+  },
+  
+  onApplyAccept: () => {
+    console.log("Accepté dans l'event");
+    dispatch(applyAccept());
+  },
+  
+  onApplyRefuse: () => {
+    console.log("Refusé dans l'event");
+    dispatch(applyRefuse());
+  },
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventPage);

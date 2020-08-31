@@ -12,6 +12,8 @@ import {
   applyToEventSuccess,
   applyToEventError,
   getEventById,
+  APPLY_ACCEPT,
+  APPLY_REFUSE,
 } from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
@@ -19,14 +21,37 @@ const eventsRequestMW = (store) => (next) => (action) => {
   const { connectedUserId } = store.getState().auth;
   next(action);
   switch (action.type) {
+    case APPLY_ACCEPT:
+      axios({
+        method: 'put',
+        url: `http://localhost:3001/updateEvent/event/${store.getState().events.eventData._event_id}/owner/${store.getState().events.eventData._user_id}/addUserOn/${store.getState().auth.connectedUserId}`
+      })
+      .then((res) => {
+        console.log(res);
+        store.dispatch(getEventById());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    break;
+    case APPLY_REFUSE:
+      axios({
+        method: 'put',
+        url: `http://localhost:3001/updateEvent/event/${store.getState().events.eventData._event_id}/owner/${store.getState().events.eventData._user_id}/kickUser/${store.getState().auth.connectedUserId}`
+      })
+      .then((res) => {
+        console.log(res);
+        store.dispatch(getEventById());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    break;
     case APPLY_TO_EVENT:
     axios({
       method: 'post',
       url: `http://localhost:3001/eventApply/event/${store.getState().events.applyToEventData.event_id}/user/${store.getState().auth.connectedUserId}`,
       data: {
-        // user_id: connectedUserId,
-        // event_id: event_id,
-        // status: 0,
         message: store.getState().events.applyToEventData.applyMessage,
       }
     })

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import { Button, Input } from 'semantic-ui-react';
+import { Button, Input, Icon } from 'semantic-ui-react';
 
 const EventPage = ({
   eventData,
@@ -8,7 +8,9 @@ const EventPage = ({
   getApplyToEvent,
   connectedUserId,
   onChangeField,
-  applyMessage
+  applyMessage,
+  onApplyAccept,
+  onApplyRefuse,
 }) => {
   // console.log(eventData._participant);
   // console.log(eventData);
@@ -70,6 +72,14 @@ const EventPage = ({
               .map((filteredUser) => (
                 <div key={filteredUser.user_id}>
                   <div>{filteredUser.nickname}</div>
+                  <Button.Group icon>
+                    <Button positive onClick={onApplyAccept}>
+                      <Icon name="thumbs up" />
+                    </Button>
+                    <Button negative onClick={onApplyRefuse}>
+                      <Icon name="thumbs down" />
+                    </Button>
+                  </Button.Group>
                 </div>
               ))}
           </div>

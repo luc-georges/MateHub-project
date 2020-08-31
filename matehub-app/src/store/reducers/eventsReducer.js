@@ -1,4 +1,6 @@
 import {
+  APPLY_ACCEPT,
+  APPLY_REFUSE,
   APPLY_EVENT_CHANGE_FIELD,
   APPLY_TO_EVENT,
   APPLY_TO_EVENT_SUCCESS,
@@ -105,13 +107,21 @@ export const initialState = {
     event_id: '',
     applyMessage: '',
   },
-  selectedEvent: "",
+  selectedEvent: '',
+  playerToAcceptOrRefuseInEvent: '', 
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-
     // * APPLY
+    case APPLY_ACCEPT:
+      return {
+        ...state,
+      };
+    case APPLY_REFUSE:
+      return {
+        ...state,
+      };
     case APPLY_EVENT_CHANGE_FIELD:
       return {
         ...state,
