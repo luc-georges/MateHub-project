@@ -90,8 +90,9 @@ export const applyToEvent = (payload) => ({
   payload,
 });
 
-export const applyToEventSuccess = () => ({
+export const applyToEventSuccess = (payload) => ({
   type: APPLY_TO_EVENT_SUCCESS,
+  payload,
 });
 
 export const applyToEventError = () => ({

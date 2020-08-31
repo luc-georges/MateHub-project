@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getEventById());
   },
   getApplyToEvent: (changedData) => {
-    console.log(changedData)
+    // console.log(changedData)
     dispatch(applyToEvent(changedData));
   }
 });

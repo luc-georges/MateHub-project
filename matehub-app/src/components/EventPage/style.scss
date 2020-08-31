@@ -13,13 +13,17 @@
 .event {
   width: 50%;
 
+  &-apply-btn {
+    margin-top: 1em;
+  }
+
   &-members {
     padding-top: 1em;
     font-size: 1.1em;
     font-weight: bold;
   }
 
-  &-applicant {
+  &-applicants {
     padding-top: 1em;
     font-size: 1.1em;
     font-weight: bold;

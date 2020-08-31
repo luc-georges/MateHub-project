@@ -41,7 +41,64 @@ export const initialState = {
     },
   },
   eventDataErrorMessage: '',
-  eventData: {},
+  eventData: {
+    _event_id: '',
+    _user_id: '',
+    _creator: '',
+    _game_name: '',
+    _game_id: '',
+    _starting: '',
+    _duration: {
+      hours: '',
+    },
+    _player_count: '',
+    _player_max: '',
+    _description: '',
+    _status: '',
+    _langs: [
+      {
+        id: '',
+        label: '',
+        icon: '',
+      },
+      {
+        id: '',
+        label: '',
+        icon: '',
+      },
+      {
+        id: '',
+        label: '',
+        icon: '',
+      },
+    ],
+    _end: '',
+    _vocal: '',
+    _participant: [
+      {
+        user_id: '',
+        event_id: '',
+        status: '',
+        message: '',
+        nickname: '',
+        stats: {
+          leagueId: '',
+          queueType: '',
+          tier: '',
+          rank: '',
+          summonerId: '',
+          summonerName: '',
+          leaguePoints: '',
+          wins: '',
+          losses: '',
+          veteran: '',
+          inactive: '',
+          freshBlood: '',
+          hotStreak: '',
+        },
+      },
+    ],
+  },
   applyToEventData: {
     user_id: '',
     event_id: '',
@@ -60,9 +117,16 @@ export default (state = initialState, action = {}) => {
         },
       };
     case APPLY_TO_EVENT_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
-        // Voir ce qu'il faut renvoyer pour tenter d'avoir les data sans refresh
+        eventData: {
+          ...state.eventData,
+          _participant: [{
+            ...state.eventData._participant,
+            ...action.payload,
+          }]
+        },
       };
     case APPLY_TO_EVENT_ERROR:
       return {

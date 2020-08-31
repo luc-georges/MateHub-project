@@ -11,19 +11,18 @@ import {
   APPLY_TO_EVENT,
   applyToEventSuccess,
   applyToEventError,
+  getEventById,
 } from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
   // console.log("Passage dans le eventsRequestMW");
   const { connectedUserId } = store.getState().auth;
-  const { event_id } = store.getState().events.applyToEventData;
-  // console.log(connectedUserId);
   next(action);
   switch (action.type) {
     case APPLY_TO_EVENT:
     axios({
       method: 'post',
-      url: `http://localhost:3001/eventApply/event/${event_id}/user/${connectedUserId}`,
+      url: `http://localhost:3001/eventApply/event/${store.getState().events.applyToEventData.event_id}/user/${store.getState().auth.connectedUserId}`,
       data: {
         // user_id: connectedUserId,
         // event_id: event_id,
@@ -33,6 +32,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     .then((res) => {
       console.log(res.data.data)
       store.dispatch(applyToEventSuccess(res.data.data));
+      store.dispatch(getEventById());
     })
     .catch((err) => {
       console.log(err);
@@ -106,7 +106,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
         url: `http://localhost:3001/event/${selectedEvent}`,
       })
         .then((res) => {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           store.dispatch(getEventByIdSuccess(res.data.data));
         })
         .catch((err) => {

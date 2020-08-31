@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import { Button } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 
 const EventPage = ({
   eventData,
@@ -29,7 +29,8 @@ const EventPage = ({
         <div>Event creator : {eventData._creator} </div>
         <div>Event game :</div>
         <div>Event starting time :</div>
-        <Button content="Apply to event" onClick={handleApplyToEvent} />
+
+        <Button content="Apply to event" className="event-apply-btn" onClick={handleApplyToEvent} />
 
         {eventData._participant && (
           <div>
