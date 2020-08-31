@@ -273,7 +273,7 @@ const PersonnalProfilePage = ({
                   />
                   <div>
                     Date and time{' '}
-                    <Moment format="YYYY/MM/DD HH:MM">{event._starting}</Moment>
+                    <Moment format="YYYY/MM/DD HH:MM">{event.event_time}</Moment>
                   </div>
                   <div className="profilepage-event_created">
                     <div>{event.game_name} </div>
