@@ -16,7 +16,7 @@ import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import EventPage from '../../containers/EventPageContainer';
 import CreateEventPage from '../../containers/CreateEventPageContainer';
-import SearchEventPage from '../SearchEventPage/SearchEventPage';
+import SearchEventPage from '../../containers/searchEventPageContainer';
 import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 import GettingStarted from '../GettingStarted/GettingStarted';
