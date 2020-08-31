@@ -15,6 +15,7 @@ export const CREATE_EVENT_SUBMIT_ERROR = 'CREATE_EVENT_SUBMIT_ERROR';
 
 // == INPUT CHANGE
 export const EVENT_CHANGE_FIELD = 'EVENT_CHANGE_FIELD';
+export const APPLY_EVENT_CHANGE_FIELD = 'APPLY_EVENT_CHANGE_FIELD';
 
 // == SELECT EVENT AT CLICK
 export const GET_SELECTED_EVENT = 'GET_SELECTED_EVENT';
@@ -73,6 +74,11 @@ export const CreateEventSubmitError = (payload) => ({
 // == INPUT CHANGE
 export const eventChangeField = (payload) => ({
   type: EVENT_CHANGE_FIELD,
+  payload,
+});
+
+export const applyEventChangeField = (payload) => ({
+  type: APPLY_EVENT_CHANGE_FIELD,
   payload,
 });
 

@@ -1,4 +1,5 @@
 import {
+  APPLY_EVENT_CHANGE_FIELD,
   APPLY_TO_EVENT,
   APPLY_TO_EVENT_SUCCESS,
   APPLY_TO_EVENT_ERROR,
@@ -102,12 +103,23 @@ export const initialState = {
   applyToEventData: {
     user_id: '',
     event_id: '',
+    applyMessage: '',
   },
-  selectedEvent: 5,
+  selectedEvent: "",
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+
+    // * APPLY
+    case APPLY_EVENT_CHANGE_FIELD:
+      return {
+        ...state,
+        applyToEventData: {
+          ...state.applyToEventData,
+          ...action.payload,
+        },
+      };
     case APPLY_TO_EVENT:
       return {
         ...state,
@@ -122,16 +134,24 @@ export default (state = initialState, action = {}) => {
         ...state,
         eventData: {
           ...state.eventData,
-          _participant: [{
-            ...state.eventData._participant,
-            ...action.payload,
-          }]
+          _participant: [
+            {
+              ...state.eventData._participant,
+              ...action.payload,
+            },
+          ],
+        },
+        applyToEventData: {
+          ...state.applyToEventData,
+          applyMessage: '',
         },
       };
     case APPLY_TO_EVENT_ERROR:
       return {
         ...state,
       };
+
+    // * GET EVENT
     case GET_SELECTED_EVENT:
       return {
         ...state,
@@ -158,6 +178,26 @@ export default (state = initialState, action = {}) => {
         },
         eventDataErrorMessage: action.payload,
       };
+
+    // * GET ALL EVENTS
+    case GET_ALL_EVENTS:
+      return {
+        ...state,
+      };
+    case GET_ALL_EVENTS_SUCCESS:
+      return {
+        ...state,
+        list: [...action.payload],
+        error: '',
+      };
+    case GET_ALL_EVENTS_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        list: [],
+      };
+
+    // * EVENT CREATION
     case EVENT_CHANGE_FIELD:
       return {
         ...state,
@@ -203,22 +243,6 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreationErrorMessage: action.payload,
-      };
-    case GET_ALL_EVENTS:
-      return {
-        ...state,
-      };
-    case GET_ALL_EVENTS_SUCCESS:
-      return {
-        ...state,
-        list: [...action.payload],
-        error: '',
-      };
-    case GET_ALL_EVENTS_ERROR:
-      return {
-        ...state,
-        error: action.payload,
-        list: [],
       };
     default:
       return state;

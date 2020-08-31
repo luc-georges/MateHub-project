@@ -27,6 +27,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
         // user_id: connectedUserId,
         // event_id: event_id,
         // status: 0,
+        message: store.getState().events.applyToEventData.applyMessage,
       }
     })
     .then((res) => {
