@@ -232,6 +232,11 @@ module.exports = class Event extends CoreModel {
 
             const result = await client.query(query, [id]);
 
+            let query1 = `DELETE FROM ${this.schema}"M_EVENT_has_LANG"
+            WHERE event_id = $1`
+
+            const result1 = await client.query(query1, [id]);
+
             return true;
             
         } catch (error) {
