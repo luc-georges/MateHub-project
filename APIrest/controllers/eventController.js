@@ -182,6 +182,7 @@ module.exports = {
             
             const checkValues = [request.params.eventId,request.params.id];
             const check = await Event.getUserOnEvent(checkValues);
+            //console.log('check:', check)
 
             if (check) {
                 return response.status('400').json({error:'user was already on this event'});
