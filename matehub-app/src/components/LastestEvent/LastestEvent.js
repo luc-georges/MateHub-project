@@ -2,6 +2,7 @@ import React from 'react';
 import logolol from '../../assets/logolol.png';
 import './style.scss';
 import Moment from 'react-moment';
+import { Pagination } from 'semantic-ui-react';
 
 const LastestEvent = ({ list }) => {
   // console.log(list);
@@ -33,6 +34,7 @@ const LastestEvent = ({ list }) => {
           );
         })}
       </div>
+      <Pagination count={10} />
     </div>
   );
 };
