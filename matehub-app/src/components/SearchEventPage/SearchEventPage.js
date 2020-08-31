@@ -26,11 +26,10 @@ const SearchEventPAge = () => (
       </Form.Field>
 
       <Form.Field label="Duration" control="select" className="select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="1">0h-2h</option>
+        <option value="2">2h-5h</option>
+        <option value="3">5h-10h</option>
+        <option value="4">10h+</option>
         <option value="undefined">undefined</option>
 
       </Form.Field>
