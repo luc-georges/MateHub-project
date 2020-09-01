@@ -72,7 +72,17 @@ module.exports = {
       try {
         
         console.log(request.body);
-        const result = await Event.getEventByParams(request.body);
+        const values = request.body
+        delete values._rank;
+        //delete values._duration;
+        //delete values._player_max;
+        //delete values._is_ranked;
+        //delete values._starting;
+
+        const result = await Event.getEventByParams(values);
+        //console.log('result:', result)
+
+
 
         response.status('200').json({data: result});
 

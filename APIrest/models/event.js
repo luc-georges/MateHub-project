@@ -5,6 +5,8 @@ module.exports = class Event extends CoreModel {
 
     _user_id;
     _game_id;
+    _rank;
+    _is_ranked;
     _event_time;
     _duration;
     _player_count;
@@ -20,6 +22,8 @@ module.exports = class Event extends CoreModel {
         super(obj);
         this.user_id = obj.user_id;
         this.game_id = obj.game_id;
+        this.rank = obj.rank;
+        this.is_ranked = obj.is_ranked;
         this.event_time = obj.event_time;
         this.duration = obj.duration;
         this.player_count = obj.player_count;
@@ -104,17 +108,36 @@ module.exports = class Event extends CoreModel {
                 if(index === 0) {
                     query += ` WHERE`
                 }
+                if(key == "_starting") {
+                    values[index] += '%';
+                    query += ` ${key}::text LIKE $${index+1}`;
+                    
+                } else if(key == "_duration" && values[index] == '-2') {
+                    values[index] = '2 hours'
+                    query += ` ${key} < $${index+1}`
 
-                query += ` ${key}=$${index+1}`;
+                } else if(key == "_duration" && values[index] == '2-5') {
+                    values[index] = '5 hours'
+                    query += ` ${key} > interval '2 hours' AND  ${key} < $${index+1}`
+
+                } else if (key == "_duration" && values[index] == '5+'){
+                    values[index] = '5 hours'
+                    query += ` ${key} > $${index+1}`
+
+                } else {
+                    query += ` ${key}=$${index+1}`;
+                }
+  
 
                 if((index+1) !== keys.length) {
                     query += ` AND`;
                 }
-
+                
             })
 
             console.log(query);
-            const result = await client.query(query,values);
+            const result = await client.query(query ,values );
+            
             return result.rows;
 
         } catch (error) {
@@ -255,6 +278,14 @@ module.exports = class Event extends CoreModel {
         return this._game_id
     }
 
+    get rank() {
+        return this._rank
+    }
+
+    get is_ranked() {
+        return this._is_ranked
+    }
+
     get event_time() {
         return this._event_time
     }
@@ -291,6 +322,14 @@ module.exports = class Event extends CoreModel {
 
     set game_id(value) {
         this._game_id = value
+    }
+
+    set rank(value) {
+        this._rank = value
+    }
+
+    set is_ranked(value) {
+        this._is_ranked = value
     }
 
     set event_time(value) {
