@@ -4,7 +4,7 @@ import LastestEvent from '../../containers/LastestEventContainer';
 import TopPlayers from '../../containers/TopPlayersContainer';
 import LastestNews from '../../containers/LastestNewsContainer';
 import './style.scss';
-import { Grid, Image, GridRow, GridColumn } from 'semantic-ui-react'
+// import { Grid, Image, GridRow, GridColumn } from 'semantic-ui-react'
 
 const HomePage = ({nickname}) => {
   return (

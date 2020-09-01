@@ -17,7 +17,7 @@ const rootReducer = (state, action) => {
   if (action.type === 'LOGOUT_SUCCESS') {
     state.auth = undefined;
     state.register = undefined;
-    // state.events = undefined;
+    state.events = undefined;
   }
 
   return appReducer(state, action);

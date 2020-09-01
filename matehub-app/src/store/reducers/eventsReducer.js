@@ -4,25 +4,65 @@ import {
   APPLY_ACCEPT,
   APPLY_REFUSE,
   APPLY_EVENT_CHANGE_FIELD,
+  // * SEARCH EVENTS
+  SEARCH_EVENT_CHANGE_FIELD,
+  ISRANKED_CHECKBOX_SEARCH_EVENT_CHANGE_FIELD,
+  SEARCH_EVENT_SUBMIT,
+  SEARCH_EVENT_SUBMIT_SUCCESS,
+  RESET_ALL_FILTERS,
+
+  // * APPLY TO EVENT
   APPLY_TO_EVENT,
   APPLY_TO_EVENT_SUCCESS,
   APPLY_TO_EVENT_ERROR,
+
+  // * GET EVENT
   GET_SELECTED_EVENT,
   GET_EVENT_BY_ID,
   GET_EVENT_BY_ID_SUCCESS,
   GET_EVENT_BY_ID_ERROR,
+
+  // * GET ALL EVENTS
   GET_ALL_EVENTS,
   GET_ALL_EVENTS_SUCCESS,
   GET_ALL_EVENTS_ERROR,
+
+  // * CREATE EVENT
   EVENT_CHANGE_FIELD,
   CREATE_EVENT_SUBMIT,
   CREATE_EVENT_SUBMIT_SUCCESS,
   CREATE_EVENT_SUBMIT_ERROR,
+  FLAG_CHECKBOX_CHANGE_FIELD,
+  ISRANKED_CHECKBOX_CREATE_EVENT_CHANGE_FIELD,
 } from '../actions/eventsActions';
 
 export const initialState = {
+  // * SEARCH EVENT
+  searchEventData: {
+    _duration: '',
+    _player_max: '',
+    _rank: '',
+    _starting: '',
+    _isRanked: false,
+  },
+
+  // * APPLY TO EVENT
+  applyToEventData: {
+    user_id: '',
+    event_id: '',
+    applyMessage: '',
+  },
+
+  // * GET EVENT
+  eventDataErrorMessage: '',
+  eventData: {},
+  selectedEvent: '',
+
+  // * GET ALL EVENTS
   error: '',
   list: [],
+
+  // * CREATE EVENT
   eventCreationErrorMessage: '',
   eventCreationData: {
     user_id: '',
@@ -44,72 +84,8 @@ export const initialState = {
       ru5: false,
       de6: false,
     },
+    isRanked: false,
   },
-  eventDataErrorMessage: '',
-  eventData: {
-    _event_id: '',
-    _user_id: '',
-    _creator: '',
-    _game_name: '',
-    _game_id: '',
-    _starting: '',
-    _duration: {
-      hours: '',
-    },
-    _player_count: '',
-    _player_max: '',
-    _description: '',
-    _status: '',
-    _langs: [
-      {
-        id: '',
-        label: '',
-        icon: '',
-      },
-      {
-        id: '',
-        label: '',
-        icon: '',
-      },
-      {
-        id: '',
-        label: '',
-        icon: '',
-      },
-    ],
-    _end: '',
-    _vocal: '',
-    _participant: [
-      {
-        user_id: '',
-        event_id: '',
-        status: '',
-        message: '',
-        nickname: '',
-        stats: {
-          leagueId: '',
-          queueType: '',
-          tier: '',
-          rank: '',
-          summonerId: '',
-          summonerName: '',
-          leaguePoints: '',
-          wins: '',
-          losses: '',
-          veteran: '',
-          inactive: '',
-          freshBlood: '',
-          hotStreak: '',
-        },
-      },
-    ],
-  },
-  applyToEventData: {
-    user_id: '',
-    event_id: '',
-    applyMessage: '',
-  },
-  selectedEvent: '',
   playerToAcceptOrRefuseInEvent: '', 
 };
 
@@ -142,6 +118,47 @@ export default (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
+    // * SEARCH EVENT
+    case RESET_ALL_FILTERS:
+      return {
+        ...state,
+        searchEventData: {
+          _duration: '',
+          _player_max: '',
+          _rank: '',
+          _starting: '',
+          _isRanked: false,
+        },
+      };
+    case SEARCH_EVENT_SUBMIT:
+      return {
+        ...state,
+      };
+    case SEARCH_EVENT_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        searchEventData: {
+          ...state.searchEventData,
+        },
+      };
+    case SEARCH_EVENT_CHANGE_FIELD:
+      return {
+        ...state,
+        searchEventData: {
+          ...state.searchEventData,
+          ...action.payload,
+        },
+      };
+    case ISRANKED_CHECKBOX_SEARCH_EVENT_CHANGE_FIELD:
+      return {
+        ...state,
+        searchEventData: {
+          ...state.searchEventData,
+          ...action.payload,
+        },
+      };
+
+    // * APPLY TO EVENT
     case APPLY_TO_EVENT:
       return {
         ...state,
@@ -201,35 +218,32 @@ export default (state = initialState, action = {}) => {
         eventDataErrorMessage: action.payload,
       };
 
-    // * GET ALL EVENTS
-    case GET_ALL_EVENTS:
+    // * CREATE EVENT
+    case ISRANKED_CHECKBOX_CREATE_EVENT_CHANGE_FIELD:
       return {
         ...state,
+        eventCreationData: {
+          ...state.eventCreationData,
+          ...action.payload,
+        },
       };
-    case GET_ALL_EVENTS_SUCCESS:
+    case FLAG_CHECKBOX_CHANGE_FIELD:
       return {
         ...state,
-        list: [...action.payload],
-        error: '',
+        eventCreationData: {
+          ...state.eventCreationData,
+          language: {
+            ...state.eventCreationData.language,
+            ...action.payload,
+          },
+        },
       };
-    case GET_ALL_EVENTS_ERROR:
-      return {
-        ...state,
-        error: action.payload,
-        list: [],
-      };
-
-    // * EVENT CREATION
     case EVENT_CHANGE_FIELD:
       return {
         ...state,
         eventCreationData: {
           ...state.eventCreationData,
           ...action.payload,
-          language: {
-            ...state.eventCreationData.language,
-            ...action.payload,
-          },
         },
       };
     case CREATE_EVENT_SUBMIT:
@@ -259,6 +273,7 @@ export default (state = initialState, action = {}) => {
             ru5: false,
             de6: false,
           },
+          isRanked: false,
         },
       };
     case CREATE_EVENT_SUBMIT_ERROR:
@@ -266,9 +281,27 @@ export default (state = initialState, action = {}) => {
         ...state,
         eventCreationErrorMessage: action.payload,
       };
+
+    // * GET ALL EVENT
+    case GET_ALL_EVENTS:
+      return {
+        ...state,
+      };
+    case GET_ALL_EVENTS_SUCCESS:
+      return {
+        ...state,
+        list: [...action.payload],
+        error: '',
+      };
+    case GET_ALL_EVENTS_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        list: [],
+      };
     default:
       return state;
   }
 };
 
-// export default eventsReducer;
+//
