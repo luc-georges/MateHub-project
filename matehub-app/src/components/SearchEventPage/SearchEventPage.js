@@ -1,6 +1,13 @@
 import React from 'react';
 import './style.scss';
-import { Form, Button, Card, Select, Checkbox, Divider } from 'semantic-ui-react';
+import {
+  Form,
+  Button,
+  Card,
+  Select,
+  Checkbox,
+  Divider,
+} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
@@ -35,6 +42,18 @@ const SearchEventPage = ({
     { key: '3', text: '3', value: 3 },
     { key: '4', text: '4', value: 4 },
     { key: '5', text: '5', value: 5 },
+  ];
+
+  const rankOptions = [
+    { key: 'iron', text: 'Iron', value: 'iron' },
+    { key: 'bronze', text: 'Bronze', value: 'bronze' },
+    { key: 'silver', text: 'Silver', value: 'silver' },
+    { key: 'gold', text: 'Gold', value: 'gold' },
+    { key: 'platinum', text: 'Platinum', value: 'platinum' },
+    { key: 'diamond', text: 'Diamond', value: 'diamond' },
+    { key: 'master', text: 'Master', value: 'master' },
+    { key: 'grandmaster', text: 'GrandMaster', value: 'grandmaster' },
+    { key: 'challenger', text: 'Challenger', value: 'challenger' },
   ];
 
   const handleGetSelectedEvent = (evt, data) => {
@@ -118,62 +137,15 @@ const SearchEventPage = ({
             onChange={handleAddIsRanked}
             checked={searchEventData._isRanked}
           />
-
-          <Form.Field
+          <Form.Input
             disabled={!searchEventData._isRanked}
             label="Rank"
-            control="select"
+            control={Select}
             name="_rank"
-            placeholder="Select your rank"
-            onChange={handleInputChange}
-          >
-            <option value="">None</option>
-            <optgroup label="Iron">
-              <option value="Iron 1">Iron I</option>
-              <option value="Iron 2">Iron II</option>
-              <option value="Iron 3">Iron III</option>
-              <option value="Iron 4">Iron IV</option>
-            </optgroup>
-            <optgroup label="Bronze">
-              <option value="Bronze 1">Bronze I</option>
-              <option value="Bronze 2">Bronze II</option>
-              <option value="Bronze 3">Bronze III</option>
-              <option value="Bronze 4">Bronze IV</option>
-            </optgroup>
-            <optgroup label="Silver">
-              <option value="Silver 1">Silver I</option>
-              <option value="Silver 2">Silver II</option>
-              <option value="Silver 3">Silver III</option>
-              <option value="Silver 4">Silver IV</option>
-            </optgroup>
-            <optgroup label="Gold">
-              <option value="Gold 1">Gold I</option>
-              <option value="Gold 2">Gold II</option>
-              <option value="Gold 3">Gold III</option>
-              <option value="Gold 4">Gold IV</option>
-            </optgroup>
-            <optgroup label="Platinum">
-              <option value="Platinum 1">Platinum I</option>
-              <option value="Platinum 2">Platinum II</option>
-              <option value="Platinum 3">Platinum III</option>
-              <option value="Platinum 4">Platinum IV</option>
-            </optgroup>
-            <optgroup label="Diamond">
-              <option value="Diamond 1">Diamond I</option>
-              <option value="Diamond 2">Diamond II</option>
-              <option value="Diamond 3">Diamond III</option>
-              <option value="Diamond 4">Diamond IV</option>
-            </optgroup>
-            <optgroup label="Master">
-              <option value="Master">Master</option>
-            </optgroup>
-            <optgroup label="GrandMaster">
-              <option value="GrandMaster">GrandMaster</option>
-            </optgroup>
-            <optgroup label="Challenger">
-              <option value="Challenger">Challenger</option>
-            </optgroup>
-          </Form.Field>
+            placeholder="Select rank"
+            options={rankOptions}
+            onChange={handleSelectInputChange}
+          />
         </Form.Group>
 
         <div className="searchForm-btn-container">
@@ -191,7 +163,7 @@ const SearchEventPage = ({
       <Divider />
 
       <div>
-      <h2 className="searchResults-title">Search Results</h2>
+        <h2 className="searchResults-title">Search Results</h2>
         <Card.Group centered>
           {list.map((element) => {
             return (
