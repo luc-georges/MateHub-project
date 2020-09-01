@@ -1,6 +1,7 @@
 .TopPlayers{
 
   flex-direction: row;
+  margin-bottom: 100px;
 }
 .user-card-group{
   display: flex;
@@ -18,4 +19,8 @@
 }
 .user-image{
   border-radius: 50%;
+}
+
+.slide_container{
+  position: relative;
 }

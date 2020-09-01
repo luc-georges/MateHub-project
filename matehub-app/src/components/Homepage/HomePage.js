@@ -10,13 +10,14 @@ const HomePage = ({nickname}) => {
   return (
     <div className="HomePage">
 
-      <h1 className="titre">Welcome on Matehub {nickname} !</h1>
+      <div className="header-home">
+      <LastestNews className="LastestNews" />
+      </div>
       <LastestEvent className="LastestEvent"/>
 
 
       <TopPlayers className="TopPlayers"/>
 
-      <LastestNews className="LastestNews" />
 
 
     </div>

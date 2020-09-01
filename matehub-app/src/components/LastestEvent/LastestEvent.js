@@ -14,7 +14,7 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
   return (
     <div className="LastestEvent-cards">
       <h2 className="titre">Lastest event</h2>
-      <Card.Group className="event-card-group">
+      <Card.Group className="event-card-group" centered>
         {list.map((element) => {
           return (
               <NavLink
