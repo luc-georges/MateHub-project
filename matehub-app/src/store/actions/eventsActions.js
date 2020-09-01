@@ -12,10 +12,9 @@ export const GET_EVENT_BY_ID_ERROR = 'GET_EVENT_BY_ID_ERROR';
 export const CREATE_EVENT_SUBMIT = 'CREATE_EVENT_SUBMIT';
 export const CREATE_EVENT_SUBMIT_SUCCESS = 'CREATE_EVENT_SUBMIT_SUCCESS';
 export const CREATE_EVENT_SUBMIT_ERROR = 'CREATE_EVENT_SUBMIT_ERROR';
-
-// == INPUT CHANGE
 export const EVENT_CHANGE_FIELD = 'EVENT_CHANGE_FIELD';
-export const SEARCH_EVENT_CHANGE_FIELD = 'SEARCH_EVENT_CHANGE_FIELD';
+export const FLAG_CHECKBOX_CHANGE_FIELD = 'FLAG_CHECKBOX_CHANGE_FIELD';
+export const ISRANKED_CHECKBOX_CHANGE_FIELD = 'ISRANKED_CHECKBOX_CHANGE_FIELD';
 
 // == SELECT EVENT AT CLICK
 export const GET_SELECTED_EVENT = 'GET_SELECTED_EVENT';
@@ -26,13 +25,30 @@ export const APPLY_TO_EVENT_SUCCESS = 'APPLY_TO_EVENT_SUCCESS';
 export const APPLY_TO_EVENT_ERROR = 'APPLY_TO_EVENT_ERROR';
 
 // == SEARCH EVENT
-export const FILTERED_EVENTS = 'FILTERED_EVENTS'
+export const SEARCH_EVENT_CHANGE_FIELD = 'SEARCH_EVENT_CHANGE_FIELD';
+export const SEARCH_EVENT_SUBMIT = 'SEARCH_EVENT_SUBMIT';
+export const SEARCH_EVENT_SUBMIT_SUCCESS = 'SEARCH_EVENT_SUBMIT_SUCCESS';
+export const SEARCH_EVENT_SUBMIT_ERROR = 'SEARCH_EVENT_SUBMIT_ERROR';
+
 
 // ****** ACTION CREATORS
 
 // == SEARCH EVENT
-export const filteredEvents = () => ({
-  type: FILTERED_EVENTS,
+export const searchEventChangeField = (payload) => ({
+  type: SEARCH_EVENT_CHANGE_FIELD,
+  payload,
+});
+
+export const searchEventSubmit = () => ({
+  type: SEARCH_EVENT_SUBMIT,
+});
+
+export const searchEventSubmitSuccess = () => ({
+  type: SEARCH_EVENT_SUBMIT_SUCCESS,
+});
+
+export const searchEventSubmitError = () => ({
+  type: SEARCH_EVENT_SUBMIT_ERROR,
 });
 
 // == GET ALL EVENTS
@@ -79,14 +95,19 @@ export const CreateEventSubmitError = (payload) => ({
   payload,
 });
 
-// == INPUT CHANGE
-export const eventChangeField = (payload) => ({
-  type: EVENT_CHANGE_FIELD,
+export const flagCheckboxChangeField = (payload) => ({
+  type: FLAG_CHECKBOX_CHANGE_FIELD,
   payload,
 });
 
-export const searchEventChangeField = (payload) => ({
-  type: SEARCH_EVENT_CHANGE_FIELD,
+export const isRankedCheckboxChangeField = (payload) => ({
+  type: ISRANKED_CHECKBOX_CHANGE_FIELD,
+  payload,
+});
+
+// == INPUT CHANGE
+export const eventChangeField = (payload) => ({
+  type: EVENT_CHANGE_FIELD,
   payload,
 });
 

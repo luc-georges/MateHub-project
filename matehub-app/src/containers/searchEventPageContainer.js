@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {getSelectedEvent, searchEventChangeField} from '../store/actions/eventsActions';
+import {getSelectedEvent, searchEventChangeField, searchEventSubmit} from '../store/actions/eventsActions';
 import SearchEventPage from '../components/SearchEventPage/SearchEventPage';
 
 const mapStateToProps = (state) => ({
@@ -12,9 +12,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getSelectedEvent(changedData));
   },
   onChangeField: (changedData) => {
-    // console.log(changedData);
+    console.log(changedData);
     dispatch(searchEventChangeField(changedData));
   },
+  onFormSubmit: () => {
+    dispatch(searchEventSubmit());
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchEventPage);

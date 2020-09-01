@@ -9,6 +9,7 @@ const SearchEventPage = ({
   getSelectedEvent,
   onChangeField,
   searchEventData,
+  onFormSubmit,
 }) => {
   // Options for select input
   const selectGameOptions = [
@@ -25,19 +26,14 @@ const SearchEventPage = ({
   ];
 
   const durationOptions = [
-    { key: '00:30:00', text: '30mn', value: '00:30:00' },
-    { key: '01:00:00', text: '1h', value: '01:00:00' },
-    { key: '01:30:00', text: '1h30', value: '01:30:00' },
-    { key: '02:00:00', text: '2h', value: '02:00:00' },
-    { key: '02:30:00', text: '2h30', value: '02:30:00' },
-    { key: '03:00:00', text: '3h', value: '03:00:00' },
-    { key: '03:30:00', text: '3h30', value: '03:30:00' },
-    { key: '04:00:00', text: '4h', value: '04:00:00' },
-    { key: '04:30:00', text: '4h30', value: '04:30:00' },
-    { key: '05:00:00', text: '5h or more', value: '05:00:00' },
+    { key: '', text: 'null', value: null },
+    { key: '30mn to 2h', text: '30mn to 2h', value: '-2' },
+    { key: '2h to 5h', text: '2h to 5h', value: '2-5' },
+    { key: 'more than 5h', text: 'more than 5h', value: '5+' },
   ];
 
   const maxPlayerOptions = [
+    { key: '', text: 'null', value: null },
     { key: '1', text: '1', value: 1 },
     { key: '2', text: '2', value: 2 },
     { key: '3', text: '3', value: 3 },
@@ -67,7 +63,7 @@ const SearchEventPage = ({
 
   return (
     <div className="SearchEventPage">
-      <Form className="SearchByName">
+      <Form className="SearchByName" onSubmit={onFormSubmit}>
         <h1 style={{ marginBottom: '1em', margin: '0 auto 1em auto' }}>
           Event research{' '}
         </h1>
@@ -76,7 +72,7 @@ const SearchEventPage = ({
           placeholder="Search for an event by creator name"
         />
 
-        <Form.Input
+        {/* <Form.Input
           name="game_id"
           label="Select game"
           control={Select}
@@ -84,45 +80,43 @@ const SearchEventPage = ({
           placeholder="Select game"
           onChange={handleSelectInputChange}
           // value={eventCreationData.game_id}
-        />
+        /> */}
+
         <Form.Group widths="equal">
           <Form.Input
             label="Team size"
-            name="player_max"
+            name="_player_max"
             control={Select}
             options={maxPlayerOptions}
             placeholder="Maximum players"
             onChange={handleSelectInputChange}
-            // value={eventCreationData.player_max}
+            // value={searchEventData._player_max}
           />
 
           <Form.Input
             label="Duration (hour)"
-            name="duration"
+            name="_duration"
             control={Select}
             options={durationOptions}
             placeholder="Event duration"
             onChange={handleSelectInputChange}
-            // value={eventCreationData.duration}
+            // value={searchEventData._duration}
           />
         </Form.Group>
         <Form.Group widths="equal">
           <Form.Input
-            name="event_time_date"
+            name="_starting"
             label="Event day"
             type="date"
             onChange={handleInputChange}
-            value={searchEventData.event_time_date}
+            // value={searchEventData.event_time_date}
           />
 
-          <Form.Input
-            name="event_time_hour"
-            label="From (hour)"
-            type="time"
-            onChange={handleInputChange}
-            value={searchEventData.event_time_hour}
-          />
         </Form.Group>
+        <Button.Group widths="2">
+          <Button content="Apply filters" type="submit" />
+          <Button content="reset filters"  />
+        </Button.Group>
       </Form>
 
       <h2 style={{ marginBottom: '1em' }}>Search Result</h2>

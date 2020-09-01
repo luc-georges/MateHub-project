@@ -3,6 +3,8 @@ import CreateEventPage from '../components/CreateEventPage/CreateEventPage';
 import {
   eventChangeField,
   CreateEventSubmit,
+  flagCheckboxChangeField,
+  isRankedCheckboxChangeField,
 } from '../store/actions/eventsActions';
 // import moment from 'moment';
 
@@ -28,7 +30,8 @@ const mapStateToProps = (state) => {
         es4: state.events.eventCreationData.language.es4,
         ru5: state.events.eventCreationData.language.ru5,
         de6: state.events.eventCreationData.language.de6,
-        },
+      },
+      isRanked: state.events.eventCreationData.isRanked,
     },
 
     errors: {
@@ -40,6 +43,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  onIsRankedCheckboxChangeField: (changedData) => {
+    dispatch(isRankedCheckboxChangeField(changedData));
+  },
+  onFlagCheckboxChangeField: (changedData) => {
+    dispatch(flagCheckboxChangeField(changedData));
+  },
   onChangeField: (changedData) => {
     // console.log(changedData);
     dispatch(eventChangeField(changedData));

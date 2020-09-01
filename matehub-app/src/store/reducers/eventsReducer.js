@@ -1,6 +1,5 @@
 import {
   // * SEARCH EVENTS
-  FILTERED_EVENTS,
   SEARCH_EVENT_CHANGE_FIELD,
 
   // * APPLY TO EVENT
@@ -24,6 +23,10 @@ import {
   CREATE_EVENT_SUBMIT,
   CREATE_EVENT_SUBMIT_SUCCESS,
   CREATE_EVENT_SUBMIT_ERROR,
+  SEARCH_EVENT_SUBMIT,
+  SEARCH_EVENT_SUBMIT_SUCCESS,
+  FLAG_CHECKBOX_CHANGE_FIELD,
+  ISRANKED_CHECKBOX_CHANGE_FIELD,
 } from '../actions/eventsActions';
 
 export const initialState = {
@@ -47,15 +50,43 @@ export const initialState = {
 
   // * CREATE EVENT
   eventCreationErrorMessage: '',
-  eventCreationData: {},
+  eventCreationData: {
+    user_id: '',
+    game_id: '',
+    player_count: '', // Tout le temps 1
+    player_max: '',
+    duration: '',
+    event_time: '',
+    event_time_date: '',
+    event_time_hour: '',
+    status: '', // Tout le temps 0
+    description: '',
+    vocal: '',
+    language: {
+      fr1: false,
+      uk2: false,
+      it3: false,
+      es4: false,
+      ru5: false,
+      de6: false,
+    },
+    isRanked: false,
+  },
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     // * SEARCH EVENT
-    case FILTERED_EVENTS:
+    case SEARCH_EVENT_SUBMIT:
       return {
         ...state,
+      };
+    case SEARCH_EVENT_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        searchEventData: {
+          ...state.searchEventData,
+        },
       };
     case SEARCH_EVENT_CHANGE_FIELD:
       return {
@@ -123,16 +154,31 @@ export default (state = initialState, action = {}) => {
       };
 
     // * CREATE EVENT
+    case ISRANKED_CHECKBOX_CHANGE_FIELD:
+      return {
+        ...state,
+        eventCreationData: {
+          ...state.eventCreationData,
+          ...action.payload,
+        }
+      }
+    case FLAG_CHECKBOX_CHANGE_FIELD:
+      return {
+        ...state,
+        eventCreationData: {
+          ...state.eventCreationData,
+          language: {
+            ...state.eventCreationData.language,
+            ...action.payload,
+          },
+        },
+      };
     case EVENT_CHANGE_FIELD:
       return {
         ...state,
         eventCreationData: {
           ...state.eventCreationData,
           ...action.payload,
-          language: {
-            ...state.eventCreationData.language,
-            ...action.payload,
-          },
         },
       };
     case CREATE_EVENT_SUBMIT:
@@ -162,6 +208,7 @@ export default (state = initialState, action = {}) => {
             ru5: false,
             de6: false,
           },
+          isRanked: false,
         },
       };
     case CREATE_EVENT_SUBMIT_ERROR:

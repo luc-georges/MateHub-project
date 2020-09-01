@@ -12,33 +12,72 @@ import {
   applyToEventSuccess,
   applyToEventError,
   getEventById,
+  SEARCH_EVENT_SUBMIT,
+  searchEventSubmitSuccess,
+  searchEventSubmitError,
 } from '../actions/eventsActions';
 
 const eventsRequestMW = (store) => (next) => (action) => {
   // console.log("Passage dans le eventsRequestMW");
   const { connectedUserId } = store.getState().auth;
+
+  const sendedSearchData = {
+    player_max: store.getState().events.searchEventData.player_max,
+    event_time: store.getState().events.searchEventData.event_time_date,
+    duration: store.getState().events.searchEventData.duration,
+  };
+
+  // const filteredSearchData = store.getState().events.searchEventData.filter((elem) => {})
+  const fullData = store.getState().events.searchEventData;
+  let filteredData = {};
+
+  Object.keys(fullData).forEach((key) => {
+    if (fullData[key] !== '') {
+      filteredData[key] = fullData[key];
+    }
+  });
+
+  console.log('filtered data : ', filteredData);
+
+  // console.log(sendedSearchData);
+
   next(action);
   switch (action.type) {
+    case SEARCH_EVENT_SUBMIT:
+      axios({
+        method: 'post',
+        url: `http://localhost:3001/search/events/user/${connectedUserId}`,
+        data: filteredData,
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      break;
     case APPLY_TO_EVENT:
-    axios({
-      method: 'post',
-      url: `http://localhost:3001/eventApply/event/${store.getState().events.applyToEventData.event_id}/user/${store.getState().auth.connectedUserId}`,
-      data: {
-        // user_id: connectedUserId,
-        // event_id: event_id,
-        // status: 0,
-      }
-    })
-    .then((res) => {
-      console.log(res.data.data)
-      store.dispatch(applyToEventSuccess(res.data.data));
-      store.dispatch(getEventById());
-    })
-    .catch((err) => {
-      console.log(err);
-      store.dispatch(applyToEventError("Can't apply to event"));
-    });  
-    break;
+      axios({
+        method: 'post',
+        url: `http://localhost:3001/eventApply/event/${
+          store.getState().events.applyToEventData.event_id
+        }/user/${store.getState().auth.connectedUserId}`,
+        data: {
+          // user_id: connectedUserId,
+          // event_id: event_id,
+          // status: 0,
+        },
+      })
+        .then((res) => {
+          console.log(res.data.data);
+          store.dispatch(applyToEventSuccess(res.data.data));
+          store.dispatch(getEventById());
+        })
+        .catch((err) => {
+          console.log(err);
+          store.dispatch(applyToEventError("Can't apply to event"));
+        });
+      break;
     case CREATE_EVENT_SUBMIT:
       const eventTime = `${
         store.getState().events.eventCreationData.event_time_date
@@ -64,6 +103,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
             ru5: store.getState().events.eventCreationData.language.ru5,
             de6: store.getState().events.eventCreationData.language.de6,
           },
+          isRanked: store.getState().events.eventCreationData.isRanked,
         },
       })
         .then((res) => {
@@ -100,7 +140,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
       break;
     case GET_EVENT_BY_ID:
       // console.log(store.getState().events)
-      const {selectedEvent} = store.getState().events;
+      const { selectedEvent } = store.getState().events;
       axios({
         method: 'get',
         url: `http://localhost:3001/event/${selectedEvent}`,
@@ -110,7 +150,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
           store.dispatch(getEventByIdSuccess(res.data.data));
         })
         .catch((err) => {
-          console.log("Catch de la requete get event by id >>>", err);
+          console.log('Catch de la requete get event by id >>>', err);
           // store.dispatch(getEventByIdError());
         });
       break;

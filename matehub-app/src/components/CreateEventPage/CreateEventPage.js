@@ -11,6 +11,8 @@ import {
 } from 'semantic-ui-react';
 
 const CreateEventPage = ({
+  onIsRankedCheckboxChangeField,
+  onFlagCheckboxChangeField,
   onChangeField,
   eventCreationData,
   onFormSubmit,
@@ -36,7 +38,15 @@ const CreateEventPage = ({
   const handleAddFlag = (evt, data) => {
     // console.log('objet data entier :', data);
     const { name, checked } = data;
-    onChangeField({
+    onFlagCheckboxChangeField({
+      [name]: checked,
+    });
+  };
+
+  const handleAddIsRanked = (evt, data) => {
+    // console.log('objet data entier :', data);
+    const { name, checked } = data;
+    onIsRankedCheckboxChangeField({
       [name]: checked,
     });
   };
@@ -303,6 +313,63 @@ const CreateEventPage = ({
             value={eventCreationData.vocal}
           />
         </Form.Group>
+
+          <Form.Input
+            label="I want to play ranked games"
+            name="isRanked"
+            control={Checkbox}
+            onChange={handleAddIsRanked}
+            checked={eventCreationData.isRanked}
+          />
+
+          <Form.Field label="Rank" control="select" name="ranked" placeholder="Select your rank" onChange={handleInputChange}>
+            <optgroup label="Iron">
+              <option value="Iron 1">Iron I</option>
+              <option value="Iron 2">Iron II</option>
+              <option value="Iron 3">Iron III</option>
+              <option value="Iron 4">Iron IV</option>
+            </optgroup>
+            <optgroup label="Bronze">
+              <option value="Bronze 1">Bronze I</option>
+              <option value="Bronze 2">Bronze II</option>
+              <option value="Bronze 3">Bronze III</option>
+              <option value="Bronze 4">Bronze IV</option>
+            </optgroup>
+            <optgroup label="Silver">
+              <option value="Silver 1">Silver I</option>
+              <option value="Silver 2">Silver II</option>
+              <option value="Silver 3">Silver III</option>
+              <option value="Silver 4">Silver IV</option>
+            </optgroup>
+            <optgroup label="Gold">
+              <option value="Gold 1">Gold I</option>
+              <option value="Gold 2">Gold II</option>
+              <option value="Gold 3">Gold III</option>
+              <option value="Gold 4">Gold IV</option>
+            </optgroup>
+            <optgroup label="Platinum">
+              <option value="Platinum 1">Platinum I</option>
+              <option value="Platinum 2">Platinum II</option>
+              <option value="Platinum 3">Platinum III</option>
+              <option value="Platinum 4">Platinum IV</option>
+            </optgroup>
+            <optgroup label="Diamond">
+              <option value="Diamond 1">Diamond I</option>
+              <option value="Diamond 2">Diamond II</option>
+              <option value="Diamond 3">Diamond III</option>
+              <option value="Diamond 4">Diamond IV</option>
+            </optgroup>
+            <optgroup label="Master">
+              <option value="Master">Master</option>
+            </optgroup>
+            <optgroup label="GrandMaster">
+              <option value="GrandMaster">GrandMaster</option>
+            </optgroup>
+            <optgroup label="Challenger">
+              <option value="Challenger">Challenger</option>
+            </optgroup>
+          </Form.Field>
+
 
         <Form.Field
           control={TextArea}
