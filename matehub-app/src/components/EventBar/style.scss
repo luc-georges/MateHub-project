@@ -3,13 +3,15 @@
 .eventbar {
   position: fixed;
   right: 0;
-  padding: 1em 0;
   width: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: -3px 0px 8px 0px rgba(0,0,0,0.20);
+  box-shadow: 3px 0px 8px 0px rgba(173, 170, 170, 0.281);
   height: 100%;
+  background-image: url(../../assets/bgtexture.png);
+
+  background-attachment: fixed;
   background-color: $color-gris-fonce;
   color: white;
 

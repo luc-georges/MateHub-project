@@ -4,15 +4,21 @@ import LastestEvent from '../../containers/LastestEventContainer';
 import TopPlayers from '../../containers/TopPlayersContainer';
 import LastestNews from '../../containers/LastestNewsContainer';
 import './style.scss';
-
+import { Grid, Image, GridRow, GridColumn } from 'semantic-ui-react'
 
 const HomePage = ({nickname}) => {
   return (
     <div className="HomePage">
+
       <h1 className="titre">Welcome on Matehub {nickname} !</h1>
-      <LastestEvent />
-      <TopPlayers />
-      <LastestNews />
+      <LastestEvent className="LastestEvent"/>
+
+
+      <TopPlayers className="TopPlayers"/>
+
+      <LastestNews className="LastestNews" />
+
+
     </div>
   );
 };

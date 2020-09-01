@@ -1,8 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@import 'src/styles/vars';
+::-webkit-scrollbar {
+  width: 2px !important; /* Remove scrollbar space */
+  background: transparent !important; /* Optional: just make scrollbar invisible */
+}
+
+::-webkit-scrollbar-thumb {
+  background: purple !important;
+}
 
 .App {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  margin: 0!important;
   font-family: 'Orbitron', sans-serif;
 }
 
+
+.stretched.row .column { padding: 0; }

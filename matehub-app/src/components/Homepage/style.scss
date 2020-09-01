@@ -1,20 +1,18 @@
 @import 'src/styles/vars';
-
 .HomePage{
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 15%;
-  padding: 2em;
-  background-image: url(../../assets/bgimg.jpg);
-  background-position: center;
-  background-size: 80%;
+  background-image: url(../../assets/bgtexture.png);
+
   background-attachment: fixed;
   color: $color-bleu-fonce;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 78%;
+  margin-left: 150px;
+
 }
 
 .titre {
   font-family: 'Orbitron', sans-serif;
 }
+

@@ -1,15 +1,15 @@
 @import 'src/styles/vars';
 
 .navbar {
-  position: fixed;
-  padding: 1rem 0;
-  width: 10%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-image: url(../../assets/bgtexture.png);
+
+  background-attachment: fixed;
   background-color: $color-gris-fonce;
-  box-shadow: 3px 0px 8px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 0px 8px 0px rgba(173, 170, 170, 0.2);
+  position: fixed;
+  width: 150px;
+  min-width: 150px;
+  height: 100vh;
 
   &-logo {
     font-size: 2em;
@@ -25,7 +25,7 @@
     font-size: 1.2rem;
 
     &-link {
-      width: 100%;
+      width: 90%;
       margin-top: 3rem;
       display: flex;
       line-height: 10px;

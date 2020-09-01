@@ -1,26 +1,21 @@
 .TopPlayers{
-  margin:2em;
-}
 
-.TopPlayers-modules{
-  display:flex;
+  flex-direction: row;
+}
+.user-card-group{
+  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
 }
+.user-card{
 
-.TopPlayers-module{
-  align-items: center;
-  border-radius: 10px;
-  border: 3px solid #949494;
-  background-color: rgb(173, 173, 173);
-  margin: 1.5%;
+    padding: 1em;
+    margin: 1em!important;
+    font-size: 0.8em;
+    background: none!important;
+    color: white!important;
+    box-shadow: 0 1px 3px 0 #6dffff, 0 0 0 1px #6dffff!important;
+
 }
-
-.user{
-  max-height: 40%;
-}
-
-.user-text{
-  margin-top: 2%;
-  margin-left: 10%;
+.user-image{
+  border-radius: 50%;
 }
