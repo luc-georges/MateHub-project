@@ -43,6 +43,7 @@ CREATE TABLE "event" (
     "user_id" INT NOT NULL REFERENCES "user"("id"),
     "game_id" INT NOT NULL REFERENCES "game"("id"),
     "rank" TEXT ,
+    "is_ranked" BOOLEAN NOT NULL,
     "event_time" TIMESTAMPTZ NOT NULL,
     "duration" INTERVAL ,
     "player_count" INT NOT NULL DEFAULT 1  CONSTRAINT max_player CHECK (player_count <= player_max),
@@ -60,6 +61,7 @@ CREATE TABLE "M_USER_has_GAME" (
     "IGN" JSON ,
     "stats" JSON,
     "level_id" INT REFERENCES "level"("id"),
+    "region" TEXT,
     PRIMARY KEY ("user_id","game_id")
 );
 

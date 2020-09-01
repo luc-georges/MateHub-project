@@ -49,7 +49,7 @@ router.delete('/user/:id/delete', /*authenticateToken, ownerControl,*/ userContr
 /***********ROUTER EVENT *********/
 router.get('/events', eventController.getAllEvent);
 router.get('/event/:id', eventController.getEventById);
-router.post('/search/events', eventController.getEventByParams);
+router.post('/search/events/user/:id', eventController.getEventByParams);
 router.get('/find/event', eventController.getEventBy);//querystring
 router.post('/createEvent/user/:id', /*authenticateToken, ownerControl,*/ validateBody(postEventSchema), eventController.createAnEvent);
 router.put('/updateEvent/event/:eventId/user/:id', /*authenticateToken, ownerControl,*/ validateBody(updateEventSchema), eventController.updateAnEvent);
