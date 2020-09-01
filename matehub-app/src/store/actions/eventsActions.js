@@ -2,6 +2,8 @@
 export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 export const GET_ALL_EVENTS_SUCCESS = 'GET_ALL_EVENTS_SUCCESS';
 export const GET_ALL_EVENTS_ERROR = 'GET_ALL_EVENTS_ERROR';
+export const CHANGE_TAB = 'CHANGE_TAB';
+export const SET_PAGE = 'SET_PAGE';
 
 // == GET EVENT BY ID
 export const GET_EVENT_BY_ID = 'GET_EVENT_BY_ID';
@@ -32,6 +34,16 @@ export const APPLY_REFUSE = 'APPLY_REFUSE';
 export const DELETE_EVENT = 'DELETE_EVENT';
 
 // ****** ACTION CREATORS
+
+export const changeTab = (payload) => ({
+  type: CHANGE_TAB,
+  payload
+});
+
+export const setPage = (payload) => ({
+  type: SET_PAGE,
+  payload
+});
 
 // == GET ALL EVENTS
 export const getAllEvents = () => ({

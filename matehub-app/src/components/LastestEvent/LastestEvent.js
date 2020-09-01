@@ -1,4 +1,5 @@
 import React from 'react';
+import Pagination from '../pagination/pagination';
 import { NavLink } from 'react-router-dom';
 import logolol from '../../assets/logolol.png';
 import './style.scss';
@@ -45,6 +46,10 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
           );
         })}
       </div>
+      <Pagination
+        articlesCount={list.length}
+        currentPage={list.currentPage}
+        onSetPage={list.onSetPage} />
     </div>
   );
 };

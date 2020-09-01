@@ -18,6 +18,8 @@ import {
   CREATE_EVENT_SUBMIT,
   CREATE_EVENT_SUBMIT_SUCCESS,
   CREATE_EVENT_SUBMIT_ERROR,
+  CHANGE_TAB,
+  SET_PAGE
 } from '../actions/eventsActions';
 
 export const initialState = {
@@ -265,6 +267,21 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         eventCreationErrorMessage: action.payload,
+      };
+    case CHANGE_TAB:
+      return {
+        ...state,
+        list: [...action.payload],
+        listCount: action.payload.length,
+        tab: action.tab,
+        currentPage: 0
+      };
+    case SET_PAGE:
+      return {
+        ...state,
+        list: [...action.payload],
+        listCount: action.payload.length,
+        currentPage: action.page
       };
     default:
       return state;
