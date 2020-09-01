@@ -14,7 +14,7 @@ export const CREATE_EVENT_SUBMIT_SUCCESS = 'CREATE_EVENT_SUBMIT_SUCCESS';
 export const CREATE_EVENT_SUBMIT_ERROR = 'CREATE_EVENT_SUBMIT_ERROR';
 export const EVENT_CHANGE_FIELD = 'EVENT_CHANGE_FIELD';
 export const FLAG_CHECKBOX_CHANGE_FIELD = 'FLAG_CHECKBOX_CHANGE_FIELD';
-export const ISRANKED_CHECKBOX_CHANGE_FIELD = 'ISRANKED_CHECKBOX_CHANGE_FIELD';
+export const ISRANKED_CHECKBOX_CREATE_EVENT_CHANGE_FIELD = 'ISRANKED_CHECKBOX_CREATE_EVENT_CHANGE_FIELD';
 
 // == SELECT EVENT AT CLICK
 export const GET_SELECTED_EVENT = 'GET_SELECTED_EVENT';
@@ -29,6 +29,9 @@ export const SEARCH_EVENT_CHANGE_FIELD = 'SEARCH_EVENT_CHANGE_FIELD';
 export const SEARCH_EVENT_SUBMIT = 'SEARCH_EVENT_SUBMIT';
 export const SEARCH_EVENT_SUBMIT_SUCCESS = 'SEARCH_EVENT_SUBMIT_SUCCESS';
 export const SEARCH_EVENT_SUBMIT_ERROR = 'SEARCH_EVENT_SUBMIT_ERROR';
+export const ISRANKED_CHECKBOX_SEARCH_EVENT_CHANGE_FIELD = 'ISRANKED_CHECKBOX_SEARCH_EVENT_CHANGE_FIELD';
+export const RESET_ALL_FILTERS = "RESET_ALL_FILTERS";
+
 
 
 // ****** ACTION CREATORS
@@ -50,6 +53,15 @@ export const searchEventSubmitSuccess = () => ({
 export const searchEventSubmitError = () => ({
   type: SEARCH_EVENT_SUBMIT_ERROR,
 });
+
+export const isRankedCheckboxSearchEventChangeField = (payload) => ({
+  type: ISRANKED_CHECKBOX_SEARCH_EVENT_CHANGE_FIELD,
+  payload,
+})
+
+export const resetAllFilters = () => ({
+  type: RESET_ALL_FILTERS,
+})
 
 // == GET ALL EVENTS
 export const getAllEvents = () => ({
@@ -100,8 +112,8 @@ export const flagCheckboxChangeField = (payload) => ({
   payload,
 });
 
-export const isRankedCheckboxChangeField = (payload) => ({
-  type: ISRANKED_CHECKBOX_CHANGE_FIELD,
+export const isRankedCheckboxCreateEventChangeField = (payload) => ({
+  type: ISRANKED_CHECKBOX_CREATE_EVENT_CHANGE_FIELD,
   payload,
 });
 

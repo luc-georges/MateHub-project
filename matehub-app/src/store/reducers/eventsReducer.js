@@ -1,6 +1,10 @@
 import {
   // * SEARCH EVENTS
   SEARCH_EVENT_CHANGE_FIELD,
+  ISRANKED_CHECKBOX_SEARCH_EVENT_CHANGE_FIELD,
+  SEARCH_EVENT_SUBMIT,
+  SEARCH_EVENT_SUBMIT_SUCCESS,
+  RESET_ALL_FILTERS,
 
   // * APPLY TO EVENT
   APPLY_TO_EVENT,
@@ -23,15 +27,19 @@ import {
   CREATE_EVENT_SUBMIT,
   CREATE_EVENT_SUBMIT_SUCCESS,
   CREATE_EVENT_SUBMIT_ERROR,
-  SEARCH_EVENT_SUBMIT,
-  SEARCH_EVENT_SUBMIT_SUCCESS,
   FLAG_CHECKBOX_CHANGE_FIELD,
-  ISRANKED_CHECKBOX_CHANGE_FIELD,
+  ISRANKED_CHECKBOX_CREATE_EVENT_CHANGE_FIELD,
 } from '../actions/eventsActions';
 
 export const initialState = {
   // * SEARCH EVENT
-  searchEventData: {},
+  searchEventData: {
+    _duration: '',
+    _player_max: '',
+    _rank: '',
+    _starting: '',
+    _isRanked: false,
+  },
 
   // * APPLY TO EVENT
   applyToEventData: {
@@ -77,6 +85,17 @@ export const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     // * SEARCH EVENT
+    case RESET_ALL_FILTERS:
+      return {
+        ...state,
+        searchEventData: {
+          _duration: '',
+          _player_max: '',
+          _rank: '',
+          _starting: '',
+          _isRanked: false,
+        },
+      };
     case SEARCH_EVENT_SUBMIT:
       return {
         ...state,
@@ -89,6 +108,14 @@ export default (state = initialState, action = {}) => {
         },
       };
     case SEARCH_EVENT_CHANGE_FIELD:
+      return {
+        ...state,
+        searchEventData: {
+          ...state.searchEventData,
+          ...action.payload,
+        },
+      };
+    case ISRANKED_CHECKBOX_SEARCH_EVENT_CHANGE_FIELD:
       return {
         ...state,
         searchEventData: {
@@ -154,14 +181,14 @@ export default (state = initialState, action = {}) => {
       };
 
     // * CREATE EVENT
-    case ISRANKED_CHECKBOX_CHANGE_FIELD:
+    case ISRANKED_CHECKBOX_CREATE_EVENT_CHANGE_FIELD:
       return {
         ...state,
         eventCreationData: {
           ...state.eventCreationData,
           ...action.payload,
-        }
-      }
+        },
+      };
     case FLAG_CHECKBOX_CHANGE_FIELD:
       return {
         ...state,

@@ -4,7 +4,7 @@ import {
   eventChangeField,
   CreateEventSubmit,
   flagCheckboxChangeField,
-  isRankedCheckboxChangeField,
+  isRankedCheckboxCreateEventChangeField,
 } from '../store/actions/eventsActions';
 // import moment from 'moment';
 
@@ -43,8 +43,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onIsRankedCheckboxChangeField: (changedData) => {
-    dispatch(isRankedCheckboxChangeField(changedData));
+  onisRankedCheckboxCreateEventChangeField: (changedData) => {
+    dispatch(isRankedCheckboxCreateEventChangeField(changedData));
   },
   onFlagCheckboxChangeField: (changedData) => {
     dispatch(flagCheckboxChangeField(changedData));

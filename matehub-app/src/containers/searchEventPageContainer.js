@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import {getSelectedEvent, searchEventChangeField, searchEventSubmit} from '../store/actions/eventsActions';
+import {
+  getSelectedEvent,
+  searchEventChangeField,
+  searchEventSubmit,
+  isRankedCheckboxSearchEventChangeField,
+  resetAllFilters,
+} from '../store/actions/eventsActions';
 import SearchEventPage from '../components/SearchEventPage/SearchEventPage';
 
 const mapStateToProps = (state) => ({
@@ -15,9 +21,15 @@ const mapDispatchToProps = (dispatch) => ({
     console.log(changedData);
     dispatch(searchEventChangeField(changedData));
   },
+  onIsRankedCheckboxSearchEventChangeField: (changedData) => {
+    dispatch(isRankedCheckboxSearchEventChangeField(changedData));
+  },
   onFormSubmit: () => {
     dispatch(searchEventSubmit());
-  }
+  },
+  onResetAllFilters: () => {
+    dispatch(resetAllFilters());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchEventPage);

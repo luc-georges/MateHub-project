@@ -5,73 +5,32 @@
   padding: 2em;
 }
 
-.SearchByName{
-  width: 50%;
-  padding: 2em;
-  margin: auto;
-  margin-top: 30vh;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  
+.searchForm {
+  width: 80%;
+
+  &-rank-container{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &-btn-container {
+    margin-top: 2rem !important;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  &-btn-resetFilters {
+    width: 90%;
+    margin-top: 1rem !important;
+  }
 }
 
-
-.filter{
-  width: 50%;
-  padding: 2em;
-  margin: auto;
-  margin-top: 10vh;
-  transform: translateY(-50%);
-  display: flex;
-  flex-wrap: wrap;
-  
-}
-
-.select{
-  width: 50%;
-  padding: 2em;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.button{
-  width: 100%;
-  padding: 2em;
-  margin: auto;
-  display: flex;
-  justify-content: space-around
-  ;
-}
-
-.Event{
-  margin: 2em;
-  margin-top: 6%;
-}
-
-.Event-modules{
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.Event-module{
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  border: 3px solid #949494;
-  background-color: rgb(173, 173, 173);
-  margin: 1.5%;
-  width:200px;
-}
-
-.Event-module-image{
-  width: 30%;
-}
-
-.Event-text{
-  margin-top: 2%;
-  margin-left: 10%;
+.searchResults {
+  text-align: center;
+  &-title {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+  }
 }

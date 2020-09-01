@@ -37,7 +37,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     }
   });
 
-  console.log('filtered data : ', filteredData);
+  // console.log('filtered data : ', filteredData);
 
   // console.log(sendedSearchData);
 

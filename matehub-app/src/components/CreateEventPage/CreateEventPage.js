@@ -11,7 +11,7 @@ import {
 } from 'semantic-ui-react';
 
 const CreateEventPage = ({
-  onIsRankedCheckboxChangeField,
+  onisRankedCheckboxCreateEventChangeField,
   onFlagCheckboxChangeField,
   onChangeField,
   eventCreationData,
@@ -46,7 +46,7 @@ const CreateEventPage = ({
   const handleAddIsRanked = (evt, data) => {
     // console.log('objet data entier :', data);
     const { name, checked } = data;
-    onIsRankedCheckboxChangeField({
+    onisRankedCheckboxCreateEventChangeField({
       [name]: checked,
     });
   };
