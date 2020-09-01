@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
+import { Grid, Image, GridRow, GridColumn,Sidebar, Menu , Segment,Icon, Header} from 'semantic-ui-react'
 /**
  * Import css
  */
@@ -44,10 +44,11 @@ function App({
   }, []);
   return (
     <div className="App">
+
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <HomePage />
+        <HomePage className="main" />
         </Route>
         <Route exact path="/profile/:name" component={ProfilePage} />
         <Route
@@ -75,7 +76,14 @@ function App({
           <GettingStarted />
         </Route>
       </Switch>
+
+
+    
+      <div className="eventbar">
       <EventBar />
+      </div>
+
+
     </div>
   );
 }

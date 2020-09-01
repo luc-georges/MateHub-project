@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 import './style.scss';
@@ -13,9 +13,12 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
 
 
   return (
+  
     <div className="navbar">
+      
       <div className="navbar-logo ">MATE HUB</div>
       <div className="navbar-nav" id="top-menu">
+    
         <NavLink className="navbar-nav-link " exact to="/">
           <Button
             fluid
@@ -74,8 +77,10 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             inverted color="teal"
           />
         </NavLink>
-      </div>
+     
+        </div>
     </div>
+
   );
 };
 
