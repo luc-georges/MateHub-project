@@ -124,9 +124,14 @@ module.exports = class Event extends CoreModel {
                     values[index] = '5 hours'
                     query += ` ${key} > $${index+1}`
 
+                } else if (key == "_rank"){
+                    values[index] += '%';
+                    query += ` ${key} LIKE $${index+1}`
+
                 } else {
                     query += ` ${key}=$${index+1}`;
                 }
+                 
   
 
                 if((index+1) !== keys.length) {
@@ -134,7 +139,7 @@ module.exports = class Event extends CoreModel {
                 }
                 
             })
-
+            console.log(values)
             console.log(query);
             const result = await client.query(query ,values );
             

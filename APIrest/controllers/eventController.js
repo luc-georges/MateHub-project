@@ -73,7 +73,7 @@ module.exports = {
         
         console.log(request.body);
         const values = request.body
-        delete values._rank;
+        //delete values._rank;
         //delete values._duration;
         //delete values._player_max;
         //delete values._is_ranked;
