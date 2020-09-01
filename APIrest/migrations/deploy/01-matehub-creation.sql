@@ -42,6 +42,7 @@ CREATE TABLE "event" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "user_id" INT NOT NULL REFERENCES "user"("id"),
     "game_id" INT NOT NULL REFERENCES "game"("id"),
+    "rank" TEXT ,
     "event_time" TIMESTAMPTZ NOT NULL,
     "duration" INTERVAL ,
     "player_count" INT NOT NULL DEFAULT 1  CONSTRAINT max_player CHECK (player_count <= player_max),
