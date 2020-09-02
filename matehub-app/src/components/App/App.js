@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Grid, Image, GridRow, GridColumn,Sidebar, Menu , Segment,Icon, Header} from 'semantic-ui-react'
+// import { Grid, Image, GridRow, GridColumn,Sidebar, Menu , Segment,Icon, Header} from 'semantic-ui-react'
 /**
  * Import css
  */
@@ -16,7 +16,7 @@ import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
 import EventPage from '../../containers/EventPageContainer';
 import CreateEventPage from '../../containers/CreateEventPageContainer';
-import SearchEventPage from '../SearchEventPage/SearchEventPage';
+import SearchEventPage from '../../containers/searchEventPageContainer';
 import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 import GettingStarted from '../GettingStarted/GettingStarted';

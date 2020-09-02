@@ -1,8 +1,7 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 const TopPlayers = ({ topUsersList, getSelectedUser }) => {
   // const [userid, setUserId] = useState();

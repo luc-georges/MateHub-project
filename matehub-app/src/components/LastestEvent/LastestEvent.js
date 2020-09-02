@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logolol from '../../assets/logolol.png';
 import Moment from 'react-moment';
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import './style.scss';
 
 const LastestEvent = ({ list, getSelectedEvent }) => {

@@ -15,6 +15,7 @@ const EventPage = ({
   onDeleteEvent
 }) => {
   // console.log(eventData._participant);
+  console.log(eventData);
 
   useEffect(() => {
     getEventById();
