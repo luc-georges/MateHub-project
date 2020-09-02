@@ -1,7 +1,7 @@
 .event-card-group{
   display: flex;
   margin: 0!important;
-  
+
   justify-content: center;
 }
 .event-card{
@@ -11,9 +11,10 @@
   background: none!important;
   color: white!important;
   box-shadow: 0 1px 3px 0 #6dffff, 0 0 0 1px #6dffff!important;
+  transition: transform .3s ease-out;
 }
-.LastestEvent-module{
-
+.event-card:hover{
+  transform: translate(0, -5px);
 }
 .ui.card>.content>.description, .ui.cards>.card>.content>.description,.ui.card>.content {
   clear: both;

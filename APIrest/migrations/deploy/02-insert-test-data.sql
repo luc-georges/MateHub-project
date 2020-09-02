@@ -28,12 +28,12 @@ INSERT INTO "game"( "name", "image","order") VALUES
 -- LANG insert
 
 INSERT INTO "lang"( "label", "icon") VALUES
-        ('Fr', 'fr.png'),
-        ('En', 'en.png'),
-        ('It', 'it.png'),
-        ('Es', 'es.png'),
-        ('Rs', 'rs.png'),
-        ('Gr', 'gr.png');
+        ('Fr', 'fr'),
+        ('En', 'uk'),
+        ('It', 'it'),
+        ('Es', 'es'),
+        ('Rs', 'rs'),
+        ('Gr', 'de');
 
 -- EVENT insert
 

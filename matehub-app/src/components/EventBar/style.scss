@@ -3,18 +3,33 @@
 .eventbar {
   position: fixed;
   right: 0;
-  width: 15%;
+  width: 275px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   box-shadow: 3px 0px 8px 0px rgba(173, 170, 170, 0.281);
   height: 100%;
   background-image: url(../../assets/bgtexture.png);
-
   background-attachment: fixed;
   background-color: $color-gris-fonce;
   color: white;
 
+  &-link-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 1em;
+    margin-top: 0;
+    padding: 0!important;
+    padding: 1em;
+    margin: 1em;
+  }
+  &-link-button {
+  margin: 2px;
+  width: 40%;
+
+  }
+ 
   &-eventedition {
     display: flex;
     flex-direction: row;
@@ -31,20 +46,23 @@
     scroll-behavior: smooth;
   }
 
-  &-event {
+  &-event-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    align-items: center;
     padding: 1em 0;
     border-bottom: 1px solid black;
 
-    &-infos {
-      margin-left: 1.2em;
-    }
   }
+
 }
 
+.searchEvent{
+  padding: 0.2em!important;
+}
+.createEvent{
+  padding: 0.2em!important;
+}
 .regist, .login {
    margin: 1em;
 }

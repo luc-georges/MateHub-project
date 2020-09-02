@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logolol from '../../assets/logolol.png';
 import Moment from 'react-moment';
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card, Image,Flag } from 'semantic-ui-react'
 import './style.scss';
 
 const LastestEvent = ({ list, getSelectedEvent }) => {
@@ -10,13 +10,15 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
     // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
   };
-
+  const flagRenderer = (item) => <Flag name={item} />
   return (
     <div className="LastestEvent-cards">
       <h2 className="titre">Lastest event</h2>
+
       <Card.Group className="event-card-group" centered>
         {list.map((element) => {
           return (
+            
               <NavLink
                
                 key={element._event_id}
@@ -33,7 +35,9 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
                 size='mini'
                 src={logolol}
                 />
+                
               <Card.Header>{element.game_name}</Card.Header>
+
               <Card.Meta>{element._creator}</Card.Meta>
               <Card.Description>
               {element._description}
@@ -49,6 +53,11 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
                 <div className="LatestEvent-text">
                   Looking for:  {element._player_max} player
                 </div>
+                {element._langs.map((lang)=>{
+                     return (
+                    <Flag name={lang.icon} />
+                  )
+             })}
                 <div className="view-details">view details</div>
                 </div>
             </Card.Content>
