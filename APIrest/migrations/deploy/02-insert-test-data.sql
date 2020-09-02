@@ -66,14 +66,14 @@ INSERT INTO "event"( "user_id", "game_id","rank", "is_ranked","event_time","dura
         ( 3, 1,'gold 4','true', timestamp '2021-08-27 09:00:00', '05:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
         ( 3, 1,'gold 4','true', timestamp '2021-08-25 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
         ( 3, 1,'gold 4','true', timestamp '2021-08-27 09:00:00', '06:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'platinium 2','false', timestamp '2021-08-29 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'platinium 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 4, 1,'platinium 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 4, 1,'platinium 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 4, 1,'platinium 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 5, 1,'platinium 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 5, 1,'platinium 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 5, 1,'platinium 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber');
+        ( 3, 1,'platinum 2','false', timestamp '2021-08-29 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 4, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 4, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 4, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 5, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 5, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 5, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber');
          
 
 --INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count","description","status","vocal") VALUES
