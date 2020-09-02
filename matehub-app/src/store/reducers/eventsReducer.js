@@ -45,6 +45,8 @@ export const initialState = {
     _starting: '',
     _is_ranked: false,
   },
+  eventSearchResults: [],
+  filterGotResults: false,
 
   // * APPLY TO EVENT
   applyToEventData: {
@@ -129,17 +131,22 @@ export default (state = initialState, action = {}) => {
           _starting: '',
           _is_ranked: false,
         },
+        // filterGotResults: false,
       };
     case SEARCH_EVENT_SUBMIT:
       return {
         ...state,
+        eventSearchResults: [],
+        filterGotResults: false,
       };
     case SEARCH_EVENT_SUBMIT_SUCCESS:
       return {
         ...state,
-        searchEventData: {
-          ...state.searchEventData,
-        },
+        eventSearchResults: [
+          ...state.eventSearchResults,
+          ...action.payload,
+        ],
+        filterGotResults: true,
       };
     case SEARCH_EVENT_CHANGE_FIELD:
       return {

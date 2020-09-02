@@ -19,6 +19,8 @@ const SearchEventPage = ({
   onFormSubmit,
   onIsRankedCheckboxSearchEventChangeField,
   onResetAllFilters,
+  eventSearchResults,
+  filterGotResults
 }) => {
   // const selectGameOptions = [
   //   {
@@ -29,14 +31,14 @@ const SearchEventPage = ({
   // ];
 
   const durationOptions = [
-    { key: '', text: 'null', value: null },
+    { key: '', text: 'Any', value: '' },
     { key: '30mn to 2h', text: '30mn to 2h', value: '-2' },
     { key: '2h to 5h', text: '2h to 5h', value: '2-5' },
     { key: 'more than 5h', text: 'more than 5h', value: '5+' },
   ];
 
   const maxPlayerOptions = [
-    { key: '', text: 'null', value: null },
+    { key: '', text: 'Any', value: '' },
     { key: '1', text: '1', value: 1 },
     { key: '2', text: '2', value: 2 },
     { key: '3', text: '3', value: 3 },
@@ -45,6 +47,7 @@ const SearchEventPage = ({
   ];
 
   const rankOptions = [
+    { key: '', text: 'Any', value: '' },
     { key: 'iron', text: 'Iron', value: 'iron' },
     { key: 'bronze', text: 'Bronze', value: 'bronze' },
     { key: 'silver', text: 'Silver', value: 'silver' },
@@ -89,8 +92,9 @@ const SearchEventPage = ({
       <Form
         onSubmit={onFormSubmit}
         className="searchForm"
+        inverted
       >
-        <h2>Event research</h2>
+        <h2 className="searchForm-title">Event research</h2>
 
         {/* RECHERCHE PAR NOM DU CREATEUR - EN ATTENTE */}
         {/* <Input
@@ -160,12 +164,14 @@ const SearchEventPage = ({
       </Form>
       <Divider />
 
+        {console.log(eventSearchResults)}
+
       <div>
         <h2 className="searchResults-title">Search Results</h2>
         <Card.Group centered>
-          {list.map((element) => {
+          {filterGotResults && eventSearchResults.map((element) => {
             return (
-              <Card key={element._event_id}>
+              <Card key={element._event_id} className="searchResults-card">
                 <Card.Content>
                   <Card.Header>
                     <Moment format="YYYY/MM/DD HH:MM">

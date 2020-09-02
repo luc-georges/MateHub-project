@@ -1,16 +1,22 @@
-// .SearchEventPage{
-//   width: 100%;
-//   margin-left: 10%;
-//   margin-right: 15%;
-//   padding: 2em;
-// }
+@import 'src/styles/vars';
+
+.SearchEventPage{
+  background-image: url(../../assets/bgtexture.png);
+  width: 77%;
+  margin-left: 150px;
+  color: $color-blanc;
+}
 
 .searchForm {
   width: 80%;
+  align-items: center;
+
+  &-title {
+    padding-bottom: 1em;
+  }
 
   &-rank-container{
-    margin: 0 auto;
-    display: flex;
+    width: 50%;
     align-items: center;
   }
 
@@ -32,5 +38,9 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     text-align: center;
+  }
+
+  &-card {
+    background-color: $color-gris-fonce !important;
   }
 }

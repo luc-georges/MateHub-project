@@ -11,6 +11,8 @@ import SearchEventPage from '../components/SearchEventPage/SearchEventPage';
 const mapStateToProps = (state) => ({
   list: state.events.list,
   searchEventData: state.events.searchEventData,
+  eventSearchResults: state.events.eventSearchResults,
+  filterGotResults: state.events.filterGotResults,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -53,8 +53,9 @@ export const searchEventSubmit = () => ({
   type: SEARCH_EVENT_SUBMIT,
 });
 
-export const searchEventSubmitSuccess = () => ({
+export const searchEventSubmitSuccess = (payload) => ({
   type: SEARCH_EVENT_SUBMIT_SUCCESS,
+  payload,
 });
 
 export const searchEventSubmitError = () => ({

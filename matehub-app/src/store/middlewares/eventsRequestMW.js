@@ -111,6 +111,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res);
+          store.dispatch(searchEventSubmitSuccess(res.data.data));
         })
         .catch((err) => {
           console.log(err);
