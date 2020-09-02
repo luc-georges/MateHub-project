@@ -20,7 +20,6 @@ module.exports = {
 
             if (!result) {
                 response.status('404').json({error:'user not found'})
-                //next()
             }
 
             response.status('200').json({data: result});
@@ -67,7 +66,6 @@ module.exports = {
 
             if (!result) {
                 response.status('404').json({error:'user not found'})
-                //next()
             }
             delete result._password;
             delete result._DOB;
@@ -93,7 +91,6 @@ module.exports = {
 
             if (!result) {
                 response.status('404').json({error:'user not found'})
-                //next()
             }
 
             response.status('200').json({data: result});
@@ -118,7 +115,6 @@ module.exports = {
 
             if (!result) {
                 response.status('404').json({error:'user not found'})
-                //next()
             }
 
             response.status('200').json({data: result});
@@ -180,7 +176,7 @@ module.exports = {
             /*************************************/
 
             await user.insert();
-            console.log(user)
+           
             response.status('200').json({data:{
                 _id : user._id,
                 _email : user._email,
@@ -294,8 +290,7 @@ module.exports = {
                 user.description = sanitaze.htmlEntities(user.description);
             }
             if(request.files){
-                // console.log("passing files")
-                // console.log(request.files)
+             
             if(request.files.avatar) {
                 console.log("passing files avatar")
 

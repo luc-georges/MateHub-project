@@ -100,9 +100,9 @@ module.exports = class Event extends CoreModel {
             let query = `SELECT * FROM getalleventdata()`;
             
             const keys = Object.keys(args);
-            //console.log('keys:', keys)
+            
             const values = Object.values(args);
-            //console.log('values:', values)
+            
 
             keys.forEach((key,index) => {
                 if(index === 0) {
@@ -139,8 +139,7 @@ module.exports = class Event extends CoreModel {
                 }
                 
             })
-            console.log(values)
-            console.log(query);
+       
             const result = await client.query(query ,values );
             
             return result.rows;
@@ -162,11 +161,10 @@ module.exports = class Event extends CoreModel {
             
             let query = `INSERT INTO ${this.schema}"M_EVENT_has_LANG" (event_id,lang_id)
             VALUES ($1,$2) RETURNING *;`
-            let values = [...val];
-            
+            let values = [...val];          
 
             const result = await client.query(query,values);
-            //console.log('result:', result.rows[0]);
+            
             return result.rows[0];
 
         } catch (error) {
@@ -188,9 +186,8 @@ module.exports = class Event extends CoreModel {
             VALUES ($1,$2,$3,$4) RETURNING *;`
             let values = [...val];
             
-
             const result = await client.query(query,values);
-            //console.log('result:', result.rows[0]);
+            
             return result.rows[0];
 
         } catch (error) {
@@ -214,7 +211,7 @@ module.exports = class Event extends CoreModel {
             let values = [...val];
 
             const result = await client.query(query,values);
-            //console.log('result:', result.rows[0]);
+            
             return result.rows[0];
 
         } catch (error) {
@@ -237,7 +234,7 @@ module.exports = class Event extends CoreModel {
             let values = [...val];
 
             const result = await client.query(query,values);
-            //console.log('result:', result.rows[0]);
+        
             return result.rows[0];
 
         } catch (error) {

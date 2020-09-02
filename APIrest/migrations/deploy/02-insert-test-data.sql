@@ -11,7 +11,11 @@ INSERT INTO "user"( "email", "password","nickname","dateofbirth","description","
         ( 'luc@cul.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','Pesty',timestamp '1987-05-10','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!desc2 ','avatar2.png','banner2.png'),
         ( 'med@med.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','Guillaume',timestamp '1986-09-08','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!desc3 ','avatar3.png','banner3.png'),
         ( 'meme@med.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','Azdazd',timestamp '1986-09-08','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!desc3 ','avatar3.png','banner3.png'),
-        ( 'medmed@med.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','LEDJODSEMORT',timestamp '1986-09-08','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!desc3 ','avatar3.png','banner3.png');
+        ( 'medmed@med.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','LEDJODSEMORT',timestamp '1986-09-08','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!desc3 ','avatar3.png','banner3.png'),
+        ( 'tata@fred.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','tata',timestamp '1987-07-29','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!','avatar2.png','banner1.png'),
+        ( 'bistouflex@fred.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','bistouflex',timestamp '1987-07-29','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!','avatar2.png','banner1.png'),
+        ( 'tordu@fred.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','tordu',timestamp '1987-07-29','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!','avatar2.png','banner1.png'),
+        ( 'filsunique@fred.fr', '$2b$10$O9KbUe8oR8HO1MN2mfa0ZO2VzrXRrpSgxk8uSg0cKktXi.KvCn.UO','filsunique',timestamp '1987-07-29','Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aperiam soluta praesentium ipsum dolor provident magnam quos quia debitis tenetur dolorem, vero eveniet quo accusamus harum mollitia molestias illo perferendis!','avatar2.png','banner1.png');
 
 
 
@@ -20,7 +24,7 @@ INSERT INTO "user"( "email", "password","nickname","dateofbirth","description","
 -- GAME insert
 
 INSERT INTO "game"( "name", "image","order") VALUES
-        ('League of legend', 'lol.png',1);
+        ('League of legends', 'lol.png',1);
 
 
 -- LEVEL insert
@@ -38,42 +42,42 @@ INSERT INTO "lang"( "label", "icon") VALUES
 -- EVENT insert
 
 INSERT INTO "event"( "user_id", "game_id","rank", "is_ranked","event_time","duration","player_count","player_max","description","status","vocal") VALUES
-        ( 1, 1,'gold 4','true', timestamp '2020-09-22 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true', timestamp '2020-08-10 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true', timestamp '2020-08-11 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true', timestamp '2020-08-12 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true', timestamp '2020-05-22 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true', timestamp '2020-04-22 09:00:00', '05:00', 1,3,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true', timestamp '2020-01-22 09:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true',timestamp '2020-01-22 09:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true',timestamp '2020-01-22 09:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 1, 1,'gold 4','true', timestamp '2020-01-22 09:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-09-22 09:00:00', '01:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-10-22 09:00:00', '02:00', 1,4,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-07-22 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-08-25 09:00:00', '04:00', 1,3,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-08-22 09:00:00', '05:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-08-21 09:00:00', '06:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-08-23 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-08-21 09:00:00', '08:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-08-28 09:00:00', '04:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 2, 1,'gold 4','true', timestamp '2021-08-27 09:00:00', '02:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-24 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-27 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-22 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-27 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-23 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-27 09:00:00', '05:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-25 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'gold 4','true', timestamp '2021-08-27 09:00:00', '06:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'platinum 2','false', timestamp '2021-08-29 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 3, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 4, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 4, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 4, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 5, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 5, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
-        ( 5, 1,'platinum 2','false', timestamp '2021-08-27 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber');
+        ( 1, 1,'gold 4','true', timestamp '2020-09-07 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-07 19:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-08 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-08 19:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-09 09:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-09 19:00:00', '05:00', 1,3,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-10 12:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-10 20:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-11 09:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 1, 1,'gold 4','true', timestamp '2020-09-12 21:00:00', '03:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-07 09:00:00', '01:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-07 12:00:00', '02:00', 1,4,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-07 15:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-07 21:00:00', '04:00', 1,3,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-08 12:00:00', '05:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-09 12:00:00', '06:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-10 15:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-11 15:00:00', '08:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-12 12:00:00', '04:00', 1,2,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 2, 1,'silver3','true', timestamp '2020-09-12 21:00:00', '02:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-07 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-07 21:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-08 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-08 20:00:00', '04:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-09 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-09 09:00:00', '05:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-10 09:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','true', timestamp '2020-09-11 09:00:00', '06:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','false', timestamp '2020-09-11 19:00:00', '03:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 3, 1,'diamond 2','false', timestamp '2020-09-12 15:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 4, 1,'master','false', timestamp '2020-09-07 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 4, 1,'master','true', timestamp '2020-09-07 21:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 4, 1,'master','false', timestamp '2020-09-08 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 5, 1,'iron 4','false', timestamp '2020-09-08 15:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 5, 1,'iron 4','false', timestamp '2020-09-09 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber'),
+        ( 5, 1,'iron 4','false', timestamp '2020-09-10 09:00:00', '07:00', 1,5,'Compétitif full team', 0,'discord.gg/invitenumber');
          
 
 --INSERT INTO "event"( "user_id", "game_id","event_time","duration","player_count","description","status","vocal") VALUES

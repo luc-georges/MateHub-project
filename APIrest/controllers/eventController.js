@@ -34,7 +34,6 @@ module.exports = {
 
             if (!result) {
                 response.status('404').json({error:'event not found'})
-                //next()
             }
 
             response.status('200').json({data: result})
@@ -58,7 +57,6 @@ module.exports = {
 
             if (!result) {
                 response.status('404').json({error:'event not found'})
-                //next()
             }
             response.status('200').json({data: result});
 
@@ -73,16 +71,8 @@ module.exports = {
         
         console.log(request.body);
         const values = request.body
-        //delete values._rank;
-        //delete values._duration;
-        //delete values._player_max;
-        //delete values._is_ranked;
-        //delete values._starting;
 
         const result = await Event.getEventByParams(values);
-        //console.log('result:', result)
-
-
 
         response.status('200').json({data: result});
 
@@ -192,7 +182,6 @@ module.exports = {
             
             const checkValues = [request.params.eventId,request.params.id];
             const check = await Event.getUserOnEvent(checkValues);
-            //console.log('check:', check)
 
             if (check) {
                 return response.status('400').json({error:'user was already on this event'});

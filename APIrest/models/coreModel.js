@@ -53,7 +53,7 @@ class CoreModel {
                 return null
             };
             return new this(result.rows[0]);
-            // return result.rows[0]
+           
         } catch (error) {
             console.log(error)
         }
@@ -155,8 +155,6 @@ class CoreModel {
         }
 
         const result = await client.query(preparedQuery);
-        //console.log('result:', result)
-
 
         this.id = result.rows[0].id;
         return this;

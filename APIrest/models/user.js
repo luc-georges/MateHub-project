@@ -44,6 +44,12 @@ module.exports = class User extends CoreModel {
             
         }
     }
+
+    /**
+     * Fonction qui appel la vue SQL getUserData(int)
+     * @static
+     * @returns {Array} l'event
+     */
     static async findProfileById(id){
         try{
             const result = await client.query(`SELECT * FROM getUserData($1)`,[id]);
