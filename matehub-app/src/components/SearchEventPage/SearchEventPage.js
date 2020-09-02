@@ -131,13 +131,12 @@ const SearchEventPage = ({
         <Form.Group widths="equal" className="searchForm-rank-container">
           <Form.Input
             label="I want to play ranked games"
-            name="_isRanked"
+            name="_is_ranked"
             control={Checkbox}
             onChange={handleAddIsRanked}
-            checked={searchEventData._isRanked}
+            checked={searchEventData._is_ranked}
           />
           <Form.Input
-            disabled={!searchEventData._isRanked}
             label="Rank"
             control={Select}
             name="_rank"

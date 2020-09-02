@@ -43,7 +43,7 @@ export const initialState = {
     _player_max: '',
     _rank: '',
     _starting: '',
-    _isRanked: false,
+    _is_ranked: false,
   },
 
   // * APPLY TO EVENT
@@ -84,7 +84,7 @@ export const initialState = {
       ru5: false,
       de6: false,
     },
-    isRanked: false,
+    is_ranked: false,
   },
   playerToAcceptOrRefuseInEvent: '', 
 };
@@ -127,7 +127,7 @@ export default (state = initialState, action = {}) => {
           _player_max: '',
           _rank: '',
           _starting: '',
-          _isRanked: false,
+          _is_ranked: false,
         },
       };
     case SEARCH_EVENT_SUBMIT:
