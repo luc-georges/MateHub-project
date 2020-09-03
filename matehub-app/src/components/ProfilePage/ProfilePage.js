@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
-import { Button, Header, Modal } from 'semantic-ui-react';
+import { Button, Header, Modal, Card, Image } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';

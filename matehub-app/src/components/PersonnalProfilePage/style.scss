@@ -1,94 +1,176 @@
 @import 'src/styles/vars';
-.profilepage{
-  width: 75%;
-  box-sizing: border-box;
-  background-color: #0B0C10;
-  color: rgb(226, 220, 220);
+ .personnalprofilepage{
+  width:78%;
+   box-sizing: border-box;
+   background-color: #0B0C10;
+   color: white;
   background-image: url(../../assets/04322d63.png);
-}
-.profilepage h3{
-  padding: 20px;
-}
-.LastestEvent-modules{
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-left:150px; 
+   
+ }
+
+ .personnalprofilepage-titre{
+   margin-left: 2%;
+   margin-top: 5%;
+   margin-bottom: 5%;
+   font-size: 2.5em;
+ }
+
+ .personnalprofilepage-description{
+
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 2%;
+  font-size: 1.5em;
+ }
+
+ .personnalprofilepage-game-user{
+  
+  margin-left: 5%;
+  margin-right: 2%;
+  font-size: 1.5em;
+ }
+
+ .personnalprofilepage-game-user-info{
+  margin-bottom: 1%;
+ }
+
+ .button-modal{
+   margin-top: 5% !important;
+   border: solid #66fcf1 !important;
+   background: none !important;
+   color:#66fcf1 !important; 
+   width:20%;
+   margin-left: 40% !important;
+   
+ }
+
+.button-modal:hover {
+    background:#66fcf1  !important;
+    color: #2b8484 !important;
+  }
+
+ .Event-modules{
+   display:flex;
+   justify-content: center;
+   flex-wrap: wrap;
+ }
+
+ .banner-modal{
+  border: solid #66fcf285 !important;
+  background:#161c2481 !important;
+  color: white !important;
+
+ }
+
+ .banner-input{
+  background:#161c2485 !important;
+  padding-top: 2%;
+ }
+
+ .banner-modal-titre{
+  background:#161c248a !important;
+  color: white !important;
+  
+ }
+
+ .banner-actions{
+  background:#161c2485 !important;
+ }
+
+
+
+.banner-buttonData{
+  border: solid #66fcf1 !important;
+  background: none !important;
+  color:#66fcf1 !important; 
+  width:30%;
+ 
 }
 
-.LastestEvent-module{
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  border: 3px solid #949494;
-
-  width:200px;
-}
-.loginpage {
-  margin-left: 10%;
-  margin-right: 15%;
-  width: 100%;
+.banner-buttonData:hover{
+  background:#66fcf1  !important;
+  color: #2b8484 !important;
 }
 
-.form-input{
-margin-top: 300px;
+.banner-file-label{
+  background:#161c248a !important;
+  margin-left: 4%;
+  margin-top: 2% !important;
+  font-size: 1.3em ;
 }
 
-.details{
-  position: absolute;
-  bottom: 0;
-  left:1em;
-  color: white;
-  height: 5em;
+.modal-info{
+  border: solid #66fcf28e !important;
+  background:#161c24c0 !important;
+  color: white !important;
+}
 
+.modal-info-titre{
+  background:#10161c8a !important;
+  color: white !important;
 }
-.details h1{
-  font-size: 3.8em;
 
+.modal-info-action{
+  background:#161c2481 !important;
+  
 }
-.avatar{
-  height: 18vh;
-  position: absolute;
-  bottom: 1.8em;
-  left: .5em;
 
-}
-.container-avatar{
-  position: relative;
-}
+
 .information-form{
-  display: flex;
-  width:90%
-}
-.information-form input{
-  width:200px
-}
-.form-input{
-  width:400px;
-}
-.banner-modal{
+  margin-left: 10%;
 
 }
-.crop-container{
-  height: 60vh;
+
+.information-input{
+  color:white !important;
 }
+
+.ui.form input[type=text]{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  color:white !important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+}
+
+.modal-game{
+  border: solid #66fcf28e !important;
+  background:#161c24c0 !important;
+  color: white !important;
+}
+
+.modal-game-titre{
+  background:#10161c8a !important;
+  color: white !important;
+}
+
+.modal-game-select{
+  background:#10161c8a !important;
+
+  font-size: 1.3em ;
+}
+
+.modal-game-action{
+  background:#10161c8a !important;
+}
+
+
 .Button-banner{
  width:50px;
  position: absolute;
- right: 10px;
- bottom: 10px;
+ top: 80%;
+left: 90%;
  z-index: 1;
  display: none!important;
  background: none!important;
  border-radius: 50%!important;
- color: white!important;
+ color: #66fcf1!important;
 }
 
 .container-modal-banner{
- 
-  position: absolute;
-  height: 35vh;
-  width: 100%;
-  z-index: 1;
+    position: absolute;
+    height: 35vh;
+    width: 100%;
+    z-index: 1;
 }
 .container-modal-banner:hover>.Button-banner{
   display: block!important;
@@ -97,7 +179,7 @@ margin-top: 300px;
 .container-banner{ 
   height: 35vh;
 }
-.profilepage-header{
+.personnalprofilepage-header{
   position: relative;
 } 
 .banner-modal-img{

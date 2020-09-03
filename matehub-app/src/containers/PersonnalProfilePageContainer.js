@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PersonnalProfilePage from '../components/PersonnalProfilePage/PersonnalProfilePage';
 import { getPersonnalData, modifyPersonnalDataChangeField, getPersonnalDataSubmit,editProfilBanner } from '../store/actions/authActions';
-
+import { getSelectedEvent } from '../store/actions/eventsActions';
 // import { getUserById } from '../store/reducers/usersReducer';
 
 const mapStateToProps = (state) => ({
@@ -23,7 +23,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   editProfilBanner: (bannerImg) => {
     dispatch(editProfilBanner(bannerImg))
-  }
+  },
+  getSelectedEvent: (changedData) => {
+    dispatch(getSelectedEvent(changedData));
+  },
 });
 
 export default connect(
