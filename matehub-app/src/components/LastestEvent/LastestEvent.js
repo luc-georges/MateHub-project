@@ -5,10 +5,11 @@ import Moment from 'react-moment';
 import { Card, Image } from 'semantic-ui-react'
 import './style.scss';
 
-const LastestEvent = ({ list, getSelectedEvent }) => {
+const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
   const handleGetSelectedEvent = (evt, data) => {
     // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
+    getEventById();
   };
 
   return (

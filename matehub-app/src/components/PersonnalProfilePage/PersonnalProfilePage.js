@@ -35,6 +35,8 @@ const PersonnalProfilePage = ({
     // eslint-disable-next-line
   }, []);
 
+  console.log(personnalData)
+
   const handleInputChange = (evt) => {
     console.log('name >>', evt.target.name);
     console.log('value >>', evt.target.value);

@@ -168,8 +168,9 @@ export const applyToEventSuccess = (payload) => ({
   payload,
 });
 
-export const applyToEventError = () => ({
+export const applyToEventError = (payload) => ({
   type: APPLY_TO_EVENT_ERROR,
+  payload,
 });
 
 // == DELETE EVENT

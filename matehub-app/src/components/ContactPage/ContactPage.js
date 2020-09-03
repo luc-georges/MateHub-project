@@ -14,6 +14,7 @@ const ContactPage = () => {
         </h1>
         <Form.Group widths="equal">
           <Form.Field
+          
             id="form-input-control-error-email"
             control={Input}
             label="Email"
