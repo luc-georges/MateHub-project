@@ -13,7 +13,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
   };
   return (
     <div className="LastestEvent-cards">
-      <h2 className="titre">Lastest event</h2>
+      <h2 className="titre homeTitle">Lastest event</h2>
 
       <Card.Group className="event-card-group" centered>
         {list.slice(0, 12).map((element, index) => {

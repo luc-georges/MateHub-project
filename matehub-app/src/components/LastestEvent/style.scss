@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 .event-card-group{
   display: flex;
@@ -149,4 +150,12 @@
 }
 .titre{
   margin: 2em;
+  margin-bottom: 1em;
+}
+.homeTitle{
+  font-family: 'Righteous', cursive;
+  font-size: 2.5em;
+}
+.homeTitle:hover{
+  color: #66fcf2;
 }
