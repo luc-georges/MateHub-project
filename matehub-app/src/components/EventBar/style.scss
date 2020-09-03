@@ -3,15 +3,16 @@
 .eventbar {
   position: fixed;
   right: 0;
-  width: 275px;
+  width: 200px;
   display: flex;
   flex-direction: column;
-  box-shadow: 3px 0px 8px 0px rgba(173, 170, 170, 0.281);
+  box-shadow: 3px 0px 8px 0px rgba(0, 0, 0, 0.2);
   height: 100%;
   background-image: url(../../assets/bgtexture.png);
   background-attachment: fixed;
   background-color: $color-gris-fonce;
   color: white;
+  z-index: 100;
 
   &-link-container {
     display: flex;
@@ -40,8 +41,8 @@
   }
 
   &-eventlist {
-    margin: 1em 0;
-    padding: 0 1em;
+    margin: 1.6em 0;
+
     overflow-y: scroll;
     scroll-behavior: smooth;
   }
@@ -51,17 +52,28 @@
     flex-direction: column;
     flex-wrap: nowrap;
     padding: 1em 0;
+    background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+
     border-bottom: 1px solid black;
 
-  }
+    margin-bottom: .5em;
+    margin-top: .5em;
+    padding-left: .5em;
 
+  }
+  &-event-container i {
+   margin-left: .5em;
+
+  }
 }
 
 .searchEvent{
-  padding: 0.2em!important;
+  padding-left: 1.1em!important;
+  font-size: .9em!important;
 }
 .createEvent{
-  padding: 0.2em!important;
+  padding-left: 1.1em!important;
+  font-size: .9em!important;
 }
 .regist, .login {
    margin: 1em;

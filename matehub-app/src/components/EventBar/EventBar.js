@@ -45,27 +45,37 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
     <div className="eventbar-link-container">
     <div className="eventbar-link-button">
     <NavLink exact to="/createevent">
-      
          <Button
+          animated
            fluid
            className="createEvent"
-           content="Create event"
-           icon="add"
            size="medium"
            inverted color="teal"
-         />
+         >
+          <Button.Content visible>Create event</Button.Content>
+      <Button.Content hidden>
+        <Icon name='add' />
+      </Button.Content>
+      </Button>
            </NavLink>
           </div>
           <div className="eventbar-link-button" >
            <NavLink exact to="/searchevent">
+        
+          
            <Button
+             animated
              fluid
              className="searchEvent"
              content="Search event"
-             icon="search"
              size="medium"
              inverted color="teal"
-           />
+           >
+           <Button.Content visible>Search event</Button.Content>
+          <Button.Content hidden>
+          <Icon name='search' />
+        </Button.Content>
+        </Button>
              </NavLink>
             </div>
             </div>
@@ -76,26 +86,26 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
             return (
               <div className="eventbar-event-container" key={event._event_id}>
                 <div>
-                <a href="/">
-                  <Icon className="eye" size="big" />
-                </a>
-       
                     {event._description.length > 30
                       ? `${event._description.slice(0, 30)}...`
                       : event._description}
-           
+            <a href="/" >
+            <NavLink exact to={`/event/${event._id}`}>
+                  <Icon className="eye" size="large"/>
+             </NavLink>
+                </a>
                 </div>
               
                   
                       <div classname="eventbar-event-infos">
-                  <div classname="eventbar-event-infos"><Moment
+                  <Moment
                       format="YYYY/MM/DD HH:MM"
                       content={event._starting}
-                    /> </div>
+                    /> 
                   
-                  <div classname="eventbar-event-infos">{event._player_count} players</div>
+                  <div >{event._player_count} players</div>
 
-                  <div classname="eventbar-event-infos">Duration : {event._duration.hours}h</div>
+                  <div>Duration : {event._duration.hours}h</div>
                   {event._langs.map((lang)=>{
                      return (
                     <Flag name={lang.icon} />

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Grid } from 'semantic-ui-react';
+import { Button, Grid,Image } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-
+import logo from '../../assets/logo-matehub.svg';
 import './style.scss';
 
 const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
@@ -15,8 +15,13 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
   return (
   
     <div className="navbar">
-      
-      <div className="navbar-logo ">MATE HUB</div>
+      <div className="header-nav">
+      <Image
+      centered
+                size='small'
+                src={logo}
+                />
+                </div>
       <div className="navbar-nav" id="top-menu">
     
         <NavLink className="navbar-nav-link " exact to="/">

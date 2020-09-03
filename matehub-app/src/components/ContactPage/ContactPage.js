@@ -7,8 +7,8 @@ import { Form, Input, TextArea, Button, Checkbox } from 'semantic-ui-react';
 const ContactPage = () => {
   console.log('ContactPage');
   return (
-    <div className="global">
-      <Form className="contactpage">
+    <div className="contactPage">
+      <Form className="contactpage" inverted>
         <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
           Contact form
         </h1>
@@ -48,11 +48,11 @@ const ContactPage = () => {
           control={Button}
           content="Submit"
         /> */}
-        <Form.Field
+        <Form.Field 
           control={Checkbox}
           label={<label>I agree to the Terms and Conditions</label>}
         />
-        <Button
+        <Button inverted color="teal"
           style={{ marginTop: '2em', textAlign: 'center' }}
           content="submit"
         />

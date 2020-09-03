@@ -6,6 +6,8 @@ BEGIN;
 CREATE type event_data as ( "_event_id" INT,
                            "_user_id" INT,
                            "_creator" TEXT,
+                           "_creator_IGN" JSON,
+                           "_creator_stats"JSON,
                            "_game_name" TEXT,
                            "_game_id" INT,
                            "_rank" TEXT,
@@ -32,6 +34,8 @@ SELECT
                          e."id" AS "_event_id", 
                          e."user_id" AS "_user_id",
                          u."nickname" AS "_creator",
+                         json_agg(uuhg."IGN"),
+                         json_agg(uuhg."stats"),
                          g."name" AS "game_name",
                          g."id" AS "game_id", 
                          e."rank" AS "_rank",
@@ -66,6 +70,7 @@ SELECT
                         FROM user_access."event" e
                         JOIN user_access."game" g ON g.id = e.game_id
                         JOIN user_access."user" u ON e.user_id = u.id
+                        JOIN user_access."M_USER_has_GAME" uuhg ON uuhg.user_id = u.id AND uuhg.game_id = g.id
                         WHERE e.id = "EVENT_ID"
                                 GROUP by e.id,u.id,g.name,g.id
                                 ORDER BY e.event_time
@@ -88,6 +93,8 @@ $body$
                          e."id" AS "_event_id", 
                          e."user_id" AS "_user_id",
                          u."nickname" AS "_creator",
+                         json_agg(uuhg."IGN"),
+                        json_agg(uuhg."stats"),
                          g."name" AS "game_name",
                          g."id" AS "game_id", 
                          e."rank" AS "_rank",
@@ -122,6 +129,7 @@ $body$
                         FROM user_access."event" e
                         JOIN user_access."game" g ON g.id = e.game_id
                         JOIN user_access."user" u ON e.user_id = u.id
+                        JOIN user_access."M_USER_has_GAME" uuhg ON uuhg.user_id = u.id AND uuhg.game_id = g.id
                                 GROUP by e.id,u.id,g.name,g.id
                                 ORDER BY e.event_time
 

@@ -16,9 +16,9 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
       <h2 className="titre">Lastest event</h2>
 
       <Card.Group className="event-card-group" centered>
-        {list.map((element) => {
+        {list.slice(0, 12).map((element,index) => {
           return (
-            
+           
               <NavLink
                
                 key={element._event_id}
@@ -28,6 +28,7 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
                 to={`/event/${element._event_id}`}
                 onClick={handleGetSelectedEvent}
                 >
+                  <div className={`slide-in${index}`} >
             <Card className="event-card">
             <Card.Content>
               <Image
@@ -62,8 +63,9 @@ const LastestEvent = ({ list, getSelectedEvent }) => {
                 </div>
             </Card.Content>
           </Card>
+          </div>
                 </NavLink>
-              
+               
               
                
               );
