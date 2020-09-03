@@ -1,9 +1,19 @@
 import React, { useEffect } from 'react';
-import { Button, Header, Modal, Form, Icon } from 'semantic-ui-react';
-import './style.scss';
+import {
+  Button,
+  Header,
+  Modal,
+  Form,
+  Icon,
+  Card,
+  Image,
+  Flag,
+} from 'semantic-ui-react';
 import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
+import { NavLink } from 'react-router-dom';
+import './style.scss';
 
 const PersonnalProfilePage = ({
   personnalData,
@@ -12,7 +22,13 @@ const PersonnalProfilePage = ({
   onFormSubmit,
   modifyPersonnalData,
   editProfilBanner,
+  getSelectedEvent,
 }) => {
+  const handleGetSelectedEvent = (evt, data) => {
+    // console.log(evt.currentTarget.id);
+    getSelectedEvent(evt.currentTarget.id);
+  };
+
   // eslint-disable-next-line
   useEffect(() => {
     getPersonnalData();
@@ -53,8 +69,8 @@ const PersonnalProfilePage = ({
   const [open3, setOpen3] = React.useState(false);
 
   return (
-    <div className="profilepage">
-      <div className="profilepage-header">
+    <div className="personnalprofilepage">
+      <div className="personnalprofilepage-header">
         <div className="container-modal-banner">
           <Modal
             className="banner-modal"
@@ -68,9 +84,10 @@ const PersonnalProfilePage = ({
               </Button>
             }
           >
-            <Modal.Header>Update</Modal.Header>
+            <Modal.Header className="banner-modal-titre">
+              Update banner
+            </Modal.Header>
             <Modal.Description>
-              <Header>banner</Header>
               {personnalData._banner && (
                 <div className="modal-img">
                   <img
@@ -81,20 +98,25 @@ const PersonnalProfilePage = ({
                 </div>
               )}
               <div className="banner-input">
-                <label htmlFor="banner">Choose a banner picture:</label>
-                <input
-                  type="file"
-                  id="banner"
-                  name="banner"
-                  accept="image/png, image/jpeg"
-                  onChange={handleUpload}
-                ></input>
+                <label htmlFor="banner" className="banner-file-label">
+                  Choose a banner picture:
+                  <input
+                    type="file"
+                    size="60"
+                    id="banner"
+                    name="banner"
+                    accept="image/png, image/jpeg"
+                    onChange={handleUpload}
+                    className="banner-file-button"
+                    aria-label="File browser example"
+                  ></input>
+                </label>
               </div>
             </Modal.Description>
-            <Modal.Actions>
+            <Modal.Actions className="banner-actions">
               <Button
                 style={{ marginTop: '2em', textAlign: 'center' }}
-                className="eventData buttonData"
+                className="banner-buttonData"
                 content="ok"
                 labelPosition="right"
                 icon="checkmark"
@@ -105,9 +127,9 @@ const PersonnalProfilePage = ({
                 style={{ marginTop: '2em', textAlign: 'center' }}
                 color="black"
                 onClick={() => setOpen3(false)}
-              >
-                Cancel
-              </Button>
+                content="Cancel"
+                className="banner-buttonData"
+              />
             </Modal.Actions>
           </Modal>
         </div>
@@ -134,75 +156,86 @@ const PersonnalProfilePage = ({
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button>Update informations</Button>}
+            className="modal-info"
+            trigger={
+              <Button className="button-modal">Update informations</Button>
+            }
           >
-            <Modal.Header>Update informations</Modal.Header>
+            <Modal.Header className="modal-info-titre">
+              Update informations
+            </Modal.Header>
             <Modal.Description>
-              <Header>Update</Header>
               <div className="loginpage">
                 <Form className="information-form" onSubmit={handleSubmit}>
                   <div>
                     <Form.Input
-                      className="form-input"
                       fluid
                       label="Nickname"
                       placeholder="change your nickname"
                       name="nickname"
                       value={modifyPersonnalData.nickname}
                       onChange={handleInputChange}
+                      className="information-input"
                     />
                   </div>
 
                   <div>
                     <Form.Input
-                      className="form-input"
                       fluid
                       label="Description"
                       placeholder="change your Description"
                       name="description"
                       value={modifyPersonnalData.description}
                       onChange={handleInputChange}
+                      className="information-input"
                     />
                   </div>
 
-                  <div></div>
-                  <Button
-                    style={{ marginTop: '2em', textAlign: 'center' }}
-                    className="eventData buttonData"
-                    type="submit"
-                    content="ok"
-                    labelPosition="right"
-                    icon="checkmark"
-                    positive
-                  />
+                  <div>
+                    <Button
+                      style={{ marginTop: '2em', textAlign: 'center' }}
+                      className="banner-buttonData"
+                      type="submit"
+                      content="ok"
+                      labelPosition="right"
+                      icon="checkmark"
+                      positive
+                    />
+                    <Button
+                      className="banner-buttonData"
+                      style={{ marginTop: '2em', textAlign: 'center' }}
+                      color="black"
+                      onClick={() => setOpen(false)}
+                      content="Cancel"
+                    />
+                  </div>
                 </Form>
               </div>
             </Modal.Description>
-            <Modal.Actions>
-              <Button
-                style={{ marginTop: '2em', textAlign: 'center' }}
-                color="black"
-                onClick={() => setOpen(false)}
-              >
-                Cancel
-              </Button>
-            </Modal.Actions>
           </Modal>
+        </div>{' '}
+        <h2 className="personnalprofilepage-titre">Description</h2>
+        <div>
+          <div className="personnalprofilepage-description">
+            {personnalData._description}
+          </div>
         </div>
-        <div className="profilepage-description">
-          <h2>Description</h2>
-          <div>{personnalData._description}</div>
-        </div>
-        <div className="profilepage-game">
+        <div className="personnalprofilepage-game">
           {personnalData._games &&
             personnalData._games.map((game) => {
               return (
                 <div key={game.game_id}>
-                  <h2>{game.game_name}</h2>
-                  <div className="profilepage-game-user">
-                    <div>Pseudo : {game.ign.name}</div>
-                    <div>level : {game.ign.summonerLevel}</div>
-                    <div>
+                  <h2 className="personnalprofilepage-titre">
+                    {game.game_name}
+                  </h2>
+                  <div className="personnalprofilepage-game-user">
+                    <div className="personnalprofilepage-game-user-info">
+                      Pseudo : {game.ign.name}
+                    </div>
+                    <div className="personnalprofilepage-game-user-info">
+                      level : {game.ign.summonerLevel}
+                    </div>
+                    <div className="personnalprofilepage-game-user-info">
                       Rank : {game.stats.tier} / {game.stats.rank}{' '}
                     </div>
                   </div>
@@ -214,85 +247,130 @@ const PersonnalProfilePage = ({
             onClose={() => setOpen2(false)}
             onOpen={() => setOpen2(true)}
             open={open2}
-            trigger={<Button>Select game</Button>}
+            trigger={<Button className="button-modal">Select game</Button>}
+            className="modal-game"
           >
-            <Modal.Header>Select game</Modal.Header>
-            <Modal.Description>
-              <Header>Update</Header>
+            <Modal.Header className="modal-game-titre">
+              Select game
+            </Modal.Header>
+            <Modal.Description className="modal-game-select">
               <Form.Field label="Game" control="select" className="select">
                 <option value="ligue of legend">league of legends</option>
               </Form.Field>
             </Modal.Description>
-            <Modal.Actions>
-              <Button color="black" onClick={() => setOpen2(false)}>
-                Cancel
-              </Button>
+            <Modal.Actions className="modal-game-action">
               <Button
+                className="banner-buttonData"
                 content="ok"
                 labelPosition="right"
                 icon="checkmark"
                 onClick={() => setOpen2(false)}
                 positive
               />
+              <Button
+                className="banner-buttonData"
+                color="black"
+                content="Cancel"
+                onClick={() => setOpen2(false)}
+              />
             </Modal.Actions>
           </Modal>
         </div>
-        <h2>Created Events</h2>
-        <div className="LastestEvent-modules">
-          {personnalData._event_created &&
-            personnalData._event_created.map((event) => {
-              return (
-                <div
-                  key={`C_event${event.event_id}`}
-                  className="LastestEvent-module"
-                >
-                  <img
-                    src={logolol}
-                    alt="lollogo"
-                    className="LastestEvent-module-image"
-                  />
-                  <div>
-                    Date and time{' '}
-                    <Moment format="YYYY/MM/DD HH:MM">{event.event_time}</Moment>
-                  </div>
-                  <div className="profilepage-event_created">
-                    <div>{event.game_name} </div>
-                    <div>player:{event.player_count}</div>
-                    <div>party :{event.player_max}</div>
-                  </div>
-                </div>
-              );
-            })}
+        <h2 className="personnalprofilepage-titre">Created Events</h2>
+        <div className="Event-modules">
+          <Card.Group className="event-card-group">
+            {personnalData._event_created &&
+              personnalData._event_created.slice(0, 12).map((event) => {
+                return (
+                  <NavLink
+                    key={`C_event${event.event_id}`}
+                    className="Event-module"
+                    to={`/event/${event._event_id}`}
+                    onClick={handleGetSelectedEvent}
+                  >
+                    <Card className="event-card">
+                      <Card.Content>
+                        <Image
+                          floated="right"
+                          src={logolol}
+                          size="mini"
+                          alt="lollogo"
+                        />
+                        <Card.Header>{event.game_name}</Card.Header>
+                        <Card.Meta>{event._creator}</Card.Meta>
+                        <Card.Description>
+                          {event._description}
+                        </Card.Description>
+                      </Card.Content>
+                      <Card.Content extra>
+                        <div className="LatestEvent-text">
+                          Date and time{' '}
+                          <Moment format="YYYY/MM/DD HH:MM">
+                            {event.event_time}
+                          </Moment>
+                          <div className="LatestEvent-text">
+                            Number of players {event._player_count}
+                          </div>
+                          <div className="LatestEvent-text">
+                            Looking for: {event._player_max} player
+                          </div>
+                          {event._langs.map((lang) => {
+                            return <Flag name={lang.icon} />;
+                          })}
+                          <div className="view-details">view details</div>
+                        </div>
+                      </Card.Content>
+                    </Card>
+                  </NavLink>
+                );
+              })}
+          </Card.Group>
         </div>
-        <h3>Event Registered: </h3>
-        <div className="LastestEvent-modules">
-          {personnalData.has_events &&
-            personnalData.has_events.map((h_event) => {
-              return (
-                <div
-                  key={`H_event${h_event.event_id}`}
-                  className="LastestEvent-module"
-                >
-                  <img
-                    src={logolol}
-                    alt="lollogo"
-                    className="LastestEvent-module-image"
-                  />
-                  <div>
-                    Date and time{' '}
-                    <Moment format="YYYY/MM/DD HH:MM">
-                      {h_event._starting}
-                    </Moment>
-                  </div>
-                  <div className="profilepage-has_event">
-                    <div>{h_event.game_name} </div>
-                    <div>player :{h_event.player_count}</div>
-                    <div>party :{h_event.player_max}</div>
-                  </div>
-                </div>
-              );
-            })}
-        </div>
+        <h2 className="personnalprofilepage-titre">Event Registered: </h2>
+        <Card.Group className="event-card-group">
+          <div className="LastestEvent-modules">
+            {personnalData.has_events &&
+              personnalData.has_events.slice(0, 12).map((h_event) => {
+                return (
+                  <NavLink
+                    key={`H_event${h_event.event_id}`}
+                    id={h_event._event_id}
+                    to={`/event/${h_event._event_id}`}
+                    onClick={handleGetSelectedEvent}
+                  >
+                    <Card className="event-card">
+                      <Card.Content>
+                        <Image floated="right" size="mini" src={logolol} />
+                        <Card.Header>{h_event.game_name}</Card.Header>
+                        <Card.Meta>{h_event._creator}</Card.Meta>
+                        <Card.Description>
+                          {h_event._description}
+                        </Card.Description>
+                      </Card.Content>
+                      <Card.Content extra>
+                        <div className="LatestEvent-text">
+                          Date and time{' '}
+                          <Moment format="YYYY/MM/DD HH:MM">
+                            {h_event._starting}
+                          </Moment>
+                          <div className="LatestEvent-text">
+                            Number of players {h_event._player_count}
+                          </div>
+                          <div className="LatestEvent-text">
+                            Looking for: {h_event._player_max} player
+                          </div>
+                          {h_event._langs.map((lang) => {
+                            return <Flag name={lang.icon} />;
+                          })}
+                          <div className="view-details">view details</div>
+                        </div>
+                      </Card.Content>
+                    </Card>
+                  </NavLink>
+                );
+              })}
+          </div>
+        </Card.Group>
       </div>
     </div>
   );
