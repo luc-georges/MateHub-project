@@ -1,6 +1,7 @@
 .TopPlayers{
 
   flex-direction: row;
+  margin-bottom: 100px;
 }
 .user-card-group{
   display: flex;
@@ -14,8 +15,15 @@
     background: none!important;
     color: white!important;
     box-shadow: 0 1px 3px 0 #6dffff, 0 0 0 1px #6dffff!important;
-
+    transition: transform .3s ease-out;
+}
+.user-card:hover{
+  transform: translate(0, -5px);
 }
 .user-image{
   border-radius: 50%;
+}
+
+.slide_container{
+  position: relative;
 }

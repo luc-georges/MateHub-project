@@ -4,19 +4,24 @@ import LastestEvent from '../../containers/LastestEventContainer';
 import TopPlayers from '../../containers/TopPlayersContainer';
 import LastestNews from '../../containers/LastestNewsContainer';
 import './style.scss';
-// import { Grid, Image, GridRow, GridColumn } from 'semantic-ui-react'
 
-const HomePage = ({nickname}) => {
+import {Image} from 'semantic-ui-react'
+import logo from '../../assets/logo-matehub.svg';
+const HomePage = () => {
   return (
     <div className="HomePage">
-
-      <h1 className="titre">Welcome on Matehub {nickname} !</h1>
+      <div className="header-home">
+   <Image
+                size='medium'
+                src={logo}
+                />
+      </div>
       <LastestEvent className="LastestEvent"/>
 
 
       <TopPlayers className="TopPlayers"/>
-
       <LastestNews className="LastestNews" />
+
 
 
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Image } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-
+import logo from '../../assets/logo-matehub.svg';
 import './style.scss';
 
 const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
@@ -11,14 +11,12 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
     getSelectedUser(evt.currentTarget.id);
   };
 
-
   return (
-  
     <div className="navbar">
-      
-      <div className="navbar-logo ">MATE HUB</div>
+      <div className="header-nav">
+        <Image centered size="small" src={logo} />
+      </div>
       <div className="navbar-nav" id="top-menu">
-    
         <NavLink className="navbar-nav-link " exact to="/">
           <Button
             fluid
@@ -26,9 +24,9 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             content="home"
             icon="home"
             size="large"
-            inverted color="teal"
+            inverted
+            color="teal"
           />
-          
         </NavLink>
         {isLogged && (
           <NavLink
@@ -43,7 +41,8 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
               content="Profile"
               icon="user"
               size="large"
-              inverted color="teal"
+              inverted
+              color="teal"
             />
           </NavLink>
         )}
@@ -54,7 +53,8 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             content="Games"
             icon="game"
             size="large"
-            inverted color="teal"
+            inverted
+            color="teal"
           />
         </NavLink>
         <NavLink className="navbar-nav-link " exact to="/gettingstarted">
@@ -64,7 +64,8 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             content="Q&A"
             icon="question"
             size="large"
-            inverted color="teal"
+            inverted
+            color="teal"
           />
         </NavLink>
         <NavLink className="navbar-nav-link " exact to="/contact">
@@ -74,13 +75,12 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             content="Contact"
             icon="mail"
             size="large"
-            inverted color="teal"
+            inverted
+            color="teal"
           />
         </NavLink>
-     
-        </div>
+      </div>
     </div>
-
   );
 };
 
