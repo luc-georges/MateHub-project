@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   eventData: state.events.eventData,
   connectedUserId: state.auth.connectedUserId,
   applyMessage: state.events.applyToEventData.applyMessage,
+  applyToEventErrorMessage: state.events.applyToEventErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

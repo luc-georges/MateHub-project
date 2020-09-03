@@ -231,6 +231,7 @@ export default (state = initialState, action = {}) => {
           ...state.applyToEventData,
           applyMessage: '',
         },
+        applyToEventErrorMessage: '',
       };
     case GET_EVENT_BY_ID_SUCCESS:
       return {

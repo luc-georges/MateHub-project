@@ -9,6 +9,7 @@ import {
   Divider,
   Segment,
   Header,
+  Message,
 } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
@@ -25,6 +26,7 @@ const EventPage = ({
   selectPlayerToAcceptOrRefuseInEvent,
   getSelectedUser,
   onDeleteEvent,
+  applyToEventErrorMessage,
 }) => {
   // console.log(eventData._participant);
   console.log(eventData);
@@ -72,20 +74,20 @@ const EventPage = ({
 
   return (
     <div className="eventpage">
-      <Container className="eventpage-informations">
+      <Container className="eventpage-title">
         <h1>
           {eventData._creator}'s event on {eventData._game_name}
         </h1>
         <h3>{eventData._vocal}</h3>
       </Container>
-      <Container textAlign="center">
+      <Container className="eventpage-informations">
         {console.log(eventData._creator_stats)}
         <h2>
-          Creator LoL account :
+          Creator LoL account :{' '}
           {eventData._creator_stats.map((elem) => {
             return elem.summonerName;
           })}
-          -
+          -{' '}
           {eventData._creator_stats.map((elem) => {
             return elem.tier;
           })}
@@ -96,20 +98,29 @@ const EventPage = ({
         <h2>
           Start {moment(eventData._starting).format('h:mm a, dddd DD/MM/YYYY')}
         </h2>
+        {connectedUserId !== eventData._user_id ? (
+          <Form
+            onSubmit={handleApplyToEvent}
+            className="eventpage-form"
+          >
+            {applyToEventErrorMessage && (
+              <Message
+                className="eventpage-apply-error"
+                header={applyToEventErrorMessage}
+              />
+            )}
+            <Input
+            style={{width: '100%'}}
+              icon="send"
+              name="applyMessage"
+              placeholder="Hey mate, i would love to participate! Check my profile !"
+              onChange={handleInputChange}
+              value={applyMessage}
+            />
+            <Button content="Apply to event" className="eventpage-apply-btn" />
+          </Form>
+        ) : null}
       </Container>
-
-      {connectedUserId !== eventData._user_id ? (
-        <Form onSubmit={handleApplyToEvent}>
-          <Input
-            icon="send"
-            name="applyMessage"
-            placeholder="Hey mate, i would love to participate! Check my profile !"
-            onChange={handleInputChange}
-            value={applyMessage}
-          />
-          <Button content="Apply to event" className="eventpage-apply-btn" />
-        </Form>
-      ) : null}
 
       <Divider />
 
@@ -130,14 +141,13 @@ const EventPage = ({
                     <Segment.Group>
                       <Header
                         inverted
-                        primary
                         color="teal"
                         className="event-playercard-nickname"
                       >
                         {filteredUser.nickname}
                       </Header>
                       {filteredUser.stats && (
-                        <Container inverted>
+                        <Container>
                           Summoner :{' '}
                           <strong>
                             {filteredUser.stats.summonerName} -{' '}
@@ -185,14 +195,13 @@ const EventPage = ({
                     <Segment.Group>
                       <Header
                         inverted
-                        primary
                         color="teal"
                         className="event-playercard-nickname"
                       >
                         {filteredUser.nickname}
                       </Header>
                       {filteredUser.stats && (
-                        <Container inverted>
+                        <Container>
                           Summoner :{' '}
                           <strong>
                             {filteredUser.stats.summonerName} -{' '}
