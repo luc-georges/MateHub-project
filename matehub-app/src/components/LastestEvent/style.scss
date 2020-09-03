@@ -1,3 +1,4 @@
+
 .event-card-group{
   display: flex;
   margin: 0!important;
@@ -8,7 +9,8 @@
 }
 .event-card{
   padding: 1em;
-  width: 90%!important;
+  width: 12vw!important;
+  height: 12vw!important;
   margin: 1em!important;
   font-size: 0.8em;
   background: none!important;
@@ -18,6 +20,49 @@
   border: none!important;
   
 
+}
+
+.nickname{
+  font-weight: bold;
+  color: #164f6c;
+}
+.rank{
+  font-weight: bold;
+  color: #fece66; 
+}
+.descript, .view-details{
+  font-style: italic;
+}
+.starting, .number{
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.view-details{
+  font-weight: bold;
+  color: #66fcf2;
+} 
+
+.iron{
+  color: #d7d7d4
+}
+.bronze{
+  color: #93573a
+}
+.silv{
+  color: #8d9fa5
+}
+.gold{
+  color: #d1b450
+}
+.plat{
+  color: #55c2b0
+}
+.diam{
+  color: #8758d5
+}
+.chal{
+  color: #35bff7
 }
 
 @keyframes fadeIn {
