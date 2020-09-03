@@ -35,6 +35,8 @@ const PersonnalProfilePage = ({
     // eslint-disable-next-line
   }, []);
 
+  console.log(personnalData)
+
   const handleInputChange = (evt) => {
     console.log('name >>', evt.target.name);
     console.log('value >>', evt.target.value);
@@ -314,8 +316,8 @@ const PersonnalProfilePage = ({
                           <div className="LatestEvent-text">
                             Looking for: {event._player_max} player
                           </div>
-                          {event._langs.map((lang) => {
-                            return <Flag name={lang.icon} />;
+                          {event.lang.map((lang) => {
+                            return <Flag name={lang.icon} key={lang.id}/>;
                           })}
                           <div className="view-details">view details</div>
                         </div>
@@ -359,8 +361,8 @@ const PersonnalProfilePage = ({
                           <div className="LatestEvent-text">
                             Looking for: {h_event._player_max} player
                           </div>
-                          {h_event._langs.map((lang) => {
-                            return <Flag name={lang.icon} />;
+                          {h_event.Lang.map((lang) => {
+                            return <Flag name={lang.icon} key={lang.id}/>;
                           })}
                           <div className="view-details">view details</div>
                         </div>
