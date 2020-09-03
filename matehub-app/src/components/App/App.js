@@ -44,11 +44,10 @@ function App({
   }, []);
   return (
     <div className="App">
-
       <NavBar />
       <Switch>
         <Route exact path="/">
-        <HomePage className="main" />
+          <HomePage className="main" />
         </Route>
         <Route exact path="/profile/:name" component={ProfilePage} />
         <Route
@@ -65,7 +64,10 @@ function App({
         <Route exact path="/login">
           {isLogged ? <Redirect to="/" /> : <LoginPage />}
         </Route>
-        <Route exact path="/event/:id" component={EventPage} />
+        {/* <Route exact path="/event/:id" component={EventPage} /> */}
+        <Route exact path="/event/:id">
+          {isLogged ? <EventPage /> : <Redirect to="/" />}
+        </Route>
         <Route exact path="/createevent">
           {isLogged ? <CreateEventPage /> : <Redirect to="/" />}
         </Route>
@@ -77,13 +79,9 @@ function App({
         </Route>
       </Switch>
 
-
-    
       <div className="eventbar">
-      <EventBar />
+        <EventBar />
       </div>
-
-
     </div>
   );
 }

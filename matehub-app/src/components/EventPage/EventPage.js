@@ -1,6 +1,17 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import { Button, Input } from 'semantic-ui-react';
+import {
+  Button,
+  Input,
+  Card,
+  Form,
+  Container,
+  Divider,
+  Segment,
+  Header,
+} from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+import moment from 'moment';
 
 const EventPage = ({
   eventData,
@@ -12,16 +23,21 @@ const EventPage = ({
   onApplyAccept,
   onApplyRefuse,
   selectPlayerToAcceptOrRefuseInEvent,
-  onDeleteEvent
+  getSelectedUser,
+  onDeleteEvent,
 }) => {
   // console.log(eventData._participant);
   console.log(eventData);
 
-  useEffect(() => {
-    getEventById();
-  }, []);
+  // useEffect(() => {
+  //   getEventById();
+  // }, []);
 
   console.log(eventData);
+
+  const handleGetSelectedUser = (evt) => {
+    getSelectedUser(evt.currentTarget.id);
+  };
 
   const handleSelectPlayerToAcceptOrRefuseInEvent = (evt, data) => {
     console.log(evt);
@@ -56,72 +72,169 @@ const EventPage = ({
 
   return (
     <div className="eventpage">
-      <div className="event">
-        <Button
-          negative
-          content="delete event"
-          onClick={onDeleteEvent}
-        />
-        <div>Event creator : {eventData._creator} </div>
-        <div>Event game :</div>
-        <div>Event starting time :</div>
+      <Container className="eventpage-informations">
+        <h1>
+          {eventData._creator}'s event on {eventData._game_name}
+        </h1>
+        <h3>{eventData._vocal}</h3>
+      </Container>
+      <Container textAlign="center">
+        {console.log(eventData._creator_stats)}
+        <h2>
+          Creator LoL account :
+          {eventData._creator_stats.map((elem) => {
+            return elem.summonerName;
+          })}
+          -
+          {eventData._creator_stats.map((elem) => {
+            return elem.tier;
+          })}
+          {eventData._creator_stats.map((elem) => {
+            return elem.rank;
+          })}
+        </h2>
+        <h2>
+          Start {moment(eventData._starting).format('h:mm a, dddd DD/MM/YYYY')}
+        </h2>
+      </Container>
 
-        <Input
-          label="Apply message"
-          name="applyMessage"
-          placeholder="a changer"
-          onChange={handleInputChange}
-          value={applyMessage}
-        />
-        <Button
-          content="Apply to event"
-          className="event-apply-btn"
-          onClick={handleApplyToEvent}
-        />
+      {connectedUserId !== eventData._user_id ? (
+        <Form onSubmit={handleApplyToEvent}>
+          <Input
+            icon="send"
+            name="applyMessage"
+            placeholder="Hey mate, i would love to participate! Check my profile !"
+            onChange={handleInputChange}
+            value={applyMessage}
+          />
+          <Button content="Apply to event" className="eventpage-apply-btn" />
+        </Form>
+      ) : null}
 
-        {eventData._participant && (
-          <div>
-            {/* ! Membre de l'événements */}
-            <div className="event-members">Event members</div>
+      <Divider />
+
+      {eventData._participant && (
+        <div>
+          {/* ! Membre de l'événements */}
+          <div className="event-members">Event members</div>
+          <Card.Group centered>
             {eventData._participant
               .filter((user) => user.status === 1)
               .map((filteredUser) => (
-                <div key={filteredUser.user_id}>
-                  <div>{filteredUser.nickname}</div>
-                  <Button
-                    id={filteredUser.user_id}
-                    negative
-                    onClick={handleSelectAndRefuseplayerInEvent}
-                    icon="thumbs down"
-                  />
-                </div>
+                <Card
+                  link
+                  key={filteredUser.user_id}
+                  className="event-playercard-member"
+                >
+                  <Card.Content>
+                    <Segment.Group>
+                      <Header
+                        inverted
+                        primary
+                        color="teal"
+                        className="event-playercard-nickname"
+                      >
+                        {filteredUser.nickname}
+                      </Header>
+                      {filteredUser.stats && (
+                        <Container inverted>
+                          Summoner :{' '}
+                          <strong>
+                            {filteredUser.stats.summonerName} -{' '}
+                            {filteredUser.stats.tier} {filteredUser.stats.rank}
+                          </strong>
+                        </Container>
+                      )}
+                    </Segment.Group>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <NavLink
+                      id={filteredUser.user_id}
+                      to={`/profile/${filteredUser.nickname}`}
+                      onClick={handleGetSelectedUser}
+                    >
+                      <Button inverted content="Profile" />
+                    </NavLink>
+                    {connectedUserId === eventData._user_id ? (
+                      <Button
+                        inverted
+                        color="red"
+                        id={filteredUser.user_id}
+                        onClick={handleSelectAndRefuseplayerInEvent}
+                        content="Kick"
+                      />
+                    ) : null}
+                  </Card.Content>
+                </Card>
               ))}
-            {/* ! Postulant à l'événement */}
-            <div className="event-applicants">Event applicants</div>
+          </Card.Group>
+          <Divider />
+          {/* ! Postulant à l'événement */}
+          <div className="event-applicants">Event applicants</div>
+          <Card.Group centered>
             {eventData._participant
               .filter((user) => user.status === 0)
               .map((filteredUser) => (
-                <div key={filteredUser.user_id}>
-                  <div>{filteredUser.nickname}</div>
-                  <Button.Group icon>
-                    <Button
+                <Card
+                  link
+                  key={filteredUser.user_id}
+                  className="event-playercard"
+                  color="teal"
+                >
+                  <Card.Content>
+                    <Segment.Group>
+                      <Header
+                        inverted
+                        primary
+                        color="teal"
+                        className="event-playercard-nickname"
+                      >
+                        {filteredUser.nickname}
+                      </Header>
+                      {filteredUser.stats && (
+                        <Container inverted>
+                          Summoner :{' '}
+                          <strong>
+                            {filteredUser.stats.summonerName} -{' '}
+                            {filteredUser.stats.tier} {filteredUser.stats.rank}
+                          </strong>
+                        </Container>
+                      )}
+                    </Segment.Group>
+                    <Segment inverted>{filteredUser.message}</Segment>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <NavLink
                       id={filteredUser.user_id}
-                      positive
-                      onClick={handleSelectAndAcceptPlayerInEvent}
-                      icon="thumbs up"
-                    />
-                    <Button
-                      id={filteredUser.user_id}
-                      negative
-                      onClick={handleSelectAndRefuseplayerInEvent}
-                      icon="thumbs down"
-                    />
-                  </Button.Group>
-                </div>
+                      to={`/profile/${filteredUser.nickname}`}
+                      onClick={handleGetSelectedUser}
+                    >
+                      <Button inverted color="teal" content="Profile" />
+                    </NavLink>
+                    {connectedUserId === eventData._user_id ? (
+                      <div className="ui two buttons mini event-playercard-apply-btns">
+                        <Button
+                          inverted
+                          color="green"
+                          id={filteredUser.user_id}
+                          onClick={handleSelectAndAcceptPlayerInEvent}
+                          content="Approve"
+                        />
+                        <Button
+                          inverted
+                          color="red"
+                          id={filteredUser.user_id}
+                          onClick={handleSelectAndRefuseplayerInEvent}
+                          content="Refuse"
+                        />
+                      </div>
+                    ) : null}
+                  </Card.Content>
+                </Card>
               ))}
-          </div>
-        )}
-      </div>
+          </Card.Group>
+        </div>
+      )}
     </div>
   );
 };
