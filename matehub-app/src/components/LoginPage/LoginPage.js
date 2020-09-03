@@ -20,10 +20,11 @@ const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged }) => {
 
   return (
     <div className="loginpage">
-      <Form className="loginform" onSubmit={handleSubmit}>
+      <Form inverted className="loginform" onSubmit={handleSubmit}>
         <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
           Login form
         </h1>
+        <Form.Group widths="equal">
         <Form.Input
           id="form-input-control-error-email"
           name="email"
@@ -33,7 +34,6 @@ const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged }) => {
           value={loginData.email}
           onChange={handleInputChange}
         />
-        <Form.Group widths="equal">
           <Form.Input
             id="form-input-control-password"
             name="password"
@@ -45,8 +45,9 @@ const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged }) => {
           />
         </Form.Group>
         <div>
-          <Form.Field control={Checkbox} label="Remember me" />
+         
           <Button
+          inverted color="teal"
             style={{ marginTop: '2em', textAlign: 'center' }}
             content="submit"
             type="submit"

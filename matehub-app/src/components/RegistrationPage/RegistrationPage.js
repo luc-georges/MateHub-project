@@ -16,13 +16,12 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
   const [checked, setChecked] = React.useState(false);
   return (
     <div className="global">
-      <Form onSubmit={handleSubmit}>
-        <Grid className="RegistrationPage" columns={2}>
+      <Form inverted className="RegistrationPage" onSubmit={handleSubmit}>
+      
           <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
             Inscription form
           </h1>
-          <Grid.Row>
-            <Grid.Column width={16}>
+    
               <Form.Input
                 id="form-input-control-error-email"
                 name="email"
@@ -32,10 +31,8 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
                 value={registerData.email}
                 onChange={handleInputChange}
               />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={10}>
+         
+         
               <Form.Input
                 id="form-input-control-error-nickname"
                 name="nickname"
@@ -44,8 +41,7 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
                 value={registerData.nickname}
                 onChange={handleInputChange}
               />
-            </Grid.Column>
-            <Grid.Column width={6}>
+         
               <Form.Input
                 id="form-input-control-error-dateofbirth"
                 name="dateofbirth"
@@ -55,10 +51,7 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
                 value={registerData.dateofbirth}
                 onChange={handleInputChange}
               />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={8}>
+          
               <Form.Input
                 id="form-input-control-error-password"
                 name="password"
@@ -68,8 +61,7 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
                 value={registerData.password}
                 onChange={handleInputChange}
               />
-            </Grid.Column>
-            <Grid.Column width={8}>
+          
               <Form.Input
                 id="form-input-control-error-passwordConfirm"
                 name="passwordConfirm"
@@ -79,8 +71,7 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
                 value={registerData.passwordConfirm}
                 onChange={handleInputChange}
               />
-            </Grid.Column>
-          </Grid.Row>
+
           {!checked && (
             <div>
             <Form.Input
@@ -104,10 +95,9 @@ const RegistrationPage = ({ registerData, onChangeField, onFormSubmit }) => {
                 label="I agree to the terms and conditions"
                 style={{ marginTop: '2em', textAlign: 'center' }}
               />
-              <Button content="Submit" type="submit" />
+              <Button inverted color="teal" content="Submit" type="submit" />
             </div>
           )}
-        </Grid>
       </Form>
     </div>
   );

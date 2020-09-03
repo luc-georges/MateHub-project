@@ -89,6 +89,7 @@ const SearchEventPage = ({
 
   return (
     <div className="SearchEventPage">
+      <div className="form-side">
       <Form
         onSubmit={onFormSubmit}
         className="searchForm"
@@ -102,7 +103,6 @@ const SearchEventPage = ({
           placeholder="Search for an event by creator name"
         /> */}
 
-        <Form.Group widths="equal">
           <Form.Input
             label="Team size"
             name="_player_max"
@@ -130,9 +130,9 @@ const SearchEventPage = ({
             onChange={handleInputChange}
             value={searchEventData._starting}
           />
-        </Form.Group>
 
-        <Form.Group widths="equal" className="searchForm-rank-container">
+
+  
           <Form.Input
             label="I want to play ranked games"
             name="_is_ranked"
@@ -148,7 +148,7 @@ const SearchEventPage = ({
             options={rankOptions}
             onChange={handleSelectInputChange}
           />
-        </Form.Group>
+
 
         <div className="searchForm-btn-container">
           <Button positive content="Apply filters" type="submit" />
@@ -162,16 +162,17 @@ const SearchEventPage = ({
           />
         </div>
       </Form>
-      <Divider />
+
 
         {console.log(eventSearchResults)}
-
-      <div>
+        </div>
+      <div className="result-side">
         <h2 className="searchResults-title">Search Results</h2>
         <Card.Group centered>
-          {filterGotResults && eventSearchResults.map((element) => {
+          {filterGotResults && eventSearchResults.map((element,index) => {
             return (
-              <Card key={element._event_id} className="searchResults-card">
+              <div className={`slide-up${index}`} >
+              <Card key={element._event_id} className={`searchResults-card event-card `}>
                 <Card.Content>
                   <Card.Header>
                     <Moment format="YYYY/MM/DD HH:MM">
@@ -205,6 +206,7 @@ const SearchEventPage = ({
                   </Link>
                 </Card.Content>
               </Card>
+              </div>
             );
           })}
         </Card.Group>
