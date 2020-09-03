@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import EventPage from '../components/EventPage/EventPage';
+import { getSelectedUser } from '../store/actions/usersActions'; 
 import {
   getEventById,
   applyToEvent,
@@ -14,6 +15,7 @@ const mapStateToProps = (state) => ({
   eventData: state.events.eventData,
   connectedUserId: state.auth.connectedUserId,
   applyMessage: state.events.applyToEventData.applyMessage,
+  applyToEventErrorMessage: state.events.applyToEventErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -46,6 +48,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onDeleteEvent: () => {
     dispatch(deleteEvent());
+  },
+
+  getSelectedUser: (id) => {
+    dispatch(getSelectedUser(id));
   }
 });
 

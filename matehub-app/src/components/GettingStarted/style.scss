@@ -34,8 +34,6 @@
   font-family: 'Orbitron', sans-serif;
 }
 
-
-
 .gettingstarted-bloc2{
   display: inline-block;
 }
@@ -55,6 +53,11 @@
 .gettingstarted-bloc-image2{
   margin-left: auto;
   width: 70%;
-
+  
 }
 
+.gettingstarted-bloc-titre {
+  font-style: italic;
+  text-decoration: underline;
+  color: $color-bleu-fluo
+}

@@ -54,10 +54,29 @@ export const initialState = {
     event_id: '',
     applyMessage: '',
   },
+  applyToEventErrorMessage: '',
 
   // * GET EVENT
   eventDataErrorMessage: '',
-  eventData: {},
+  eventData: {
+    _creator_stats: [
+      {
+        freshBlood: false,
+        hotStreak: false,
+        inactive: false,
+        leagueId: '',
+        leaguePoints: '',
+        losses: '',
+        queueType: '',
+        rank: '',
+        summonerId: '',
+        summonerName: '',
+        tier: '',
+        veteran: false,
+        wins: '',
+      },
+    ],
+  },
   selectedEvent: '',
 
   // * GET ALL EVENTS
@@ -88,7 +107,7 @@ export const initialState = {
     },
     is_ranked: false,
   },
-  playerToAcceptOrRefuseInEvent: '', 
+  playerToAcceptOrRefuseInEvent: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -97,13 +116,13 @@ export default (state = initialState, action = {}) => {
     case DELETE_EVENT:
       return {
         ...state,
-      }
+      };
     // * APPLY
     case SELECT_PLAYER_TO_ACCEPT_OR_REFUSE_IN_EVENT:
       return {
         ...state,
         playerToAcceptOrRefuseInEvent: action.payload,
-      }
+      };
     case APPLY_ACCEPT:
       return {
         ...state,
@@ -142,10 +161,7 @@ export default (state = initialState, action = {}) => {
     case SEARCH_EVENT_SUBMIT_SUCCESS:
       return {
         ...state,
-        eventSearchResults: [
-          ...state.eventSearchResults,
-          ...action.payload,
-        ],
+        eventSearchResults: [...state.eventSearchResults, ...action.payload],
         filterGotResults: true,
       };
     case SEARCH_EVENT_CHANGE_FIELD:
@@ -195,6 +211,11 @@ export default (state = initialState, action = {}) => {
     case APPLY_TO_EVENT_ERROR:
       return {
         ...state,
+        applyToEventErrorMessage: action.payload,
+        applyToEventData: {
+          ...state.applyToEventData,
+          applyMessage: '',
+        },
       };
 
     // * GET EVENT
@@ -206,6 +227,11 @@ export default (state = initialState, action = {}) => {
     case GET_EVENT_BY_ID:
       return {
         ...state,
+        applyToEventData: {
+          ...state.applyToEventData,
+          applyMessage: '',
+        },
+        applyToEventErrorMessage: '',
       };
     case GET_EVENT_BY_ID_SUCCESS:
       return {

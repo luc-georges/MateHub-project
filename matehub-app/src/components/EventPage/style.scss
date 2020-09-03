@@ -1,31 +1,95 @@
 @import 'src/styles/vars';
 
-.eventpage{
-  width: 100%;
-  margin-left: 10%;
-  margin-right: 15%;
-  box-sizing: border-box;
+.eventpage {
+  background-image: url(../../assets/bgtexture.png);
+  width: 76.1%;
+  margin-left: 150px;
+  color: $color-blanc;
   padding: 2em;
   // background-color: #0B0C10;
   // color: rgb(226, 220, 220);
+  &-title {
+    margin-bottom: 3rem;
+  }
+
+  &-informations {
+    margin-bottom: 1rem;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  &-apply-error {
+    text-align: center;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0) !important;
+    box-shadow: 0 1px 3px 0 #ff0000, 0 0 0 1px #ff0000 !important;
+    color: #ff0000 !important;
+    // font-size: 2em;
+  }
+
+  &-apply-btn {
+    text-align: center;
+    margin-top: 0.5rem !important;
+    width: 200px !important;
+  }
 }
 
 .event {
-  width: 50%;
+
 
   &-apply-btn {
     margin-top: 1em;
   }
 
   &-members {
-    padding-top: 1em;
-    font-size: 1.1em;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    font-size: 1.1rem;
     font-weight: bold;
   }
 
   &-applicants {
-    padding-top: 1em;
-    font-size: 1.1em;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    font-size: 1.1rem;
     font-weight: bold;
+  }
+
+  &-playercard {
+    min-height: 220px !important;
+    margin-right: 2rem !important;
+    background-color: $color-gris-fonce !important;
+    color: $color-blanc !important;
+    font-size: 0.8rem;
+    box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
+
+    &-nickname {
+      font-size: 1.5rem !important;
+      color: $color-blanc !important;
+      margin-bottom: 0.5em;
+    }
+
+    &-apply-btns {
+      margin-top: 0.5rem !important;
+    }
+  }
+  
+  &-playercard-member {
+    min-height: 150px !important;
+    margin-right: 2rem !important;
+    background-color: $color-gris-fonce !important;
+    color: $color-blanc !important;
+    font-size: 0.8rem;
+    box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
   }
 }

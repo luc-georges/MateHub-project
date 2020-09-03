@@ -10,8 +10,10 @@ const LastestNews = () => {
     useCSS: false,
     // fade: true,
     swipe: false,
-    autoplay: true,
+    prevArrow: false,
+    arrows: false,
     dots: true,
+
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -22,31 +24,32 @@ const LastestNews = () => {
     
 
   return (
+
     <div className="LastestNews">
-      <h2 className="titre">Lastest News</h2>
+    <h2 className="titre">Lastest News</h2>
       <Slider {...settings}>
       <div className="slide_container">
   <div className="slider_first">
-    <img className="slider_image" src={"https://cdn1.dotesports.com/wp-content/uploads/2019/09/25021744/2-3-768x432.jpg"} alt={"Only one more month to go."} />
+    <img className="slider_image" src={"https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltca7670b2b538e2dd/5f0e49329be1ce01c562aa79/SB-Web-Microsite-Header_1600x556_03.jpg"} alt={"Only one more month to go."} />
   </div>
   <div className="slider_second">
-    <a className="slider_link" href={"https://dotesports.com/league-of-legends/news/league-of-legends-worlds-2020-dates-revealed-for-each-stage-during-tencent-esports-conference"}>
-      <h3>{"Only one more month to go."}</h3>
+    <a className="slider_link" href={"https://na.leagueoflegends.com/en-us/event/spirit-blossom/?utm_medium=news&utm_source=lolweb&utm_campaign=sblossom20&utm_content=crafting_alt"}>
+      <h3>{"Spirit blossom comming."}</h3>
       <h4>{"League of Legends"}</h4>
-      <p>{"League of Legends Worlds 2020 dates revealed for each stage during Tencent Esports Conference"}</p>
+      <p>{"A breeze dances across the forest floor. Bells beckon with a lilting note, each sound an invitation… and a promise. And there! Can you hear it? A whisper through the trees. Laughter like petals surrounds you. Old traditions make way for ancient magics, and in their wake the spirit realm begins to bloom. Welcome to the Spirit Blossom Festival."}</p>
     </a>
   </div>
   
 </div>
 <div className="slide_container" >
   <div className="slider_first">
-    <img className="slider_image" src={"https://cdn1.dotesports.com/wp-content/uploads/2020/08/23140643/49632059962_ac65f1dc5e_k-768x512.jpg.webp"} alt={"league of legends news"} />
+    <img className="slider_image" src={"https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt4a6adba4e5a319eb/5f3b3b6512fb5b71fd0a1c50/Patch_10_16b_Notes_Article.jpg"} alt={"league of legends news"} />
   </div>
   <div className="slider_second">
     <a className="slider_link" href={"https://dotesports.com/league-of-legends/news/fnatic-take-down-rogue-in-lec-summer-split-playoffs-secure-spot-at-worlds-2020"}>
-      <h3>{"Fnatic take down Rogue in LEC Summer Split playoffs, secure spot at Worlds 2020"}</h3>
+      <h3>{"PATCH 10.17"}</h3>
       <h4>{"League of Legends"}</h4>
-      <p>{"Rogue may have gotten more than they bargained for when they chose Fnatic for their first match of playoffs."}</p>
+      <p>{"We’re back from the break, we’re blistering in this heat, and we’re bringing a brief B-side patch!"}</p>
     </a>
   </div>
   

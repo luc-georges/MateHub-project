@@ -5,11 +5,14 @@
 
   background-attachment: fixed;
   background-color: $color-gris-fonce;
-  box-shadow: 3px 0px 8px 0px rgba(173, 170, 170, 0.2);
+  box-shadow: 3px 0px 8px 0px rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 150px;
   min-width: 150px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+
 
   &-logo {
     font-size: 2em;
@@ -22,7 +25,12 @@
   }
 
   &-nav {
-    font-size: 1.2rem;
+    font-size: .9em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     &-link {
       width: 90%;
@@ -31,6 +39,11 @@
       line-height: 10px;
     }
   }
+
 }
 
-
+.header-nav{
+  height: 80px;
+  display: flex;
+  box-shadow: 3px 2px 8px 2px rgba(0, 0, 0, 0.2);
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Button } from 'semantic-ui-react';
+import { Icon, Button,Flag } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 import Moment from 'react-moment';
@@ -18,6 +18,7 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
         </NavLink>
       )}
 
+    
     {!isLogged && <div className="pOr">Or</div>}
 
       {!isLogged && (
@@ -30,49 +31,89 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
       )}
         
 
-      {!isLogged && <div className="pOr">Please, connect to see event management</div>}
+      {!isLogged && <div className="pOr">Create an account or login to join the community and keep track of your events</div>}
 
-      {isLogged && <Icon className="user circle" size="massive" />}
-
-      {isLogged && <Button content="Logout" onClick={handleLogout} />}
+      {isLogged &&  <NavLink exact to="/"><Button  inverted color="teal" content="Logout" onClick={handleLogout} /> </NavLink>}
 
       {isLogged && (
         <div className="eventbar-eventedition">
-          Events
-          <NavLink exact to="/createevent">
-            <Icon className="add" />
-          </NavLink>
-          <NavLink exact to="/searchevent">
-            <Icon className="search" />
-          </NavLink>
+          Events :
+         
         </div>
       )}
-
+{isLogged && 
+    <div className="eventbar-link-container">
+    <div className="eventbar-link-button">
+    <NavLink exact to="/createevent">
+         <Button
+          animated
+           fluid
+           className="createEvent"
+           size="medium"
+           inverted color="teal"
+         >
+          <Button.Content visible>Create event</Button.Content>
+      <Button.Content hidden>
+        <Icon name='add' />
+      </Button.Content>
+      </Button>
+           </NavLink>
+          </div>
+          <div className="eventbar-link-button" >
+           <NavLink exact to="/searchevent">
+        
+          
+           <Button
+             animated
+             fluid
+             className="searchEvent"
+             content="Search event"
+             size="medium"
+             inverted color="teal"
+           >
+           <Button.Content visible>Search event</Button.Content>
+          <Button.Content hidden>
+          <Icon name='search' />
+        </Button.Content>
+        </Button>
+             </NavLink>
+            </div>
+            </div>
+    }
       {isLogged && (
         <div className="eventbar-eventlist">
           {list.map((event) => {
             return (
-              <div className="eventbar-event" key={event._event_id}>
-                <a href="/">
-                  <Icon className="eye" size="big" />
-                </a>
-                <div className="eventbar-event-infos">
-                  <div>Event date :</div>
-                  <div>
-                    <Moment
-                      format="YYYY/MM/DD HH:MM"
-                      content={event._starting}
-                    />
-                  </div>
-                  <div>{event._player_count} players</div>
-                  <div>Description :</div>
-                  <div>
+              <div className="eventbar-event-container" key={event._event_id}>
+                <div>
                     {event._description.length > 30
                       ? `${event._description.slice(0, 30)}...`
                       : event._description}
-                  </div>
-                  <div>Duration : {event._duration.hours}h</div>
+            <a href="/" >
+            <NavLink exact to={`/event/${event._id}`}>
+                  <Icon className="eye" size="large"/>
+             </NavLink>
+                </a>
                 </div>
+              
+                  
+                      <div classname="eventbar-event-infos">
+                  <Moment
+                      format="YYYY/MM/DD HH:MM"
+                      content={event._starting}
+                    /> 
+                  
+                  <div >{event._player_count} players</div>
+
+                  <div>Duration : {event._duration.hours}h</div>
+                  {event._langs.map((lang)=>{
+                     return (
+                    <Flag name={lang.icon} />
+                  )
+             })}
+       </div>
+
+                
               </div>
             );
           })}
