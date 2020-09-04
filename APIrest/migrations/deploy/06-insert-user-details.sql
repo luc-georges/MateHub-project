@@ -49,6 +49,7 @@ SELECT u.id AS "_user_id",
                          e."duration",
                          (SELECT (e.event_time) + e.duration AS "end" ) AS "end" ,
                          e."player_count",
+                         e."rank",
                          e."player_max",
                          e."description",
                          e."status",
@@ -64,7 +65,7 @@ SELECT u.id AS "_user_id",
                         JOIN user_access."game" g ON g.id = e.game_id
                         JOIN user_access."user" u ON e.user_id = u.id
                          WHERE e.user_id = "USER_ID"
-                                GROUP by e.id,u.id,g.name,g.id
+                                GROUP by e.id,u.id,g.name,g.id,e.rank
                         )r 
                         ) AS "_event_created" ,
                         --  object containing all event  this user is tagged in
@@ -75,7 +76,8 @@ SELECT u.id AS "_user_id",
                         g."name" AS "game_name",
                         g."id"   AS "game_id",  
                         uhe."message", 
-                        evvt."event_time", 
+                        evvt."event_time",
+                        evvt."rank" ,
                         evvt."duration",
                          (SELECT (evvt.event_time) + evvt.duration AS "end" ) AS "end" ,
                         evvt."player_count", 
@@ -96,7 +98,7 @@ SELECT u.id AS "_user_id",
                         JOIN user_access."game" g ON g.id = evvt.game_id
                             WHERE uhe.user_id = u.id
                                 GROUP by u.id, uhe.event_id,g.name, g.id, evvt.event_time, evvt.duration, evvt.player_count, evvt.player_max,
-                                evvt.description, evvt.status, evvt.vocal,uhe.message
+                                evvt.description, evvt.status, evvt.vocal,uhe.message,evvt.rank
                                  ) z
              ) AS "_has_events"
             

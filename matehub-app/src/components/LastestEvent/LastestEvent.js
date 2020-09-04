@@ -82,7 +82,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
               </div>
             </NavLink>
           );
-        })}
+                    })}
       </Card.Group>
     </div>
   );
