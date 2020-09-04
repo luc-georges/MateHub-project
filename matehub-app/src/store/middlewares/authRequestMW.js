@@ -125,6 +125,7 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
+          
           store.dispatch(getPersonnalDataSuccess(res.data.data));
         })
         .catch((err) => {

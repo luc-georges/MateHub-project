@@ -36,7 +36,7 @@ export default (store) => (next) => (action) => {
         url: `http://localhost:3001/user/profile/${selectedUser}`,
       })
         .then((res) => {
-          // console.log(res.data.data);
+          console.log("in my response",res.data.data)
           store.dispatch(getUserSuccess(res.data.data));
         })
         .catch((err) => {

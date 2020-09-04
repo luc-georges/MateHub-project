@@ -69,6 +69,7 @@ export const initialState = {
         player_max: '',
         description: '',
         status: '',
+        rank:'',
         lang: [
           {
             id: '',
@@ -92,6 +93,7 @@ export const initialState = {
         player_max: '',
         description: '',
         status: '',
+        rank:'',
         Lang: [
           {
             id: '',
