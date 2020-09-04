@@ -4,14 +4,15 @@
   display: flex;
   margin: 0!important;
   justify-content: center;
+  flex-wrap: wrap;
 
 
 
 }
 .event-card{
   padding: 1em;
-  width: 12vw!important;
-  height: 12vw!important;
+  width: 250px!important;
+  height: 250px!important;
   margin: 1em!important;
   font-size: 0.8em;
   background: none!important;
