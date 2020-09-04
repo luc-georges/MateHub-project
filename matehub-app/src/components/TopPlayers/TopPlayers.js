@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 import { Card, Image } from 'semantic-ui-react'
 
-const TopPlayers = ({ topUsersList, getSelectedUser }) => {
+const TopPlayers = ({ topUsersList, getSelectedUser, getUser }) => {
   // const [userid, setUserId] = useState();
 
   // console.log(getSelectedUser);
   const handleGetSelectedUser = (evt) => {
     getSelectedUser(evt.currentTarget.id);
+    getUser();
   };
 
   return (

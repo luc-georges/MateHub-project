@@ -26,11 +26,11 @@ const ProfilePage = ({
     // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
   };
-  // eslint-disable-next-line
+ /*  // eslint-disable-next-line
   useEffect(() => {
     getUser();
     // eslint-disable-next-line
-  }, []);
+  }, []); */
 
   const [open, setOpen] = useState(false);
   // const [open2, setopen2] = useState(false);
