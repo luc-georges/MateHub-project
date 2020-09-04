@@ -18,7 +18,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
       <Card.Group className="event-card-group" centered>
         {list.slice(0, 12).map((element, index) => {
           let rankClass;
-          console.log(element._rank.slice(0,4))
+          
           if( element._rank.slice(0,4) === "iron"){
             rankClass = "iron"
           }else if (element._rank.slice(0,6) === "bronze"){
