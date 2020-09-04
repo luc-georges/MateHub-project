@@ -97,7 +97,7 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
                 </div>
               
                   
-                      <div classname="eventbar-event-infos">
+                      <div className="eventbar-event-infos">
                   <Moment
                       format="YYYY/MM/DD HH:MM"
                       content={event._starting}

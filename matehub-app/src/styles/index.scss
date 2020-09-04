@@ -13,10 +13,40 @@ body {
   color: #ffffff !important;
 
 }
+::-webkit-scrollbar {
+  width: 2px !important; /* Remove scrollbar space */
+  background: transparent !important; /* Optional: just make scrollbar invisible */
+}
 
+::-webkit-scrollbar-thumb {
+  background:#66fcf1!important;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
+.ui.inverted.form input:not([type]),
+ .ui.inverted.form input[type=date],
+  .ui.inverted.form input[type=datetime-local],
+   .ui.inverted.form input[type=email],
+    .ui.inverted.form input[type=file],
+     .ui.inverted.form input[type=number],
+      .ui.inverted.form input[type=password],
+       .ui.inverted.form input[type=search],
+        .ui.inverted.form input[type=tel],
+         .ui.inverted.form input[type=text],
+          .ui.inverted.form input[type=time],
+           .ui.inverted.form input[type=url] ,
+           .ui.dropdown ,.ui.form input:not([type]), 
+           .ui.form input[type=date], .ui.form input[type=datetime-local], 
+           .ui.form input[type=email], .ui.form input[type=file], 
+           .ui.form input[type=number], .ui.form input[type=password], 
+           .ui.form input[type=search], .ui.form input[type=tel], 
+           .ui.form input[type=text], .ui.form input[type=time], 
+           .ui.form input[type=url],.ui.form select, .ui.form textarea 
+           { background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+            box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+            color:white!important;
+          }
 

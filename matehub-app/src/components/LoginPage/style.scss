@@ -1,13 +1,48 @@
 .loginpage {
-  margin-left: 10%;
-  margin-right: 15%;
+  margin-top: 7%;
+  height: 80vh;
   width: 100%;
+  margin-left: 150px;
+  background-image: url(../../assets/tresh.png);
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: 13%;
+
 }
 
 .loginform {
-  padding: 2em;
+  margin-top: 10%;
+  width: 40%!important;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background:#161c24d0 !important;
+  color: white!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffffd0!important;
+}
+.loginform>.ui.input{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+}
+.ui.form textarea {
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+}
+.ui.inverted.form input[type=text]{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  color:white;
+}
+.ui.inverted.form input[type=email], .ui.inverted.form input[type=password]{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  color:white!important;
+}
+.ui.inverted.form input[type=date], .ui.inverted.form input[type=password]{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  color:white;
 }

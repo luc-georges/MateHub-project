@@ -2,38 +2,58 @@
 
 .SearchEventPage{
   background-image: url(../../assets/bgtexture.png);
-  width: 77%;
+  width: 80%;
   margin-left: 150px;
   color: $color-blanc;
+  display: flex;
+  height: 99vh;
 }
+.form-side{
+  width: 25%!important;
+  margin-left: 5em!important;
+  height: 99vh;
+  border-right: 1px solid black;
+  display: flex;
 
+
+}
+.result-side{
+  width: 89%;
+
+}
 .searchForm {
-  width: 80%;
-  align-items: center;
+  margin-top: 2em!important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 60vh!important;
+  margin: 0!important;
 
-  &-title {
-    padding-bottom: 1em;
+  &-title{
+    margin-top: 3em!important;
+    width: 100%;
   }
-
-  &-rank-container{
-    width: 50%;
-    align-items: center;
-  }
-
-  &-btn-container {
-    margin-top: 2rem !important;
-    width: 50%;
-    text-align: center;
-    margin: 0 auto;
-  }
-  &-btn-resetFilters {
-    width: 90%;
-    margin-top: 1rem !important;
-  }
+}
+.form-side>.form{
+  margin-right:0!important;
+  width:100%!important;
+  padding: 0!important;
+}
+.result-side>.ui.cards{
+  margin: 0!important;
+}
+.result-side{
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto!important;
+  height: 99vh!important;
 }
 
 .searchResults {
   text-align: center;
+  display: flex;
+  justify-content: center;
+
   &-title {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -43,4 +63,73 @@
   &-card {
     background-color: $color-gris-fonce !important;
   }
+}
+.searchResults-card{
+  width: 40vw!important;
+}
+// ANIMATION
+@keyframes slideUp {
+  0% {opacity: 0;
+    transform: translateY(200px);}
+    50%{opacity: 0;}
+  100% {opacity: 1;
+    transform: translateY(0px);}}
+.slide-up0
+{
+
+  animation:slideUp 0s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+
+}
+
+.slide-up1
+{
+ 
+  animation:slideUp  0.5s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+
+.slide-up2
+{
+  animation:slideUp  1s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up3
+{
+  animation:slideUp  1.5s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up4
+{
+  animation:slideUp  1.9s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up5
+{
+  animation:slideUp  2.4s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up6
+{
+  animation:slideUp  2.8s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+
+.slide-up7
+{
+  animation:slideUp  3s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+
+.slide-up8
+{
+  animation:slideUp  3.2s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up9
+{
+  animation:slideUp  3.4s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up10
+{
+  animation:slideUp  3.6s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up11
+{
+  animation:slideUp  3.8s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-up12
+{
+  animation:slideUp  4s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
 }
