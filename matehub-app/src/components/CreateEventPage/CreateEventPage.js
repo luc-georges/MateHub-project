@@ -397,6 +397,7 @@ const CreateEventPage = ({
         />
 
         <Form.Input
+
           label="Rank"
           control="select"
           name="rank"
