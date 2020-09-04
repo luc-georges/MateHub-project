@@ -190,59 +190,51 @@ const CreateEventPage = ({
         <div>
           {flagError ? (
             <Message
-              error
-              header="Select language error"
-              content="You must select atleast one language"
+              header="Select language error, you must select atleast one language"
+              className="input-error-message"
             />
           ) : null}
           {gameIdError ? (
             <Message
-              error
-              header="Select game error"
-              content="You did not specify on which game your event is created"
+              header="Select game error, you did not specify on which game your event is created"
+              className="input-error-message"
             />
           ) : null}
           {playerMaxError ? (
             <Message
-              error
-              header="Maximum players error"
-              content="You did not specify how many players you want on your event"
+              header="Maximum players error, you did not specify how many players you want on your event"
+              className="input-error-message"
             />
           ) : null}
           {durationError ? (
             <Message
-              error
-              header="Duration error"
-              content="You did not specify a duration for your event"
+              header="Duration error, you did not specify a duration for your event"
+              className="input-error-message"
             />
           ) : null}
           {eventStartDateError ? (
             <Message
-              error
-              header="Date error"
-              content="You did not specify the event day"
+              header="Date error, you did not specify the event day"
+              className="input-error-message"
             />
           ) : null}
           {eventStartHourError ? (
             <Message
-              error
-              header="Date error"
-              content="You did not specify the event starting hour"
+              header="Date error, you did not specify the event starting hour"
+              className="input-error-message"
             />
           ) : null}
           {rankError ? (
             <Message
-              error
-              header="Rank error"
-              content="You must specify your rank"
+              header="Rank error, you must specify your rank"
+              className="input-error-message"
             />
           ) : null}
 
           {descriptionError ? (
             <Message
-              error
-              header="Description error"
-              content="You did not specify a description for your event"
+              header="Description error, you did not specify a description for your event"
+              className="input-error-message"
             />
           ) : null}
         </div>
@@ -405,7 +397,7 @@ const CreateEventPage = ({
           value={eventCreationData.rank}
           error={rankError}
         >
-          <option value=''>Select your rank</option>
+          <option value="">Select your rank</option>
           <optgroup label="Iron">
             <option value="Iron 1">Iron I</option>
             <option value="Iron 2">Iron II</option>
@@ -462,9 +454,9 @@ const CreateEventPage = ({
           value={eventCreationData.description}
           error={descriptionError}
         />
-          <Link aria-disabled to={`/event/${selectedEvent}`}>
-            <Button content="Create event" type="submit" />
-          </Link>
+        {/* <Link aria-disabled to={`/event/${selectedEvent}`}> */}
+        <Button content="Create event" type="submit" />
+        {/* </Link> */}
       </Form>
     </div>
   );

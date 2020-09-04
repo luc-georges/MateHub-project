@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.scss';
-import { Form, Button, Checkbox } from 'semantic-ui-react';
+import { Form, Button, Message } from 'semantic-ui-react';
 
-const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged }) => {
+const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged, loginErrorMessage }) => {
   // console.log('LoginPage');
 
   const handleInputChange = (evt) => {
@@ -16,14 +16,19 @@ const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged }) => {
     // evt.preventDefault();
     onFormSubmit();
   };
-  // <--- The page you want to redirect your user to.
 
   return (
     <div className="loginpage">
       <Form inverted className="loginform" onSubmit={handleSubmit}>
-        <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
+        <h1 style={{ margin: '0 auto 1em auto' }}>
           Login form
         </h1>
+        {loginErrorMessage ? (
+            <Message
+              header={loginErrorMessage}
+              className='input-error-message'
+            />
+          ) : null}
         <Form.Group widths="equal">
         <Form.Input
           id="form-input-control-error-email"

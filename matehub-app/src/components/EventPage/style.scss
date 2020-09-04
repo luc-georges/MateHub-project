@@ -26,15 +26,6 @@
     align-items: center !important;
   }
 
-  &-apply-error {
-    text-align: center;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0) !important;
-    box-shadow: 0 1px 3px 0 #ff0000, 0 0 0 1px #ff0000 !important;
-    color: #ff0000 !important;
-    // font-size: 2em;
-  }
-
   &-apply-btn {
     text-align: center;
     margin-top: 0.5rem !important;

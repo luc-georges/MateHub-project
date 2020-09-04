@@ -54,7 +54,7 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.log('On passe dans le catch de la requête de login :', err);
-          store.dispatch(loginSubmitError("Cet utilisateur n'existe pas"));
+          store.dispatch(loginSubmitError("Wrong user or password"));
         });
       break;
     case LOGOUT:

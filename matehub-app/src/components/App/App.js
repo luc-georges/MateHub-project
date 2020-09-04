@@ -59,7 +59,8 @@ function App({
           <ContactPage />
         </Route>
         <Route exact path="/registration">
-          {registered ? <Redirect to="/login" /> : <RegistrationPage />}
+          {/* {registered ? <Redirect to="/login" /> : <RegistrationPage />} */}
+          <RegistrationPage />
         </Route>
         <Route exact path="/login">
           {isLogged ? <Redirect to="/" /> : <LoginPage />}

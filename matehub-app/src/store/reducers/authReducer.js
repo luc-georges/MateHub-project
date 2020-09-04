@@ -69,6 +69,7 @@ export const initialState = {
         player_max: '',
         description: '',
         status: '',
+        rank: '',
         lang: [
           {
             id: '',
@@ -92,6 +93,7 @@ export const initialState = {
         player_max: '',
         description: '',
         status: '',
+        rank: '',
         Lang: [
           {
             id: '',
@@ -174,6 +176,10 @@ export default (state = initialState, action = {}) => {
         nickname: '',
         isLogged: false,
         loginErrorMessage: action.payload,
+        loginData: {
+          ...state.loginData,
+          password: '',
+        },
       };
     case LOGOUT_SUCCESS:
       return {
