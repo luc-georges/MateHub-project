@@ -171,6 +171,7 @@ const SearchEventPage = ({
         </div>
       <div className="result-side">
         <h2 className="searchResults-title">Search Results</h2>
+       
         <Card.Group centered>
           {filterGotResults && eventSearchResults.map((element,index) => {
 
@@ -195,30 +196,35 @@ const SearchEventPage = ({
             return (
               <div className={`slide-up${index}`} >
               <Card key={element._event_id} className={`searchResults-card event-card `}>
-                <Card.Content>
                   <Card.Header >
                     <span className="elm-star"><Moment format="MMM DD HH:MM">
                       {element._starting}
                     </Moment></span>
                   </Card.Header>
-                  <Image floated="left" size="mini" src={logolol} />
-                  <Card.Meta className="lol">- {element._game_name} -</Card.Meta>
-                  <Card.Meta>
-                    creator : <span className="nickname">{element._creator}</span> -<span className={`rank ${rankClass}`}> {element._rank}</span>
+                <Card.Content className="card-container">
+                <Link
+                    id={element._event_id}
+                    to={`/event/${element._event_id}`}
+                    onClick={handleGetSelectedEvent}
+                  >
+                    <Button className="card-button" inverted color="teal" content="Go" size="mini" />
+                  </Link>
+                  <Card.Meta ><Image  size="mini" src={logolol} /></Card.Meta>
+                  <Card.Meta className="nick-search">
+                   <span className="nickname ">{element._creator}</span><span className={`rank ${rankClass}`}> {element._rank}</span>
                   </Card.Meta>
-                  <Card.Description className="descript descript-spe">                    
+                  <Card.Description className="descript descript-spe desc-search">                    
                     "{element._description.length > 40
                       ? `${element._description.slice(0, 40)}...`
                       : element._description}"{/* "{element._description}" */}</Card.Description>
                   <Card.Description>
-                    Register player(s) now: <span className="number">{element._player_count}</span>
+                    Event member: <span className="number">{element._player_count}</span>
                   </Card.Description>
                   <Card.Description>
                     Looking for {element._player_max - element._player_count}{' '}
                     more players
                   </Card.Description>
-                  <Card.Description>
-                  <span>Lang: </span>
+                  <Card.Description className="lang-search">
                       {element._langs.map((lang) => {
                         return <Flag name={lang.icon} />;
                       })}
@@ -230,13 +236,7 @@ const SearchEventPage = ({
                         })}
                       </div>
                     )} */}
-                  <Link
-                    id={element._event_id}
-                    to={`/event/${element._event_id}`}
-                    onClick={handleGetSelectedEvent}
-                  >
-                    <Button inverted color="teal" content="Go" size="mini" />
-                  </Link>
+                  
                 </Card.Content>
               </Card>
               </div>

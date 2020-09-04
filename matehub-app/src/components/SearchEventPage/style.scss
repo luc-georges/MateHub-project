@@ -18,7 +18,7 @@
 
 }
 .result-side{
-  width: 89%;
+  width: 100%;
 
 }
 .searchForm {
@@ -62,15 +62,33 @@
 
   &-card {
     background-color: $color-gris-fonce !important;
+
   }
 }
+.card-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 .searchResults-card{
-  width: 40vw!important;
+  width: 55vw!important;
+  height: 110px!important;
+  display: flex;
+  text-align: center;
+
+}
+.searchResults-card>:first-child{
+  text-align: center;
+}
+.card-button{
+
 }
 .elm-star{
   font-size: 1.4em;
+  width: 100%;
   font-weight: bolder;
   color:#45a29d;
+  text-align: center;
 }
 .lol{
   font-style: italic;
@@ -144,4 +162,18 @@
 .slide-up12
 {
   animation:slideUp  4s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.nick-search{
+  width:100px;
+}
+.desc-search{
+  width:200px;
+}
+.nick-search{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.lang-search{
+min-width: 72px;
 }
