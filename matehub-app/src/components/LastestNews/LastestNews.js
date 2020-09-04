@@ -26,7 +26,7 @@ const LastestNews = () => {
   return (
 
     <div className="LastestNews">
-    <h2 className="titre">Lastest News</h2>
+    <h2 className="titre homeTitle">Lastest News</h2>
       <Slider {...settings}>
       <div className="slide_container">
   <div className="slider_first">

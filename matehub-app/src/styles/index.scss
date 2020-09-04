@@ -1,5 +1,6 @@
 @use 'reset';
 @use 'vars';
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 body {
   margin: 0;
@@ -12,7 +13,14 @@ body {
   color: #ffffff !important;
 
 }
+::-webkit-scrollbar {
+  width: 2px !important; /* Remove scrollbar space */
+  background: transparent !important; /* Optional: just make scrollbar invisible */
+}
 
+::-webkit-scrollbar-thumb {
+  background:#66fcf1!important;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -41,3 +49,4 @@ code {
             box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
             color:white!important;
           }
+

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logolol from '../../assets/logolol.png';
 import Moment from 'react-moment';
-import { Card, Image, Flag } from 'semantic-ui-react';
+import { Card, Image, Flag, Icon } from 'semantic-ui-react';
 import './style.scss';
 
 const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
@@ -13,10 +13,28 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
   };
   return (
     <div className="LastestEvent-cards">
-      <h2 className="titre">Lastest event</h2>
+      <h2 className="titre homeTitle">Lastest event</h2>
 
       <Card.Group className="event-card-group" centered>
         {list.slice(0, 12).map((element, index) => {
+          let rankClass;
+          
+          if( element._rank.slice(0,4) === "iron"){
+            rankClass = "iron"
+          }else if (element._rank.slice(0,6) === "bronze"){
+            rankClass = "bronze"
+          }else if (element._rank.slice(0,4) === "silv"){
+            rankClass = "silv"
+          }else if (element._rank.slice(0,4) === "gold"){
+            rankClass = "gold"
+          }else if (element._rank.slice(0,4) === "plat"){
+            rankClass = "plat"
+          }else if (element._rank.slice(0,4) === "diam"){
+            rankClass = "diam"
+          } else {
+            rankClass = "chal"
+          };
+
           return (
             <NavLink
               key={element._event_id}
@@ -33,25 +51,31 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
 
                     <Card.Header>{element.game_name}</Card.Header>
 
-                    <Card.Meta>{element._creator}</Card.Meta>
-                    <Card.Description>{element._description}</Card.Description>
+          <Card.Meta ><span className="nickname">{element._creator}</span><br /><span className={`rank ${rankClass}`}>{element._rank}</span></Card.Meta>
+                  {/* <Segment inverted>{element._description}</Segment> */}
+                    <Card.Description className="descript">                    
+                    "{element._description.length > 25
+                      ? `${element._description.slice(0, 25)}...`
+                      : element._description}"{/* "{element._description}" */}</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <div className="LatestEvent-text">
-                      Date and time{' '}
-                      <Moment format="YYYY/MM/DD HH:MM">
+                      Starting date and time:{' '} <br />
+                      <span className="starting">
+                      <Moment format="MMM DD HH:MM">
                         {element._starting}
-                      </Moment>
+                      </Moment></span>
                       <div className="LatestEvent-text">
-                        Number of players {element._player_count}
+                        Register player(s) now: <span className="number">{element._player_count}</span>
                       </div>
                       <div className="LatestEvent-text">
-                        Looking for: {element._player_max} player
+                        Looking for: <span className="number">{element._player_max}</span> players
                       </div>
+                      <span>Lang: </span>
                       {element._langs.map((lang) => {
                         return <Flag name={lang.icon} />;
                       })}
-                      <div className="view-details">view details</div>
+                      <div className="view-details">GO{" "}<Icon name="rocket"/></div>
                     </div>
                   </Card.Content>
                 </Card>

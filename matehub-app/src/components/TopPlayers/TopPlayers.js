@@ -13,7 +13,7 @@ const TopPlayers = ({ topUsersList, getSelectedUser }) => {
 
   return (
     <div className="TopPlayers">
-      <h2 className="titre">TopPlayers</h2>
+      <h2 className="titre homeTitle">TopPlayers</h2>
       <div className="TopPlayers-modules">
       <Card.Group className="user-card-group">
         {topUsersList.map((element,index) => (
@@ -33,9 +33,9 @@ const TopPlayers = ({ topUsersList, getSelectedUser }) => {
           size='tiny'
           src={require(`../../assets/${element._avatar}`)}
           />
-          <Card.Meta>{element._name}</Card.Meta>
-          <Card.Description>
-          Rank : Gold IV
+          <Card.Meta className="nickname">{element._name}</Card.Meta>
+          <Card.Description >
+          Rank : <span className="playerRank">Gold IV</span>
           </Card.Description>
           </Card.Content>
           <Card.Content extra>

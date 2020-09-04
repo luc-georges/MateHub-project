@@ -97,19 +97,15 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
                   </a>
                 </div>
 
-                <div classname="eventbar-event-infos">
+                <div className="eventbar-event-infos">
                   <Moment format="YYYY/MM/DD HH:MM" content={event._starting} />
 
                   <div>{event._player_count} players</div>
 
                   <div>Duration : {event._duration.hours}h</div>
-                  {event._langs &&
-                    event._langs.map((lang) => {
-                      return <Flag name={lang.icon} />;
-                    })}
-                  {/*  {event._langs.map((lang) => {
+                  {event._langs.map((lang) => {
                     return <Flag name={lang.icon} />;
-                  })} */}
+                  })}
                 </div>
               </div>
             );

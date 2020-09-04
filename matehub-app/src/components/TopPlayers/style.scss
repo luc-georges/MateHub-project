@@ -14,8 +14,10 @@
     font-size: 0.8em;
     background: none!important;
     color: white!important;
-    box-shadow: 0 1px 3px 0 #6dffff, 0 0 0 1px #6dffff!important;
+    box-shadow: 0 1px 3px 0 #6dffff00, 0 0 0 1px #6dffff00!important;
+    background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
     transition: transform .3s ease-out;
+    border: none!important;
 }
 .user-card:hover{
   transform: translate(0, -5px);
@@ -26,4 +28,8 @@
 
 .slide_container{
   position: relative;
+}
+.playerRank{
+  color: #d1b450;
+  font-weight: bold;
 }

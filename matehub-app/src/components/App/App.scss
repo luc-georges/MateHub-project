@@ -1,13 +1,6 @@
 
 @import 'src/styles/vars';
-::-webkit-scrollbar {
-  width: 2px !important; /* Remove scrollbar space */
-  background: transparent !important; /* Optional: just make scrollbar invisible */
-}
 
-::-webkit-scrollbar-thumb {
-  background:$color-bleu-fluo !important;
-}
 
 .App {
   display: flex;

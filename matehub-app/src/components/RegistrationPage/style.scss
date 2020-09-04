@@ -1,13 +1,21 @@
 .global {
+  margin-top: 5%;
+  height: 80vh;
   width: 100%;
-  margin-left: 10%;
-  margin-right: 15%;
+  margin-left: 150px;
+  background-image: url(../../assets/machin.png);
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: 13%;
 }
 
 .RegistrationPage {
-  padding: 2em;
+  width: 40%!important;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background:#161c24d0 !important;
+  color: white!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffffd0!important;
 }
