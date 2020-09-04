@@ -163,7 +163,7 @@ const EventPage = ({
                       to={`/profile/${filteredUser.nickname}`}
                       onClick={handleGetSelectedUser}
                     >
-                      <Button inverted content="Profile" />
+                      <Button inverted color="teal" content="Profile" />
                     </NavLink>
                     {connectedUserId === eventData._user_id ? (
                       <Button

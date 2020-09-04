@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 import { Card, Image } from 'semantic-ui-react'
 
-const TopPlayers = ({ topUsersList, getSelectedUser }) => {
+const TopPlayers = ({ topUsersList, getSelectedUser, getUser }) => {
   // const [userid, setUserId] = useState();
 
   // console.log(getSelectedUser);
   const handleGetSelectedUser = (evt) => {
     getSelectedUser(evt.currentTarget.id);
+    getUser();
   };
 
   return (
@@ -31,7 +32,7 @@ const TopPlayers = ({ topUsersList, getSelectedUser }) => {
           className="user-image"
           floated='right'
           size='tiny'
-          src={require(`../../assets/${element._avatar}`)}
+          src={element._avatar ? require(`../../assets/${element._avatar}`) : null}
           />
           <Card.Meta className="nickname">{element._name}</Card.Meta>
           <Card.Description >
