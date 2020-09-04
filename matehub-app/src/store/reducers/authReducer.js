@@ -9,6 +9,7 @@ import {
   GET_PERSONNAL_DATA,
   GET_PERSONNAL_DATA_SUCCESS,
   GET_PERSONNAL_DATA_ERROR,
+  CHECK_AUTH,
 } from '../actions/authActions';
 
 export const initialState = {
@@ -180,6 +181,11 @@ export default (state = initialState, action = {}) => {
           ...state.loginData,
           password: '',
         },
+      };
+    case CHECK_AUTH:
+      return {
+        ...state,
+        loginErrorMessage: '',
       };
     case LOGOUT_SUCCESS:
       return {

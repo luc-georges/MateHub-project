@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
     dateofbirth: state.register.registerData.dateofbirth,
   },
   registered: state.register.registered,
+  registerErrorMessage: state.register.registerErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

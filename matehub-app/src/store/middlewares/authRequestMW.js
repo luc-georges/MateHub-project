@@ -49,12 +49,12 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log(res.data.data.info);
+          // console.log(res.data.data.info);
           store.dispatch(loginSubmitSuccess(res.data.data.info._id));
         })
         .catch((err) => {
-          console.log('On passe dans le catch de la requête de login :', err);
-          store.dispatch(loginSubmitError("Wrong user or password"));
+          // console.log(err.response.data.error);
+          store.dispatch(loginSubmitError(err.response.data.error));
         });
       break;
     case LOGOUT:
@@ -104,7 +104,7 @@ export default (store) => (next) => (action) => {
             'On rentre dans le catch de CHECK AUTH (isLogged) :',
             err
           );
-        });
+        })
       break;
     case GET_PERSONNAL_DATA_SUBMIT:
       // if (modifyPersonnalData.banner){

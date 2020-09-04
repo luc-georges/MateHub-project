@@ -1,5 +1,13 @@
 import React from 'react';
-import { Form, Button, Message, Checkbox } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import {
+  Form,
+  Button,
+  Message,
+  Checkbox,
+  Container,
+  Icon,
+} from 'semantic-ui-react';
 import './style.scss';
 
 const RegistrationPage = ({
@@ -7,6 +15,7 @@ const RegistrationPage = ({
   onChangeField,
   onFormSubmit,
   registered,
+  registerErrorMessage,
 }) => {
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -24,8 +33,6 @@ const RegistrationPage = ({
 
   const [nicknameError, setNicknameError] = React.useState(false);
   const [dobError, setDobError] = React.useState(false);
-
-  const [registrationOk, setRegistrationOk] = React.useState(false);
 
   const handleSubmit = () => {
     if (registerData.email === '') {
@@ -75,8 +82,16 @@ const RegistrationPage = ({
     <div className="global">
       <Form inverted className="RegistrationPage" onSubmit={handleSubmit}>
         <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
-          Inscription form
+          Registration form
         </h1>
+
+        {registerErrorMessage ? (
+          <Message
+            size="mini"
+            header={registerErrorMessage}
+            className="input-error-message"
+          />
+        ) : null}
 
         {emailError ? (
           <Message
@@ -167,8 +182,8 @@ const RegistrationPage = ({
           error={passwordConfirmError}
         />
 
-        {!checked && (
-          <div>
+        {!registered ? (
+          <Container>
             <Form.Input
               id="form-input-control-error-checkbox"
               control={Checkbox}
@@ -177,24 +192,21 @@ const RegistrationPage = ({
               label="I agree to the terms and conditions"
               style={{ marginTop: '2em', textAlign: 'center' }}
             />
-            <Button content="submit" type="submit" disabled />
-          </div>
-        )}
-        {checked && (
-          <div>
-            <Form.Input
-              id="form-input-control-error-checkbox"
-              control={Checkbox}
-              checked={checked}
-              onChange={() => setChecked(!checked)}
-              label="I agree to the terms and conditions"
-              style={{ marginTop: '2em', textAlign: 'center' }}
+            <Button
+              inverted
+              color="teal"
+              content="Submit"
+              type="submit"
+              disabled={!checked}
             />
-            <Button inverted color="teal" content="Submit" type="submit" />
-          </div>
+          </Container>
+        ) : (
+          <Container>
+            <Message size="large" className="input-success-message">
+              <Message.Header>Account created successfully, click <Link to="/login">here</Link> to connect</Message.Header>
+              </Message>
+          </Container>
         )}
-        {console.log(registered)}
-        {registered && <Message size="mini" header="Bien ouej ma gueule" />}
       </Form>
     </div>
   );

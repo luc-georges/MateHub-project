@@ -47,6 +47,11 @@ export default (state = initialState, action = {}) => {
     case REGISTER_SUBMIT_ERROR:
       return {
         ...state,
+        registerData: {
+          ...state.registerData,
+          password: '',
+          passwordConfirm: '',
+        },
         registerErrorMessage: action.payload,
         registered: false,
       };
