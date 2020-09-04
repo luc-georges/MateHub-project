@@ -35,6 +35,8 @@ const ProfilePage = ({
   const [open, setOpen] = useState(false);
   // const [open2, setopen2] = useState(false);
 
+  console.log(userData);
+
   return (
     <div className="profilepage">
       <div className="profilepage-header">

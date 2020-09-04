@@ -31,7 +31,7 @@ const TopPlayers = ({ topUsersList, getSelectedUser }) => {
           className="user-image"
           floated='right'
           size='tiny'
-          src={require(`../../assets/${element._avatar}`)}
+          src={element._avatar ? require(`../../assets/${element._avatar}`) : null}
           />
           <Card.Meta className="nickname">{element._name}</Card.Meta>
           <Card.Description >
