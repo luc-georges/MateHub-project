@@ -15,8 +15,6 @@ export const initialState = {
   loginData: {
     email: '',
     password: '',
-    // email: '',
-    // password: '',
   },
   isLogged: false,
   nickname: '',

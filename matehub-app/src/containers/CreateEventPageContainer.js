@@ -33,12 +33,7 @@ const mapStateToProps = (state) => {
       },
       isRanked: state.events.eventCreationData.isRanked,
     },
-
-    errors: {
-      durationError: true,
-      game_idError: true,
-      player_maxError: true,
-    },
+    selectedEvent: state.events.selectedEvent,
   };
 };
 

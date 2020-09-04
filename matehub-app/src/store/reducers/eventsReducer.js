@@ -97,6 +97,7 @@ export const initialState = {
     status: '', // Tout le temps 0
     description: '',
     vocal: '',
+    rank: '',
     language: {
       fr1: false,
       uk2: false,
@@ -108,6 +109,7 @@ export const initialState = {
     is_ranked: false,
   },
   playerToAcceptOrRefuseInEvent: '',
+  createEventSubmitError: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -308,6 +310,7 @@ export default (state = initialState, action = {}) => {
           },
           isRanked: false,
         },
+        selectedEvent: action.payload,
       };
     case CREATE_EVENT_SUBMIT_ERROR:
       return {

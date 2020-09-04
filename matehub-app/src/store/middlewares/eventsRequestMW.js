@@ -134,6 +134,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
           status: 0,
           description: store.getState().events.eventCreationData.description,
           vocal: store.getState().events.eventCreationData.vocal,
+          rank: store.getState().events.eventCreationData.rank,
           language: {
             fr1: store.getState().events.eventCreationData.language.fr1,
             uk2: store.getState().events.eventCreationData.language.uk2,
@@ -142,12 +143,12 @@ const eventsRequestMW = (store) => (next) => (action) => {
             ru5: store.getState().events.eventCreationData.language.ru5,
             de6: store.getState().events.eventCreationData.language.de6,
           },
-          isRanked: store.getState().events.eventCreationData.isRanked,
+          is_ranked: store.getState().events.eventCreationData.is_ranked,
         },
       })
         .then((res) => {
           console.log(res.data);
-          store.dispatch(CreateEventSubmitSuccess(res.data.data));
+          store.dispatch(CreateEventSubmitSuccess(res.data.data.event._id));
         })
         .catch((err) => {
           console.log(

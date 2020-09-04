@@ -106,8 +106,9 @@ export const CreateEventSubmit = () => ({
   type: CREATE_EVENT_SUBMIT,
 });
 
-export const CreateEventSubmitSuccess = () => ({
+export const CreateEventSubmitSuccess = (payload) => ({
   type: CREATE_EVENT_SUBMIT_SUCCESS,
+  payload,
 });
 
 export const CreateEventSubmitError = (payload) => ({
