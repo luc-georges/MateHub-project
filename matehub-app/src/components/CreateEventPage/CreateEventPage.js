@@ -405,6 +405,7 @@ const CreateEventPage = ({
           value={eventCreationData.rank}
           error={rankError}
         >
+          <option value=''>Select your rank</option>
           <optgroup label="Iron">
             <option value="Iron 1">Iron I</option>
             <option value="Iron 2">Iron II</option>

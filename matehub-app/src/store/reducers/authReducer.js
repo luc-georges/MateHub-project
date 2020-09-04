@@ -19,13 +19,93 @@ export const initialState = {
   isLogged: false,
   nickname: '',
   loginErrorMessage: '',
-  connectedUserId: "",
-  personnalData: {},
+  connectedUserId: '',
+  personnalData: {
+    _user_id: '',
+    _nickname: '',
+    _age: '',
+    _description: '',
+    _avatar: '',
+    _banner: '',
+    _games: [
+      {
+        game_id: '',
+        game_name: '',
+        ign: {
+          id: '',
+          accountId: '',
+          puuid: '',
+          name: '',
+          profileIconId: '',
+          revisionDate: '',
+          summonerLevel: '',
+        },
+        stats: {
+          leagueId: '',
+          queueType: '',
+          tier: '',
+          rank: '',
+          summonerId: '',
+          summonerName: '',
+          leaguePoints: '',
+          wins: '',
+          losses: '',
+          veteran: false,
+          inactive: false,
+          freshBlood: false,
+          hotStreak: false,
+        },
+      },
+    ],
+    _event_created: [
+      {
+        event_id: '',
+        game_name: '',
+        game_id: '',
+        event_time: '',
+        duration: '',
+        end: '',
+        player_count: '',
+        player_max: '',
+        description: '',
+        status: '',
+        lang: [
+          {
+            id: '',
+            label: '',
+            icon: '',
+          },
+        ],
+        vocal: '',
+      },
+    ],
+    has_events: [
+      {
+        event_id: '',
+        game_name: '',
+        game_id: '',
+        message: '',
+        event_time: '',
+        duration: '',
+        end: '',
+        player_count: '',
+        player_max: '',
+        description: '',
+        status: '',
+        Lang: [
+          {
+            id: '',
+            label: '',
+            icon: '',
+          },
+        ],
+        vocal: '',
+      },
+    ],
+  },
   modifyPersonnalData: {},
   error: '',
 };
-
-
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -35,8 +115,8 @@ export default (state = initialState, action = {}) => {
       };
     case GET_PERSONNAL_DATA_SUBMIT:
       return {
-        ...state
-      }
+        ...state,
+      };
     case GET_PERSONNAL_DATA_SUCCESS:
       return {
         ...state,
@@ -44,9 +124,9 @@ export default (state = initialState, action = {}) => {
           ...state.personnalData,
           ...action.payload,
         },
-        modifyPersonnalData : {
-          ...state.modifyPersonnalData = initialState.modifyPersonnalData,
-          },
+        modifyPersonnalData: {
+          ...(state.modifyPersonnalData = initialState.modifyPersonnalData),
+        },
         error: '',
       };
     case GET_PERSONNAL_DATA_ERROR:
@@ -99,7 +179,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
-      }
+      };
     default:
       return state;
   }

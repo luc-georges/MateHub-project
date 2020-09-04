@@ -9,9 +9,103 @@ import {
 } from '../actions/usersActions';
 
 export const initialState = {
-  userData: {},
-  userById: {},
-  topUsersList: [],
+  userData: {
+    _user_id: '',
+    _nickname: '',
+    _age: '',
+    _description: '',
+    _avatar: '',
+    _banner: '',
+    _games: [
+      {
+        game_id: '',
+        game_name: '',
+        ign: {
+          id: '',
+          accountId: '',
+          puuid: '',
+          name: '',
+          profileIconId: '',
+          revisionDate: '',
+          summonerLevel: '',
+        },
+        stats: {
+          leagueId: '',
+          queueType: '',
+          tier: '',
+          rank: '',
+          summonerId: '',
+          summonerName: '',
+          leaguePoints: '',
+          wins: '',
+          losses: '',
+          veteran: false,
+          inactive: false,
+          freshBlood: false,
+          hotStreak: false,
+        },
+      },
+    ],
+    _event_created: [
+      {
+        event_id: '',
+        game_name: '',
+        game_id: '',
+        event_time: '',
+        duration: '',
+        end: '',
+        player_count: '',
+        player_max: '',
+        description: '',
+        status: '',
+        lang: [
+          {
+            id: '',
+            label: '',
+            icon: '',
+          },
+        ],
+        vocal: '',
+      },
+    ],
+    has_events: [
+      {
+        event_id: '',
+        game_name: '',
+        game_id: '',
+        message: '',
+        event_time: '',
+        duration: '',
+        end: '',
+        player_count: '',
+        player_max: '',
+        description: '',
+        status: '',
+        Lang: [
+          {
+            id: '',
+            label: '',
+            icon: '',
+          },
+        ],
+        vocal: '',
+      },
+    ],
+  },
+  // userById: {},
+  topUsersList: [
+    {
+      _user_id: '',
+      _name: '',
+      _avatar: '',
+      _banner: '',
+      _total_events: '',
+      _total_by_game: {
+        cs: '',
+        lol: '',
+      },
+    },
+  ],
   error: '',
   selectedUser: '',
 };
@@ -22,7 +116,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         selectedUser: action.payload,
-      }
+      };
     case GET_USER:
       return {
         ...state,
