@@ -2,30 +2,11 @@
 
 .profilepage{
   width: 80%;
-  margin-left: 10%;
-  margin-right: 15%;
+  margin-left:170px; 
   box-sizing: border-box;
   background-color: #0B0C10;
   color: rgb(226, 220, 220);
   background-image: url(../../assets/04322d63.png);
-}
-
-.profilepage h3{
-  padding: 20px;
-}
-.LastestEvent-modules{
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.LastestEvent-module{
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  border: 3px solid #949494;
-
-  width:200px;
 }
 
 .details{
@@ -36,10 +17,7 @@
   height: 5em;
 
 }
-.details h1{
-  font-size: 3.8em;
 
-}
 .avatar{
   height: 18vh;
   position: absolute;
@@ -63,4 +41,44 @@
   height: 35vh;
   width: 100%;
   position: absolute;
+}
+
+.profilepage-titre{
+  margin-left: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 2.5em;
+}
+
+.profilepage-description{
+
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 2%;
+  font-size: 1.5em;
+ }
+
+ .profilepage-game-user{
+  
+  margin-left: 5%;
+  margin-right: 2%;
+  font-size: 1.1em;
+ }
+
+ .profilepage-game-user-info{
+  margin-bottom: 1%;
+ }
+
+ .modal-invitation-titre{
+  background:#10161c8a !important;
+  color: white !important;
+}
+
+.modal-invitation-action{
+  background:#10161c8a !important;
+}
+.modal-invitation{
+  border: solid #66fcf28e !important;
+  background:#161c24c0 !important;
+  color: white !important;
 }
