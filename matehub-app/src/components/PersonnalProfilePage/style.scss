@@ -1,11 +1,11 @@
 @import 'src/styles/vars';
  .personnalprofilepage{
-  width:78%;
+  width:80%;
    box-sizing: border-box;
    background-color: #0B0C10;
    color: white;
   background-image: url(../../assets/04322d63.png);
-  margin-left:150px; 
+  margin-left:170px; 
    
  }
 
@@ -33,6 +33,7 @@
 
  .personnalprofilepage-game-user-info{
   margin-bottom: 1%;
+  margin-left: 5%;
  }
 
  .button-modal{
@@ -190,5 +191,10 @@ left: 90%;
   height: 35vh;
   width: 100%;
   z-index: 0;
+
+}
+
+.details h1{
+  font-size: 3.8em;
 
 }

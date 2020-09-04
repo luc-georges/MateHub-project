@@ -230,7 +230,7 @@ const PersonnalProfilePage = ({
                   <h2 className="personnalprofilepage-titre">
                     {game.game_name}
                   </h2>
-                  <div className="personnalprofilepage-game-user">
+                  <div >
                     <div className="personnalprofilepage-game-user-info">
                       Pseudo : {game.ign.name}
                     </div>
@@ -311,10 +311,10 @@ const PersonnalProfilePage = ({
                             {event.event_time}
                           </Moment>
                           <div className="LatestEvent-text">
-                            Number of players {event._player_count}
+                            Number of players {event.player_count}
                           </div>
                           <div className="LatestEvent-text">
-                            Looking for: {event._player_max} player
+                            Looking for: {event.player_max} player
                           </div>
                           {event.lang.map((lang) => {
                             return <Flag name={lang.icon} key={lang.id}/>;
@@ -330,7 +330,7 @@ const PersonnalProfilePage = ({
         </div>
         <h2 className="personnalprofilepage-titre">Event Registered: </h2>
         <Card.Group className="event-card-group">
-          <div className="LastestEvent-modules">
+          <div className="Event-modules">
             {personnalData.has_events &&
               personnalData.has_events.slice(0, 12).map((h_event) => {
                 return (
@@ -353,13 +353,13 @@ const PersonnalProfilePage = ({
                         <div className="LatestEvent-text">
                           Date and time{' '}
                           <Moment format="YYYY/MM/DD HH:MM">
-                            {h_event._starting}
+                            {h_event.event_time}
                           </Moment>
                           <div className="LatestEvent-text">
-                            Number of players {h_event._player_count}
+                            Number of players {h_event.player_count}
                           </div>
                           <div className="LatestEvent-text">
-                            Looking for: {h_event._player_max} player
+                            Looking for: {h_event.player_max} player
                           </div>
                           {h_event.Lang.map((lang) => {
                             return <Flag name={lang.icon} key={lang.id}/>;
