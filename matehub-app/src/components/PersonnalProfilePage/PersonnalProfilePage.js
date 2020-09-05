@@ -12,6 +12,7 @@ import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
 import { NavLink } from 'react-router-dom';
+import uuid from 'react-uuid';
 import './style.scss';
 
 const PersonnalProfilePage = ({
@@ -23,6 +24,9 @@ const PersonnalProfilePage = ({
   editProfilBanner,
   getSelectedEvent,
 }) => {
+
+  // console.log(personnalData);
+  
   const handleGetSelectedEvent = (evt, data) => {
     // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
@@ -34,18 +38,12 @@ const PersonnalProfilePage = ({
     // eslint-disable-next-line
   }, []);
 
-  console.log(personnalData)
 
   const handleInputChange = (evt) => {
-    console.log('name >>', evt.target.name);
-    console.log('value >>', evt.target.value);
     const { name, value } = evt.target;
 
-    // console.log(name)
-    // console.log(evt.target.files[0])
-
     if (evt.target.files) {
-      console.log(evt.target.files[0]);
+      // console.log(evt.target.files[0]);
     }
     onChangeField({
       [name]: value || [evt.target.files[0]],
@@ -61,7 +59,7 @@ const PersonnalProfilePage = ({
   const handleUpload = (evt) => {
     if (evt.target.files) {
       editProfilBanner(evt.target.files[0]);
-      console.log(evt.target.files);
+      // console.log(evt.target.files);
     }
   };
 
@@ -89,7 +87,7 @@ const PersonnalProfilePage = ({
               Update banner
             </Modal.Header>
             <Modal.Description>
-               {personnalData._banner && (
+              {personnalData._banner && (
                 <div className="modal-img">
                   <img
                     src={require(`../../assets/${personnalData._banner}`)}
@@ -97,7 +95,7 @@ const PersonnalProfilePage = ({
                     className="banner-modal-img"
                   />
                 </div>
-              )} 
+              )}
 
               <div className="banner-input">
                 <label htmlFor="banner" className="banner-file-label">
@@ -136,28 +134,30 @@ const PersonnalProfilePage = ({
           </Modal>
         </div>
         <div className="container-banner">
-{/*           {personnalData._banner && (
+          {/*           {personnalData._banner && (
             <img
               src={require(`../../assets/${personnalData._banner}`)}
               alt="lollogo"
               className="banner"
             />
           )} */}
-                        {personnalData._banner
-              ? <div className="modal-img">
+          {personnalData._banner ? (
+            <div className="modal-img">
               <img
                 src={require(`../../assets/${personnalData._banner}`)}
                 alt="lollogo"
                 className="banner-modal-img"
               />
             </div>
-            : <div className="modal-img">
-            <img
-              src={require(`../../assets/banner1.png`)}
-              alt="lollogo"
-              className="banner-modal-img"
-            />
-          </div>}
+          ) : (
+            <div className="modal-img">
+              <img
+                src={require(`../../assets/banner1.png`)}
+                alt="lollogo"
+                className="banner-modal-img"
+              />
+            </div>
+          )}
 
           {personnalData._avatar && (
             <img src={icon} alt="lollogo" className="avatar" />
@@ -234,10 +234,14 @@ const PersonnalProfilePage = ({
         <h2 className="personnalprofilepage-titre homeTitle">Description</h2>
         <div>
           <div className="personnalprofilepage-description">
-            {personnalData._description
-            ? <p>{personnalData._description}</p>
-            : <p className="default-mess">You don't have a description yet!!! You can do it by clicking on "update informations".</p>}
-            
+            {personnalData._description ? (
+              <p>{personnalData._description}</p>
+            ) : (
+              <p className="default-mess">
+                You don't have a description yet!!! You can do it by clicking on
+                "update informations".
+              </p>
+            )}
           </div>
         </div>
         <div className="personnalprofilepage-game">
@@ -248,7 +252,7 @@ const PersonnalProfilePage = ({
                   <h2 className="personnalprofilepage-titre">
                     {game.game_name}
                   </h2>
-                  <div >
+                  <div>
                     <div className="personnalprofilepage-game-user-info">
                       Pseudo : {game.ign.name}
                     </div>
@@ -267,7 +271,9 @@ const PersonnalProfilePage = ({
             onClose={() => setOpen2(false)}
             onOpen={() => setOpen2(true)}
             open={open2}
-            trigger={<Button className="button-modal">Connect Your LoL Account</Button>}
+            trigger={
+              <Button className="button-modal">Connect Your LoL Account</Button>
+            }
             className="modal-game"
           >
             <Modal.Header className="modal-game-titre">
@@ -298,27 +304,26 @@ const PersonnalProfilePage = ({
         </div>
         <h2 className="personnalprofilepage-titre homeTitle">Created Events</h2>
         <div className="Event-modules">
-        <Card.Group className="event-card-group">
- 
-            {personnalData._event_created 
-             ? personnalData._event_created.slice(0, 12).map((event,index) => {
+          <Card.Group className="event-card-group">
+            {personnalData._event_created ? (
+              personnalData._event_created.slice(0, 12).map((event, index) => {
                 let rankClass;
-          
-                if( event.rank.slice(0,4) === "iron"){
-                  rankClass = "iron"
-                }else if (event.rank.slice(0,6) === "bronze"){
-                  rankClass = "bronze"
-                }else if (event.rank.slice(0,4) === "silv"){
-                  rankClass = "silv"
-                }else if (event.rank.slice(0,4) === "gold"){
-                  rankClass = "gold"
-                }else if (event.rank.slice(0,4) === "plat"){
-                  rankClass = "plat"
-                }else if (event.rank.slice(0,4) === "diam"){
-                  rankClass = "diam"
+
+                if (event.rank.slice(0, 4) === 'iron') {
+                  rankClass = 'iron';
+                } else if (event.rank.slice(0, 6) === 'bronze') {
+                  rankClass = 'bronze';
+                } else if (event.rank.slice(0, 4) === 'silv') {
+                  rankClass = 'silv';
+                } else if (event.rank.slice(0, 4) === 'gold') {
+                  rankClass = 'gold';
+                } else if (event.rank.slice(0, 4) === 'plat') {
+                  rankClass = 'plat';
+                } else if (event.rank.slice(0, 4) === 'diam') {
+                  rankClass = 'diam';
                 } else {
-                  rankClass = "chal"
-                };
+                  rankClass = 'chal';
+                }
                 return (
                   <NavLink
                     key={`C_event${event.event_id}`}
@@ -327,109 +332,158 @@ const PersonnalProfilePage = ({
                     to={`/event/${event.event_id}`}
                     onClick={handleGetSelectedEvent}
                   >
-                     <div className={`slide-in${index}`}></div>
+                    <div className={`slide-in${index}`}></div>
                     <Card className="event-card">
                       <Card.Content>
-                      <Image floated="right" size="mini" src={logolol} />
-                        <Card.Header><span className="nickname">{event.game_name}</span></Card.Header>
-                        <Card.Meta ><br /><span className={`rank ${rankClass}`}>{event.rank}</span></Card.Meta>
-                        <Card.Description className="descript">                    
-                    "{event.description.length > 25
-                      ? `${event.description.slice(0, 25)}...`
-                      : event.description}"{/* "{element._description}" */}</Card.Description>
+                        <Image floated="right" size="mini" src={logolol} />
+                        <Card.Header>
+                          <span className="nickname">{event.game_name}</span>
+                        </Card.Header>
+                        <Card.Meta>
+                          <br />
+                          <span className={`rank ${rankClass}`}>
+                            {event.rank}
+                          </span>
+                        </Card.Meta>
+                        <Card.Description className="descript">
+                          "
+                          {event.description.length > 25
+                            ? `${event.description.slice(0, 25)}...`
+                            : event.description}
+                          "{/* "{element._description}" */}
+                        </Card.Description>
                       </Card.Content>
                       <Card.Content extra>
-                    <div className="LatestEvent-text">
-                      Starting date and time:{' '} <br />
-                      <span className="starting">
-                      <Moment format="MMM DD HH:MM">
-                        {event.event_time}
-                      </Moment></span>
-                      <div className="LatestEvent-text">
-                        Register player(s) now: <span className="number">{event.player_count}</span>
-                      </div>
-                      <div className="LatestEvent-text">
-                        Looking for: <span className="number">{event.player_max}</span> players
-                      </div>
-                      <span>Lang: </span>
-                      {event.lang && event.lang.map((lang) => {
-                        return <Flag name={lang.icon} />;
-                      })}
-                      <div className="view-details">GO{" "}<Icon name="rocket"/></div>
-                    </div>
-                  </Card.Content>
-                </Card>
-            </NavLink>
-                )
-                ;
-              }): <p className="default-mess"> You haven't created an event yet. Do it, it's really fun !!! </p>} 
+                        <div className="LatestEvent-text">
+                          Starting date and time: <br />
+                          <span className="starting">
+                            <Moment format="MMM DD HH:MM">
+                              {event.event_time}
+                            </Moment>
+                          </span>
+                          <div className="LatestEvent-text">
+                            Register player(s) now:{' '}
+                            <span className="number">{event.player_count}</span>
+                          </div>
+                          <div className="LatestEvent-text">
+                            Looking for:{' '}
+                            <span className="number">{event.player_max}</span>{' '}
+                            players
+                          </div>
+                          <span>Lang: </span>
+                          {event.lang &&
+                            event.lang.map((lang) => {
+                              return <Flag name={lang.icon} key={uuid()}/>;
+                            })}
+                          <div className="view-details">
+                            GO <Icon name="rocket" />
+                          </div>
+                        </div>
+                      </Card.Content>
+                    </Card>
+                  </NavLink>
+                );
+              })
+            ) : (
+              <p className="default-mess">
+                {' '}
+                You haven't created an event yet. Do it, it's really fun !!!{' '}
+              </p>
+            )}
           </Card.Group>
         </div>
-        <h2 className="personnalprofilepage-titre homeTitle">Event Registered </h2>
+        <h2 className="personnalprofilepage-titre homeTitle">
+          Event Registered{' '}
+        </h2>
         <Card.Group className="event-card-group">
           <div className="Event-modules">
-            {personnalData.has_events 
-              ? personnalData.has_events.map((h_event) => {
+            {personnalData.has_events ? (
+              personnalData.has_events.map((h_event) => {
                 let rankClasshev;
-          
-                if( h_event.rank.slice(0,4) === "iron"){
-                  rankClasshev = "iron"
-                }else if (h_event.rank.slice(0,6) === "bronze"){
-                  rankClasshev = "bronze"
-                }else if (h_event.rank.slice(0,4) === "silv"){
-                  rankClasshev = "silv"
-                }else if (h_event.rank.slice(0,4) === "gold"){
-                  rankClasshev = "gold"
-                }else if (h_event.rank.slice(0,4) === "plat"){
-                  rankClasshev = "plat"
-                }else if (h_event.rank.slice(0,4) === "diam"){
-                  rankClasshev = "diam"
+
+                if (h_event.rank.slice(0, 4) === 'iron') {
+                  rankClasshev = 'iron';
+                } else if (h_event.rank.slice(0, 6) === 'bronze') {
+                  rankClasshev = 'bronze';
+                } else if (h_event.rank.slice(0, 4) === 'silv') {
+                  rankClasshev = 'silv';
+                } else if (h_event.rank.slice(0, 4) === 'gold') {
+                  rankClasshev = 'gold';
+                } else if (h_event.rank.slice(0, 4) === 'plat') {
+                  rankClasshev = 'plat';
+                } else if (h_event.rank.slice(0, 4) === 'diam') {
+                  rankClasshev = 'diam';
                 } else {
-                  rankClasshev = "chal"
-                };
+                  rankClasshev = 'chal';
+                }
                 return (
                   <NavLink
-                    key={`H_event${h_event.event_id}`}
+                    key={h_event.event_id}
                     className="Event-module"
                     id={h_event._event_id}
                     to={`/event/${h_event.event_id}`}
                     onClick={handleGetSelectedEvent}
                   >
-                   <Card className="event-card">
+                    <Card className="event-card">
                       <Card.Content>
-                      <Image floated="right" size="mini" src={logolol} />
-                        <Card.Header><span className="nickname">{h_event.game_name}</span></Card.Header>
-                        <Card.Meta ><br /><span className={`rank ${rankClasshev}`}>{h_event.rank}</span></Card.Meta>
-                        <Card.Description className="descript">                    
-                    "{h_event.description.length > 25
-                      ? `${h_event.description.slice(0, 25)}...`
-                      : h_event.description}"{/* "{element._description}" */}</Card.Description>
+                        <Image floated="right" size="mini" src={logolol} />
+                        <Card.Header>
+                          <span className="nickname">{h_event.game_name}</span>
+                        </Card.Header>
+                        <Card.Meta>
+                          <br />
+                          <span className={`rank ${rankClasshev}`}>
+                            {h_event.rank}
+                          </span>
+                        </Card.Meta>
+                        <Card.Description className="descript">
+                          "
+                          {h_event.description.length > 25
+                            ? `${h_event.description.slice(0, 25)}...`
+                            : h_event.description}
+                          "{/* "{element._description}" */}
+                        </Card.Description>
                       </Card.Content>
                       <Card.Content extra>
-                    <div className="LatestEvent-text">
-                      Starting date and time:{' '} <br />
-                      <span className="starting">
-                      <Moment format="MMM DD HH:MM">
-                        {h_event.event_time}
-                      </Moment></span>
-                      <div className="LatestEvent-text">
-                        Register player(s) now: <span className="number">{h_event.player_count}</span>
-                      </div>
-                      <div className="LatestEvent-text">
-                        Looking for: <span className="number">{h_event.player_max}</span> players
-                      </div>
-                      <span>Lang: </span>
-                     
-                      {h_event.lang && h_event.lang.map((lang) => {
-                        return <Flag name={lang.icon} />;
-                      })}
-                      <div className="view-details">GO{" "}<Icon name="rocket"/></div>
-                    </div>
-                  </Card.Content>
-                </Card>
+                        <div className="LatestEvent-text">
+                          Starting date and time: <br />
+                          <span className="starting">
+                            <Moment format="MMM DD HH:MM">
+                              {h_event.event_time}
+                            </Moment>
+                          </span>
+                          <div className="LatestEvent-text">
+                            Register player(s) now:{' '}
+                            <span className="number">
+                              {h_event.player_count}
+                            </span>
+                          </div>
+                          <div className="LatestEvent-text">
+                            Looking for:{' '}
+                            <span className="number">{h_event.player_max}</span>{' '}
+                            players
+                          </div>
+                          <span>Lang: </span>
+                          {h_event.lang &&
+                            h_event.lang.map((lang) => {
+                              return <Flag name={lang.icon} key={uuid()} />;
+                            })}
+                          <div className="view-details">
+                            GO <Icon name="rocket" />
+                          </div>
+                        </div>
+                      </Card.Content>
+                    </Card>
                   </NavLink>
                 );
-              }): <p className="default-mess"> You are not participating in any events at the moment. What are you waiting for? </p>}
+              })
+            ) : (
+              <p className="default-mess">
+                {' '}
+                You are not participating in any events at the moment. What are
+                you waiting for?{' '}
+              </p>
+            )}
           </div>
         </Card.Group>
       </div>
