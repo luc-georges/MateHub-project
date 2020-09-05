@@ -324,7 +324,8 @@ const PersonnalProfilePage = ({
                   <NavLink
                     key={`C_event${event.event_id}`}
                     className="Event-module"
-                    to={`/event/${event._event_id}`}
+                    id={event.event_id}
+                    to={`/event/${event.event_id}`}
                     onClick={handleGetSelectedEvent}
                   >
                      <div className={`slide-in${index}`}></div>
@@ -343,7 +344,7 @@ const PersonnalProfilePage = ({
                       Starting date and time:{' '} <br />
                       <span className="starting">
                       <Moment format="MMM DD HH:MM">
-                        {event.starting}
+                        {event.event_time}
                       </Moment></span>
                       <div className="LatestEvent-text">
                         Register player(s) now: <span className="number">{event.player_count}</span>
@@ -352,7 +353,7 @@ const PersonnalProfilePage = ({
                         Looking for: <span className="number">{event.player_max}</span> players
                       </div>
                       <span>Lang: </span>
-                      {event.lang.map((lang) => {
+                      {event.lang && event.lang.map((lang) => {
                         return <Flag name={lang.icon} />;
                       })}
                       <div className="view-details">GO{" "}<Icon name="rocket"/></div>
@@ -392,7 +393,7 @@ const PersonnalProfilePage = ({
                     key={`H_event${h_event.event_id}`}
                     className="Event-module"
                     id={h_event._event_id}
-                    to={`/event/${h_event._event_id}`}
+                    to={`/event/${h_event.event_id}`}
                     onClick={handleGetSelectedEvent}
                   >
                    <Card className="event-card">
@@ -410,7 +411,7 @@ const PersonnalProfilePage = ({
                       Starting date and time:{' '} <br />
                       <span className="starting">
                       <Moment format="MMM DD HH:MM">
-                        {h_event.starting}
+                        {h_event.event_time}
                       </Moment></span>
                       <div className="LatestEvent-text">
                         Register player(s) now: <span className="number">{h_event.player_count}</span>
@@ -420,7 +421,7 @@ const PersonnalProfilePage = ({
                       </div>
                       <span>Lang: </span>
                      
-                      {h_event.Lang && h_event.Lang.map((lang) => {
+                      {h_event.lang && h_event.lang.map((lang) => {
                         return <Flag name={lang.icon} />;
                       })}
                       <div className="view-details">GO{" "}<Icon name="rocket"/></div>

@@ -72,7 +72,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
                         Looking for: <span className="number">{element._player_max}</span> players
                       </div>
                       <span>Lang: </span>
-                      {element._langs.map((lang) => {
+                      {element._langs && element._langs.map((lang) => {
                         return <Flag name={lang.icon} />;
                       })}
                       <div className="view-details">GO{" "}<Icon name="rocket"/></div>

@@ -31,9 +31,9 @@ const EventPage = ({
   // console.log(eventData._participant);
   console.log(eventData);
 
-  // useEffect(() => {
-  //   getEventById();
-  // }, []);
+  useEffect(() => {
+    getEventById();
+  }, []);
 
   console.log(eventData);
 

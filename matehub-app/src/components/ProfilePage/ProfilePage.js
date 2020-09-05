@@ -165,7 +165,7 @@ const ProfilePage = ({
                         Looking for: <span className="number">{event.player_max}</span> players
                       </div>
                       <span>Lang: </span>
-                      {event.lang.map((lang) => {
+                      {event.lang && event.lang.map((lang) => {
                         return <Flag name={lang.icon} />;
                       })}
                       <div className="view-details">GO{" "}<Icon name="rocket"/></div>
@@ -211,7 +211,7 @@ const ProfilePage = ({
                           <div className="LatestEvent-text">
                             Looking for: {h_event.player_max} player
                           </div>
-                          {h_event.Lang.map((lang) => {
+                          {h_event.lang && h_event.lang.map((lang) => {
                             return <Flag name={lang.icon} key={lang.id} />;
                           })}
                           <div className="view-details">view details</div>
