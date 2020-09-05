@@ -1,26 +1,30 @@
 .CreateEventPage {
-  width: 78%;
+  width: 85%;
+  height: 100vh;
   margin-left: 150px;
+  background-size: 50%;
+  background-image: url(../../assets/gather.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
 }
 
 .titreCreateEventPage {
   width: 100%;
-  padding: 2em;
   margin: auto;
   display: flex;
   justify-content: center;
 }
 
 .form {
-  width: 50%;
-  padding: 2em;
-  margin: 0 auto;
+  width: 40%;
+
+  margin: 2em 20%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   
   &-select {
-    padding: 2em;
+
     margin: auto;
     display: flex;
     flex-direction: column;
