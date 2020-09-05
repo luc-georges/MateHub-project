@@ -8,8 +8,8 @@ import {
 export const initialState = {
   summonerInfo: {},
   sumInputData: {
-    summonerName: 'Gui',
-    summonerRegion: 'euw',
+    summonerName: '',
+    summonerRegion: '',
   },
 };
 
