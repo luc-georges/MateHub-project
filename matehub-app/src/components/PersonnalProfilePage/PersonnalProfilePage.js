@@ -90,7 +90,7 @@ const PersonnalProfilePage = ({
               Update banner
             </Modal.Header>
             <Modal.Description>
-              {personnalData._banner && (
+               {personnalData._banner && (
                 <div className="modal-img">
                   <img
                     src={require(`../../assets/${personnalData._banner}`)}
@@ -98,7 +98,8 @@ const PersonnalProfilePage = ({
                     className="banner-modal-img"
                   />
                 </div>
-              )}
+              )} 
+
               <div className="banner-input">
                 <label htmlFor="banner" className="banner-file-label">
                   Choose a banner picture:
@@ -136,13 +137,28 @@ const PersonnalProfilePage = ({
           </Modal>
         </div>
         <div className="container-banner">
-          {personnalData._banner && (
+{/*           {personnalData._banner && (
             <img
               src={require(`../../assets/${personnalData._banner}`)}
               alt="lollogo"
               className="banner"
             />
-          )}
+          )} */}
+                        {personnalData._banner
+              ? <div className="modal-img">
+              <img
+                src={require(`../../assets/${personnalData._banner}`)}
+                alt="lollogo"
+                className="banner-modal-img"
+              />
+            </div>
+            : <div className="modal-img">
+            <img
+              src={require(`../../assets/banner1.png`)}
+              alt="lollogo"
+              className="banner-modal-img"
+            />
+          </div>}
 
           {personnalData._avatar && (
             <img src={icon} alt="lollogo" className="avatar" />
@@ -216,10 +232,13 @@ const PersonnalProfilePage = ({
             </Modal.Description>
           </Modal>
         </div>{' '}
-        <h2 className="personnalprofilepage-titre">Description</h2>
+        <h2 className="personnalprofilepage-titre homeTitle">Description</h2>
         <div>
           <div className="personnalprofilepage-description">
-            {personnalData._description}
+            {personnalData._description
+            ? <p>{personnalData._description}</p>
+            : <p className="default-mess">You don't have a description yet!!! You can do it by clicking on "update informations".</p>}
+            
           </div>
         </div>
         <div className="personnalprofilepage-game">
@@ -249,7 +268,7 @@ const PersonnalProfilePage = ({
             onClose={() => setOpen2(false)}
             onOpen={() => setOpen2(true)}
             open={open2}
-            trigger={<Button className="button-modal">Select game</Button>}
+            trigger={<Button className="button-modal">Connect Your LoL Account</Button>}
             className="modal-game"
           >
             <Modal.Header className="modal-game-titre">
@@ -278,11 +297,12 @@ const PersonnalProfilePage = ({
             </Modal.Actions>
           </Modal>
         </div>
-        <h2 className="personnalprofilepage-titre">Created Events</h2>
+        <h2 className="personnalprofilepage-titre homeTitle">Created Events</h2>
         <div className="Event-modules">
         <Card.Group className="event-card-group">
-            {personnalData._event_created &&
-              personnalData._event_created.slice(0, 12).map((event,index) => {
+ 
+            {personnalData._event_created 
+             ? personnalData._event_created.slice(0, 12).map((event,index) => {
                 let rankClass;
           
                 if( event.rank.slice(0,4) === "iron"){
@@ -340,15 +360,16 @@ const PersonnalProfilePage = ({
                   </Card.Content>
                 </Card>
             </NavLink>
-                );
-              })}
+                )
+                ;
+              }): <p className="default-mess"> You haven't created an event yet. Do it, it's really fun !!! </p>} 
           </Card.Group>
         </div>
-        <h2 className="personnalprofilepage-titre">Event Registered: </h2>
+        <h2 className="personnalprofilepage-titre homeTitle">Event Registered </h2>
         <Card.Group className="event-card-group">
           <div className="Event-modules">
-            {personnalData.has_events &&
-              personnalData.has_events.map((h_event) => {
+            {personnalData.has_events 
+              ? personnalData.has_events.map((h_event) => {
                 let rankClasshev;
           
                 if( h_event.rank.slice(0,4) === "iron"){
@@ -408,7 +429,7 @@ const PersonnalProfilePage = ({
                 </Card>
                   </NavLink>
                 );
-              })}
+              }): <p className="default-mess"> You are not participating in any events at the moment. What are you waiting for? </p>}
           </div>
         </Card.Group>
       </div>

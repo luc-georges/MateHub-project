@@ -71,33 +71,53 @@ const EventPage = ({
     };
     getApplyToEvent(applyData);
   };
+  
+  let rankClass;
+          
+  if( eventData._creator_stats[0].tier === "IRON"){
+    rankClass = "iron"
+  }else if (eventData._creator_stats[0].tier === "BRONZE"){
+    rankClass = "bronze"
+  }else if (eventData._creator_stats[0].tier === "SILVER"){
+    rankClass = "silv"
+  }else if (eventData._creator_stats[0].tier === "GOLD"){
+    rankClass = "gold"
+  }else if (eventData._creator_stats[0].tier === "PLATINUM"){
+    rankClass = "plat"
+  }else if (eventData._creator_stats[0].tier === "DIAMOND"){
+    rankClass = "diam"
+  } else {
+    rankClass = "chal"
+  };
 
   return (
     <div className="eventpage">
       <Container className="eventpage-title">
         <h1>
-          {eventData._creator}'s event on {eventData._game_name}
-        </h1>
+          Welcome on EVENT page !!!
+          {/* {eventData._creator}'s event on {eventData._game_name} */}
+        </h1> 
+  <h3><span className="span-it">created by</span> <span className="event-creator">{eventData._creator}</span> - <span className="span-it">LoL account :</span> <span> <span className="lol-account">
+            {eventData._creator_stats.map((elem) => {
+            return elem.summonerName;
+          })}</span>
+          {' '}-{' '}<span className={`${rankClass}`}>
+          {eventData._creator_stats.map((elem) => {
+            return elem.tier;
+          })}{' '}
+          {eventData._creator_stats.map((elem) => {
+            return elem.rank;
+          })}</span></span></h3>
         <h3>{eventData._vocal}</h3>
       </Container>
       <Container className="eventpage-informations">
         {console.log(eventData._creator_stats)}
-        <h2>
-          Creator LoL account :{' '}
-          {eventData._creator_stats.map((elem) => {
-            return elem.summonerName;
-          })}
-          -{' '}
-          {eventData._creator_stats.map((elem) => {
-            return elem.tier;
-          })}
-          {eventData._creator_stats.map((elem) => {
-            return elem.rank;
-          })}
+        <h2 className="evt-start">
+          Start {moment(eventData._starting).format('h:mm a, dddd DD MMM YYYY')}
         </h2>
-        <h2>
-          Start {moment(eventData._starting).format('h:mm a, dddd DD/MM/YYYY')}
-        </h2>
+          <div className="div-descript">
+            Description : {eventData._description}
+          </div>
         {connectedUserId !== eventData._user_id ? (
           <Form
             onSubmit={handleApplyToEvent}
