@@ -18,12 +18,11 @@ const TopPlayers = ({ topUsersList, getSelectedUser, getUser }) => {
       <div className="TopPlayers-modules">
       <Card.Group className="user-card-group">
         {topUsersList.map((element,index) => (
-      <div className={`slide-in${index}`} >
+      <div className={`slide-in${index}`} key={element._user_id} >
 
           <NavLink
           id={element._user_id}
           to={`/profile/${element._name}`}
-          key={element._user_id}
           onClick={handleGetSelectedUser}
           >
           <Card className="user-card">

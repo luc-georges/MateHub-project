@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import {
   Button,
-  Header,
   Modal,
   Form,
   Icon,

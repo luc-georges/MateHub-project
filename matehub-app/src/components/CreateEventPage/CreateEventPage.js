@@ -64,11 +64,7 @@ const CreateEventPage = ({
   const [rankError, setRankError] = useState(false);
   const [descriptionError, setDescriptionError] = useState(false);
 
-  const [fieldsError, setFieldsError] = useState(false);
-
   const handleSubmit = () => {
-    let error = false;
-
     if (
       !eventCreationData.language.fr1 &&
       !eventCreationData.language.uk2 &&
@@ -78,66 +74,50 @@ const CreateEventPage = ({
       !eventCreationData.language.de6
     ) {
       setFlagError(true);
-      error = true;
     } else {
       setFlagError(false);
-      error = false;
     }
 
     if (eventCreationData.duration === '') {
       setDurationError(true);
-      error = true;
     } else {
       setDurationError(false);
-      error = false;
     }
 
     if (eventCreationData.game_id === '') {
       setgameIdError(true);
-      error = true;
     } else {
       setgameIdError(false);
-      error = false;
     }
 
     if (eventCreationData.player_max === '') {
       setplayerMaxError(true);
-      error = true;
     } else {
       setplayerMaxError(false);
-      error = false;
     }
 
     if (eventCreationData.event_time_date === '') {
       setEventStartDateError(true);
-      error = true;
     } else {
       setEventStartDateError(false);
-      error = false;
     }
 
     if (eventCreationData.event_time_hour === '') {
       setEventStartHourError(true);
-      error = true;
     } else {
       setEventStartHourError(false);
-      error = false;
     }
 
     if (eventCreationData.rank === '') {
       setRankError(true);
-      error = true;
     } else {
       setRankError(false);
-      error = false;
     }
 
     if (eventCreationData.description === '') {
       setDescriptionError(true);
-      error = true;
     } else {
       setDescriptionError(false);
-      error = false;
     }
 
     onFormSubmit();
@@ -175,8 +155,6 @@ const CreateEventPage = ({
     { key: '5', text: '5', value: 5 },
   ];
 
-  const eventCreatedPage = `/event/${selectedEvent}`;
-
   return (
     <div className="CreateEventPage">
       <Form inverted className="form" onSubmit={handleSubmit} error>
@@ -186,196 +164,194 @@ const CreateEventPage = ({
           </h1>
         </div>
 
-        <div>
-          <div className="form-select">
-            <div className="form-select-title">Language</div>
-            {flagError ? (
-              <Message
-                size="tiny"
-                header="Select language error, you must select atleast one language"
-                className="input-error-message"
+        <div className="form-select">
+          <div className="form-select-title">Language</div>
+          {flagError ? (
+            <Message
+              size="tiny"
+              header="You must select at least one language"
+              className="input-error-message"
+            />
+          ) : null}
+          <Form.Group>
+            <Form.Group className="form-select-language">
+              <Flag name="france" />
+              <Form.Input
+                label="France"
+                control={Checkbox}
+                name="fr1"
+                onChange={handleAddFlag}
+                checked={eventCreationData.language.fr1}
+                error={flagError}
               />
-            ) : null}
-            <Form.Group>
-              <Form.Group className="form-select-language">
-                <Flag name="france" />
-                <Form.Input
-                  label="France"
-                  control={Checkbox}
-                  name="fr1"
-                  onChange={handleAddFlag}
-                  checked={eventCreationData.language.fr1}
-                  error={flagError}
-                />
-              </Form.Group>
-
-              <Form.Group className="form-select-language">
-                <Flag name="gb" />
-                <Form.Input
-                  label="UK"
-                  control={Checkbox}
-                  name="uk2"
-                  onChange={handleAddFlag}
-                  checked={eventCreationData.language.uk2}
-                  error={flagError}
-                />
-              </Form.Group>
-
-              <Form.Group className="form-select-language">
-                <Flag name="it" />
-                <Form.Input
-                  label="Italy"
-                  control={Checkbox}
-                  name="it3"
-                  onChange={handleAddFlag}
-                  checked={eventCreationData.language.it3}
-                  error={flagError}
-                />
-              </Form.Group>
-
-              <Form.Group className="form-select-language">
-                <Flag name="es" />
-                <Form.Input
-                  label="Spain"
-                  control={Checkbox}
-                  name="es4"
-                  onChange={handleAddFlag}
-                  checked={eventCreationData.language.es4}
-                  error={flagError}
-                />
-              </Form.Group>
-
-              <Form.Group className="form-select-language">
-                <Flag name="ru" />
-                <Form.Input
-                  label="Russia"
-                  control={Checkbox}
-                  name="ru5"
-                  onChange={handleAddFlag}
-                  checked={eventCreationData.language.ru5}
-                  error={flagError}
-                />
-              </Form.Group>
-
-              <Form.Group className="form-select-language">
-                <Flag name="de" />
-                <Form.Input
-                  label="Germany"
-                  control={Checkbox}
-                  name="de6"
-                  onChange={handleAddFlag}
-                  checked={eventCreationData.language.de6}
-                  error={flagError}
-                />
-              </Form.Group>
             </Form.Group>
-          </div>
-          {gameIdError ? (
-            <Message
-              size="tiny"
-              header="Select game error, you did not specify on which game your event is created"
-              className="input-error-message"
-            />
-          ) : null}
-          <Form.Input
-            name="game_id"
-            label="Select game"
-            control={Select}
-            options={selectGameOptions}
-            placeholder="Select game"
-            onChange={handleSelectInputChange}
-            value={eventCreationData.game_id}
-            error={gameIdError}
-          />
 
-          {playerMaxError ? (
-            <Message
-              size="tiny"
-              header="Maximum players error, you did not specify how many players you want on your event"
-              className="input-error-message"
-            />
-          ) : null}
-          {durationError ? (
-            <Message
-              size="tiny"
-              header="Duration error, you did not specify a duration for your event"
-              className="input-error-message"
-            />
-          ) : null}
-          <Form.Group widths="equal">
-            <Form.Input
-              label="Maximum players"
-              name="player_max"
-              control={Select}
-              options={maxPlayerOptions}
-              placeholder="Maximum players"
-              onChange={handleSelectInputChange}
-              value={eventCreationData.player_max}
-              error={playerMaxError}
-            />
-            <Form.Input
-              label="Duration (hour)"
-              name="duration"
-              control={Select}
-              options={durationOptions}
-              placeholder="Event duration"
-              onChange={handleSelectInputChange}
-              value={eventCreationData.duration}
-              error={durationError}
-            />
+            <Form.Group className="form-select-language">
+              <Flag name="gb" />
+              <Form.Input
+                label="UK"
+                control={Checkbox}
+                name="uk2"
+                onChange={handleAddFlag}
+                checked={eventCreationData.language.uk2}
+                error={flagError}
+              />
+            </Form.Group>
+
+            <Form.Group className="form-select-language">
+              <Flag name="it" />
+              <Form.Input
+                label="Italy"
+                control={Checkbox}
+                name="it3"
+                onChange={handleAddFlag}
+                checked={eventCreationData.language.it3}
+                error={flagError}
+              />
+            </Form.Group>
+
+            <Form.Group className="form-select-language">
+              <Flag name="es" />
+              <Form.Input
+                label="Spain"
+                control={Checkbox}
+                name="es4"
+                onChange={handleAddFlag}
+                checked={eventCreationData.language.es4}
+                error={flagError}
+              />
+            </Form.Group>
+
+            <Form.Group className="form-select-language">
+              <Flag name="ru" />
+              <Form.Input
+                label="Russia"
+                control={Checkbox}
+                name="ru5"
+                onChange={handleAddFlag}
+                checked={eventCreationData.language.ru5}
+                error={flagError}
+              />
+            </Form.Group>
+
+            <Form.Group className="form-select-language">
+              <Flag name="de" />
+              <Form.Input
+                label="Germany"
+                control={Checkbox}
+                name="de6"
+                onChange={handleAddFlag}
+                checked={eventCreationData.language.de6}
+                error={flagError}
+              />
+            </Form.Group>
           </Form.Group>
+        </div>
+        {gameIdError ? (
+          <Message
+            size="tiny"
+            header="You did not specify on which game your event is created"
+            className="input-error-message"
+          />
+        ) : null}
+        <Form.Input
+          name="game_id"
+          label="Select game"
+          control={Select}
+          options={selectGameOptions}
+          placeholder="Select game"
+          onChange={handleSelectInputChange}
+          value={eventCreationData.game_id}
+          error={gameIdError}
+        />
 
-          {eventStartDateError ? (
-            <Message
-              size="tiny"
-              header="Date error, you did not specify the event day"
-              className="input-error-message"
-            />
-          ) : null}
-          {eventStartHourError ? (
-            <Message
-              size="tiny"
-              header="Date error, you did not specify the event starting hour"
-              className="input-error-message"
-            />
-          ) : null}
+        {playerMaxError ? (
+          <Message
+            size="tiny"
+            header="You did not specify how many players you want on your event"
+            className="input-error-message"
+          />
+        ) : null}
+        {durationError ? (
+          <Message
+            size="tiny"
+            header="You did not specify a duration for your event"
+            className="input-error-message"
+          />
+        ) : null}
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Maximum players"
+            name="player_max"
+            control={Select}
+            options={maxPlayerOptions}
+            placeholder="Maximum players"
+            onChange={handleSelectInputChange}
+            value={eventCreationData.player_max}
+            error={playerMaxError}
+          />
+          <Form.Input
+            label="Duration (hour)"
+            name="duration"
+            control={Select}
+            options={durationOptions}
+            placeholder="Event duration"
+            onChange={handleSelectInputChange}
+            value={eventCreationData.duration}
+            error={durationError}
+          />
+        </Form.Group>
+
+        {eventStartDateError ? (
+          <Message
+            size="tiny"
+            header="You did not specify the event day"
+            className="input-error-message"
+          />
+        ) : null}
+        {eventStartHourError ? (
+          <Message
+            size="tiny"
+            header="You did not specify the event starting hour"
+            className="input-error-message"
+          />
+        ) : null}
+        <Form.Input
+          id="form-input-control-error-eventstart"
+          name="event_time_date"
+          label="Event start date"
+          type="date"
+          onChange={handleInputChange}
+          value={eventCreationData.event_time_date}
+          error={eventStartDateError}
+        />
+        <Form.Group widths="equal">
           <Form.Input
             id="form-input-control-error-eventstart"
-            name="event_time_date"
-            label="Event start date"
-            type="date"
+            name="event_time_hour"
+            label="Event start time"
+            type="time"
             onChange={handleInputChange}
-            value={eventCreationData.event_time_date}
-            error={eventStartDateError}
+            value={eventCreationData.event_time_hour}
+            error={eventStartHourError}
           />
-          <Form.Group widths="equal">
-            <Form.Input
-              id="form-input-control-error-eventstart"
-              name="event_time_hour"
-              label="Event start time"
-              type="time"
-              onChange={handleInputChange}
-              value={eventCreationData.event_time_hour}
-              error={eventStartHourError}
-            />
-
-            <Form.Input
-              label="vocal"
-              name="vocal"
-              placeholder="Event vocal"
-              onChange={handleInputChange}
-              value={eventCreationData.vocal}
-            />
-          </Form.Group>
 
           <Form.Input
-            label="I want to play ranked games"
-            name="is_ranked"
-            control={Checkbox}
-            onChange={handleAddIsRanked}
-            checked={eventCreationData.is_ranked}
+            label="vocal"
+            name="vocal"
+            placeholder="Event vocal"
+            onChange={handleInputChange}
+            value={eventCreationData.vocal}
           />
-        </div>
+        </Form.Group>
+
+        <Form.Input
+          label="I want to play ranked games"
+          name="is_ranked"
+          control={Checkbox}
+          onChange={handleAddIsRanked}
+          checked={eventCreationData.is_ranked}
+        />
         {rankError ? (
           <Message
             size="tiny"
@@ -383,8 +359,7 @@ const CreateEventPage = ({
             className="input-error-message"
           />
         ) : null}
-        {console.log(eventCreationErrorMessage)}
-        {eventCreationErrorMessage ? (
+        {eventCreationErrorMessage === '"rank" is not allowed to be empty' ? (
           <Message
             size="tiny"
             header={eventCreationErrorMessage}
@@ -451,7 +426,7 @@ const CreateEventPage = ({
         {descriptionError ? (
           <Message
             size="tiny"
-            header="Description error, you did not specify a description for your event"
+            header="You did not specify a description for your event"
             className="input-error-message"
           />
         ) : null}

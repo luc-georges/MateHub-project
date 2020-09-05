@@ -1,9 +1,8 @@
-import React,{ useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button, Flag } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
-import Moment from 'react-moment';
 import moment from 'moment'
 const EventBar = ({ personnalData,  isLogged, handleLogout,  }) => {
   // console.log('data dans le component EventBar', list);
@@ -23,7 +22,7 @@ const EventBar = ({ personnalData,  isLogged, handleLogout,  }) => {
 let filteredData = sortedEvents.filter((date) => {
   return new Date(date.event_time).getTime() >= d.getTime();
 });
-console.log(filteredData)
+// console.log(filteredData)
   return (
     <div className="eventbar">
       {!isLogged && (
@@ -84,7 +83,6 @@ console.log(filteredData)
                 animated
                 fluid
                 className="searchEvent"
-                content="Search event"
                 size="medium"
                 inverted
                 color="teal"
@@ -100,7 +98,7 @@ console.log(filteredData)
       )}
       {isLogged && (
         <div className="eventbar-eventlist">
-          {console.log("personnal data Console log",personnalData)}
+          {/* {console.log("personnal data Console log",personnalData)} */}
           {filteredData.map((event) => {
             return (
               <div className="eventbar-event-container" key={event._event_id}>

@@ -8,7 +8,6 @@ import {
   Checkbox,
   Image,
   Flag,
-  Divider,
 } from 'semantic-ui-react';
 import logolol from '../../assets/logolol.png';
 import { Link } from 'react-router-dom';

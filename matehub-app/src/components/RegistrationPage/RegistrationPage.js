@@ -6,7 +6,6 @@ import {
   Message,
   Checkbox,
   Container,
-  Icon,
 } from 'semantic-ui-react';
 import './style.scss';
 
@@ -55,7 +54,7 @@ const RegistrationPage = ({
       setPasswordConfirmError(false);
     }
 
-    if (registerData.passwordConfirm == '') {
+    if (registerData.passwordConfirm === '') {
       setPasswordConfirmError(true);
     }
 
@@ -65,7 +64,7 @@ const RegistrationPage = ({
       setNicknameError(false);
     }
 
-    if (registerData.dateofbirth == '') {
+    if (registerData.dateofbirth === '') {
       setDobError(true);
     } else {
       setDobError(false);

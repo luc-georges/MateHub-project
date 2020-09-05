@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import logolol from '../../assets/logolol.png';
 import Moment from 'react-moment';
 import { Card, Image, Flag, Icon } from 'semantic-ui-react';
+import uuid from "react-uuid";
 import './style.scss';
 
 const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
@@ -73,7 +74,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
                       </div>
                       <span>Lang: </span>
                       {element._langs && element._langs.map((lang) => {
-                        return <Flag name={lang.icon} />;
+                        return <Flag name={lang.icon} key={`${uuid()}`}/>;
                       })}
                       <div className="view-details">GO{" "}<Icon name="rocket"/></div>
                     </div>
