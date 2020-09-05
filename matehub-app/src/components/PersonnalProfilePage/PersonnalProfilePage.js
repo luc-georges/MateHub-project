@@ -23,8 +23,17 @@ const PersonnalProfilePage = ({
   modifyPersonnalData,
   editProfilBanner,
   getSelectedEvent,
+  onSumInputChangeField,
+  sumInputData
 }) => {
   // console.log(personnalData);
+
+  const handleSumInputChange = (evt) => {
+    const { name, value } = evt.target;
+    onSumInputChangeField({
+      [name]: value,
+    });
+  };
 
   const handleGetSelectedEvent = (evt, data) => {
     // console.log(evt.currentTarget.id);
@@ -247,13 +256,17 @@ const PersonnalProfilePage = ({
                     <Form.Group widths='equal'>
                       <Form.Input
                         label="Summoner name"
-                        name="lolSumName"
+                        name="summonerName"
                         placeholder="Enter your LoL summoner name"
+                        onChange={handleSumInputChange}
+                        value={sumInputData.summonerName}
                       />
                       <Form.Input
                         label="Region"
-                        name="lolRegion"
+                        name="summonerRegion"
                         placeholder="Enter your LoL account region"
+                        onChange={handleSumInputChange}
+                        value={sumInputData.summonerRegion}
                       />
                     </Form.Group>
                     <Button inverted color="teal" type='submit' content="Send" />
