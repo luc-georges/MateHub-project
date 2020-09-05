@@ -125,7 +125,7 @@ const EventPage = ({
           >
             {applyToEventErrorMessage && (
               <Message
-                className="eventpage-apply-error"
+                className="input-error-message"
                 header={applyToEventErrorMessage}
               />
             )}

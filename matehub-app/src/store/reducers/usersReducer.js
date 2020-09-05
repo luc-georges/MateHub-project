@@ -82,7 +82,7 @@ export const initialState = {
         player_max: '',
         description: '',
         status: '',
-        rank:'',
+        rank: '',
         Lang: [
           {
             id: '',

@@ -42,13 +42,18 @@ export default (state = initialState, action = {}) => {
           nickname: '',
           dateofbirth: '',
         },
-        // registered: true,
+        registered: true,
       };
     case REGISTER_SUBMIT_ERROR:
       return {
         ...state,
+        registerData: {
+          ...state.registerData,
+          password: '',
+          passwordConfirm: '',
+        },
         registerErrorMessage: action.payload,
-        // registered: false,
+        registered: false,
       };
     default:
       return state;

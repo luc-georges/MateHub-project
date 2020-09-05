@@ -11,6 +11,8 @@ const mapStateToProps = (state) => ({
     nickname: state.register.registerData.nickname,
     dateofbirth: state.register.registerData.dateofbirth,
   },
+  registered: state.register.registered,
+  registerErrorMessage: state.register.registerErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

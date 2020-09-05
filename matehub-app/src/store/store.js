@@ -17,7 +17,8 @@ import registerRequestMW from './middlewares/registerRequestMW';
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ['auth'] // Voir si cause des problemes de cache
+  whitelist: ['auth']
+  // whitelist: ['auth', 'users'] // Voir si cause des problemes de cache
 };
 
 // == Enhancers

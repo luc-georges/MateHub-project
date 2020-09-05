@@ -9,6 +9,7 @@ import {
   GET_PERSONNAL_DATA,
   GET_PERSONNAL_DATA_SUCCESS,
   GET_PERSONNAL_DATA_ERROR,
+  CHECK_AUTH,
 } from '../actions/authActions';
 
 export const initialState = {
@@ -69,7 +70,7 @@ export const initialState = {
         player_max: '',
         description: '',
         status: '',
-        rank:'',
+        rank: '',
         lang: [
           {
             id: '',
@@ -93,7 +94,7 @@ export const initialState = {
         player_max: '',
         description: '',
         status: '',
-        rank:'',
+        rank: '',
         Lang: [
           {
             id: '',
@@ -176,6 +177,15 @@ export default (state = initialState, action = {}) => {
         nickname: '',
         isLogged: false,
         loginErrorMessage: action.payload,
+        loginData: {
+          ...state.loginData,
+          password: '',
+        },
+      };
+    case CHECK_AUTH:
+      return {
+        ...state,
+        loginErrorMessage: '',
       };
     case LOGOUT_SUCCESS:
       return {

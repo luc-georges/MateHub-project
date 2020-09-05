@@ -10,7 +10,7 @@ export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case REGISTER_SUBMIT:
-      console.log(store.getState().register.registerData);
+      // console.log(store.getState().register.registerData);
       axios({
         method: 'post',
         url: 'http://localhost:3001/registration',
@@ -35,8 +35,9 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.log('On passe dans le catch de la requête register :', err);
-          store.dispatch(registerSubmitError("La requête n'a pas abouti"));
-        });
+          console.log(err.response.data.error);
+          store.dispatch(registerSubmitError(err.response.data.error));
+        })
       break;
     default:
       return;

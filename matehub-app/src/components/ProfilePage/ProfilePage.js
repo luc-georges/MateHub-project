@@ -27,10 +27,11 @@ const ProfilePage = ({
     getSelectedEvent(evt.currentTarget.id);
   };
 
+  //eslint-disable-next-line
   useEffect(() => {
     getUser();
     // eslint-disable-next-line
-  }, []); 
+  }, []);
 
   const [open, setOpen] = useState(false);
   // const [open2, setopen2] = useState(false);
@@ -58,6 +59,34 @@ const ProfilePage = ({
         </div>
       </div>
       <div className="profilepage-body">
+        <div className="profilepage-button">
+          <Modal
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
+            open={open}
+            trigger={<Button className="button-modal">Event invitation</Button>}
+            className="modal-invitation"
+          >
+            <Modal.Header className="modal-invitation-titre">Event invitation</Modal.Header>
+            <Modal.Actions className="modal-invitation-action">
+              <Button
+              className="banner-buttonData"
+                content="ok"
+                labelPosition="right"
+                icon="checkmark"
+                onClick={() => setOpen(false)}
+                positive
+              />
+              <Button
+              className="banner-buttonData"
+                color="black"
+                content="Cancel"
+                onClick={() => setOpen(false)}
+              ></Button>
+            </Modal.Actions>
+          </Modal>
+        </div>
+
         <h2 className="profilepage-titre">Description</h2>
         <div className="profilepage-description">{userData._description}</div>
 
@@ -103,7 +132,7 @@ const ProfilePage = ({
                   rankClass = "diam"
                 } else {
                   rankClass = "chal"
-                };
+                }
                 return (
                   <NavLink
                     key={`C_event${event.event_id}`}
@@ -111,7 +140,7 @@ const ProfilePage = ({
                     to={`/event/${event._event_id}`}
                     onClick={handleGetSelectedEvent}
                   >
-                     <div className={`slide-in${index}`}></div>
+                     <div className={`slide-in${index}`}>
                     <Card className="event-card">
                       <Card.Content>
                       <Image floated="right" size="mini" src={logolol} />
@@ -143,6 +172,7 @@ const ProfilePage = ({
                     </div>
                   </Card.Content>
                 </Card>
+                </div>
             </NavLink>
                 );
               })}
@@ -153,63 +183,41 @@ const ProfilePage = ({
           <div className="Event-modules">
             {userData.has_events &&
               userData.has_events.map((h_event) => {
-                let rankClasshev;
-          
-                if( h_event.rank.slice(0,4) === "iron"){
-                  rankClasshev = "iron"
-                }else if (h_event.rank.slice(0,6) === "bronze"){
-                  rankClasshev = "bronze"
-                }else if (h_event.rank.slice(0,4) === "silv"){
-                  rankClasshev = "silv"
-                }else if (h_event.rank.slice(0,4) === "gold"){
-                  rankClasshev = "gold"
-                }else if (h_event.rank.slice(0,4) === "plat"){
-                  rankClasshev = "plat"
-                }else if (h_event.rank.slice(0,4) === "diam"){
-                  rankClasshev = "diam"
-                } else {
-                  rankClasshev = "chal"
-                };
                 return (
                   <NavLink
                     key={`H_event${h_event.event_id}`}
-                    className="Event-module"
                     id={h_event._event_id}
                     to={`/event/${h_event._event_id}`}
                     onClick={handleGetSelectedEvent}
                   >
-                   <Card className="event-card">
+                    <Card className="event-card">
                       <Card.Content>
-                      <Image floated="right" size="mini" src={logolol} />
-                        <Card.Header><span className="nickname">{h_event.game_name}</span></Card.Header>
-                        <Card.Meta ><br /><span className={`rank ${rankClasshev}`}>{h_event.rank}</span></Card.Meta>
-                        <Card.Description className="descript">                    
-                    "{h_event.description.length > 25
-                      ? `${h_event.description.slice(0, 25)}...`
-                      : h_event.description}"{/* "{element._description}" */}</Card.Description>
+                        <Image floated="right" size="mini" src={logolol} />
+                        <Card.Header>{h_event.game_name}</Card.Header>
+                        <Card.Meta>{h_event._creator}</Card.Meta>
+                        <Card.Description>
+                          {h_event._description}
+                        </Card.Description>
                       </Card.Content>
                       <Card.Content extra>
-                    <div className="LatestEvent-text">
-                      Starting date and time:{' '} <br />
-                      <span className="starting">
-                      <Moment format="MMM DD HH:MM">
-                        {h_event.starting}
-                      </Moment></span>
-                      <div className="LatestEvent-text">
-                        Register player(s) now: <span className="number">{h_event.player_count}</span>
-                      </div>
-                      <div className="LatestEvent-text">
-                        Looking for: <span className="number">{h_event.player_max}</span> players
-                      </div>
-                      <span>Lang: </span>
-                     
-                      {h_event.Lang && h_event.Lang.map((lang) => {
-                        return <Flag name={lang.icon} />;
-                      })}
-                      <div className="view-details">GO{" "}<Icon name="rocket"/></div>
-                    </div>
-                  </Card.Content>
-                </Card>
+                        <div className="LatestEvent-text">
+                          Date and time{' '}
+                          <Moment format="YYYY/MM/DD HH:MM">
+                            {h_event.event_time}
+                          </Moment>
+                          <div className="LatestEvent-text">
+                            Number of players {h_event.player_count}
+                          </div>
+                          <div className="LatestEvent-text">
+                            Looking for: {h_event.player_max} player
+                          </div>
+                          {h_event.Lang.map((lang) => {
+                            return <Flag name={lang.icon} key={lang.id} />;
+                          })}
+                          <div className="view-details">view details</div>
+                        </div>
+                      </Card.Content>
+                    </Card>
                   </NavLink>
                 );
               })}
