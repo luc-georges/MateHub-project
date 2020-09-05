@@ -134,11 +134,7 @@ const CreateEventPage = ({
       setDescriptionError(false);
       error = false;
     }
-
-    if (!error) {
       onFormSubmit();
-      this.history.state('/');
-    }
   };
 
   // Options for select input
