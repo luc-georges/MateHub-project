@@ -91,7 +91,7 @@ SELECT u.id AS "_user_id",
                               FROM user_access."lang" l 
                         JOIN user_access."event" evt ON evt.id = uhe.event_id
                         JOIN user_access."M_EVENT_has_LANG" ehl ON ehl.event_id = evt.id 
-                              WHERE l.id = ehl.lang_id) AS "events_lang" )AS "Lang", 
+                              WHERE l.id = ehl.lang_id) AS "events_lang" )AS "lang", 
                         evvt."vocal" 
                         FROM user_access."M_USER_has_EVENT" uhe
                         JOIN user_access."event" evvt ON evvt.id = uhe.event_id

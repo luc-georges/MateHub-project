@@ -1,12 +1,29 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button, Flag } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 import Moment from 'react-moment';
-
-const EventBar = ({ list, isLogged, handleLogout }) => {
+import moment from 'moment'
+const EventBar = ({ personnalData,  isLogged, handleLogout,  }) => {
   // console.log('data dans le component EventBar', list);
+
+  // eslint-disable-next-line
+  const follow_event = [];
+  follow_event.push(...personnalData._event_created)
+  follow_event.push(...personnalData.has_events)
+  const sortedEvents = follow_event.sort(function (a, b) {
+    return moment(a.event_time) - moment(b.event_time);
+  });
+
+  const d = new Date();
+  d.setDate(d.getDate() - 7);
+  
+  
+let filteredData = sortedEvents.filter((date) => {
+  return new Date(date.event_time).getTime() >= d.getTime();
+});
+console.log(filteredData)
   return (
     <div className="eventbar">
       {!isLogged && (
@@ -83,27 +100,28 @@ const EventBar = ({ list, isLogged, handleLogout }) => {
       )}
       {isLogged && (
         <div className="eventbar-eventlist">
-          {list.map((event) => {
+          {console.log("personnal data Console log",personnalData)}
+          {filteredData.map((event) => {
             return (
               <div className="eventbar-event-container" key={event._event_id}>
                 <div>
-                  {event._description.length > 30
-                    ? `${event._description.slice(0, 30)}...`
-                    : event._description}
+                  {event.description.length > 30
+                    ? `${event.description.slice(0, 30)}...`
+                    : event.description}
                   <a href="/">
-                    <NavLink exact to={`/event/${event._id}`}>
+                    <NavLink exact to={`/event/${event.event_id}`}>
                       <Icon className="eye" size="large" />
                     </NavLink>
                   </a>
                 </div>
 
                 <div className="eventbar-event-infos">
-                  <Moment format="YYYY/MM/DD HH:MM" content={event._starting} />
+                  {moment(event.event_time).format("YYYY/MM/DD HH:MM")}
 
-                  <div>{event._player_count} players</div>
+                  <div>{event.player_count} players</div>
 
-                  <div>Duration : {event._duration.hours}h</div>
-                  {event._langs.map((lang) => {
+                  <div>Duration : {event.duration}h</div>
+                  {event.lang.map((lang) => {
                     return <Flag name={lang.icon} />;
                   })}
                 </div>
