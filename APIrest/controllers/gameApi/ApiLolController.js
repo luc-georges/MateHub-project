@@ -65,6 +65,7 @@ module.exports = {
     //         console.log(error)
     //     }
     // }
+    
     InsertSummoner: async (request, response) =>{
         try{
             const userID = request.params.userId
@@ -76,5 +77,4 @@ module.exports = {
             console.log(error)
         }
     }
-}
 }
