@@ -152,10 +152,9 @@ const eventsRequestMW = (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.log(
-            "On passe dans le catch de la requete de création d'event >>>",
-            err
+            err.response
           );
-          store.dispatch(CreateEventSubmitError());
+          store.dispatch(CreateEventSubmitError(err.response.data.details[0].message));
         });
       break;
     case GET_ALL_EVENTS:

@@ -257,7 +257,8 @@ export const initialState = {
     is_ranked: false,
   },
   playerToAcceptOrRefuseInEvent: '',
-  createEventSubmitError: false,
+  // createEventSubmitError: false,
+  created: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -459,11 +460,14 @@ export default (state = initialState, action = {}) => {
           isRanked: false,
         },
         selectedEvent: action.payload,
+        eventCreationErrorMessage: '',
+        created: true,
       };
     case CREATE_EVENT_SUBMIT_ERROR:
       return {
         ...state,
         eventCreationErrorMessage: action.payload,
+        created: false,
       };
 
     // * GET ALL EVENT

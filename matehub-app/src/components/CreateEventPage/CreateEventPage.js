@@ -1,4 +1,4 @@
-import React, { useState, pushState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import {
@@ -9,6 +9,7 @@ import {
   Select,
   Checkbox,
   Message,
+  Container,
 } from 'semantic-ui-react';
 
 const CreateEventPage = ({
@@ -18,6 +19,8 @@ const CreateEventPage = ({
   eventCreationData,
   onFormSubmit,
   selectedEvent,
+  created,
+  eventCreationErrorMessage,
 }) => {
   // console.log(eventCreationData);
 
@@ -60,6 +63,8 @@ const CreateEventPage = ({
   const [eventStartHourError, setEventStartHourError] = useState(false);
   const [rankError, setRankError] = useState(false);
   const [descriptionError, setDescriptionError] = useState(false);
+
+  const [fieldsError, setFieldsError] = useState(false);
 
   const handleSubmit = () => {
     let error = false;
@@ -134,7 +139,8 @@ const CreateEventPage = ({
       setDescriptionError(false);
       error = false;
     }
-      onFormSubmit();
+
+    onFormSubmit();
   };
 
   // Options for select input
@@ -144,11 +150,6 @@ const CreateEventPage = ({
       text: 'League of Legends',
       value: 1,
     },
-    // {
-    //   key: '2',
-    //   text: 'CS : Global Offensive',
-    //   value: 2,
-    // },
   ];
 
   const durationOptions = [
@@ -174,6 +175,8 @@ const CreateEventPage = ({
     { key: '5', text: '5', value: 5 },
   ];
 
+  const eventCreatedPage = `/event/${selectedEvent}`;
+
   return (
     <div className="CreateEventPage">
       <Form inverted className="form" onSubmit={handleSubmit} error>
@@ -184,169 +187,158 @@ const CreateEventPage = ({
         </div>
 
         <div>
-          {flagError ? (
-            <Message
-              header="Select language error, you must select atleast one language"
-              className="input-error-message"
-            />
-          ) : null}
+          <div className="form-select">
+            <div className="form-select-title">Language</div>
+            {flagError ? (
+              <Message
+                size="tiny"
+                header="Select language error, you must select atleast one language"
+                className="input-error-message"
+              />
+            ) : null}
+            <Form.Group>
+              <Form.Group className="form-select-language">
+                <Flag name="france" />
+                <Form.Input
+                  label="France"
+                  control={Checkbox}
+                  name="fr1"
+                  onChange={handleAddFlag}
+                  checked={eventCreationData.language.fr1}
+                  error={flagError}
+                />
+              </Form.Group>
+
+              <Form.Group className="form-select-language">
+                <Flag name="gb" />
+                <Form.Input
+                  label="UK"
+                  control={Checkbox}
+                  name="uk2"
+                  onChange={handleAddFlag}
+                  checked={eventCreationData.language.uk2}
+                  error={flagError}
+                />
+              </Form.Group>
+
+              <Form.Group className="form-select-language">
+                <Flag name="it" />
+                <Form.Input
+                  label="Italy"
+                  control={Checkbox}
+                  name="it3"
+                  onChange={handleAddFlag}
+                  checked={eventCreationData.language.it3}
+                  error={flagError}
+                />
+              </Form.Group>
+
+              <Form.Group className="form-select-language">
+                <Flag name="es" />
+                <Form.Input
+                  label="Spain"
+                  control={Checkbox}
+                  name="es4"
+                  onChange={handleAddFlag}
+                  checked={eventCreationData.language.es4}
+                  error={flagError}
+                />
+              </Form.Group>
+
+              <Form.Group className="form-select-language">
+                <Flag name="ru" />
+                <Form.Input
+                  label="Russia"
+                  control={Checkbox}
+                  name="ru5"
+                  onChange={handleAddFlag}
+                  checked={eventCreationData.language.ru5}
+                  error={flagError}
+                />
+              </Form.Group>
+
+              <Form.Group className="form-select-language">
+                <Flag name="de" />
+                <Form.Input
+                  label="Germany"
+                  control={Checkbox}
+                  name="de6"
+                  onChange={handleAddFlag}
+                  checked={eventCreationData.language.de6}
+                  error={flagError}
+                />
+              </Form.Group>
+            </Form.Group>
+          </div>
           {gameIdError ? (
             <Message
+              size="tiny"
               header="Select game error, you did not specify on which game your event is created"
               className="input-error-message"
             />
           ) : null}
+          <Form.Input
+            name="game_id"
+            label="Select game"
+            control={Select}
+            options={selectGameOptions}
+            placeholder="Select game"
+            onChange={handleSelectInputChange}
+            value={eventCreationData.game_id}
+            error={gameIdError}
+          />
+
           {playerMaxError ? (
             <Message
+              size="tiny"
               header="Maximum players error, you did not specify how many players you want on your event"
               className="input-error-message"
             />
           ) : null}
           {durationError ? (
             <Message
+              size="tiny"
               header="Duration error, you did not specify a duration for your event"
               className="input-error-message"
             />
           ) : null}
+          <Form.Group widths="equal">
+            <Form.Input
+              label="Maximum players"
+              name="player_max"
+              control={Select}
+              options={maxPlayerOptions}
+              placeholder="Maximum players"
+              onChange={handleSelectInputChange}
+              value={eventCreationData.player_max}
+              error={playerMaxError}
+            />
+            <Form.Input
+              label="Duration (hour)"
+              name="duration"
+              control={Select}
+              options={durationOptions}
+              placeholder="Event duration"
+              onChange={handleSelectInputChange}
+              value={eventCreationData.duration}
+              error={durationError}
+            />
+          </Form.Group>
+
           {eventStartDateError ? (
             <Message
+              size="tiny"
               header="Date error, you did not specify the event day"
               className="input-error-message"
             />
           ) : null}
           {eventStartHourError ? (
             <Message
+              size="tiny"
               header="Date error, you did not specify the event starting hour"
               className="input-error-message"
             />
           ) : null}
-          {rankError ? (
-            <Message
-              header="Rank error, you must specify your rank"
-              className="input-error-message"
-            />
-          ) : null}
-
-          {descriptionError ? (
-            <Message
-              header="Description error, you did not specify a description for your event"
-              className="input-error-message"
-            />
-          ) : null}
-        </div>
-
-        <div className="form-select">
-          <div className="form-select-title">Language</div>
-          <Form.Group>
-            <Form.Group className="form-select-language">
-              <Flag name="france" />
-              <Form.Input
-                label="France"
-                control={Checkbox}
-                name="fr1"
-                onChange={handleAddFlag}
-                checked={eventCreationData.language.fr1}
-                error={flagError}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-select-language">
-              <Flag name="gb" />
-              <Form.Input
-                label="UK"
-                control={Checkbox}
-                name="uk2"
-                onChange={handleAddFlag}
-                checked={eventCreationData.language.uk2}
-                error={flagError}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-select-language">
-              <Flag name="it" />
-              <Form.Input
-                label="Italy"
-                control={Checkbox}
-                name="it3"
-                onChange={handleAddFlag}
-                checked={eventCreationData.language.it3}
-                error={flagError}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-select-language">
-              <Flag name="es" />
-              <Form.Input
-                label="Spain"
-                control={Checkbox}
-                name="es4"
-                onChange={handleAddFlag}
-                checked={eventCreationData.language.es4}
-                error={flagError}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-select-language">
-              <Flag name="ru" />
-              <Form.Input
-                label="Russia"
-                control={Checkbox}
-                name="ru5"
-                onChange={handleAddFlag}
-                checked={eventCreationData.language.ru5}
-                error={flagError}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-select-language">
-              <Flag name="de" />
-              <Form.Input
-                label="Germany"
-                control={Checkbox}
-                name="de6"
-                onChange={handleAddFlag}
-                checked={eventCreationData.language.de6}
-                error={flagError}
-              />
-            </Form.Group>
-          </Form.Group>
-        </div>
-
-        <Form.Input
-          name="game_id"
-          label="Select game"
-          control={Select}
-          options={selectGameOptions}
-          placeholder="Select game"
-          onChange={handleSelectInputChange}
-          value={eventCreationData.game_id}
-          error={gameIdError}
-        />
-        <Form.Group widths="equal">
-          <Form.Input
-            label="Maximum players"
-            name="player_max"
-            control={Select}
-            options={maxPlayerOptions}
-            placeholder="Maximum players"
-            onChange={handleSelectInputChange}
-            value={eventCreationData.player_max}
-            error={playerMaxError}
-          />
-
-          <Form.Input
-            label="Duration (hour)"
-            name="duration"
-            control={Select}
-            options={durationOptions}
-            placeholder="Event duration"
-            onChange={handleSelectInputChange}
-            value={eventCreationData.duration}
-            error={durationError}
-          />
-        </Form.Group>
-
-        <Form.Group widths="equal">
           <Form.Input
             id="form-input-control-error-eventstart"
             name="event_time_date"
@@ -356,36 +348,50 @@ const CreateEventPage = ({
             value={eventCreationData.event_time_date}
             error={eventStartDateError}
           />
+          <Form.Group widths="equal">
+            <Form.Input
+              id="form-input-control-error-eventstart"
+              name="event_time_hour"
+              label="Event start time"
+              type="time"
+              onChange={handleInputChange}
+              value={eventCreationData.event_time_hour}
+              error={eventStartHourError}
+            />
+
+            <Form.Input
+              label="vocal"
+              name="vocal"
+              placeholder="Event vocal"
+              onChange={handleInputChange}
+              value={eventCreationData.vocal}
+            />
+          </Form.Group>
 
           <Form.Input
-            id="form-input-control-error-eventstart"
-            name="event_time_hour"
-            label="Event start time"
-            type="time"
-            onChange={handleInputChange}
-            value={eventCreationData.event_time_hour}
-            error={eventStartHourError}
+            label="I want to play ranked games"
+            name="is_ranked"
+            control={Checkbox}
+            onChange={handleAddIsRanked}
+            checked={eventCreationData.is_ranked}
           />
-
-          <Form.Input
-            label="vocal"
-            name="vocal"
-            placeholder="Event vocal"
-            onChange={handleInputChange}
-            value={eventCreationData.vocal}
+        </div>
+        {rankError ? (
+          <Message
+            size="tiny"
+            header="Rank error, you must specify your rank"
+            className="input-error-message"
           />
-        </Form.Group>
-
+        ) : null}
+        {console.log(eventCreationErrorMessage)}
+        {eventCreationErrorMessage ? (
+          <Message
+            size="tiny"
+            header={eventCreationErrorMessage}
+            className="input-error-message"
+          />
+        ) : null}
         <Form.Input
-          label="I want to play ranked games"
-          name="is_ranked"
-          control={Checkbox}
-          onChange={handleAddIsRanked}
-          checked={eventCreationData.is_ranked}
-        />
-
-        <Form.Input
-
           label="Rank"
           control="select"
           name="rank"
@@ -442,6 +448,13 @@ const CreateEventPage = ({
           </optgroup>
         </Form.Input>
 
+        {descriptionError ? (
+          <Message
+            size="tiny"
+            header="Description error, you did not specify a description for your event"
+            className="input-error-message"
+          />
+        ) : null}
         <Form.Input
           control={TextArea}
           label="Description"
@@ -451,9 +464,26 @@ const CreateEventPage = ({
           value={eventCreationData.description}
           error={descriptionError}
         />
-        {/* <Link aria-disabled to={`/event/${selectedEvent}`}> */}
-        <Button content="Create event" type="submit" />
-        {/* </Link> */}
+
+        {!created ? (
+          <Button
+            inverted
+            color="teal"
+            content="Create event"
+            type="submit"
+            // disabled={fieldsError}
+          />
+        ) : (
+          <Container>
+            <Message size="large" className="input-success-message">
+              <Message.Header>
+                Event created successfully, click{' '}
+                <Link to={`/event/${selectedEvent}`}>here</Link> to go on the
+                event page
+              </Message.Header>
+            </Message>
+          </Container>
+        )}
       </Form>
     </div>
   );
