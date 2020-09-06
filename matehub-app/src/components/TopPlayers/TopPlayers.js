@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import './style.scss';
+import { NavLink } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react'
 
 const TopPlayers = ({ topUsersList, getSelectedUser, getUser }) => {

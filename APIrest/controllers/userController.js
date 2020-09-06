@@ -301,12 +301,13 @@ module.exports = {
                 }
                     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
                     let avatarImg = request.files.avatar;
-                    console.log(avatarImg)
+                    const avatarName = encodeURI(avatarImg.name)
+
                     //Use the mv() method to place the file in upload directory (i.e. "uploads")
-                    avatarImg.mv('../matehub-app/public/src/assets/uploads/' + avatarImg.name);
+                    avatarImg.mv('../matehub-app/src/assets/' + avatarName );
                 
 
-                user.avatar = sanitaze.htmlEntities(avatarImg.name);
+                user.avatar = sanitaze.htmlEntities(avatarName);
             }
 
             if(request.files.banner) {
@@ -317,11 +318,12 @@ module.exports = {
                 }
                     //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
                     let bannerImg = request.files.banner;
+                    const bannerName = encodeURI(bannerImg.name)
                     //Use the mv() method to place the file in upload directory (i.e. "uploads")
-                    bannerImg.mv('../matehub-app/src/assets/' + bannerImg.name);
+                    bannerImg.mv('../matehub-app/src/assets/' + bannerName);
     
 
-                user.banner = sanitaze.htmlEntities(bannerImg.name);
+                user.banner = sanitaze.htmlEntities(bannerName);
             }}
     
             const result = await user.update();

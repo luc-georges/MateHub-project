@@ -1,22 +1,29 @@
 import React from 'react';
+import './style.scss';
 import { NavLink } from 'react-router-dom';
 import logolol from '../../assets/logolol.png';
 import Moment from 'react-moment';
 import { Card, Image, Flag, Icon } from 'semantic-ui-react';
-import './style.scss';
-
+import moment from 'moment';
 const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
   const handleGetSelectedEvent = (evt, data) => {
     // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
     getEventById();
   };
+  const d = new Date();
+
+  console.log(d)
+  const filteredLatestEvents = list.filter((date=>{
+    return new Date(date._starting).getTime() >= d.getTime();
+  })) 
+  console.log("filtered list: ",filteredLatestEvents)
   return (
     <div className="LastestEvent-cards">
       <h2 className="titre homeTitle">Lastest event</h2>
 
       <Card.Group className="event-card-group" centered>
-        {list.slice(0, 12).map((element, index) => {
+        {filteredLatestEvents.slice(0, 10).map((element, index) => {
           let rankClass;
           
           if( element._rank.slice(0,4) === "iron"){
@@ -62,9 +69,9 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
                     <div className="LatestEvent-text">
                       Starting date and time:{' '} <br />
                       <span className="starting">
-                      <Moment format="MMM DD HH:MM">
-                        {element._starting}
-                      </Moment></span>
+                      
+                        {moment(element._starting).format("YYYY/MM/DD HH:MM")}
+                      </span>
                       <div className="LatestEvent-text">
                         Register player(s) now: <span className="number">{element._player_count}</span>
                       </div>

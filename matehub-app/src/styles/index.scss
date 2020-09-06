@@ -94,11 +94,6 @@ optgroup[label="Challenger"]
   background: #10181f!important;
 
 }
-.ui.inverted.teal.button, .ui.inverted.teal.buttons .button {
-  background-color: transparent!important;
-  box-shadow: 0 0 0 1px #6dffff inset!important;
-  color: #6dffff!important;
-}
 
 
 
@@ -119,4 +114,7 @@ optgroup[label="Challenger"]
   box-shadow: 0 1px 3px 0 #09ff00, 0 0 0 1px #09ff00 !important;
   color: #09ff00 !important;
   // font-size: 2em;
+}
+.form{
+  padding: 2em;
 }

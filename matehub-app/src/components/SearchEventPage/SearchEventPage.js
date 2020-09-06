@@ -225,7 +225,7 @@ const SearchEventPage = ({
                     more players
                   </Card.Description>
                   <Card.Description className="lang-search">
-                      {element._langs.map((lang) => {
+                      {element._langs && element._langs.map((lang) => {
                         return <Flag name={lang.icon} />;
                       })}
                   </Card.Description>

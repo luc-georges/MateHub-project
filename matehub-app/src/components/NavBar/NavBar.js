@@ -1,8 +1,8 @@
 import React from 'react';
+import './style.scss';
 import { Button, Image } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo-matehub.svg';
-import './style.scss';
 
 const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
   // console.log('NavBar');
@@ -46,17 +46,8 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             />
           </NavLink>
         )}
-        <NavLink className="navbar-nav-link " exact to="/">
-          <Button
-            fluid
-            className="home"
-            content="Games"
-            icon="game"
-            size="large"
-            inverted
-            color="teal"
-          />
-        </NavLink>
+       
+
         <NavLink className="navbar-nav-link " exact to="/gettingstarted">
           <Button
             fluid

@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.scss';
 import { Link } from 'react-router-dom';
 import {
   Form,
@@ -8,7 +9,6 @@ import {
   Container,
   Icon,
 } from 'semantic-ui-react';
-import './style.scss';
 
 const RegistrationPage = ({
   registerData,

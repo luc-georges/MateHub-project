@@ -1,8 +1,8 @@
 import React,{ useEffect } from 'react';
 import PropTypes from 'prop-types';
+import './style.scss';
 import { Icon, Button, Flag } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import './style.scss';
 import Moment from 'react-moment';
 import moment from 'moment'
 const EventBar = ({ personnalData,  isLogged, handleLogout,  }) => {
@@ -17,13 +17,13 @@ const EventBar = ({ personnalData,  isLogged, handleLogout,  }) => {
   });
 
   const d = new Date();
-  d.setDate(d.getDate() - 7);
+
   
   
 let filteredData = sortedEvents.filter((date) => {
   return new Date(date.event_time).getTime() >= d.getTime();
 });
-console.log(filteredData)
+
   return (
     <div className="eventbar">
       {!isLogged && (
@@ -100,19 +100,19 @@ console.log(filteredData)
       )}
       {isLogged && (
         <div className="eventbar-eventlist">
-          {console.log("personnal data Console log",personnalData)}
+
           {filteredData.map((event) => {
             return (
               <div className="eventbar-event-container" key={event._event_id}>
-                <div>
-                  {event.description.length > 30
-                    ? `${event.description.slice(0, 30)}...`
-                    : event.description}
-                  <a href="/">
+                  <a className="eye-a" href="/">
                     <NavLink exact to={`/event/${event.event_id}`}>
                       <Icon className="eye" size="large" />
                     </NavLink>
                   </a>
+                <div>
+                  {event.description.length > 30
+                    ? `${event.description.slice(0, 30)}...`
+                    : event.description}
                 </div>
 
                 <div className="eventbar-event-infos">

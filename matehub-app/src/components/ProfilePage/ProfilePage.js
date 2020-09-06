@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './style.scss';
 import {
   Button,
   Header,
@@ -9,7 +10,6 @@ import {
   Image,
   Flag,
 } from 'semantic-ui-react';
-import './style.scss';
 import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
@@ -115,7 +115,7 @@ const ProfilePage = ({
         <div className="Event-modules">
           <Card.Group className="event-card-group">
             {userData._event_created &&
-              userData._event_created.slice(0, 12).map((event,index) => {
+              userData._event_created.slice(0, 10).map((event,index) => {
                 let rankClass;
           
                 if( event.rank.slice(0,4) === "iron"){

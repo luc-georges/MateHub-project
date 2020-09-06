@@ -12,6 +12,7 @@ import {
   getPersonnalDataError,
   GET_PERSONNAL_DATA_SUBMIT,
   EDIT_PROFIL_BANNER,
+  EDIT_PROFIL_AVATAR,
 } from '../actions/authActions';
 
 export default (store) => (next) => (action) => {
@@ -164,6 +165,35 @@ export default (store) => (next) => (action) => {
           );
           store.dispatch(getPersonnalDataError(err));
         });
+        break;
+        case EDIT_PROFIL_AVATAR:
+          const formDataAvatar = new FormData();
+          formDataAvatar.append('avatar', action.payload);
+          axios({
+            method: 'put',
+            // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
+            url: `http://localhost:3001/user/${
+              store.getState().auth.connectedUserId
+            }/update`,
+            data: formDataAvatar,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'multipart/form-data',
+              withCredentials: true,
+              mode: 'no-cors',
+            },
+          })
+            .then((res) => {
+              console.log(res.data.data);
+              store.dispatch(getPersonnalDataSuccess(res.data.data));
+            })
+            .catch((err) => {
+              console.log(
+                'On passe dans le catch de la requête update user :',
+                err
+              );
+              store.dispatch(getPersonnalDataError(err));
+            });
       break;
     default:
       return;

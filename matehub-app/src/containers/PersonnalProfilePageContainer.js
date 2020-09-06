@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PersonnalProfilePage from '../components/PersonnalProfilePage/PersonnalProfilePage';
-import { getPersonnalData, modifyPersonnalDataChangeField, getPersonnalDataSubmit,editProfilBanner } from '../store/actions/authActions';
+import { getPersonnalData, modifyPersonnalDataChangeField, getPersonnalDataSubmit,editProfilBanner,editProfilAvatar } from '../store/actions/authActions';
 import { getSelectedEvent } from '../store/actions/eventsActions';
 // import { getUserById } from '../store/reducers/usersReducer';
 
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   editProfilBanner: (bannerImg) => {
     dispatch(editProfilBanner(bannerImg))
+  },
+  editProfilAvatar: (avatarImg) => {
+    dispatch(editProfilAvatar(avatarImg))
   },
   getSelectedEvent: (changedData) => {
     dispatch(getSelectedEvent(changedData));

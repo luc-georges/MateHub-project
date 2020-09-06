@@ -4,33 +4,62 @@
   display:flex;
   flex-direction: column;
   justify-content: center;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 15%;
-  padding: 2em;
+  width: 82%;
+  margin-left: 155px;
+
   background-color: black;
   color: $color-bleu-fonce;
 }
 .gettingstarted-bloc{
   display: inline-block;
-}
-.gettingstarted-bloc-text{
   position: relative;
+  height: 85vh;
+  background-image: url(../../assets/gathering.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.gettingstarted-bloc2{
+  display: inline-block;
+  position: relative;
+  height: 100vh;
+  background-image: url(../../assets/gather2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.textInBlock{
+  font-size: 1.5em;
+  color: #66fcf2ce
+}
+.gettingstarted-bloc-textFirst{
+  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 2em;
-  top: 50em; 
-  left: 25em;
+
+  top: 4em;
+  padding: 1em;
+  left: 2em;
   z-index: 1;
   width: 70%;
-  height: 20em;
+  background-color: #0b0c10b0;
+}
+.gettingstarted-bloc-textSecond{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 20%;
+  padding: 1em;
+  right: 10%;
+  z-index: 1;
+  width: 70%;
   background-color: #0b0c10b0;
 }
 .gettingstarted-bloc-image{
   width: 70%;
 }
-.gettingstarted-titre {
+.gettingstarted-bloc-titre {
+  font-size: 3em;
   font-family: 'Orbitron', sans-serif;
 }
 

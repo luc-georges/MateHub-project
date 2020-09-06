@@ -2,7 +2,7 @@ export const AUTH_CHANGE_FIELD = 'AUTH_CHANGE_FIELD';
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const MODIFY_PERSONNAL_DATA_CHANGE_FIELD = 'MODIFY_PERSONNAL_DATA_CHANGE_FIELD';
 export const EDIT_PROFIL_BANNER = 'EDIT_PROFIL_BANNER';
-
+export const EDIT_PROFIL_AVATAR = 'EDIT_PROFIL_AVATAR';
 
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const LOGIN_SUBMIT_SUCCESS = 'LOGIN_SUBMIT_SUCCESS';
@@ -47,7 +47,11 @@ export const modifyPersonnalDataChangeField = (payload) => ({
 export const editProfilBanner = (payload) => ({
   type: EDIT_PROFIL_BANNER,
   payload
-})
+});
+export const editProfilAvatar = (payload) => ({
+  type: EDIT_PROFIL_AVATAR,
+  payload
+});
 
 export const loginSubmit = () => ({
   type: LOGIN_SUBMIT,

@@ -153,8 +153,27 @@
 .modal-game-action{
   background:#10161c8a !important;
 }
+.container-modal-avatar{
+  position: absolute;
+  height: 260px;
+  width: 180px;
+  z-index: 1;
+}
+.Button-avatar{
+  width:50px;
+  position: absolute;
+  bottom:50px;
+  right: 0;
+  z-index: 1;
+  display: none!important;
+  background: none!important;
+  border-radius: 50%!important;
+  color: #66fcf1!important;
+ }
+ .container-modal-avatar:hover>.Button-avatar{
+  display: block!important;
 
-
+}
 .Button-banner{
  width:50px;
  position: absolute;
@@ -169,7 +188,7 @@ left: 90%;
 
 .container-modal-banner{
     position: absolute;
-    height: 35vh;
+    height: 260px;
     width: 100%;
     z-index: 1;
 }
@@ -178,7 +197,7 @@ left: 90%;
 
 }
 .container-banner{ 
-  height: 35vh;
+  height: 260px;
 }
 .personnalprofilepage-header{
   position: relative;
@@ -201,4 +220,15 @@ left: 90%;
 
 .default-mess{
   font-style: italic;
+}
+.avatar{
+  width: 150px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 2em;
+}
+.avatar-modal-img{
+  height: 150px;
+  width: 150px;
+
 }
