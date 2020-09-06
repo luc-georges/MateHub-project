@@ -32,7 +32,6 @@ function App({
   checkAuth,
   getNews,
   isLogged,
-  registered,
 }) {
   // eslint-disable-next-line
   useEffect(() => {
@@ -64,7 +63,7 @@ function App({
           <RegistrationPage />
         </Route>
         <Route exact path="/login">
-          {isLogged ? <Redirect to="/" /> : <LoginPage />}
+          {isLogged ? <Redirect to="/personnalprofile" /> : <LoginPage />}
         </Route>
         {/* <Route exact path="/event/:id" component={EventPage} /> */}
         <Route exact path="/event/:id">

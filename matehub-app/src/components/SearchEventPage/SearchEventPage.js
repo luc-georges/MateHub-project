@@ -8,10 +8,10 @@ import {
   Checkbox,
   Image,
   Flag,
-  Divider,
 } from 'semantic-ui-react';
 import logolol from '../../assets/logolol.png';
 import { Link } from 'react-router-dom';
+import uuid from "react-uuid";
 import Moment from 'react-moment';
 
 const SearchEventPage = ({
@@ -167,7 +167,6 @@ const SearchEventPage = ({
       </Form>
 
 
-        {console.log(eventSearchResults)}
         </div>
       <div className="result-side">
         <h2 className="searchResults-title">Search Results</h2>
@@ -226,7 +225,7 @@ const SearchEventPage = ({
                   </Card.Description>
                   <Card.Description className="lang-search">
                       {element._langs && element._langs.map((lang) => {
-                        return <Flag name={lang.icon} />;
+                        return <Flag name={lang.icon} key={uuid()} />;
                       })}
                   </Card.Description>
                   {/* {element._langs && (

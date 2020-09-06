@@ -1,17 +1,24 @@
-import React,{ useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import { Icon, Button, Flag } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import Moment from 'react-moment';
-import moment from 'moment'
-const EventBar = ({ personnalData,  isLogged, handleLogout,  }) => {
-  // console.log('data dans le component EventBar', list);
+import './style.scss';
+import uuid from 'react-uuid';
+import moment from 'moment';
+const EventBar = ({
+  personnalData,
+  isLogged,
+  handleLogout,
+  getSelectedEvent,
+}) => {
+  const handleGetSelectedEvent = (evt) => {
+    getSelectedEvent(evt.currentTarget.id);
+  };
 
-  // eslint-disable-next-line
   const follow_event = [];
-  follow_event.push(...personnalData._event_created)
-  follow_event.push(...personnalData.has_events)
+  follow_event.push(...personnalData._event_created);
+  follow_event.push(...personnalData.has_events);
   const sortedEvents = follow_event.sort(function (a, b) {
     return moment(a.event_time) - moment(b.event_time);
   });
@@ -84,7 +91,6 @@ let filteredData = sortedEvents.filter((date) => {
                 animated
                 fluid
                 className="searchEvent"
-                content="Search event"
                 size="medium"
                 inverted
                 color="teal"
@@ -116,13 +122,13 @@ let filteredData = sortedEvents.filter((date) => {
                 </div>
 
                 <div className="eventbar-event-infos">
-                  {moment(event.event_time).format("YYYY/MM/DD HH:MM")}
+                  {moment(event.event_time).format('YYYY/MM/DD HH:MM')}
 
                   <div>{event.player_count} players</div>
 
                   <div>Duration : {event.duration}h</div>
                   {event.lang.map((lang) => {
-                    return <Flag name={lang.icon} />;
+                    return <Flag name={lang.icon} key={uuid()} />;
                   })}
                 </div>
               </div>

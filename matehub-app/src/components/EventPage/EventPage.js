@@ -28,22 +28,17 @@ const EventPage = ({
   onDeleteEvent,
   applyToEventErrorMessage,
 }) => {
-  // console.log(eventData._participant);
-  console.log(eventData);
+  // console.log(eventData);
 
   useEffect(() => {
     getEventById();
   }, []);
-
-  console.log(eventData);
 
   const handleGetSelectedUser = (evt) => {
     getSelectedUser(evt.currentTarget.id);
   };
 
   const handleSelectPlayerToAcceptOrRefuseInEvent = (evt, data) => {
-    console.log(evt);
-    console.log(data);
     selectPlayerToAcceptOrRefuseInEvent(evt.target.id);
   };
 
@@ -111,7 +106,6 @@ const EventPage = ({
         <h3>{eventData._vocal}</h3>
       </Container>
       <Container className="eventpage-informations">
-        {console.log(eventData._creator_stats)}
         <h2 className="evt-start">
           Start {moment(eventData._starting).format('h:mm a, dddd DD MMM YYYY')}
         </h2>

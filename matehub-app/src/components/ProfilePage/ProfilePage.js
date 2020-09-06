@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import {
   Button,
-  Header,
   Modal,
-  Form,
   Icon,
   Card,
   Image,

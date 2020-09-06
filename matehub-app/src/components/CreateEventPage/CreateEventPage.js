@@ -1,4 +1,4 @@
-import React, { useState, pushState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import {
@@ -9,6 +9,7 @@ import {
   Select,
   Checkbox,
   Message,
+  Container,
 } from 'semantic-ui-react';
 
 const CreateEventPage = ({
@@ -18,6 +19,8 @@ const CreateEventPage = ({
   eventCreationData,
   onFormSubmit,
   selectedEvent,
+  created,
+  eventCreationErrorMessage,
 }) => {
   // console.log(eventCreationData);
 
@@ -62,8 +65,6 @@ const CreateEventPage = ({
   const [descriptionError, setDescriptionError] = useState(false);
 
   const handleSubmit = () => {
-    let error = false;
-
     if (
       !eventCreationData.language.fr1 &&
       !eventCreationData.language.uk2 &&
@@ -73,68 +74,53 @@ const CreateEventPage = ({
       !eventCreationData.language.de6
     ) {
       setFlagError(true);
-      error = true;
     } else {
       setFlagError(false);
-      error = false;
     }
 
     if (eventCreationData.duration === '') {
       setDurationError(true);
-      error = true;
     } else {
       setDurationError(false);
-      error = false;
     }
 
     if (eventCreationData.game_id === '') {
       setgameIdError(true);
-      error = true;
     } else {
       setgameIdError(false);
-      error = false;
     }
 
     if (eventCreationData.player_max === '') {
       setplayerMaxError(true);
-      error = true;
     } else {
       setplayerMaxError(false);
-      error = false;
     }
 
     if (eventCreationData.event_time_date === '') {
       setEventStartDateError(true);
-      error = true;
     } else {
       setEventStartDateError(false);
-      error = false;
     }
 
     if (eventCreationData.event_time_hour === '') {
       setEventStartHourError(true);
-      error = true;
     } else {
       setEventStartHourError(false);
-      error = false;
     }
 
     if (eventCreationData.rank === '') {
       setRankError(true);
-      error = true;
     } else {
       setRankError(false);
-      error = false;
     }
 
     if (eventCreationData.description === '') {
       setDescriptionError(true);
-      error = true;
     } else {
       setDescriptionError(false);
-      error = false;
     }
-      onFormSubmit();
+
+    onFormSubmit();
   };
 
   // Options for select input
@@ -144,11 +130,6 @@ const CreateEventPage = ({
       text: 'League of Legends',
       value: 1,
     },
-    // {
-    //   key: '2',
-    //   text: 'CS : Global Offensive',
-    //   value: 2,
-    // },
   ];
 
   const durationOptions = [
@@ -183,60 +164,15 @@ const CreateEventPage = ({
           </h1>
         </div>
 
-        <div>
-          {flagError ? (
-            <Message
-              header="Select language error, you must select atleast one language"
-              className="input-error-message"
-            />
-          ) : null}
-          {gameIdError ? (
-            <Message
-              header="Select game error, you did not specify on which game your event is created"
-              className="input-error-message"
-            />
-          ) : null}
-          {playerMaxError ? (
-            <Message
-              header="Maximum players error, you did not specify how many players you want on your event"
-              className="input-error-message"
-            />
-          ) : null}
-          {durationError ? (
-            <Message
-              header="Duration error, you did not specify a duration for your event"
-              className="input-error-message"
-            />
-          ) : null}
-          {eventStartDateError ? (
-            <Message
-              header="Date error, you did not specify the event day"
-              className="input-error-message"
-            />
-          ) : null}
-          {eventStartHourError ? (
-            <Message
-              header="Date error, you did not specify the event starting hour"
-              className="input-error-message"
-            />
-          ) : null}
-          {rankError ? (
-            <Message
-              header="Rank error, you must specify your rank"
-              className="input-error-message"
-            />
-          ) : null}
-
-          {descriptionError ? (
-            <Message
-              header="Description error, you did not specify a description for your event"
-              className="input-error-message"
-            />
-          ) : null}
-        </div>
-
         <div className="form-select">
           <div className="form-select-title">Language</div>
+          {flagError ? (
+            <Message
+              size="tiny"
+              header="You must select at least one language"
+              className="input-error-message"
+            />
+          ) : null}
           <Form.Group>
             <Form.Group className="form-select-language">
               <Flag name="france" />
@@ -311,7 +247,13 @@ const CreateEventPage = ({
             </Form.Group>
           </Form.Group>
         </div>
-
+        {gameIdError ? (
+          <Message
+            size="tiny"
+            header="You did not specify on which game your event is created"
+            className="input-error-message"
+          />
+        ) : null}
         <Form.Input
           name="game_id"
           label="Select game"
@@ -322,6 +264,21 @@ const CreateEventPage = ({
           value={eventCreationData.game_id}
           error={gameIdError}
         />
+
+        {playerMaxError ? (
+          <Message
+            size="tiny"
+            header="You did not specify how many players you want on your event"
+            className="input-error-message"
+          />
+        ) : null}
+        {durationError ? (
+          <Message
+            size="tiny"
+            header="You did not specify a duration for your event"
+            className="input-error-message"
+          />
+        ) : null}
         <Form.Group widths="equal">
           <Form.Input
             label="Maximum players"
@@ -333,7 +290,6 @@ const CreateEventPage = ({
             value={eventCreationData.player_max}
             error={playerMaxError}
           />
-
           <Form.Input
             label="Duration (hour)"
             name="duration"
@@ -346,17 +302,30 @@ const CreateEventPage = ({
           />
         </Form.Group>
 
-        <Form.Group widths="equal">
-          <Form.Input
-            id="form-input-control-error-eventstart"
-            name="event_time_date"
-            label="Event start date"
-            type="date"
-            onChange={handleInputChange}
-            value={eventCreationData.event_time_date}
-            error={eventStartDateError}
+        {eventStartDateError ? (
+          <Message
+            size="tiny"
+            header="You did not specify the event day"
+            className="input-error-message"
           />
-
+        ) : null}
+        {eventStartHourError ? (
+          <Message
+            size="tiny"
+            header="You did not specify the event starting hour"
+            className="input-error-message"
+          />
+        ) : null}
+        <Form.Input
+          id="form-input-control-error-eventstart"
+          name="event_time_date"
+          label="Event start date"
+          type="date"
+          onChange={handleInputChange}
+          value={eventCreationData.event_time_date}
+          error={eventStartDateError}
+        />
+        <Form.Group widths="equal">
           <Form.Input
             id="form-input-control-error-eventstart"
             name="event_time_hour"
@@ -383,9 +352,21 @@ const CreateEventPage = ({
           onChange={handleAddIsRanked}
           checked={eventCreationData.is_ranked}
         />
-
+        {rankError ? (
+          <Message
+            size="tiny"
+            header="Rank error, you must specify your rank"
+            className="input-error-message"
+          />
+        ) : null}
+        {eventCreationErrorMessage === '"rank" is not allowed to be empty' ? (
+          <Message
+            size="tiny"
+            header={eventCreationErrorMessage}
+            className="input-error-message"
+          />
+        ) : null}
         <Form.Input
-
           label="Rank"
           control="select"
           name="rank"
@@ -442,6 +423,13 @@ const CreateEventPage = ({
           </optgroup>
         </Form.Input>
 
+        {descriptionError ? (
+          <Message
+            size="tiny"
+            header="You did not specify a description for your event"
+            className="input-error-message"
+          />
+        ) : null}
         <Form.Input
           control={TextArea}
           label="Description"
@@ -451,9 +439,26 @@ const CreateEventPage = ({
           value={eventCreationData.description}
           error={descriptionError}
         />
-        {/* <Link aria-disabled to={`/event/${selectedEvent}`}> */}
-        <Button content="Create event" type="submit" />
-        {/* </Link> */}
+
+        {!created ? (
+          <Button
+            inverted
+            color="teal"
+            content="Create event"
+            type="submit"
+            // disabled={fieldsError}
+          />
+        ) : (
+          <Container>
+            <Message size="large" className="input-success-message">
+              <Message.Header>
+                Event created successfully, click{' '}
+                <Link to={`/event/${selectedEvent}`}>here</Link> to go on the
+                event page
+              </Message.Header>
+            </Message>
+          </Container>
+        )}
       </Form>
     </div>
   );

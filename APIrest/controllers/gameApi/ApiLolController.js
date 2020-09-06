@@ -51,16 +51,28 @@ module.exports = {
             response.status('500').json({error:'Internal Server Error'});
         }
     },
+    // InsertSummoner: async (request, response) =>{
+    //     try{
+    //         const userID = request.params.userId
+    //         const gameID = request.params.gameId
+    
+    //         const result = await client.query(`INSERT INTO user_access."M_USER_has_GAME" ("user_id", "game_id", "IGN") VALUES($1,$2,$3,$4)  RETURNING ID `,
+    //                         [userID,gameID,request.body.IGN])
+
+    //                         response.status('200').json({data:result.data});
+
+    //     }catch(error){
+    //         console.log(error)
+    //     }
+    // }
+    
     InsertSummoner: async (request, response) =>{
         try{
             const userID = request.params.userId
             const gameID = request.params.gameId
-    
             const result = await client.query(`INSERT INTO user_access."M_USER_has_GAME" ("user_id", "game_id", "IGN", "stats") VALUES($1,$2,$3,$4)  RETURNING ID `,
                             [userID,gameID,request.body.IGN,request.body.stats])
-
                             response.status('200').json({data:result.data});
-
         }catch(error){
             console.log(error)
         }
