@@ -127,7 +127,7 @@ let filteredData = sortedEvents.filter((date) => {
                   <div>{event.player_count} players</div>
 
                   <div>Duration : {event.duration}h</div>
-                  {event.lang.map((lang) => {
+                  {event.lang && event.lang.map((lang) => {
                     return <Flag name={lang.icon} key={uuid()} />;
                   })}
                 </div>
