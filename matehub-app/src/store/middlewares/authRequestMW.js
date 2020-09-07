@@ -15,6 +15,8 @@ import {
   EDIT_PROFIL_AVATAR,
 } from '../actions/authActions';
 
+const host = `${process.env.REACT_APP_URL}`
+
 export default (store) => (next) => (action) => {
   // console.log("Passage dans le authRequestMW");
   next(action);
@@ -23,7 +25,7 @@ export default (store) => (next) => (action) => {
       let { connectedUserId } = store.getState().auth;
       axios({
         method: 'get',
-        url: `http://localhost:3001/user/${connectedUserId}/profile/private`,
+        url: `${host}user/${connectedUserId}/profile/private`,
       })
         .then((res) => {
           // console.log(res.data.data);
@@ -41,7 +43,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
-        url: 'http://localhost:3001/users/login',
+        url: `${host}users/login`,
         data: store.getState().auth.loginData,
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -64,7 +66,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/logout',
-        url: `http://localhost:3001/user/${
+        url: `${host}user/${
           store.getState().auth.connectedUserId
         }/logout`,
         headers: {
@@ -86,7 +88,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/isLogged',
-        url: 'http://localhost:3001/users/isLogged',
+        url: `${host}users/isLogged`,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
@@ -115,7 +117,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'put',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
-        url: `http://localhost:3001/user/${
+        url: `${host}user/${
           store.getState().auth.connectedUserId
         }/update`,
         data: store.getState().auth.modifyPersonnalData,
@@ -143,7 +145,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'put',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
-        url: `http://localhost:3001/user/${
+        url: `${host}user/${
           store.getState().auth.connectedUserId
         }/update`,
         data: formData,
@@ -172,7 +174,7 @@ export default (store) => (next) => (action) => {
           axios({
             method: 'put',
             // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
-            url: `http://localhost:3001/user/${
+            url: `${host}user/${
               store.getState().auth.connectedUserId
             }/update`,
             data: formDataAvatar,

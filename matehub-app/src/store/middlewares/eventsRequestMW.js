@@ -20,6 +20,8 @@ import {
   searchEventSubmitError,
 } from '../actions/eventsActions';
 
+const host = process.env.REACT_APP_URL;
+
 const eventsRequestMW = (store) => (next) => (action) => {
   // console.log("Passage dans le eventsRequestMW");
   const { connectedUserId } = store.getState().auth;
@@ -38,7 +40,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     case DELETE_EVENT:
       axios({
         method: 'delete',
-        url: `http://localhost:3001/deleteEvent/event/${
+        url: `${host}deleteEvent/event/${
           store.getState().events.eventData._event_id
         }/user/${store.getState().events.eventData._user_id}`,
       })
@@ -52,7 +54,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     case APPLY_ACCEPT:
       axios({
         method: 'put',
-        url: `http://localhost:3001/updateEvent/event/${
+        url: `${host}updateEvent/event/${
           store.getState().events.eventData._event_id
         }/owner/${store.getState().events.eventData._user_id}/addUserOn/${
           store.getState().events.playerToAcceptOrRefuseInEvent
@@ -69,7 +71,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     case APPLY_REFUSE:
       axios({
         method: 'put',
-        url: `http://localhost:3001/updateEvent/event/${
+        url: `${host}updateEvent/event/${
           store.getState().events.eventData._event_id
         }/owner/${store.getState().events.eventData._user_id}/kickUser/${
           store.getState().events.playerToAcceptOrRefuseInEvent
@@ -86,7 +88,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     case APPLY_TO_EVENT:
       axios({
         method: 'post',
-        url: `http://localhost:3001/eventApply/event/${
+        url: `${host}eventApply/event/${
           store.getState().events.applyToEventData.event_id
         }/user/${store.getState().auth.connectedUserId}`,
         data: {
@@ -106,7 +108,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
     case SEARCH_EVENT_SUBMIT:
       axios({
         method: 'post',
-        url: `http://localhost:3001/search/events/user/${connectedUserId}`,
+        url: `${host}search/events/user/${connectedUserId}`,
         data: filteredData,
       })
         .then((res) => {
@@ -123,7 +125,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
       } ${store.getState().events.eventCreationData.event_time_hour}:00`;
       axios({
         method: 'post',
-        url: `http://localhost:3001/createEvent/user/${connectedUserId}`,
+        url: `${host}createEvent/user/${connectedUserId}`,
         data: {
           user_id: store.getState().auth.connectedUserId,
           game_id: store.getState().events.eventCreationData.game_id,
@@ -164,7 +166,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
           'Content-Type': 'application/json',
         },
         // url: 'http://ec2-54-242-201-96.compute-1.amazonaws.com/events',
-        url: 'http://localhost:3001/events',
+        url: `${host}events`,
       })
         .then((res) => {
           //console.log("res.data dans le MW: ", res.data);
@@ -182,7 +184,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
       const { selectedEvent } = store.getState().events;
       axios({
         method: 'get',
-        url: `http://localhost:3001/event/${selectedEvent}`,
+        url: `${host}event/${selectedEvent}`,
       })
         .then((res) => {
           // console.log(res.data.data);
