@@ -6,7 +6,7 @@ import {
   registerSubmitError,
 } from '../actions/registerActions';
 
-const localhost = `${process.env.REACT_APP_URL}`
+const host = `${process.env.REACT_APP_URL}`
 
 export default (store) => (next) => (action) => {
   next(action);
@@ -15,7 +15,7 @@ export default (store) => (next) => (action) => {
       // console.log(store.getState().register.registerData);
       axios({
         method: 'post',
-        url: `${localhost}registration`,
+        url: `${host}registration`,
         data: {
           email: store.getState().register.registerData.email,
           password: store.getState().register.registerData.password,
