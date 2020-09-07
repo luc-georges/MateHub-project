@@ -15,26 +15,25 @@ const EventBar = ({
   const handleGetSelectedEvent = (evt) => {
     getSelectedEvent(evt.currentTarget.id);
   };
-  let filteredData
-  let sortedEvents
+  let filteredData;
+  let sortedEvents;
   const follow_event = [];
   const d = new Date();
-  if(personnalData._event_created){
-
+  if (personnalData._event_created) {
     follow_event.push(...personnalData._event_created);
   }
-  if(personnalData.has_events){
+  if (personnalData.has_events) {
     follow_event.push(...personnalData.has_events);
   }
-  if(follow_event.length){
-  sortedEvents = follow_event.sort(function (a, b) {
-    return moment(a.event_time) - moment(b.event_time);
-  });
+  if (follow_event.length) {
+    sortedEvents = follow_event.sort(function (a, b) {
+      return moment(a.event_time) - moment(b.event_time);
+    });
 
-filteredData = sortedEvents.filter((date) => {
-  return new Date(date.event_time).getTime() >= d.getTime();
-});
-}
+    filteredData = sortedEvents.filter((date) => {
+      return new Date(date.event_time).getTime() >= d.getTime();
+    });
+  }
   return (
     <div className="eventbar">
       {!isLogged && (
@@ -110,34 +109,39 @@ filteredData = sortedEvents.filter((date) => {
       )}
       {isLogged && (
         <div className="eventbar-eventlist">
-
-          {filteredData && filteredData.map((event) => {
-            return (
-              <div className="eventbar-event-container" key={event._event_id}>
+          {filteredData &&
+            filteredData.map((event) => {
+              return (
+                <div className="eventbar-event-container" key={event.event_id}>
                   <a className="eye-a" href="/">
-                    <NavLink exact to={`/event/${event.event_id}`}>
+                    <NavLink
+                      id={event.event_id}
+                      to={`/event/${event.event_id}`}
+                      onClick={handleGetSelectedEvent}
+                    >
                       <Icon className="eye" size="large" />
                     </NavLink>
                   </a>
-                <div>
-                  {event.description.length > 30
-                    ? `${event.description.slice(0, 30)}...`
-                    : event.description}
+                  <div>
+                    {event.description.length > 30
+                      ? `${event.description.slice(0, 30)}...`
+                      : event.description}
+                  </div>
+
+                  <div className="eventbar-event-infos">
+                    {moment(event.event_time).format('YYYY/MM/DD HH:MM')}
+
+                    <div>{event.player_count} players</div>
+
+                    <div>Duration : {event.duration.slice(0, 2)}h</div>
+                    {event.lang &&
+                      event.lang.map((lang) => {
+                        return <Flag name={lang.icon} key={uuid()} />;
+                      })}
+                  </div>
                 </div>
-
-                <div className="eventbar-event-infos">
-                  {moment(event.event_time).format('YYYY/MM/DD HH:MM')}
-
-                  <div>{event.player_count} players</div>
-
-                  <div>Duration : {event.duration.slice(0, 2)}h</div>
-                  {event.lang && event.lang.map((lang) => {
-                    return <Flag name={lang.icon} key={uuid()} />;
-                  })}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       )}
     </div>
