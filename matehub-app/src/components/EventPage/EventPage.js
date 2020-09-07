@@ -107,7 +107,7 @@ const EventPage = ({
       </Container>
       <Container className="eventpage-informations">
         <h2 className="evt-start">
-          Start {moment(eventData._starting).format('h:mm a, dddd DD MMM YYYY')}
+          Start {moment.parseZone(eventData._starting).format('YYYY/MM/DD h:mm a')}
         </h2>
           <div className="div-descript">
             Description : {eventData._description}

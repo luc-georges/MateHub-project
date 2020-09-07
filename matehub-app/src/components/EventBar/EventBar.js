@@ -19,13 +19,18 @@ const EventBar = ({
   };
   let filteredData;
   let sortedEvents;
+  let acceptedEvents;
   const follow_event = [];
   const d = new Date();
   if (personnalData._event_created) {
     follow_event.push(...personnalData._event_created);
   }
   if (personnalData.has_events) {
-    follow_event.push(...personnalData.has_events);
+    acceptedEvents = personnalData.has_events.filter((event)=>{
+      return event.status = 2;
+    })
+    console.log(acceptedEvents)
+    follow_event.push(...acceptedEvents);
   }
   if (follow_event.length) {
     sortedEvents = follow_event.sort(function (a, b) {
@@ -130,7 +135,7 @@ const EventBar = ({
                   </div>
 
                   <div className="eventbar-event-infos">
-                    {moment(event.event_time).format('YYYY/MM/DD HH:MM')}
+                    {moment.parseZone(event.event_time).format('YYYY/MM/DD h:mm a')}
 
                     <div>{event.player_count} players</div>
 

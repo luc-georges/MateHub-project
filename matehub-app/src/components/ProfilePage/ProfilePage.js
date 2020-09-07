@@ -9,6 +9,7 @@ import {
   Flag,
 } from 'semantic-ui-react';
 import Moment from 'react-moment';
+import moment from 'moment'
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
 import { NavLink } from 'react-router-dom';
@@ -153,9 +154,8 @@ const ProfilePage = ({
                     <div className="LatestEvent-text">
                       Starting date and time:{' '} <br />
                       <span className="starting">
-                      <Moment format="MMM DD HH:MM">
-                        {event.starting}
-                      </Moment></span>
+                      {moment.parseZone(event.event_time).format("YYYY/MM/DD h:mm a")}
+                      </span>
                       <div className="LatestEvent-text">
                         Register player(s) now: <span className="number">{event.player_count}</span>
                       </div>
@@ -200,9 +200,8 @@ const ProfilePage = ({
                       <Card.Content extra>
                         <div className="LatestEvent-text">
                           Date and time{' '}
-                          <Moment format="YYYY/MM/DD HH:MM">
-                            {h_event.event_time}
-                          </Moment>
+                          {moment.parseZone(h_event.event_time).format("YYYY/MM/DD h:mm a")}
+
                           <div className="LatestEvent-text">
                             Number of players {h_event.player_count}
                           </div>

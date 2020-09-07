@@ -12,7 +12,7 @@ import {
 import logolol from '../../assets/logolol.png';
 import { Link } from 'react-router-dom';
 import uuid from "react-uuid";
-import Moment from 'react-moment';
+import moment from 'moment';
 
 const SearchEventPage = ({
   list,
@@ -196,9 +196,9 @@ const SearchEventPage = ({
               <div className={`slide-up${index}`} >
               <Card key={element._event_id} className={`searchResults-card event-card `}>
                   <Card.Header >
-                    <span className="elm-star"><Moment format="MMM DD HH:MM">
-                      {element._starting}
-                    </Moment></span>
+                    <span className="elm-star">
+                    {moment.parseZone(element._starting).format("YYYY/MM/DD h:mm a")}
+                    </span>
                   </Card.Header>
                 <Card.Content className="card-container">
                 <Link
