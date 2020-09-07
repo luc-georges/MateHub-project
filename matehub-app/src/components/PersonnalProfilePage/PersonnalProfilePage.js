@@ -26,10 +26,29 @@ const PersonnalProfilePage = ({
   editProfilBanner,
   editProfilAvatar,
   getSelectedEvent,
+  onSumInputChangeField,
+  sumInputData,
+  onGetSummonerInfo,
+  summonerStats,
+  onValidateAccount,
 }) => {
-
   // console.log(personnalData);
-  
+
+  const handleGetSummonerInfo = () => {
+    onGetSummonerInfo();
+  };
+
+  const handleValidateAccount = () => {
+    onValidateAccount();
+  };
+
+  const handleSumInputChange = (evt) => {
+    const { name, value } = evt.target;
+    onSumInputChangeField({
+      [name]: value,
+    });
+  };
+
   const handleGetSelectedEvent = (evt, data) => {
     // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
@@ -241,13 +260,6 @@ const PersonnalProfilePage = ({
           </Modal>
         </div>
         <div className="container-banner">
-          {/*           {personnalData._banner && (
-            <img
-              src={require(`../../assets/${personnalData._banner}`)}
-              alt="lollogo"
-              className="banner"
-            />
-          )} */}
           {personnalData._banner ? (
             <div className="modal-img">
               <img
@@ -359,6 +371,42 @@ const PersonnalProfilePage = ({
                   <h2 className="personnalprofilepage-titre">
                     {game.game_name}
                   </h2>
+                  {summonerStats.summonerName && (
+                    <Form onSubmit={handleValidateAccount}>
+                      <div>Are u {summonerStats.summonerName} ?</div>
+                      <Button
+                        inverted
+                        color="green"
+                        type="submit"
+                        content="Yes"
+                      />
+                      <Button inverted color="red" content="No" />
+                    </Form>
+                  )}
+                  <Form inverted onSubmit={handleGetSummonerInfo}>
+                    <Form.Group widths="equal">
+                      <Form.Input
+                        label="Summoner name"
+                        name="summonerName"
+                        placeholder="Enter your LoL summoner name"
+                        onChange={handleSumInputChange}
+                        value={sumInputData.summonerName}
+                      />
+                      <Form.Input
+                        label="Region"
+                        name="summonerRegion"
+                        placeholder="Enter your LoL account region"
+                        onChange={handleSumInputChange}
+                        value={sumInputData.summonerRegion}
+                      />
+                    </Form.Group>
+                    <Button
+                      inverted
+                      color="teal"
+                      type="submit"
+                      content="Send"
+                    />
+                  </Form>
                   <div>
                     <div className="personnalprofilepage-game-user-info">
                       Pseudo : {game.ign.name}
@@ -480,7 +528,7 @@ const PersonnalProfilePage = ({
                           <span>Lang: </span>
                           {event.lang &&
                             event.lang.map((lang) => {
-                              return <Flag name={lang.icon} key={uuid()}/>;
+                              return <Flag name={lang.icon} key={uuid()} />;
                             })}
                           <div className="view-details">
                             GO <Icon name="rocket" />

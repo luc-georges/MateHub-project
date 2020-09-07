@@ -8,6 +8,8 @@ import {
   getUserError,
 } from '../actions/usersActions';
 
+const host = `${process.env.REACT_APP_URL}`
+
 export default (store) => (next) => (action) => {
   // console.log("Passage dans le usersRequestMW");
   next(action);
@@ -16,7 +18,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'get',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/user/top',
-        url: 'http://localhost:3001/users/top',
+        url: `${host}users/top`,
       })
         .then((res) => {
           // console.log(res.data);
@@ -33,7 +35,7 @@ export default (store) => (next) => (action) => {
       const { selectedUser } = store.getState().users;
       axios({
         method: 'get',
-        url: `http://localhost:3001/user/profile/${selectedUser}`,
+        url: `${host}user/profile/${selectedUser}`,
       })
         .then((res) => {
           console.log("in my response",res.data.data)
