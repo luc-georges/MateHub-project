@@ -17,8 +17,16 @@ const EventBar = ({
   };
 
   const follow_event = [];
-  follow_event.push(...personnalData._event_created);
-  follow_event.push(...personnalData.has_events);
+  if(personnalData._event_created){
+
+    follow_event.push(...personnalData._event_created);
+  }
+  if(personnalData.has_events){
+
+   
+    follow_event.push(...personnalData.has_events);
+  }
+  if(follow_event.length){
   const sortedEvents = follow_event.sort(function (a, b) {
     return moment(a.event_time) - moment(b.event_time);
   });
@@ -30,7 +38,7 @@ const EventBar = ({
 let filteredData = sortedEvents.filter((date) => {
   return new Date(date.event_time).getTime() >= d.getTime();
 });
-
+}
   return (
     <div className="eventbar">
       {!isLogged && (
