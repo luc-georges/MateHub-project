@@ -14,6 +14,10 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
     getSelectedEvent(evt.currentTarget.id);
     getEventById();
   };
+
+
+  
+
   const d = new Date();
 
   console.log(d)
@@ -73,7 +77,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
                       Starting date and time:{' '} <br />
                       <span className="starting">
                         {console.log(moment.locale())}
-                        {moment(element._starting).format("YYYY/MM/DD h:mm a")}
+                        {moment.parseZone(element._starting).format('YYYY/MM/DD h:mm a')}
                       </span>
                       <div className="LatestEvent-text">
                         Event member(s) : <span className="number">{element._player_count}</span>
