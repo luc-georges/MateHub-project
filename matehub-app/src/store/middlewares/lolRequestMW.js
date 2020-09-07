@@ -12,6 +12,8 @@ import {
 
 import {getPersonnalData} from '../actions/authActions';
 
+const host = `${process.env.REACT_APP_URL}`
+
 export default (store) => (next) => (action) => {
   next(action);
   // console.log("Region --->", store.getState().lol.sumInputData.summonerRegion);
@@ -20,7 +22,7 @@ export default (store) => (next) => (action) => {
     case GET_SUMMONER_INFO:
       axios({
         method: 'get',
-        url: `http://localhost:3001/lolApi/summoner/${
+        url: `${host}lolApi/summoner/${
           store.getState().lol.sumInputData.summonerRegion
         }/${store.getState().lol.sumInputData.summonerName}`,
       })
@@ -31,7 +33,7 @@ export default (store) => (next) => (action) => {
 
           axios({
             method: 'get',
-            url: `http://localhost:3001/lolApi/stats/${
+            url: `${host}lolApi/stats/${
               store.getState().lol.sumInputData.summonerRegion
             }/${store.getState().lol.IGN.id}`,
           })
@@ -50,7 +52,7 @@ export default (store) => (next) => (action) => {
     case VALIDATE_ACCOUNT:
       axios({
         method: 'post',
-        url: `http://localhost:3001/lolApi/summoner/${
+        url: `${host}lolApi/summoner/${
           store.getState().auth.connectedUserId
         }/1`,
         data: {
