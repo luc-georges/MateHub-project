@@ -76,10 +76,10 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
                         {moment(element._starting).format("YYYY/MM/DD HH:MM")}
                       </span>
                       <div className="LatestEvent-text">
-                        Register player(s) now: <span className="number">{element._player_count}</span>
+                        Event member(s) : <span className="number">{element._player_count}</span>
                       </div>
                       <div className="LatestEvent-text">
-                        Looking for: <span className="number">{element._player_max}</span> players
+                        Looking for : <span className="number">{element._player_max}</span> players
                       </div>
                       <span>Lang: </span>
                       {element._langs && element._langs.map((lang) => {

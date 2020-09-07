@@ -21,6 +21,7 @@ import SearchEventPage from '../../containers/searchEventPageContainer';
 import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 import GettingStarted from '../GettingStarted/GettingStarted';
+import NotFound from '../NotFound/NotFound';
 /**
  * composant principale de l'application
  * @component
@@ -78,6 +79,7 @@ function App({
         <Route exact path="/gettingstarted">
           <GettingStarted />
         </Route>
+        <Route component={NotFound} />
       </Switch>
 
       <div className="eventbar">
