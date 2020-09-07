@@ -15,27 +15,23 @@ const EventBar = ({
   const handleGetSelectedEvent = (evt) => {
     getSelectedEvent(evt.currentTarget.id);
   };
-
+  let filteredData
+  let sortedEvents
   const follow_event = [];
+  const d = new Date();
   if(personnalData._event_created){
 
     follow_event.push(...personnalData._event_created);
   }
   if(personnalData.has_events){
-
-   
     follow_event.push(...personnalData.has_events);
   }
   if(follow_event.length){
-  const sortedEvents = follow_event.sort(function (a, b) {
+  sortedEvents = follow_event.sort(function (a, b) {
     return moment(a.event_time) - moment(b.event_time);
   });
 
-  const d = new Date();
-
-  
-  
-let filteredData = sortedEvents.filter((date) => {
+filteredData = sortedEvents.filter((date) => {
   return new Date(date.event_time).getTime() >= d.getTime();
 });
 }
