@@ -88,27 +88,34 @@ const PersonnalProfilePage = ({
   const [open3, setOpen3] = React.useState(false);
 
   //Filtering and sorting created event
-  const sortedPerso_created = personnalData._event_created.sort(function (a,b){
-    return moment(a.event_time) - moment(b.event_time);
-  })
+  let sortedPerso_created 
+  let filteredPerso_created 
+  let filteredPast_history
   const d = new Date();
-  const filteredPerso_created = sortedPerso_created.filter((data)=>{
-    return new Date(data.event_time).getTime() >= d.getTime();
-  })
-
-  //Filtering and sorting event registered
-  const sortedPerso_registered = personnalData.has_events.sort(function(a,b){
+  if(personnalData._event_created){
+  sortedPerso_created = personnalData._event_created.sort(function (a,b){
     return moment(a.event_time) - moment(b.event_time);
   })
-  
-  const filteredPerso_registered = sortedPerso_registered.filter((data)=>{
-    return new Date(data.event_time).getTime() >= d.getTime();
+      filteredPerso_created = sortedPerso_created.filter((data)=>{
+         return new Date(data.event_time).getTime() >= d.getTime();
+       })
+       // past event histoy
+        filteredPast_history = sortedPerso_created.filter((hist)=>{
+         return new Date(hist.event_time).getTime() <= d.getTime();
+       })
+}
+  let sortedPerso_registered
+  let filteredPerso_registered
+  //Filtering and sorting event registered
+  if( personnalData.has_events){
+  sortedPerso_registered = personnalData.has_events.sort(function(a,b){
+    return moment(a.event_time) - moment(b.event_time);
   })
 
-  // past event histoy
-  const filteredPast_history = sortedPerso_created.filter((hist)=>{
-    return new Date(hist.event_time).getTime() <= d.getTime();
+  filteredPerso_registered = sortedPerso_registered.filter((data)=>{
+    return new Date(data.event_time).getTime() >= d.getTime();
   })
+}
 
 
 
