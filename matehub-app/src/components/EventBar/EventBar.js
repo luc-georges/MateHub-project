@@ -119,7 +119,7 @@ const EventBar = ({
                       to={`/event/${event.event_id}`}
                       onClick={handleGetSelectedEvent}
                     >
-                      <Icon className="eye" size="large" />
+                      <Icon className="eye" size="large" color="teal" style={{marginBottom: "1rem"}}/>
                     </NavLink>
                   </a>
                   <div>
