@@ -52,6 +52,8 @@ const RegistrationPage = ({
 
     if (registerData.passwordConfirm === registerData.password) {
       setPasswordConfirmError(false);
+    } else {
+      setPasswordConfirmError(true);
     }
 
     if (registerData.passwordConfirm === '') {
@@ -83,14 +85,6 @@ const RegistrationPage = ({
         <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
           Registration form
         </h1>
-
-        {registerErrorMessage ? (
-          <Message
-            size="mini"
-            header={registerErrorMessage}
-            className="input-error-message"
-          />
-        ) : null}
 
         {emailError ? (
           <Message
