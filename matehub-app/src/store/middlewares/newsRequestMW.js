@@ -5,6 +5,8 @@
 //   getNewsError,
 // } from '../actions/newsActions';
 
+const localhost = `${process.env.REACT_APP_URL}`
+
 const newsRequestMW = (store) => (next) => (action) => {
   //  console.log("Passage dans le newsRequestMW");
   next(action);
@@ -17,7 +19,7 @@ const newsRequestMW = (store) => (next) => (action) => {
     //       'Content-Type': 'application/json',
     //     },
     //     //  url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/lol/news',
-    //     url: 'http://localhost:3001/lol/news',
+    //     url: `${localhost}lol/news`,
     //   })
     //     .then((res) => {
     //       // console.log("res.data dans le MW: ", res.data);
