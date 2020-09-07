@@ -4,6 +4,7 @@ import usersReducer from './usersReducer';
 import authReducer from './authReducer';
 import newsReducer from './newsReducer';
 import registerReducer from './registerReducer';
+import lolReducer from './lolReducer';
 
 const appReducer = combineReducers({
   events: eventsReducer,
@@ -11,6 +12,7 @@ const appReducer = combineReducers({
   auth: authReducer,
   news: newsReducer,
   register: registerReducer,
+  lol: lolReducer,
 });
 
 const rootReducer = (state, action) => {
