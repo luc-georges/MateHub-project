@@ -408,7 +408,7 @@ const PersonnalProfilePage = ({
             {personnalData._event_created 
              ? filteredPerso_created.slice(0, 10).map((event,index) => {
                 let rankClass;
-
+                //console.log(event.rank);
                 if (event.rank.slice(0, 4) === 'iron') {
                   rankClass = 'iron';
                 } else if (event.rank.slice(0, 6) === 'bronze') {
