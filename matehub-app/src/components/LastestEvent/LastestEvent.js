@@ -29,17 +29,17 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
         {filteredLatestEvents.slice(0, 10).map((element, index) => {
           let rankClass;
           
-          if( element._rank.slice(0,4) === "iron"){
+          if( element._rank.slice(0,4) === "Iron"){
             rankClass = "iron"
-          }else if (element._rank.slice(0,6) === "bronze"){
+          }else if (element._rank.slice(0,6) === "Bronze"){
             rankClass = "bronze"
-          }else if (element._rank.slice(0,4) === "silv"){
+          }else if (element._rank.slice(0,4) === "Silv"){
             rankClass = "silv"
-          }else if (element._rank.slice(0,4) === "gold"){
+          }else if (element._rank.slice(0,4) === "Gold"){
             rankClass = "gold"
-          }else if (element._rank.slice(0,4) === "plat"){
+          }else if (element._rank.slice(0,4) === "Plat"){
             rankClass = "plat"
-          }else if (element._rank.slice(0,4) === "diam"){
+          }else if (element._rank.slice(0,4) === "Diam"){
             rankClass = "diam"
           } else {
             rankClass = "chal"
