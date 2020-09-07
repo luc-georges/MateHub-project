@@ -130,7 +130,7 @@ filteredData = sortedEvents.filter((date) => {
 
                   <div>{event.player_count} players</div>
 
-                  <div>Duration : {event.duration}h</div>
+                  <div>Duration : {event.duration.slice(0, 2)}h</div>
                   {event.lang && event.lang.map((lang) => {
                     return <Flag name={lang.icon} key={uuid()} />;
                   })}
