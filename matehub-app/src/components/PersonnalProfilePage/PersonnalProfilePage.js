@@ -24,9 +24,20 @@ const PersonnalProfilePage = ({
   editProfilBanner,
   getSelectedEvent,
   onSumInputChangeField,
-  sumInputData
+  sumInputData,
+  onGetSummonerInfo,
+  summonerStats,
+  onValidateAccount,
 }) => {
   // console.log(personnalData);
+
+  const handleGetSummonerInfo = () => {
+    onGetSummonerInfo();
+  };
+
+  const handleValidateAccount = () => {
+    onValidateAccount();
+  };
 
   const handleSumInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -252,8 +263,20 @@ const PersonnalProfilePage = ({
                   <h2 className="personnalprofilepage-titre">
                     {game.game_name}
                   </h2>
-                  <Form inverted>
-                    <Form.Group widths='equal'>
+                  {summonerStats.summonerName && (
+                    <Form onSubmit={handleValidateAccount}>
+                      <div>Are u {summonerStats.summonerName} ?</div>
+                      <Button
+                        inverted
+                        color="green"
+                        type="submit"
+                        content="Yes"
+                      />
+                      <Button inverted color="red" content="No" />
+                    </Form>
+                  )}
+                  <Form inverted onSubmit={handleGetSummonerInfo}>
+                    <Form.Group widths="equal">
                       <Form.Input
                         label="Summoner name"
                         name="summonerName"
@@ -269,7 +292,12 @@ const PersonnalProfilePage = ({
                         value={sumInputData.summonerRegion}
                       />
                     </Form.Group>
-                    <Button inverted color="teal" type='submit' content="Send" />
+                    <Button
+                      inverted
+                      color="teal"
+                      type="submit"
+                      content="Send"
+                    />
                   </Form>
                   <div>
                     <div className="personnalprofilepage-game-user-info">

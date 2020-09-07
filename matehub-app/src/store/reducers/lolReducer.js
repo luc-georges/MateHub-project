@@ -1,12 +1,17 @@
 import {
   GET_SUMMONER_INFO,
   GET_SUMMONER_INFO_SUCCESS,
+  GET_SUMMONER_STATS_SUCCESS,
   GET_SUMMONER_INFO_ERROR,
   SUM_INPUT_CHANGE_FIELD,
+  VALIDATE_ACCOUNT,
+  VALIDATE_ACCOUNT_SUCCESS,
+  VALIDATE_ACCOUNT_ERROR,
 } from '../actions/lolActions';
 
 export const initialState = {
-  summonerInfo: {},
+  IGN: {},
+  stats: {},
   sumInputData: {
     summonerName: '',
     summonerRegion: '',
@@ -22,8 +27,16 @@ export default (state = initialState, action = {}) => {
     case GET_SUMMONER_INFO_SUCCESS:
       return {
         ...state,
-        summonerInfo: {
-          ...state.summonerInfo,
+        IGN: {
+          ...state.IGN,
+          ...action.payload,
+        },
+      };
+    case GET_SUMMONER_STATS_SUCCESS:
+      return {
+        ...state,
+        stats: {
+          ...state.stats,
           ...action.payload,
         },
       };
@@ -38,6 +51,18 @@ export default (state = initialState, action = {}) => {
           ...state.sumInputData,
           ...action.payload,
         },
+      };
+    case VALIDATE_ACCOUNT:
+      return {
+        ...state,
+      };
+    case VALIDATE_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+      };
+    case VALIDATE_ACCOUNT_ERROR:
+      return {
+        ...state,
       };
     default:
       return state;
