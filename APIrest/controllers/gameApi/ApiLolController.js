@@ -72,7 +72,8 @@ module.exports = {
             const gameID = request.params.gameId
             const result = await client.query(`INSERT INTO user_access."M_USER_has_GAME" ("user_id", "game_id", "IGN", "stats") VALUES($1,$2,$3,$4)  RETURNING * `,
                             [userID,gameID,request.body.IGN,request.body.stats])
-                            response.status('200').json({data:result.data});
+                            response.status('200').json({data:result.rows[0]});
+                    
         }catch(error){
             console.log(error)
         }

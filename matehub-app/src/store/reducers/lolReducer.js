@@ -59,6 +59,15 @@ export default (state = initialState, action = {}) => {
     case VALIDATE_ACCOUNT_SUCCESS:
       return {
         ...state,
+        sumInputData: {
+          ...initialState.sumInputData,
+        },
+        IGN: {
+          ...initialState.IGN,
+        },
+        stats: {
+          ...initialState.stats,
+        }
       };
     case VALIDATE_ACCOUNT_ERROR:
       return {

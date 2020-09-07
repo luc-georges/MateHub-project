@@ -6,7 +6,11 @@ import {
   getSummonerStatsSuccess,
   getSummonerInfoError,
   VALIDATE_ACCOUNT,
+  validateAccountSuccess,
+  validateAccountError,
 } from '../actions/lolActions';
+
+import {getPersonnalData} from '../actions/authActions';
 
 export default (store) => (next) => (action) => {
   next(action);
@@ -56,6 +60,8 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res);
+          store.dispatch(validateAccountSuccess());
+          store.dispatch(getPersonnalData());
         })
         .catch((err) => {
           console.log(err);

@@ -12,6 +12,7 @@ import {
   CHECK_AUTH,
 } from '../actions/authActions';
 
+
 export const initialState = {
   loginData: {
     email: '',
