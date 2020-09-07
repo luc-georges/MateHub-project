@@ -7,7 +7,7 @@
   background-color: $color-gris-fonce;
   box-shadow: 3px 0px 8px 0px rgba(0, 0, 0, 0.2);
   position: fixed;
-  width: 150px;
+  width: 180px;
   min-width: 150px;
   height: 100vh;
   display: flex;
@@ -15,9 +15,7 @@
 
 
   &-logo {
-    font-size: 2em;
-    padding-bottom: 30px;
-    border-bottom: 1px solid black;
+    padding-top: 2rem;
   }
 
   &-logo:hover {
@@ -33,7 +31,7 @@
     align-items: center;
 
     &-link {
-      width: 90%;
+      width: 80%;
       margin-top: 3rem;
       display: flex;
       line-height: 10px;

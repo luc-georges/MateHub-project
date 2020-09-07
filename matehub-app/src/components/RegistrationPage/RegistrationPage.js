@@ -142,7 +142,7 @@ const RegistrationPage = ({
         {passwordError ? (
           <Message
             size="mini"
-            header="You must enter a valid password (at lease 8 characters with one uppercase letter and one numeric digit)"
+            header="You must enter a valid password (at least 8 characters with one uppercase letter and one numeric digit)"
             className="input-error-message"
           />
         ) : null}
@@ -150,7 +150,7 @@ const RegistrationPage = ({
           id="form-input-control-error-password"
           name="password"
           type="password"
-          label="Password"
+          label="Password (8 chars. with at least one uppercase letter and one numeric digit)"
           placeholder="Your password"
           value={registerData.password}
           onChange={handleInputChange}

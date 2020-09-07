@@ -6,7 +6,7 @@ import LastestNews from '../../containers/LastestNewsContainer';
 import './style.scss';
 
 import {Image} from 'semantic-ui-react'
-import logo from '../../assets/logo-matehub.svg';
+import logo from '../../assets/logo-ok_matehub.svg';
 const HomePage = () => {
   return (
     <div className="HomePage">

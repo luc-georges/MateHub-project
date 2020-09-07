@@ -11,9 +11,11 @@ const EventBar = ({
   isLogged,
   handleLogout,
   getSelectedEvent,
+  getEventById
 }) => {
   const handleGetSelectedEvent = (evt) => {
     getSelectedEvent(evt.currentTarget.id);
+    getEventById();
   };
   let filteredData;
   let sortedEvents;
@@ -37,16 +39,16 @@ const EventBar = ({
   return (
     <div className="eventbar">
       {!isLogged && (
-        <NavLink className="regist" exact to="/registration">
-          <Button content="registration" inverted color="teal" />
+        <NavLink  exact to="/registration">
+          <Button content="Registration" inverted color="teal" className="eventbar-auth-button" />
         </NavLink>
       )}
 
-      {!isLogged && <div className="pOr">Or</div>}
+      {/* {!isLogged && <div className="pOr">Or</div>} */}
 
       {!isLogged && (
-        <NavLink className="login" exact to="/login">
-          <Button content="Login" inverted color="teal" />
+        <NavLink exact to="/login">
+          <Button content="Login" inverted color="teal" className="eventbar-auth-button" />
         </NavLink>
       )}
 
@@ -64,11 +66,12 @@ const EventBar = ({
             color="teal"
             content="Logout"
             onClick={handleLogout}
+            className="eventbar-auth-button"
           />{' '}
         </NavLink>
       )}
 
-      {isLogged && <div className="eventbar-eventedition">Events :</div>}
+      {isLogged && <div className="eventbar-eventedition">Events</div>}
       {isLogged && (
         <div className="eventbar-link-container">
           <div className="eventbar-link-button">
@@ -113,15 +116,13 @@ const EventBar = ({
             filteredData.map((event) => {
               return (
                 <div className="eventbar-event-container" key={event.event_id}>
-                  <a className="eye-a" href="/">
                     <NavLink
                       id={event.event_id}
                       to={`/event/${event.event_id}`}
                       onClick={handleGetSelectedEvent}
                     >
-                      <Icon className="eye" size="large" color="teal" style={{marginBottom: "1rem"}}/>
+                      <Icon className="eye icon-eye" size="large" color="teal" style={{marginBottom: "1rem"}}/>
                     </NavLink>
-                  </a>
                   <div>
                     {event.description.length > 30
                       ? `${event.description.slice(0, 30)}...`

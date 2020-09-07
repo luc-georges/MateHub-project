@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import EventBar from '../components/EventBar/EventBar';
 import { logout } from '../store/actions/authActions';
-import { getSelectedEvent } from '../store/actions/eventsActions';
+import { getSelectedEvent, getEventById } from '../store/actions/eventsActions';
 
 const mapStateToProps = (state) => ({
   list: state.events.list,
@@ -16,6 +16,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getSelectedEvent: (changedData) => {
     dispatch(getSelectedEvent(changedData));
+  },
+
+  getEventById: () => {
+    dispatch(getEventById());
   },
 });
 

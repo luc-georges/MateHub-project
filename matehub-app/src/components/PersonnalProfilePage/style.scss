@@ -1,235 +1,222 @@
 @import 'src/styles/vars';
- .personnalprofilepage{
-  width:80%;
-   box-sizing: border-box;
-   background-color: #0B0C10;
-   color: white;
-   
+.personnalprofilepage {
+  width: 80%;
+  box-sizing: border-box;
+  background-color: #0b0c10;
+  color: white;
+
   background-image: url(../../assets/04322d63.png);
-  margin-left:170px; 
-   
- }
+  margin-left: 180px;
+}
 
- .personnalprofilepage-titre{
-   margin-left: 2%;
-   margin-top: 5%;
-   margin-bottom: 5%;
-   font-size: 2.5em;
- }
+.personnalprofilepage-titre {
+  margin-left: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 2.5em;
+}
 
- .personnalprofilepage-description{
-
+.personnalprofilepage-description {
   margin-bottom: 5%;
   margin-left: 5%;
   margin-right: 2%;
   font-size: 1.5em;
- }
+}
 
- .personnalprofilepage-game-user{
-  
+.personnalprofilepage-game-user {
   margin-left: 5%;
   margin-right: 2%;
   font-size: 1.5em;
- }
-
- .personnalprofilepage-game-user-info{
-  margin-bottom: 1%;
-  margin-left: 5%;
- }
-
- .button-modal{
-   margin-top: 5% !important;
-   border: solid #66fcf1 !important;
-   background: none !important;
-   color:#66fcf1 !important; 
-   width:20%;
-   margin-left: 40% !important;
-   
- }
-
-.button-modal:hover {
-    background:#66fcf1  !important;
-    color: #2b8484 !important;
-  }
-
- .Event-modules{
-   display:flex;
-   justify-content: center;
-   flex-wrap: wrap;
- }
-
- .banner-modal{
-  border: solid #66fcf285 !important;
-  background:#161c2481 !important;
-  color: white !important;
-
- }
-
- .banner-input{
-  background:#161c2485 !important;
-  padding-top: 2%;
- }
-
- .banner-modal-titre{
-  background:#161c248a !important;
-  color: white !important;
-  
- }
-
- .banner-actions{
-  background:#161c2485 !important;
- }
-
-
-
-.banner-buttonData{
-  border: solid #66fcf1 !important;
-  background: none !important;
-  color:#66fcf1 !important; 
-  width:30%;
- 
 }
 
-.banner-buttonData:hover{
-  background:#66fcf1  !important;
+.personnalprofilepage-game-user-info {
+  margin-bottom: 1%;
+  margin-left: 5%;
+}
+
+.button-modal {
+  margin-top: 5% !important;
+  border: solid #66fcf1 !important;
+  background: none !important;
+  color: #66fcf1 !important;
+  width: 20%;
+  margin-left: 40% !important;
+}
+
+.button-modal:hover {
+  background: #66fcf1 !important;
   color: #2b8484 !important;
 }
 
-.banner-file-label{
-  background:#161c248a !important;
+.Event-modules {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.banner-modal {
+  border: solid #66fcf285 !important;
+  background: #161c2481 !important;
+  color: white !important;
+}
+
+.banner-input {
+  background: #161c2485 !important;
+  padding-top: 2%;
+}
+
+.banner-modal-titre {
+  background: #161c248a !important;
+  color: white !important;
+}
+
+.banner-actions {
+  background: #161c2485 !important;
+}
+
+.banner-buttonData {
+  border: solid #66fcf1 !important;
+  background: none !important;
+  color: #66fcf1 !important;
+  width: 30%;
+}
+
+.banner-buttonData:hover {
+  background: #66fcf1 !important;
+  color: #2b8484 !important;
+}
+
+.banner-file-label {
+  background: #161c248a !important;
   margin-left: 4%;
   margin-top: 2% !important;
-  font-size: 1.3em ;
+  font-size: 1.3em;
 }
 
-.modal-info{
+.modal-info {
   border: solid #66fcf28e !important;
-  background:#161c24c0 !important;
+  background: #161c24c0 !important;
   color: white !important;
 }
 
-.modal-info-titre{
-  background:#10161c8a !important;
+.modal-info-titre {
+  background: #10161c8a !important;
   color: white !important;
 }
 
-.modal-info-action{
-  background:#161c2481 !important;
-  
+.modal-info-action {
+  background: #161c2481 !important;
 }
 
-
-.information-form{
+.information-form {
   margin-left: 10%;
-
 }
 
-.information-input{
-  color:white !important;
+.information-input {
+  color: white !important;
 }
 
-.ui.form input[type=text]{
-  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
-  color:white !important;
-  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+.ui.form input[type='text'] {
+  background: radial-gradient(
+    circle,
+    #6dffff11,
+    #6dffff10,
+    #6dffff00
+  ) !important;
+  color: white !important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
 }
 
-.modal-game{
+.modal-game {
   border: solid #66fcf28e !important;
-  background:#161c24c0 !important;
+  background: #161c24c0 !important;
   color: white !important;
 }
 
-.modal-game-titre{
-  background:#10161c8a !important;
+.modal-game-titre {
+  background: #10161c8a !important;
   color: white !important;
 }
 
-.modal-game-select{
-  background:#10161c8a !important;
+.modal-game-select {
+  background: #10161c8a !important;
 
-  font-size: 1.3em ;
+  font-size: 1.3em;
 }
 
-.modal-game-action{
-  background:#10161c8a !important;
+.modal-game-action {
+  background: #10161c8a !important;
 }
-.container-modal-avatar{
+.container-modal-avatar {
   position: absolute;
   height: 260px;
   width: 180px;
   z-index: 1;
 }
-.Button-avatar{
-  width:50px;
+.Button-avatar {
+  width: 50px;
   position: absolute;
-  bottom:50px;
+  bottom: 50px;
   right: 0;
   z-index: 1;
-  display: none!important;
-  background: none!important;
-  border-radius: 50%!important;
-  color: #66fcf1!important;
- }
- .container-modal-avatar:hover>.Button-avatar{
-  display: block!important;
+  display: none !important;
+  background: none !important;
+  border-radius: 50% !important;
+  color: #66fcf1 !important;
+}
+.container-modal-avatar:hover > .Button-avatar {
+  display: block !important;
+}
+.Button-banner {
+  width: 50px;
+  position: absolute;
+  top: 80%;
+  left: 90%;
+  z-index: 1;
+  display: none !important;
+  background: none !important;
+  border-radius: 50% !important;
+  color: #66fcf1 !important;
+}
 
+.container-modal-banner {
+  position: absolute;
+  height: 260px;
+  width: 100%;
+  z-index: 1;
 }
-.Button-banner{
- width:50px;
- position: absolute;
- top: 80%;
-left: 90%;
- z-index: 1;
- display: none!important;
- background: none!important;
- border-radius: 50%!important;
- color: #66fcf1!important;
+.container-modal-banner:hover > .Button-banner {
+  display: block !important;
 }
-
-.container-modal-banner{
-    position: absolute;
-    height: 260px;
-    width: 100%;
-    z-index: 1;
-}
-.container-modal-banner:hover>.Button-banner{
-  display: block!important;
-
-}
-.container-banner{ 
+.container-banner {
   height: 260px;
 }
-.personnalprofilepage-header{
+.personnalprofilepage-header {
   position: relative;
-} 
-.banner-modal-img{
+}
+.banner-modal-img {
   max-height: 260px;
   width: 100%;
-  
 }
-.banner{
+.banner {
   height: 35vh;
   width: 100%;
-
 }
 
-.details h1{
+.details h1 {
   font-size: 3.8em;
-
 }
 
-.default-mess{
+.default-mess {
   font-style: italic;
 }
-.avatar{
+.avatar {
   width: 150px;
   height: 120px;
   border-radius: 50%;
   margin-bottom: 2em;
 }
-.avatar-modal-img{
+.avatar-modal-img {
   height: 150px;
   width: 150px;
-
 }

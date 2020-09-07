@@ -6,6 +6,7 @@
   width: 200px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   box-shadow: 3px 0px 8px 0px rgba(0, 0, 0, 0.2);
   height: 100%;
   background-image: url(../../assets/bgtexture.png);
@@ -13,6 +14,7 @@
   background-color: $color-gris-fonce;
   color: white;
   z-index: 100;
+  text-align: center;
 
   &-link-container {
     display: flex;
@@ -30,18 +32,25 @@
   width: 40%;
 
   }
+
+  &-auth-button {
+    margin-top: 2rem !important;
+    width: 150px !important;
+  }
  
   &-eventedition {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     font-size: 1.2em;
+    font-weight: bold;
     width: 100%;
     margin-top: 1em;
   }
 
   &-eventlist {
     margin: 1.6em 0;
+    width: 100%;
 
     overflow-y: scroll;
     scroll-behavior: smooth;
@@ -58,12 +67,6 @@
 
     margin-bottom: .5em;
     margin-top: .5em;
-    padding-left: .5em;
-
-  }
-  &-event-container i {
-   margin-left: .5em;
-
   }
 }
 
@@ -87,4 +90,8 @@
 }
 .ui.inverted.teal.button, .ui.inverted.teal.buttons .button {
   box-shadow: 0 0 0 1px #6dffff inset!important;
+}
+
+.icon-eye:hover {
+  transform: scale(1.2);
 }
