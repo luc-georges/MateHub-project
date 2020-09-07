@@ -14,10 +14,10 @@ const TopPlayers = ({ topUsersList, getSelectedUser, getUser }) => {
 
   return (
     <div className="TopPlayers">
-      <h2 className="titre homeTitle">TopPlayers</h2>
+      <h2 className="titre homeTitle">Top players</h2>
       <div className="TopPlayers-modules">
       <Card.Group className="user-card-group">
-        {topUsersList.map((element,index) => (
+        {topUsersList.slice(0, 5).map((element,index) => (
       <div className={`slide-in${index}`} key={element._user_id} >
 
           <NavLink

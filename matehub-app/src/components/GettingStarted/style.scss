@@ -7,22 +7,36 @@
   width: 82%;
   margin-left: 155px;
 
-  background-color: black;
+
   color: $color-bleu-fonce;
 }
 .gettingstarted-bloc{
+  border: 2px solid $color-bleu-fonce;
+  border-radius: 20px;
+  margin-top: 3em;
+  margin-bottom: 3em;
   display: inline-block;
   position: relative;
-  height: 85vh;
+  height: 75vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
   background-image: url(../../assets/gathering.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .gettingstarted-bloc2{
+  border: 2px solid $color-bleu-fonce;
+  border-radius: 20px;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  margin-left: auto;
+  margin-right: auto;
   display: inline-block;
   position: relative;
-  height: 100vh;
+  height: 75vh;
+  width: 95%;
   background-image: url(../../assets/gather2.jpg);
   background-repeat: no-repeat;
   background-position: center;
