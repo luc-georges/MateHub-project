@@ -306,31 +306,27 @@ const PersonnalProfilePage = ({
               Update informations
             </Modal.Header>
             <Modal.Description>
-              <div className="loginpage">
-                <Form className="information-form" onSubmit={handleSubmit}>
-                  <div>
-                    <Form.Input
-                      fluid
-                      label="Nickname"
-                      placeholder="change your nickname"
-                      name="nickname"
-                      value={modifyPersonnalData.nickname}
-                      onChange={handleInputChange}
-                      className="information-input"
-                    />
-                  </div>
+              <div className="modal-info-content">
+                <Form inverted className="information-form" onSubmit={handleSubmit}>
+                      <Form.Input
+                        fluid
+                        label="Nickname"
+                        placeholder="change your nickname"
+                        name="nickname"
+                        value={modifyPersonnalData.nickname}
+                        onChange={handleInputChange}
+                        className="information-input"
+                      />
 
-                  <div>
-                    <Form.Input
-                      fluid
-                      label="Description"
-                      placeholder="change your Description"
-                      name="description"
-                      value={modifyPersonnalData.description}
-                      onChange={handleInputChange}
-                      className="information-input"
-                    />
-                  </div>
+                      <Form.Input
+                        fluid
+                        label="Description"
+                        placeholder="change your Description"
+                        name="description"
+                        value={modifyPersonnalData.description}
+                        onChange={handleInputChange}
+                        className="information-input"
+                      />
 
                   <div>
                     <Button

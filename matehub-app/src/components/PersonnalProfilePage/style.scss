@@ -1,4 +1,5 @@
 @import 'src/styles/vars';
+
 .personnalprofilepage {
   width: 80%;
   box-sizing: border-box;
@@ -110,6 +111,17 @@
 
 .information-form {
   margin-left: 10%;
+}
+
+.modal-info-content {
+  margin-top: 7%;
+  height: 65vh;
+  width: 100%;
+  // margin-left: 150px; c'est ça qui fait sortir les input
+  background-image: url(../../assets/tresh.png);
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: -15%;
 }
 
 .information-input {

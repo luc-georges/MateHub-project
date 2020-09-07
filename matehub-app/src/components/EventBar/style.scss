@@ -23,21 +23,20 @@
     justify-content: space-evenly;
     margin-bottom: 1em;
     margin-top: 0;
-    padding: 0!important;
+    padding: 0 !important;
     padding: 1em;
     margin: 1em;
   }
   &-link-button {
-  margin: 2px;
-  width: 40%;
-
+    margin: 2px;
+    width: 40%;
   }
 
   &-auth-button {
     margin-top: 2rem !important;
     width: 150px !important;
   }
- 
+
   &-eventedition {
     display: flex;
     flex-direction: row;
@@ -61,25 +60,31 @@
     flex-direction: column;
     flex-wrap: nowrap;
     padding: 1em 0;
-    background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+    background-image: radial-gradient(
+      circle,
+      #6dffff11,
+      #6dffff10,
+      #6dffff00
+    ) !important;
 
     border-bottom: 1px solid black;
 
-    margin-bottom: .5em;
-    margin-top: .5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
   }
 }
 
-.searchEvent{
-  padding-left: 1.1em!important;
-  font-size: .9em!important;
+.searchEvent {
+  padding-left: 1.1em !important;
+  font-size: 0.9em !important;
 }
-.createEvent{
-  padding-left: 1.1em!important;
-  font-size: .9em!important;
+.createEvent {
+  padding-left: 1.1em !important;
+  font-size: 0.9em !important;
 }
-.regist, .login {
-   margin: 1em;
+.regist,
+.login {
+  margin: 1em;
 }
 
 .pOr {
@@ -88,8 +93,9 @@
   font-style: italic;
   color: $color-bleu-fluo;
 }
-.ui.inverted.teal.button, .ui.inverted.teal.buttons .button {
-  box-shadow: 0 0 0 1px #6dffff inset!important;
+.ui.inverted.teal.button,
+.ui.inverted.teal.buttons .button {
+  box-shadow: 0 0 0 1px #6dffff inset !important;
 }
 
 .icon-eye:hover {
