@@ -111,7 +111,7 @@ filteredData = sortedEvents.filter((date) => {
       {isLogged && (
         <div className="eventbar-eventlist">
 
-          {filteredData.map((event) => {
+          {filteredData && filteredData.map((event) => {
             return (
               <div className="eventbar-event-container" key={event._event_id}>
                   <a className="eye-a" href="/">
