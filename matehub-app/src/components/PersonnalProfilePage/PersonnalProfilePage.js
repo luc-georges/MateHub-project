@@ -8,10 +8,9 @@ import {
   Card,
   Image,
   Flag,
+  Input,
 } from 'semantic-ui-react';
-import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
-import icon from '../../assets/test.ico';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import uuid from 'react-uuid';
@@ -169,41 +168,41 @@ const PersonnalProfilePage = ({
                   />
                 </div>
               )}
-
-              <div className="banner-input">
-                <label htmlFor="banner" className="banner-file-label">
-                  Choose a banner picture:
-                  <input
-                    type="file"
-                    size="60"
-                    id="banner"
-                    name="banner"
-                    accept="image/png, image/jpeg"
-                    onChange={handleUpload}
-                    className="banner-file-button"
-                    aria-label="File browser example"
-                  ></input>
-                </label>
+                  </Modal.Description>
+              <div className="testouillage">
+                <div className="banner-input">
+                  <label htmlFor="banner" className="banner-file-label">
+                    <input
+                      type="file"
+                      size="60"
+                      id="banner"
+                      name="banner"
+                      accept="image/png, image/jpeg"
+                      onChange={handleUpload}
+                      className="custom-file-input"
+                      aria-label="File browser example"
+                    ></input>
+                  </label>
+                </div>
+              <Modal.Actions className="banner-actions">
+                <Button
+                  hidden
+                  style={{ marginTop: '2em', textAlign: 'center' }}
+                  className="banner-buttonData"
+                  content="ok"
+                  labelPosition="right"
+                  icon="checkmark"
+                  onClick={() => setOpen3(false)}
+                />
+                <Button
+                  style={{ marginTop: '2em', textAlign: 'center' }}
+                  color="black"
+                  onClick={() => setOpen3(false)}
+                  content="Cancel"
+                  className="banner-buttonData"
+                />
+              </Modal.Actions>
               </div>
-            </Modal.Description>
-            <Modal.Actions className="banner-actions">
-              <Button
-                hidden
-                style={{ marginTop: '2em', textAlign: 'center' }}
-                className="banner-buttonData"
-                content="ok"
-                labelPosition="right"
-                icon="checkmark"
-                onClick={() => setOpen3(false)}
-              />
-              <Button
-                style={{ marginTop: '2em', textAlign: 'center' }}
-                color="black"
-                onClick={() => setOpen3(false)}
-                content="Cancel"
-                className="banner-buttonData"
-              />
-            </Modal.Actions>
           </Modal>
         </div>
         <div className="container-modal-avatar">
@@ -331,7 +330,7 @@ const PersonnalProfilePage = ({
                   <Form.Input
                     fluid
                     label="Nickname"
-                    placeholder="change your nickname"
+                    placeholder="New nickname"
                     name="nickname"
                     value={modifyPersonnalData.nickname}
                     onChange={handleInputChange}
@@ -341,7 +340,7 @@ const PersonnalProfilePage = ({
                   <Form.Input
                     fluid
                     label="Description"
-                    placeholder="change your Description"
+                    placeholder="New description"
                     name="description"
                     value={modifyPersonnalData.description}
                     onChange={handleInputChange}
