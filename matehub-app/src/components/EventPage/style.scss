@@ -37,13 +37,19 @@
 .for-bg{
   width: 100%;
   background-image: url(../../assets/background-event.jpg);
-  padding: 5em!important;
+  padding: 2em!important;
 }
 .evt-title{
   font-family: 'Righteous', cursive; 
-  font-size: 2.5em;
+  font-size: 1.8em;
+  padding-bottom: .5em;
+  margin-left: 5.2em;
+  text-shadow: 2px 2px 2px #000000;
 }
-
+.toflex{
+  display: flex;
+  justify-content: center;
+}
 .event {
 
 
@@ -102,6 +108,7 @@
   background-color: #00000098;
   padding: 0.5em;
   text-align: center;
+
 }
 .span-it{
   font-style: italic;
@@ -113,6 +120,7 @@
   font-size: 1.4em;
   font-weight: bold;
   color: #fff;
+  text-shadow: 2px 2px 2px #000000;
 }
 .lol-rank{
  color: blue;
@@ -138,12 +146,19 @@
 }
 .card-evt-page{
   background-color: #00000090!important;
-  margin-top: 2em!important;
+  margin-top: 1em!important;
   text-align: center;
+  display: flex;
+  width: 80%!important;
 
 }
+
 .evt-vocal{
   font-size: 1.5em;
   font-weight: bold;
   font-style: italic;
+  text-align: right;
+  padding-top: .5em;
+  margin-right: 6.5em;
+  text-shadow: 2px 2px 2px #000000;
 }

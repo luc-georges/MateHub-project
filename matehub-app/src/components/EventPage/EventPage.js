@@ -107,8 +107,8 @@ const EventPage = ({
           </Card.Content>
         </Card>
 
-        <div className="evt-vocal">{eventData._vocal}</div>
         </div>
+        <div className="evt-vocal">{eventData._vocal}</div>
       {/* <Container className="eventpage-title">
         <h1>
           EVENT page 
@@ -132,7 +132,7 @@ const EventPage = ({
         </h2>
           <div className="div-descript-evt">
             Description : <br></br> <span className="div-descript-evt-span">"{eventData._description}"</span>
-          </div>
+          </div> */}
         {connectedUserId !== eventData._user_id ? (
           <Form
             onSubmit={handleApplyToEvent}
@@ -156,7 +156,7 @@ const EventPage = ({
             <Button content="Apply to event" className="eventpage-apply-btn" secondary/>
           </Form>
         ) : null}
-      </Container> */}</div>
+      {/* </Container> */}</div>
 
       <Divider />
 
