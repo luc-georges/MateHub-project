@@ -36,7 +36,7 @@
 }
 
 .button-modal {
-  margin-top: 5% !important;
+  margin-top: 1% !important;
   border: solid #66fcf1 !important;
   background: none !important;
   color: #66fcf1 !important;
@@ -213,10 +213,29 @@
 .banner {
   height: 35vh;
   width: 100%;
-}
 
+}
+.details{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.test-description{
+  position: absolute;
+  width:600px;
+  height: 100px;
+  bottom: -70px;
+  left: 150px;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 2px #000000;
+}
 .details h1 {
-  font-size: 3.8em;
+  font-size: 2em;
+  text-shadow: 2px 2px 2px #000000;
+  display: inline-block;
+  position: absolute;
+  left: 150px;
+  bottom: 1.2em;
 }
 
 .default-mess {
@@ -226,7 +245,7 @@
   width: 150px;
   height: 120px;
   border-radius: 50%;
-  margin-bottom: 2em;
+
 }
 .avatar-modal-img {
   height: 150px;

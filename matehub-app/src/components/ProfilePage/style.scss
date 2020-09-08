@@ -11,17 +11,24 @@
 
 .details{
   position: absolute;
-  bottom: 0;
+  top: 130px;
   left:1em;
   color: white;
-  height: 5em;
+  height: 8em;
+  width: 600px;
 
 }
-
+.profilepage-titre-game{
+  font-size: 1.3em;
+  padding-left: 1.5em;
+}
+.title-profile-small{
+  padding: 1em;
+}
 .avatar{
   height: 18vh;
   position: absolute;
-  bottom: 1.8em;
+  bottom: -10px;
   left: .5em;
 
 }
@@ -57,13 +64,34 @@
   margin-right: 2%;
   font-size: 1.5em;
  }
-
+.game-container{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1em;
+  width: 101%;
+  background: radial-gradient(
+    circle,
+    #6dffff11,
+    #6dffff10,
+    #6dffff00
+  ) !important;
+  color: white !important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
+}
  .profilepage-game-user{
-  
+
   margin-left: 5%;
   margin-right: 2%;
   font-size: 1.1em;
  }
+.blue-text{
+  color: #35bff7;
+  font-size: 1.2em;
+}
+.cyan-text{
+  color:#55c2b0 ;
+  font-size: 1.1em;
+}
 
  .profilepage-game-user-info{
   margin-bottom: 1%;
