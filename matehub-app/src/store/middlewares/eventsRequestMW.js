@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Toastify from 'toastify-js'
 import {
   GET_EVENT_BY_ID,
   getEventByIdSuccess,
@@ -63,6 +64,18 @@ const eventsRequestMW = (store) => (next) => (action) => {
         .then((res) => {
           console.log(res);
           store.dispatch(getEventById());
+          Toastify({
+            text: `Apply accepted`,
+            duration: 3000, 
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            className:"info",
+            backgroundColor: "66fcf200",
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            onClick: function(){} // Callback after click
+          }).showToast();
         })
         .catch((err) => {
           console.log(err);
@@ -80,6 +93,18 @@ const eventsRequestMW = (store) => (next) => (action) => {
         .then((res) => {
           console.log(res);
           store.dispatch(getEventById());
+          Toastify({
+            text: `Apply rejected`,
+            duration: 3000, 
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            className:"info",
+            backgroundColor: "linear-gradient(0deg, rgba(31,40,51,50) 0%, rgba(69,162,157,50) 75%, rgba(102,252,242,50) 100%)",
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            onClick: function(){} // Callback after click
+          }).showToast();
         })
         .catch((err) => {
           console.log(err);
@@ -99,6 +124,18 @@ const eventsRequestMW = (store) => (next) => (action) => {
           console.log(res.data.data);
           store.dispatch(applyToEventSuccess(res.data.data));
           store.dispatch(getEventById());
+          Toastify({
+            text: `Successfully applied to event`,
+            duration: 3000, 
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            className:"info",
+            backgroundColor: "linear-gradient(0deg, rgba(31,40,51,50) 0%, rgba(69,162,157,50) 75%, rgba(102,252,242,50) 100%)",
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            onClick: function(){} // Callback after click
+          }).showToast();
         })
         .catch((err) => {
           console.log(err);
@@ -151,6 +188,17 @@ const eventsRequestMW = (store) => (next) => (action) => {
         .then((res) => {
           console.log(res.data);
           store.dispatch(CreateEventSubmitSuccess(res.data.data.event._id));
+          Toastify({
+            text: `Event Created !`,
+            duration: 3000, 
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            className:"info",
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            onClick: function(){} // Callback after click
+          }).showToast();
         })
         .catch((err) => {
           console.log(

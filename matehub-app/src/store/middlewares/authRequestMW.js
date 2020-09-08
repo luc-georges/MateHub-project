@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import Toastify from 'toastify-js'
 import {
   LOGIN_SUBMIT,
   loginSubmitSuccess,
@@ -53,7 +53,19 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           // console.log(res.data.data.info);
-          store.dispatch(loginSubmitSuccess(res.data.data.info._id));
+          store.dispatch(loginSubmitSuccess(res.data.data.info._id));  
+          console.log(res.data.data.info._nickname)
+          Toastify({
+            text: `Welcome! ${res.data.data.info._nickname}`,
+            duration: 3000, 
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            className:"info",
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            onClick: function(){} // Callback after click
+          }).showToast();
         })
         .catch((err) => {
           // console.log(err.response.data.error);

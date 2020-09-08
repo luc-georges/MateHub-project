@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Toastify from 'toastify-js'
 // import { push } from 'react-router-redux';
 import {
   REGISTER_SUBMIT,
@@ -33,6 +34,17 @@ export default (store) => (next) => (action) => {
         .then((res) => {
           // console.log("la réponse reçu: " + res);
           store.dispatch(registerSubmitSuccess(res.data))
+          Toastify({
+            text: `Registration Successfull`,
+            duration: 3000, 
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            className:"info",
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            onClick: function(){} // Callback after click
+          }).showToast();
           // store.dispatch(push('/login'));
         })
         .catch((err) => {
