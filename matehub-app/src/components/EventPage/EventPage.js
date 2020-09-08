@@ -202,13 +202,16 @@ const EventPage = ({
                       <Button inverted color="teal" content="Profile" />
                     </NavLink>
                     {connectedUserId === eventData._user_id ? (
-                      <Button
-                        inverted
-                        color="red"
-                        id={filteredUser.user_id}
-                        onClick={handleSelectAndRefuseplayerInEvent}
-                        content="Kick"
-                      />
+                      <div className="kick-button">
+                        <Button
+                        className="kick-button"
+                        size="mini"
+                          color="red"
+                          id={filteredUser.user_id}
+                          onClick={handleSelectAndRefuseplayerInEvent}
+                          content="Kick"
+                        />
+                      </div>
                     ) : null}
                   </Card.Content>
                 </Card>
@@ -259,14 +262,12 @@ const EventPage = ({
                     {connectedUserId === eventData._user_id ? (
                       <div className="ui two buttons mini event-playercard-apply-btns">
                         <Button
-                          inverted
                           color="green"
                           id={filteredUser.user_id}
                           onClick={handleSelectAndAcceptPlayerInEvent}
                           content="Approve"
                         />
                         <Button
-                          inverted
                           color="red"
                           id={filteredUser.user_id}
                           onClick={handleSelectAndRefuseplayerInEvent}
