@@ -232,3 +232,41 @@
   height: 150px;
   width: 150px;
 }
+.avatar-modal {
+  border: solid #66fcf285 !important;
+  background: #161c2481 !important;
+  color: white !important;
+}
+
+.avatar-input {
+  background: #0c0f14  !important;
+  padding-top: 2%;
+}
+
+.avatar-modal-titre {
+  background: #0c0f14 !important;
+  color: white !important;
+}
+
+.avatar-actions {
+  background:  #0c0f14 !important;
+}
+
+.avatar-buttonData {
+  border: solid #66fcf1 !important;
+  background: none !important;
+  color: #66fcf1 !important;
+  width: 30%;
+}
+
+.avatar-buttonData:hover {
+  background: #66fcf1 !important;
+  color: #2b8484 !important;
+}
+
+.avatar-file-label {
+  background: #0c0f14  !important;
+  margin-left: 4%;
+  margin-top: 2% !important;
+  font-size: 1.3em;
+}
