@@ -38,28 +38,39 @@ const ProfilePage = ({
   console.log(userData);
 
   return (
-    <div className="profilepage">
-      <div className="profilepage-header">
+    <div className="personnalprofilepage">
+      <div className="personnalprofilepage-header">
         <div className="container-avatar"></div>
         <div className="container-banner">
-          {userData._banner && (
-            <img
-              src={require(`../../assets/${userData._banner}`)}
-              alt="lollogo"
-              className="banner"
-            />
+        {userData._banner ? (
+            <div className="modal-img">
+              <img
+                src={require(`../../assets/${userData._banner}`)}
+                alt="lollogo"
+                className="banner-modal-img"
+              />
+            </div>
+          ) : (
+            <div className="modal-img">
+              <img
+                src={require(`../../assets/banner1.png`)}
+                alt="lollogo"
+                className="banner-modal-img"
+              />
+            </div>
           )}
+            <div className="details">
           {userData._avatar && (
             <img src={icon} alt="lollogo" className="avatar" />
           )}
-        </div>
-        <div className="details">
           <h1>{userData._nickname}</h1>
+          <div className="test-description">{userData._description}</div>
+        </div>
         </div>
       </div>
       <div className="profilepage-body">
         <div className="profilepage-button">
-          <Modal
+          {/* <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
@@ -83,28 +94,32 @@ const ProfilePage = ({
                 onClick={() => setOpen(false)}
               ></Button>
             </Modal.Actions>
-          </Modal>
+          </Modal> */}
         </div>
 
-        <h2 className="profilepage-titre">Description</h2>
-        <div className="profilepage-description">{userData._description}</div>
+        <h2 className="title-profile-small">Playing :</h2>
 
         <div className="profilepage-game">
           {userData._games &&
             userData._games.map((game) => {
               return (
-                <div key={game.id}>
-                  <h2 className="profilepage-titre">{game.game_name}</h2>
-                  <div className="profilepage-game-user">
+               
+                <div className="game-container" key={game.id}>
+                   {console.log(game)}
+                  <h2 className="profilepage-titre-game">{game.game_name} :</h2>
+                 
                     <div className="profilepage-game-user-info">
-                      Pseudo : {game.ign.name}
+                      <span className="blue-text">Summoner  : </span> <span className="cyan-text">{game.ign.name}</span>
                     </div>
                     <div className="profilepage-game-user-info">
-                      level : {game.ign.summonerLevel}
+                    <span className="blue-text"> level : </span><span className="cyan-text">{game.ign.summonerLevel}</span>
                     </div>
                     <div className="profilepage-game-user-info">
-                      Rank : {game.stats.tier} / {game.stats.rank}{' '}
+                    <span className="blue-text">Rank : </span> <span className="cyan-text">{game.stats.tier} </span> <span className="blue-text">/ </span><span className="cyan-text">{game.stats.rank}{' '}</span>
                     </div>
+                    <div className="profilepage-game-user-info">
+                    <span className="blue-text">Win : </span> <span className="cyan-text">{game.stats.wins} </span> <span className="blue-text">/ Losses :</span><span className="cyan-text">{game.stats.losses}{' '}</span>
+
                   </div>
                 </div>
               );
@@ -153,7 +168,7 @@ const ProfilePage = ({
                       <Card.Content extra>
                     <div className="LatestEvent-text">
                       Starting date and time:{' '} <br />
-                      <span className="starting">
+                     <span className="starting">
                       {moment.parseZone(event.event_time).format("YYYY/MM/DD h:mm a")}
                       </span>
                       <div className="LatestEvent-text">
@@ -177,10 +192,27 @@ const ProfilePage = ({
           </Card.Group>
         </div>
         <h2 className="personnalprofilepage-titre">Event Registered: </h2>
-        <Card.Group className="event-card-group">
           <div className="Event-modules">
+        <Card.Group className="event-card-group">
             {userData.has_events &&
-              userData.has_events.map((h_event) => {
+              userData.has_events.map((h_event,index) => {
+                let rankClass2;
+          
+                if( h_event.rank.slice(0,4) === "iron"){
+                  rankClass2 = "iron"
+                }else if (h_event.rank.slice(0,6) === "bronze"){
+                  rankClass2 = "bronze"
+                }else if (h_event.rank.slice(0,4) === "silv"){
+                  rankClass2 = "silv"
+                }else if (h_event.rank.slice(0,4) === "gold"){
+                  rankClass2 = "gold"
+                }else if (h_event.rank.slice(0,4) === "plat"){
+                  rankClass2 = "plat"
+                }else if (h_event.rank.slice(0,4) === "diam"){
+                  rankClass2 = "diam"
+                } else {
+                  rankClass2 = "chal"
+                }
                 return (
                   <NavLink
                     key={`H_event${h_event.event_id}`}
@@ -188,20 +220,25 @@ const ProfilePage = ({
                     to={`/event/${h_event._event_id}`}
                     onClick={handleGetSelectedEvent}
                   >
+                     <div className={`slide-in${index}`}>
                     <Card className="event-card">
                       <Card.Content>
                         <Image floated="right" size="mini" src={logolol} />
-                        <Card.Header>{h_event.game_name}</Card.Header>
-                        <Card.Meta>{h_event._creator}</Card.Meta>
-                        <Card.Description>
-                          {h_event._description}
+
+                        <Card.Header><span className="nickname">{h_event.game_name}</span></Card.Header>
+                        <Card.Meta><br /><span className={`rank ${rankClass2}`}>{h_event.rank}</span></Card.Meta>
+                        <Card.Description className="descript">
+                        "{h_event.description.length > 25
+                      ? `${h_event.description.slice(0, 25)}...`
+                      : h_event.description}
                         </Card.Description>
                       </Card.Content>
                       <Card.Content extra>
                         <div className="LatestEvent-text">
-                          Date and time{' '}
+                        Starting date and time:{' '} <br />
+                           <span className="starting">
                           {moment.parseZone(h_event.event_time).format("YYYY/MM/DD h:mm a")}
-
+                          </span>
                           <div className="LatestEvent-text">
                             Number of players {h_event.player_count}
                           </div>
@@ -215,11 +252,12 @@ const ProfilePage = ({
                         </div>
                       </Card.Content>
                     </Card>
+                    </div>
                   </NavLink>
                 );
               })}
-          </div>
         </Card.Group>
+          </div>
       </div>
     </div>
   );

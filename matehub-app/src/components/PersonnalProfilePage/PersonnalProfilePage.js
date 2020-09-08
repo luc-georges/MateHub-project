@@ -249,6 +249,15 @@ const PersonnalProfilePage = ({
               </div>
             </Modal.Description>
             <Modal.Actions className="avatar-actions">
+            <Button
+                hidden
+                style={{ marginTop: '2em', textAlign: 'center' }}
+                className="avatar-buttonData"
+                content="ok"
+                labelPosition="right"
+                icon="checkmark"
+                onClick={() => setOpen1(false)}
+              />
               <Button
                 style={{ marginTop: '2em', textAlign: 'center' }}
                 color="black"
@@ -278,6 +287,7 @@ const PersonnalProfilePage = ({
             </div>
           )}
 
+<div className="details">
           {personnalData._avatar && (
             <img
               src={require(`../../assets/${personnalData._avatar}`)}
@@ -285,9 +295,9 @@ const PersonnalProfilePage = ({
               className="avatar"
             />
           )}
-        </div>
-        <div className="details">
           <h1>{personnalData._nickname}</h1>
+          <div className="test-description">{personnalData._description}</div>
+        </div>
         </div>
       </div>
       <div className="profilepage-body">
@@ -354,19 +364,7 @@ const PersonnalProfilePage = ({
             </Modal.Description>
           </Modal>
         </div>{' '}
-        <h2 className="personnalprofilepage-titre homeTitle">Description</h2>
-        <div>
-          <div className="personnalprofilepage-description">
-            {personnalData._description ? (
-              <p>{personnalData._description}</p>
-            ) : (
-              <p className="default-mess">
-                You don't have a description yet!!! You can do it by clicking on
-                "update informations".
-              </p>
-            )}
-          </div>
-        </div>
+        <h2 className="title-profile-small">Playing :</h2>
         {!personnalData._games && (
           <Button
             className="button-modal"
@@ -408,24 +406,26 @@ const PersonnalProfilePage = ({
           </div>
         ) : null}
         <div className="personnalprofilepage-game">
-          {personnalData._games &&
+        {personnalData._games &&
             personnalData._games.map((game) => {
               return (
-                <div key={game.game_id}>
-                  <h2 className="personnalprofilepage-titre">
-                    {game.game_name}
-                  </h2>
+               
+                <div className="game-container" key={game.id}>
+                   {console.log(game)}
+                  <h2 className="profilepage-titre-game">{game.game_name} :</h2>
+                 
+                    <div className="profilepage-game-user-info">
+                      <span className="blue-text">Summoner  : </span> <span className="cyan-text">{game.ign.name}</span>
+                    </div>
+                    <div className="profilepage-game-user-info">
+                    <span className="blue-text"> level : </span><span className="cyan-text">{game.ign.summonerLevel}</span>
+                    </div>
+                    <div className="profilepage-game-user-info">
+                    <span className="blue-text">Rank : </span> <span className="cyan-text">{game.stats.tier} </span> <span className="blue-text">/ </span><span className="cyan-text">{game.stats.rank}{' '}</span>
+                    </div>
+                    <div className="profilepage-game-user-info">
+                    <span className="blue-text">Win : </span> <span className="cyan-text">{game.stats.wins} </span> <span className="blue-text">/ Losses :</span><span className="cyan-text">{game.stats.losses}{' '}</span>
 
-                  <div>
-                    <div className="personnalprofilepage-game-user-info">
-                      Pseudo : {game.ign.name}
-                    </div>
-                    <div className="personnalprofilepage-game-user-info">
-                      level : {game.ign.summonerLevel}
-                    </div>
-                    <div className="personnalprofilepage-game-user-info">
-                      Rank : {game.stats.tier} / {game.stats.rank}{' '}
-                    </div>
                   </div>
                 </div>
               );
