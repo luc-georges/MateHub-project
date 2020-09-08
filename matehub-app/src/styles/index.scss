@@ -26,6 +26,22 @@ code {
     monospace;
 }
 
+/* input[type="file" i] {
+  appearance: initial;
+  background-color: initial;
+  color: #66fcf1;
+  cursor: pointer;
+  align-items: center;
+  color: inherit;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+}
+
+::-webkit-input[type="file" i] {
+  background-color: #f0f;
+} */
+
 .ui.inverted.form input:not([type]),
  .ui.inverted.form input[type=date],
   .ui.inverted.form input[type=datetime-local],
@@ -122,4 +138,9 @@ optgroup[label="Challenger"]
 .form{
   padding: 2em;
 
+}
+
+input[type="file"] {
+  outline: none;
+  content: none !important;
 }

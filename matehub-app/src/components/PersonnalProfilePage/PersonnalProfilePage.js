@@ -8,10 +8,9 @@ import {
   Card,
   Image,
   Flag,
+  Input,
 } from 'semantic-ui-react';
-import Moment from 'react-moment';
 import logolol from '../../assets/logolol.png';
-import icon from '../../assets/test.ico';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import uuid from 'react-uuid';
@@ -169,41 +168,41 @@ const PersonnalProfilePage = ({
                   />
                 </div>
               )}
-
-              <div className="banner-input">
-                <label htmlFor="banner" className="banner-file-label">
-                  Choose a banner picture:
-                  <input
-                    type="file"
-                    size="60"
-                    id="banner"
-                    name="banner"
-                    accept="image/png, image/jpeg"
-                    onChange={handleUpload}
-                    className="banner-file-button"
-                    aria-label="File browser example"
-                  ></input>
-                </label>
+                  </Modal.Description>
+              <div className="testouillage">
+                <div className="banner-input">
+                  <label htmlFor="banner" className="banner-file-label">
+                    <input
+                      type="file"
+                      size="60"
+                      id="banner"
+                      name="banner"
+                      accept="image/png, image/jpeg"
+                      onChange={handleUpload}
+                      className="custom-file-input"
+                      aria-label="File browser example"
+                    ></input>
+                  </label>
+                </div>
+              <Modal.Actions className="banner-actions">
+                <Button
+                  hidden
+                  style={{ marginTop: '2em', textAlign: 'center' }}
+                  className="banner-buttonData"
+                  content="ok"
+                  labelPosition="right"
+                  icon="checkmark"
+                  onClick={() => setOpen3(false)}
+                />
+                <Button
+                  style={{ marginTop: '2em', textAlign: 'center' }}
+                  color="black"
+                  onClick={() => setOpen3(false)}
+                  content="Cancel"
+                  className="banner-buttonData"
+                />
+              </Modal.Actions>
               </div>
-            </Modal.Description>
-            <Modal.Actions className="banner-actions">
-              <Button
-                hidden
-                style={{ marginTop: '2em', textAlign: 'center' }}
-                className="banner-buttonData"
-                content="ok"
-                labelPosition="right"
-                icon="checkmark"
-                onClick={() => setOpen3(false)}
-              />
-              <Button
-                style={{ marginTop: '2em', textAlign: 'center' }}
-                color="black"
-                onClick={() => setOpen3(false)}
-                content="Cancel"
-                className="banner-buttonData"
-              />
-            </Modal.Actions>
           </Modal>
         </div>
         <div className="container-modal-avatar">
@@ -307,26 +306,30 @@ const PersonnalProfilePage = ({
             </Modal.Header>
             <Modal.Description>
               <div className="modal-info-content">
-                <Form inverted className="information-form" onSubmit={handleSubmit}>
-                      <Form.Input
-                        fluid
-                        label="Nickname"
-                        placeholder="change your nickname"
-                        name="nickname"
-                        value={modifyPersonnalData.nickname}
-                        onChange={handleInputChange}
-                        className="information-input"
-                      />
+                <Form
+                  inverted
+                  className="information-form"
+                  onSubmit={handleSubmit}
+                >
+                  <Form.Input
+                    fluid
+                    label="Nickname"
+                    placeholder="New nickname"
+                    name="nickname"
+                    value={modifyPersonnalData.nickname}
+                    onChange={handleInputChange}
+                    className="information-input"
+                  />
 
-                      <Form.Input
-                        fluid
-                        label="Description"
-                        placeholder="change your Description"
-                        name="description"
-                        value={modifyPersonnalData.description}
-                        onChange={handleInputChange}
-                        className="information-input"
-                      />
+                  <Form.Input
+                    fluid
+                    label="Description"
+                    placeholder="New description"
+                    name="description"
+                    value={modifyPersonnalData.description}
+                    onChange={handleInputChange}
+                    className="information-input"
+                  />
 
                   <div>
                     <Button
@@ -379,12 +382,7 @@ const PersonnalProfilePage = ({
             {summonerStats.summonerName && (
               <Form onSubmit={handleValidateAccount}>
                 <div>Are u {summonerStats.summonerName} ?</div>
-                <Button
-                  inverted
-                  color="green"
-                  type="submit"
-                  content="Yes"
-                />
+                <Button inverted color="green" type="submit" content="Yes" />
                 <Button inverted color="red" content="No" />
               </Form>
             )}
@@ -488,9 +486,9 @@ const PersonnalProfilePage = ({
                         <div className="LatestEvent-text">
                           Starting date and time: <br />
                           <span className="starting">
-                            
-                              {moment.parseZone(event.event_time).format("YYYY/MM/DD h:mm a")}
-                           
+                            {moment
+                              .parseZone(event.event_time)
+                              .format('YYYY/MM/DD h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
@@ -579,7 +577,9 @@ const PersonnalProfilePage = ({
                         <div className="LatestEvent-text">
                           Starting date and time: <br />
                           <span className="starting">
-                          {moment.parseZone(h_event.event_time).format("YYYY/MM/DD h:mm a")}               
+                            {moment
+                              .parseZone(h_event.event_time)
+                              .format('YYYY/MM/DD h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
@@ -669,7 +669,9 @@ const PersonnalProfilePage = ({
                         <div className="LatestEvent-text">
                           Starting date and time: <br />
                           <span className="starting">
-                          {moment.parseZone(h_event.event_time).format("YYYY/MM/DD h:mm a")}
+                            {moment
+                              .parseZone(h_event.event_time)
+                              .format('YYYY/MM/DD h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
