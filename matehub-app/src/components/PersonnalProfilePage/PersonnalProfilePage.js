@@ -309,13 +309,19 @@ const PersonnalProfilePage = ({
           )}
 
 <div className="details">
-          {personnalData._avatar && (
+          {personnalData._avatar ? (
             <img
               src={require(`../../assets/${personnalData._avatar}`)}
               alt="lollogo"
               className="avatar"
             />
-          )}
+          ):(
+            <img
+              src={require(`../../assets/avatar1.jpg`)}
+              alt="lollogo"
+              className="avatar"
+            />
+          ) }
           <h1>{personnalData._nickname}</h1>
           <div className="test-description">{personnalData._description}</div>
         </div>
