@@ -8,7 +8,7 @@ import {
   Card,
   Image,
   Flag,
-  Input,
+  Select,
 } from 'semantic-ui-react';
 import logolol from '../../assets/logolol.png';
 import { NavLink } from 'react-router-dom';
@@ -48,6 +48,13 @@ const PersonnalProfilePage = ({
       [name]: value,
     });
   };
+
+  const handleSelectSumInputChange = (evt, data) => {
+    const { name, value } = data;
+    onSumInputChangeField({
+      [name]: value,
+    });
+  }
 
   const handleGetSelectedEvent = (evt, data) => {
     // console.log(evt.currentTarget.id);
@@ -108,6 +115,20 @@ const PersonnalProfilePage = ({
   const [openConnectLolAccount, setOpenConnectLolAccount] = React.useState(
     false
   );
+
+  const regionOptions = [
+    { key: 'BR1', text: 'BR', value: 'BR1' },
+    { key: 'EUN1', text: 'EUN', value: 'EUN1' },
+    { key: 'EUW1', text: 'EUW', value: 'EUW1' },
+    { key: 'JP1', text: 'JP', value: 'JP1' },
+    { key: 'KR', text: 'KR', value: 'KR' },
+    { key: 'LA1', text: 'LA1', value: 'LA1' },
+    { key: 'LA2', text: 'LA2', value: 'LA2' },
+    { key: 'NA1', text: 'NA', value: 'NA1' },
+    { key: 'OC1', text: 'OC', value: 'OC1' },
+    { key: 'TR1', text: 'TR', value: 'TR1' },
+    { key: 'RU', text: 'RU', value: 'RU' },
+  ];
 
   //Filtering and sorting created event
   let sortedPerso_created;
@@ -379,9 +400,11 @@ const PersonnalProfilePage = ({
           <div>
             {summonerStats.summonerName && (
               <Form onSubmit={handleValidateAccount}>
-                <div>Are u {summonerStats.summonerName} ?</div>
-                <Button inverted color="green" type="submit" content="Yes" />
-                <Button inverted color="red" content="No" />
+                <h2>Are u {summonerStats.summonerName} ?</h2>
+                <Button.Group>
+                  <Button color="green" type="submit" content="Yes" />
+                  <Button color="red" content="No" />
+                </Button.Group>
               </Form>
             )}
             <Form inverted onSubmit={handleGetSummonerInfo}>
@@ -395,9 +418,11 @@ const PersonnalProfilePage = ({
                 />
                 <Form.Input
                   label="Region"
+                  control={Select}
+                  options={regionOptions}
                   name="summonerRegion"
                   placeholder="Enter your LoL account region"
-                  onChange={handleSumInputChange}
+                  onChange={handleSelectSumInputChange}
                   value={sumInputData.summonerRegion}
                 />
               </Form.Group>
