@@ -250,6 +250,15 @@ const PersonnalProfilePage = ({
               </div>
             </Modal.Description>
             <Modal.Actions className="avatar-actions">
+            <Button
+                hidden
+                style={{ marginTop: '2em', textAlign: 'center' }}
+                className="avatar-buttonData"
+                content="ok"
+                labelPosition="right"
+                icon="checkmark"
+                onClick={() => setOpen1(false)}
+              />
               <Button
                 style={{ marginTop: '2em', textAlign: 'center' }}
                 color="black"
@@ -308,26 +317,30 @@ const PersonnalProfilePage = ({
             </Modal.Header>
             <Modal.Description>
               <div className="modal-info-content">
-                <Form inverted className="information-form" onSubmit={handleSubmit}>
-                      <Form.Input
-                        fluid
-                        label="Nickname"
-                        placeholder="change your nickname"
-                        name="nickname"
-                        value={modifyPersonnalData.nickname}
-                        onChange={handleInputChange}
-                        className="information-input"
-                      />
+                <Form
+                  inverted
+                  className="information-form"
+                  onSubmit={handleSubmit}
+                >
+                  <Form.Input
+                    fluid
+                    label="Nickname"
+                    placeholder="change your nickname"
+                    name="nickname"
+                    value={modifyPersonnalData.nickname}
+                    onChange={handleInputChange}
+                    className="information-input"
+                  />
 
-                      <Form.Input
-                        fluid
-                        label="Description"
-                        placeholder="change your Description"
-                        name="description"
-                        value={modifyPersonnalData.description}
-                        onChange={handleInputChange}
-                        className="information-input"
-                      />
+                  <Form.Input
+                    fluid
+                    label="Description"
+                    placeholder="change your Description"
+                    name="description"
+                    value={modifyPersonnalData.description}
+                    onChange={handleInputChange}
+                    className="information-input"
+                  />
 
                   <div>
                     <Button
@@ -368,12 +381,7 @@ const PersonnalProfilePage = ({
             {summonerStats.summonerName && (
               <Form onSubmit={handleValidateAccount}>
                 <div>Are u {summonerStats.summonerName} ?</div>
-                <Button
-                  inverted
-                  color="green"
-                  type="submit"
-                  content="Yes"
-                />
+                <Button inverted color="green" type="submit" content="Yes" />
                 <Button inverted color="red" content="No" />
               </Form>
             )}
@@ -479,9 +487,9 @@ const PersonnalProfilePage = ({
                         <div className="LatestEvent-text">
                           Starting date and time: <br />
                           <span className="starting">
-                            
-                              {moment.parseZone(event.event_time).format("YYYY/MM/DD h:mm a")}
-                           
+                            {moment
+                              .parseZone(event.event_time)
+                              .format('YYYY/MM/DD h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
@@ -570,7 +578,9 @@ const PersonnalProfilePage = ({
                         <div className="LatestEvent-text">
                           Starting date and time: <br />
                           <span className="starting">
-                          {moment.parseZone(h_event.event_time).format("YYYY/MM/DD h:mm a")}               
+                            {moment
+                              .parseZone(h_event.event_time)
+                              .format('YYYY/MM/DD h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
@@ -660,7 +670,9 @@ const PersonnalProfilePage = ({
                         <div className="LatestEvent-text">
                           Starting date and time: <br />
                           <span className="starting">
-                          {moment.parseZone(h_event.event_time).format("YYYY/MM/DD h:mm a")}
+                            {moment
+                              .parseZone(h_event.event_time)
+                              .format('YYYY/MM/DD h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
