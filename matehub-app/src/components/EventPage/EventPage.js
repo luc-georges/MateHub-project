@@ -87,10 +87,31 @@ const EventPage = ({
 
   return (
     <div className="eventpage">
-      <Container className="eventpage-title">
+      <div className="for-bg">
+  <div className="evt-title">Event by {eventData._creator}</div>
+    <div className="toflex">
+        <Card className="card-evt-page">
+          <Card.Content><Card.Header className="evt-creator">{moment.parseZone(eventData._starting).format('YYYY/MM/DD h:mm a')}</Card.Header></Card.Content>
+          <Card.Content description={eventData._description} className="div-descript-evt-span" />
+          <Card.Content className='evt-footer'>
+          <span className="lol-account">
+            {eventData._creator_stats.map((elem) => {
+            return elem.summonerName;
+          })}</span>{' '}<span className={`${rankClass}`}>
+          {eventData._creator_stats.map((elem) => {
+            return elem.tier;
+          })}{' '}
+          {eventData._creator_stats.map((elem) => {
+            return elem.rank;
+          })}</span>
+          </Card.Content>
+        </Card>
+
+        <div className="evt-vocal">{eventData._vocal}</div>
+        </div>
+      {/* <Container className="eventpage-title">
         <h1>
-          Welcome on EVENT page !!!
-          {/* {eventData._creator}'s event on {eventData._game_name} */}
+          EVENT page 
         </h1> 
   <h3><span className="span-it">created by</span> <span className="event-creator">{eventData._creator}</span> - <span className="span-it">LoL account :</span> <span> <span className="lol-account">
             {eventData._creator_stats.map((elem) => {
@@ -109,8 +130,8 @@ const EventPage = ({
         <h2 className="evt-start">
           Start {moment.parseZone(eventData._starting).format('YYYY/MM/DD h:mm a')}
         </h2>
-          <div className="div-descript">
-            Description : {eventData._description}
+          <div className="div-descript-evt">
+            Description : <br></br> <span className="div-descript-evt-span">"{eventData._description}"</span>
           </div>
         {connectedUserId !== eventData._user_id ? (
           <Form
@@ -124,6 +145,7 @@ const EventPage = ({
               />
             )}
             <Input
+            className="input-event"
             style={{width: '100%'}}
               icon="send"
               name="applyMessage"
@@ -131,10 +153,10 @@ const EventPage = ({
               onChange={handleInputChange}
               value={applyMessage}
             />
-            <Button content="Apply to event" className="eventpage-apply-btn" />
+            <Button content="Apply to event" className="eventpage-apply-btn" secondary/>
           </Form>
         ) : null}
-      </Container>
+      </Container> */}</div>
 
       <Divider />
 

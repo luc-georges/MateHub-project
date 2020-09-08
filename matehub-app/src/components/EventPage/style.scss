@@ -1,9 +1,10 @@
 @import 'src/styles/vars';
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 .eventpage {
   background-image: url(../../assets/bgtexture.png);
   width: 76.1%;
-  margin-left: 180px;
+  margin-left: 11vw;
   color: $color-blanc;
   padding: 2em;
   // background-color: #0B0C10;
@@ -31,6 +32,16 @@
     margin-top: 0.5rem !important;
     width: 200px !important;
   }
+}
+
+.for-bg{
+  width: 100%;
+  background-image: url(../../assets/background-event.jpg);
+  padding: 5em!important;
+}
+.evt-title{
+  font-family: 'Righteous', cursive; 
+  font-size: 2.5em;
 }
 
 .event {
@@ -85,9 +96,12 @@
   }
 }
 
-.event-creator{
-  color: #66fcf2;
+.evt-creator{
+  color: #66fcf2 !important;
   font-size: 1.4em;
+  background-color: #00000098;
+  padding: 0.5em;
+  text-align: center;
 }
 .span-it{
   font-style: italic;
@@ -97,10 +111,39 @@
 }
 .lol-account, .lol-rank{
   font-size: 1.4em;
+  font-weight: bold;
+  color: #fff;
 }
 .lol-rank{
  color: blue;
 }
 .eye-a{
   text-align: center;
+}
+.input-event{
+  background-color:#00000090;
+  color: #fff;
+}
+.div-descript-evt{
+  font-size: 1.4em;
+  text-align: center;
+  color: rgb(46, 46, 54);
+  padding-bottom: 0.5em;
+}
+.div-descript-evt-span{
+  font-weight: bold;
+  font-style: italic;
+  padding-top: 0.5em;
+  color: #fff;
+}
+.card-evt-page{
+  background-color: #00000090!important;
+  margin-top: 2em!important;
+  text-align: center;
+
+}
+.evt-vocal{
+  font-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
 }
