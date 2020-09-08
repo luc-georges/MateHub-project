@@ -51,15 +51,15 @@ const SearchEventPage = ({
 
   const rankOptions = [
     { key: '', text: 'Any', value: '' },
-    { key: 'iron', text: 'Iron', value: 'iron' },
-    { key: 'bronze', text: 'Bronze', value: 'bronze' },
-    { key: 'silver', text: 'Silver', value: 'silver' },
-    { key: 'gold', text: 'Gold', value: 'gold' },
-    { key: 'platinum', text: 'Platinum', value: 'platinum' },
-    { key: 'diamond', text: 'Diamond', value: 'diamond' },
-    { key: 'master', text: 'Master', value: 'master' },
-    { key: 'grandmaster', text: 'GrandMaster', value: 'grandmaster' },
-    { key: 'challenger', text: 'Challenger', value: 'challenger' },
+    { key: 'iron', text: 'Iron', value: 'Iron' },
+    { key: 'bronze', text: 'Bronze', value: 'Bronze' },
+    { key: 'silver', text: 'Silver', value: 'Silver' },
+    { key: 'gold', text: 'Gold', value: 'Gold' },
+    { key: 'platinum', text: 'Platinum', value: 'Platinum' },
+    { key: 'diamond', text: 'Diamond', value: 'Diamond' },
+    { key: 'master', text: 'Master', value: 'Master' },
+    { key: 'grandmaster', text: 'GrandMaster', value: 'Grandmaster' },
+    { key: 'challenger', text: 'Challenger', value: 'Challenger' },
   ];
 
   const handleGetSelectedEvent = (evt, data) => {
