@@ -11,6 +11,7 @@ import {
   Message,
   Container,
 } from 'semantic-ui-react';
+import { getPersonnalData } from '../../store/actions/authActions';
 
 const CreateEventPage = ({
   onisRankedCheckboxCreateEventChangeField,
@@ -63,65 +64,128 @@ const CreateEventPage = ({
   const [eventStartHourError, setEventStartHourError] = useState(false);
   const [rankError, setRankError] = useState(false);
   const [descriptionError, setDescriptionError] = useState(false);
+  const [globalError, setGlobalError] = useState(false);
 
-  const handleSubmit = () => {
+
+  const handleSubmit = async (evt)  =>  {
     if (
-      !eventCreationData.language.fr1 &&
-      !eventCreationData.language.uk2 &&
-      !eventCreationData.language.it3 &&
-      !eventCreationData.language.es4 &&
-      !eventCreationData.language.ru5 &&
-      !eventCreationData.language.de6
+      eventCreationData.language.fr1 !== checked &&
+      eventCreationData.language.uk2 !== checked &&
+      eventCreationData.language.it3 !== checked &&
+      eventCreationData.language.es4 !== checked &&
+      eventCreationData.language.ru5 !== checked &&
+      eventCreationData.language.de6 !== checked
     ) {
       setFlagError(true);
+      setGlobalError(true);
     } else {
       setFlagError(false);
+      setGlobalError(false);
+
     }
 
     if (eventCreationData.duration === '') {
       setDurationError(true);
+      setGlobalError(true);
+
     } else {
       setDurationError(false);
+      setGlobalError(false);
+
     }
 
     if (eventCreationData.game_id === '') {
       setgameIdError(true);
+      setGlobalError(true);
+
     } else {
       setgameIdError(false);
+      setGlobalError(true);
+
     }
 
     if (eventCreationData.player_max === '') {
       setplayerMaxError(true);
+      setGlobalError(true);
+
     } else {
       setplayerMaxError(false);
+      setGlobalError(false);
     }
 
     if (eventCreationData.event_time_date === '') {
       setEventStartDateError(true);
+      setGlobalError(true);
+
     } else {
       setEventStartDateError(false);
+      setGlobalError(false);
     }
 
     if (eventCreationData.event_time_hour === '') {
       setEventStartHourError(true);
+      setGlobalError(true);
     } else {
       setEventStartHourError(false);
+      setGlobalError(false);
     }
 
     if (eventCreationData.rank === '') {
       setRankError(true);
+      setGlobalError(true);
     } else {
       setRankError(false);
+      setGlobalError(false);
     }
 
     if (eventCreationData.description === '') {
       setDescriptionError(true);
+      setGlobalError(true);
     } else {
       setDescriptionError(false);
+      setGlobalError(false);
     }
+    if(!flagError && !durationError && !gameIdError && !playerMaxError && !eventStartHourError && !eventStartDateError && !rankError && !descriptionError ){
+    onFormSubmit(evt);
+    console.log("sent")
+  } else{
 
-    onFormSubmit();
+  }
   };
+
+  // romving send button if form has been sent correctly
+  let sendButton = "";
+  let createdMessage = "";
+  if(!created && !globalError){
+   sendButton= <Button
+    inverted
+    color="teal"
+    content="Create event"
+    type="submit"
+    // disabled={fieldsError}
+  />
+  }if (!created && globalError){
+    sendButton= <Button
+    inverted
+    color="teal"
+    content="Create event"
+    type="submit"
+    // disabled={fieldsError}
+  />
+  }
+  if (created && !globalError){
+    sendButton = "";
+    createdMessage = <Container>
+    <Message size="large" className="input-success-message">
+      <Message.Header>
+        Event created successfully, click{' '}
+        <Link to={`/event/${selectedEvent}`}>here</Link> to go on the
+        event page
+      </Message.Header>
+    </Message>
+  </Container> ;
+  }
+
 
   // Options for select input
   const selectGameOptions = [
@@ -439,25 +503,8 @@ const CreateEventPage = ({
           error={descriptionError}
         />
 
-        {!created ? (
-          <Button
-            inverted
-            color="teal"
-            content="Create event"
-            type="submit"
-            // disabled={fieldsError}
-          />
-        ) : (
-          <Container>
-            <Message size="large" className="input-success-message">
-              <Message.Header>
-                Event created successfully, click{' '}
-                <Link to={`/event/${selectedEvent}`}>here</Link> to go on the
-                event page
-              </Message.Header>
-            </Message>
-          </Container>
-        )}
+        {sendButton} 
+        {createdMessage}
       </Form>
     </div>
   );

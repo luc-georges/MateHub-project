@@ -22,6 +22,7 @@ import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 import GettingStarted from '../GettingStarted/GettingStarted';
 import NotFound from '../NotFound/NotFound';
+
 /**
  * composant principale de l'application
  * @component

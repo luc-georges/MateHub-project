@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import { Icon, Button, Flag } from 'semantic-ui-react';
@@ -16,7 +16,9 @@ const EventBar = ({
   const handleGetSelectedEvent = (evt) => {
     getSelectedEvent(evt.currentTarget.id);
     getEventById();
+     // eslint-disable-next-line
   };
+  
   let filteredData;
   let sortedEvents;
   let acceptedEvents;

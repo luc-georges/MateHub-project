@@ -6,6 +6,8 @@ import {
   flagCheckboxChangeField,
   isRankedCheckboxCreateEventChangeField,
 } from '../store/actions/eventsActions';
+import { getPersonnalData } from '../store/actions/authActions';
+
 // import moment from 'moment';
 
 const mapStateToProps = (state) => {
@@ -50,9 +52,13 @@ const mapDispatchToProps = (dispatch) => ({
     // console.log(changedData);
     dispatch(eventChangeField(changedData));
   },
-  onFormSubmit: () => {
+  onFormSubmit: (evt) => {
     console.log('Submit dans le create event');
+    evt.preventDefault();
     dispatch(CreateEventSubmit());
+  },
+  getPersonnalData: () => {
+    dispatch(getPersonnalData());
   },
 });
 

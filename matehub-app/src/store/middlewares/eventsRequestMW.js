@@ -20,7 +20,7 @@ import {
   searchEventSubmitSuccess,
   searchEventSubmitError,
 } from '../actions/eventsActions';
-
+import { getPersonnalData} from '../actions/authActions'
 const host = process.env.REACT_APP_URL;
 
 const eventsRequestMW = (store) => (next) => (action) => {
@@ -199,6 +199,8 @@ const eventsRequestMW = (store) => (next) => (action) => {
             stopOnFocus: true, // Prevents dismissing of toast on hover
             onClick: function(){} // Callback after click
           }).showToast();
+        }).then((res)=>{
+          store.dispatch(getPersonnalData())
         })
         .catch((err) => {
           console.log(
