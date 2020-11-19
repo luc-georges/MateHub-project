@@ -109,7 +109,6 @@ const PersonnalProfilePage = ({
   };
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
-  const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
 
   const [openConnectLolAccount, setOpenConnectLolAccount] = React.useState(

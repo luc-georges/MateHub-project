@@ -11,7 +11,6 @@ import {
   Message,
   Container,
 } from 'semantic-ui-react';
-import { getPersonnalData } from '../../store/actions/authActions';
 
 const CreateEventPage = ({
   onisRankedCheckboxCreateEventChangeField,
@@ -69,12 +68,12 @@ const CreateEventPage = ({
 
   const handleSubmit = async (evt)  =>  {
     if (
-      eventCreationData.language.fr1 !== checked &&
-      eventCreationData.language.uk2 !== checked &&
-      eventCreationData.language.it3 !== checked &&
-      eventCreationData.language.es4 !== checked &&
-      eventCreationData.language.ru5 !== checked &&
-      eventCreationData.language.de6 !== checked
+      !eventCreationData.language.fr1  &&
+      !eventCreationData.language.uk2  &&
+      !eventCreationData.language.it3  &&
+      !eventCreationData.language.es4  &&
+      !eventCreationData.language.ru5  &&
+      !eventCreationData.language.de6 
     ) {
       setFlagError(true);
       setGlobalError(true);

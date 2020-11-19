@@ -18,7 +18,6 @@ import {
   DELETE_EVENT,
   SEARCH_EVENT_SUBMIT,
   searchEventSubmitSuccess,
-  searchEventSubmitError,
 } from '../actions/eventsActions';
 import { getPersonnalData} from '../actions/authActions'
 const host = process.env.REACT_APP_URL;

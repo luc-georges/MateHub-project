@@ -32,6 +32,7 @@ const EventPage = ({
 
   useEffect(() => {
     getEventById();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGetSelectedUser = (evt) => {

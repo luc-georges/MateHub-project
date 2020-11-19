@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import { Icon, Button, Flag } from 'semantic-ui-react';
