@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { 
+  useEffect, 
+  //useState 
+} from 'react';
 import './style.scss';
 import {
-  Button,
-  Modal,
+  //Button,
+  //Modal,
   Icon,
   Card,
   Image,
   Flag,
 } from 'semantic-ui-react';
-import Moment from 'react-moment';
+
 import moment from 'moment'
 import logolol from '../../assets/logolol.png';
 import icon from '../../assets/test.ico';
@@ -19,7 +22,7 @@ const ProfilePage = ({
   userData,
   getUser,
   getSelectedEvent,
-  connectedUserId,
+  //connectedUserId,
 }) => {
   const handleGetSelectedEvent = (evt, data) => {
     // console.log(evt.currentTarget.id);
@@ -32,7 +35,7 @@ const ProfilePage = ({
     // eslint-disable-next-line
   }, []);
 
-  const [open, setOpen] = useState(false);
+  //const [open, setOpen] = useState(false);
   // const [open2, setopen2] = useState(false);
 
   console.log(userData);

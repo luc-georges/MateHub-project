@@ -4,10 +4,10 @@ import {
   GET_SUMMONER_INFO,
   getSummonerInfoSuccess,
   getSummonerStatsSuccess,
-  getSummonerInfoError,
+  //getSummonerInfoError,
   VALIDATE_ACCOUNT,
   validateAccountSuccess,
-  validateAccountError,
+  //validateAccountError,
 } from '../actions/lolActions';
 
 import {getPersonnalData} from '../actions/authActions';

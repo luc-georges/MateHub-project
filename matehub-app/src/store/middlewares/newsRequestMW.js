@@ -5,7 +5,7 @@
 //   getNewsError,
 // } from '../actions/newsActions';
 
-const host = `${process.env.REACT_APP_URL}`
+//const host = `${process.env.REACT_APP_URL}`
 
 const newsRequestMW = (store) => (next) => (action) => {
   //  console.log("Passage dans le newsRequestMW");

@@ -18,6 +18,7 @@ import {
   DELETE_EVENT,
   SEARCH_EVENT_SUBMIT,
   searchEventSubmitSuccess,
+  getAllEvents,
 } from '../actions/eventsActions';
 import { getPersonnalData} from '../actions/authActions'
 const host = process.env.REACT_APP_URL;
@@ -200,6 +201,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
           }).showToast();
         }).then((res)=>{
           store.dispatch(getPersonnalData())
+          store.dispatch(getAllEvents())
         })
         .catch((err) => {
           console.log(

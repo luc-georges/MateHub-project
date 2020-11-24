@@ -1,8 +1,7 @@
 import React from 'react';
 import './style.scss';
 import { NavLink } from 'react-router-dom';
-import logolol from '../../assets/logolol.png';
-import Moment from 'react-moment';
+import logolol from '../../assets/Webp.net-resizeimage.png';
 import { Card, Image, Flag, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 import uuid from "react-uuid";

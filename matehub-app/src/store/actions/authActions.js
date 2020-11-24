@@ -18,7 +18,8 @@ export const GET_PERSONNAL_DATA_SUCCESS = 'GET_PERSONNAL_DATA_SUCCESS';
 export const GET_PERSONNAL_DATA_ERROR = 'GET_PERSONNAL_DATA_ERROR';
 
 export const getPersonnalDataSubmit = (payload) => ({
-  type: GET_PERSONNAL_DATA_SUBMIT,payload
+  type: GET_PERSONNAL_DATA_SUBMIT,
+  payload
 })
 
 export const getPersonnalData = () => ({

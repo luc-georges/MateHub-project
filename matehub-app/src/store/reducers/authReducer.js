@@ -129,7 +129,7 @@ export default (state = initialState, action = {}) => {
           ...action.payload,
         },
         modifyPersonnalData: {
-          ...(state.modifyPersonnalData = initialState.modifyPersonnalData),
+          
         },
         error: '',
       };
