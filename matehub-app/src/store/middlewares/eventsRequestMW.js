@@ -24,7 +24,7 @@ import { getPersonnalData} from '../actions/authActions'
 const host = process.env.REACT_APP_URL;
 
 const eventsRequestMW = (store) => (next) => (action) => {
-  // console.log("Passage dans le eventsRequestMW");
+
   const { connectedUserId } = store.getState().auth;
 
   const fullData = store.getState().events.searchEventData;
@@ -62,7 +62,6 @@ const eventsRequestMW = (store) => (next) => (action) => {
         }`,
       })
         .then((res) => {
-          console.log(res);
           store.dispatch(getEventById());
           Toastify({
             text: `Apply accepted`,
@@ -91,7 +90,6 @@ const eventsRequestMW = (store) => (next) => (action) => {
         }`,
       })
         .then((res) => {
-          console.log(res);
           store.dispatch(getEventById());
           Toastify({
             text: `Apply rejected`,
@@ -121,7 +119,6 @@ const eventsRequestMW = (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log(res.data.data);
           store.dispatch(applyToEventSuccess(res.data.data));
           store.dispatch(getEventById());
           Toastify({
@@ -149,7 +146,6 @@ const eventsRequestMW = (store) => (next) => (action) => {
         data: filteredData,
       })
         .then((res) => {
-          console.log(res);
           store.dispatch(searchEventSubmitSuccess(res.data.data));
         })
         .catch((err) => {
@@ -186,7 +182,7 @@ const eventsRequestMW = (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log(res.data);
+
           store.dispatch(CreateEventSubmitSuccess(res.data.data.event._id));
           Toastify({
             text: `Event Created !`,
@@ -204,9 +200,6 @@ const eventsRequestMW = (store) => (next) => (action) => {
           store.dispatch(getAllEvents())
         })
         .catch((err) => {
-          console.log(
-            err.response
-          );
           store.dispatch(CreateEventSubmitError(err.response.data.details[0].message));
         });
       break;
@@ -220,25 +213,21 @@ const eventsRequestMW = (store) => (next) => (action) => {
         url: `${host}events`,
       })
         .then((res) => {
-          //console.log("res.data dans le MW: ", res.data);
           store.dispatch(getAllEventsSuccess(res.data.data));
         })
         .catch((err) => {
-          console.log(err);
           store.dispatch(
             getAllEventsError('Impossible des récupérer les données')
           );
         });
       break;
     case GET_EVENT_BY_ID:
-      // console.log(store.getState().events)
       const { selectedEvent } = store.getState().events;
       axios({
         method: 'get',
         url: `${host}event/${selectedEvent}`,
       })
         .then((res) => {
-          // console.log(res.data.data);
           store.dispatch(getEventByIdSuccess(res.data.data));
         })
         .catch((err) => {

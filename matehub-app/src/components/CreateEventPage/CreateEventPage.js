@@ -22,8 +22,7 @@ const CreateEventPage = ({
   created,
   eventCreationErrorMessage,
 }) => {
-  // console.log(eventCreationData);
-
+ 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
     onChangeField({
@@ -32,7 +31,6 @@ const CreateEventPage = ({
   };
 
   const handleSelectInputChange = (evt, data) => {
-    // console.log('objet data entier :', data);
     const { name, value } = data;
     onChangeField({
       [name]: value,
@@ -40,7 +38,6 @@ const CreateEventPage = ({
   };
 
   const handleAddFlag = (evt, data) => {
-    // console.log('objet data entier :', data);
     const { name, checked } = data;
     onFlagCheckboxChangeField({
       [name]: checked,
@@ -48,7 +45,6 @@ const CreateEventPage = ({
   };
 
   const handleAddIsRanked = (evt, data) => {
-    // console.log('objet data entier :', data);
     const { name, checked } = data;
     onisRankedCheckboxCreateEventChangeField({
       [name]: checked,

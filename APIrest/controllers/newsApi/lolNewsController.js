@@ -9,7 +9,7 @@ module.exports = {
                 q: '"League of Legend"',
                 language: 'en'
               })
-              console.log(result)
+
             if (!result) {
                 response.status('404').json({error:'user not found'})
                 //next()

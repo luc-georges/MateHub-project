@@ -18,7 +18,7 @@ import {
 const host = `${process.env.REACT_APP_URL}`
 
 export default (store) => (next) => (action) => {
-  // console.log("Passage dans le authRequestMW");
+
   next(action);
   switch (action.type) {
     case GET_PERSONNAL_DATA:
@@ -28,18 +28,16 @@ export default (store) => (next) => (action) => {
         url: `${host}user/${connectedUserId}/profile/private`,
       })
         .then((res) => {
-          // console.log(res.data.data);
+
           store.dispatch(getPersonnalDataSuccess(res.data.data));
         })
         .catch((err) => {
-          console.log(err);
           store.dispatch(
             getPersonnalDataError("L'utilisateur n'a pas été trouvé")
           );
         });
       break;
     case LOGIN_SUBMIT:
-      //console.log(store.getState().auth.loginData)
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
@@ -52,9 +50,7 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          // console.log(res.data.data.info);
           store.dispatch(loginSubmitSuccess(res.data.data.info._id));  
-          console.log(res.data.data.info._nickname)
           Toastify({
             text: `Welcome! ${res.data.data.info._nickname}`,
             duration: 3000, 
@@ -68,13 +64,11 @@ export default (store) => (next) => (action) => {
           }).showToast();
         })
         .catch((err) => {
-          // console.log(err.response.data.error);
           store.dispatch(loginSubmitError(err.response.data.error));
         });
       break;
     case LOGOUT:
-      // const {  } = store.getState().auth.connectedUserId;
-      console.log(store.getState().auth.connectedUserId);
+
       axios({
         method: 'post',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/logout',
@@ -89,7 +83,7 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log(res);
+
           store.dispatch(logoutSuccess());
         })
         .catch((err) => {
@@ -109,7 +103,6 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          // console.log(res.data)
           if (res.data.logged) {
             store.dispatch(loginSubmitSuccess(res.data.info));
           }
@@ -122,10 +115,6 @@ export default (store) => (next) => (action) => {
         })
       break;
     case GET_PERSONNAL_DATA_SUBMIT:
-      // if (modifyPersonnalData.banner){
-      //   const file = new File([modifyPersonnalData.banner],'banner')
-      //   modifyPersonnalData.banner = file;
-      // }
       axios({
         method: 'put',
         // url: 'http://ec2-3-86-206-225.compute-1.amazonaws.com:3001/users/login',
@@ -169,7 +158,6 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          console.log(res.data.data);
           store.dispatch(getPersonnalDataSuccess(res.data.data));
         })
         .catch((err) => {
@@ -198,7 +186,6 @@ export default (store) => (next) => (action) => {
             },
           })
             .then((res) => {
-              console.log(res.data.data);
               store.dispatch(getPersonnalDataSuccess(res.data.data));
             })
             .catch((err) => {

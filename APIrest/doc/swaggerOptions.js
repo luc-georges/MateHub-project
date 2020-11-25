@@ -11,12 +11,12 @@ const swaggerDefinition = {
      servers:["http://localhost:3001"],
       filter: true
 }
-console.log(path.resolve("doc/*.yaml"))
+
   const options = {
     swaggerDefinition,
     apis: [path.resolve("router/router.js"),path.resolve("doc/components.yaml")]
   };
 
-  console.log(path.resolve("router/router.js"))
+
   const swaggerSpec = swaggerJSDoc(options)
   module.exports = swaggerSpec;

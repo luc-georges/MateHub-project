@@ -19,7 +19,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
 
   const d = new Date();
 
-  console.log(d)
+
   const filteredLatestEvents = list.filter((date=>{
     return new Date(date._starting).getTime() >= d.getTime();
   })) 
