@@ -5,13 +5,19 @@ const path = require('path');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
+
 /*cors*/
 const cors = require('cors');
 
+// router
 const router = require('./router/router');
 const routerNews = require('./router/routerNews')
 const routerGameApi = require('./router/routerGameApi')
 const app = express();
+
+//Swagger
+const swaggerSpec = require(path.resolve('doc/swaggerOptions'))
+const swaggerUi = require("swagger-ui-express");
 
 
 
@@ -48,9 +54,24 @@ app.use(session({
   secret: '4701cb7e-28fa-48d0-98e3-d44e177582cf'
 }));
 
+
+
 app.use(router);
 app.use(routerNews);
 app.use(routerGameApi);
+  app.use(
+        "/api-docs",
+        swaggerUi.serve,
+        swaggerUi.setup(swaggerSpec, {
+          swaggerOptions: {
+            deepLinking: true,
+            filter: true,
+            defaultModelsExpandDepth: -1,
+            defaultModelExpandDepth: 3
+          },}
+        ));
+
+
 
 const port = process.env.PORT || 3001;
 

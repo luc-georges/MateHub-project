@@ -1,0 +1,442 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/PrimaryKey"
+        email:
+          type: string
+          format: email
+        nickname:
+          $ref: "#/components/schemas/nickname"
+        description:
+          type: string
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla turpis venenatis, ultrices felis quis, consectetur purus cras amet.
+          maxLength: 140
+        avatar:
+          $ref: "#/components/schemas/URL"
+        banner:
+          $ref: "#/components/schemas/URL"
+
+    games:
+      type: array
+      items:
+        $ref: "#/components/schemas/game"
+      description: An array of games with api ref.
+
+    game:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/PrimaryKey"
+        name:
+          type: string
+        ign:
+          type: object
+          properties:
+            id:
+              type: string
+            accountId:
+              type: string
+            puuid:
+              type: string
+            name: 
+              type: string
+            profileIconId:
+              $ref: "#/components/schemas/PrimaryKey"
+            revisionDate:
+              type: integer
+            summonerLevel:
+              type: integer
+        stats:
+          type: object
+          properties:
+            leagueId:
+              type: string
+            queueType:
+              type: string 
+            tier:
+              type: string 
+            rank:
+              type: string 
+            summonerId:
+              type: string 
+            summonerName:
+              type: string 
+            leaguePoints:
+              type: integer 
+            wins:
+              type: integer 
+            losses:
+              type: integer 
+            veteran:
+              type: boolean
+            inactive:
+              type: boolean
+            freshBlood:
+              type: boolean
+            hotStreak:
+              type: boolean
+
+    UpdatedUser:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        nickname:
+          $ref: "#/components/schemas/nickname"
+        password:
+          $ref: "#/components/schemas/Password"
+        confirm:
+          $ref: "#/components/schemas/Password"
+        description:
+          type: string
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla turpis venenatis, ultrices felis quis, consectetur purus cras amet.
+          maxLength: 140
+
+    NewUser:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          $ref: "#/components/schemas/Password"
+        confirm:
+          $ref: "#/components/schemas/Password"
+        nickname:
+          $ref: "#/components/schemas/nickname"
+      required:
+        - email
+        - password
+        - confirm
+
+
+
+    LoginForm:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          $ref: "#/components/schemas/Password"
+      required:
+        - email
+        - password
+
+    Languages:
+      type: array
+      items:
+        $ref: "#/components/schemas/Language"
+      description: An array of languages.
+
+    Language:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/PrimaryKey"
+        label:
+          type: string
+          example: en
+        icon:
+          type: string
+          example: en.png
+
+    NewLanguage:
+      type: object
+      properties:
+        name:
+          type: string
+          example: english
+        code:
+          type: string
+          example: en_US
+          pattern: "(^[a-z]{2}$)|(^[a-z]{2}_[A-Z]{2}$)"
+          description: Must be [en] or [en_US] format
+
+    NewExpression:
+      type: object
+      properties:
+        label:
+          type: string
+          example: bjr
+      required:
+        - label
+
+    Comment:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/PrimaryKey"
+        text:
+          type: string
+        user:
+          $ref: "#/components/schemas/RecordUser"
+        createdAt:
+          $ref: "#/components/schemas/DateTZ"
+
+    Comments:
+      type: array
+      items:
+        $ref: "#/components/schemas/Comment"
+
+    UserLanguage:
+      type: object
+      properties:
+        language_id:
+          $ref: "#/components/schemas/LanguagePk"
+        role:
+          type: string
+          enum: [learner, teacher]
+          description: Indicates the type of language, i.e. a learned or a taught one.
+      required:
+        - language_id
+        - role
+
+    Translation:
+      type: object
+      properties:
+        id:
+          $ref: "#components/schemas/PrimaryKey"
+        text:
+          type: string
+          example: How are you ?
+        createdAt:
+          $ref: "#/components/schemas/DateTZ"
+        expression:
+          $ref: "#/components/schemas/Expression"
+        language:
+          $ref: "#/components/schemas/Language"
+
+    DashboardTranslation:
+      type: object
+      properties:
+        id:
+          $ref: "#components/schemas/PrimaryKey"
+        text:
+          type: string
+          example: How are you ?
+        languageName:
+          type: string
+          example: english
+        languageCode:
+          $ref: "#/components/schemas/CountryCode"
+        expressionId:
+          $ref: "#/components/schemas/PrimaryKey"
+
+    Expression:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/PrimaryKey"
+        label:
+          type: string
+          example: "greetings"
+        createdAt:
+          $ref: "#/components/schemas/DateTZ"
+
+    URL:
+      type: string
+      format: uri
+      example: /c/0/f/6/sdfesse55ad54uom8da
+
+    DateTZ:
+      type: string
+      format: date-time
+
+    PrimaryKey:
+      type: integer
+      minimum: 1
+      example: 24
+
+    TranslationPk:
+      allOf:
+        - "#/components/schemas/PrimaryKey"
+        - description: The primary key of the recorded translation.
+
+    LanguagePk:
+      allOf:
+        - "#/components/schemas/PrimaryKey"
+        - description: The primary key of the language.
+
+    nickname:
+      type: string
+      example: MyNickname
+
+    Password:
+      type: string
+      example: mySecuredPa$$word
+      format: password
+    JWT:
+      type: string
+      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+      format: JWT
+
+    AreaCode:
+      type: string
+      example: en
+      pattern: "[a-z]{1,9}"
+
+    Errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Error"
+
+    Error:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: An error has occured
+
+    ID:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 24
+
+    Updated:
+      type: object
+      properties:
+        updated:
+          type: boolean
+          example: true
+
+    Deleted:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+          example: true
+
+    TopUsers:
+      type: array
+      items:
+        $ref: "#/components/schemas/BestUser"
+
+    TopUser:
+      type: object
+      properties:
+        userId:
+          type: integer
+          example: 3
+        description:
+          type: string
+          example: Hello i'm ready to play
+        nickname:
+          type: string
+          example: MyNickname
+      example:
+        userId: 1,
+        description: "Hello i'm ready to play"
+        nickname: "MyNickname"
+       
+
+  parameters:
+
+    UserID:
+      in: path
+      name: id
+      schema:
+        $ref: "#components/schemas/PrimaryKey"
+      required: true
+      description: Primary key of the user.
+
+    LangID:
+      in: path
+      name: id
+      schema:
+        $ref: "#/components/schemas/PrimaryKey"
+      required: true
+      description: Primary key of the language.
+
+    EventID:
+      in: path
+      name: id
+      schema:
+        $ref: "#/components/schemas/PrimaryKey"
+      required: true
+      description: Primary key of the record
+
+    GameID:
+      in: path
+      name: id
+      schema:
+        $ref: "#/components/schemas/PrimaryKey"
+      required: true
+      description: Primary key of the comment.
+
+
+
+  responses:
+    BadRequest:
+      description: Bad request. Missing parameter(s) or invalid value(s).
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+
+    Conflict:
+      description: Conflict. Same field(s) already set in database.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+
+    Unauthorized:
+      description: Unauthorized. The authentication process failed.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+
+    Forbidden:
+      description: Access denied. The credentials do not give access to this resource.
+      content:
+        application/json:
+          schema:
+            $ref: "#components/schemas/Errors"
+
+    UserNotFound:
+      description: Not Found. No user corresponding to the specified parameter exists in our database.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+
+    Created:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    $ref: "#components/schemas/PrimaryKey"
+
+    CreatedUser:
+      allOf:
+        - $ref: "#/components/responses/Created"
+        - description: Success. Id of the newly created user.
+
+    NoContent:
+      description: Success. An empty object.
+      content:
+        application/json:
+          schema:
+            type: object
+
+  securitySchemes:
+    BearerJWT:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
