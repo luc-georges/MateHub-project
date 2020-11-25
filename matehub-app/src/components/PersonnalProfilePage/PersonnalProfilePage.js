@@ -518,7 +518,7 @@ const PersonnalProfilePage = ({
                           <span className="starting">
                             {moment
                               .parseZone(event.event_time)
-                              .format('YYYY/MM/DD h:mm a')}
+                              .format('DD/MM/YYYY h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
@@ -609,7 +609,7 @@ const PersonnalProfilePage = ({
                           <span className="starting">
                             {moment
                               .parseZone(h_event.event_time)
-                              .format('YYYY/MM/DD h:mm a')}
+                              .format('DD/MM/YYYY h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}
@@ -701,7 +701,7 @@ const PersonnalProfilePage = ({
                           <span className="starting">
                             {moment
                               .parseZone(h_event.event_time)
-                              .format('YYYY/MM/DD h:mm a')}
+                              .format('DD/MM/YYYY h:mm a')}
                           </span>
                           <div className="LatestEvent-text">
                             Register player(s) now:{' '}

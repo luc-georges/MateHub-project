@@ -76,7 +76,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
                       Starting date and time:{' '} <br />
                       <span className="starting">
                         {console.log(moment.locale())}
-                        {moment.parseZone(element._starting).format('YYYY/MM/DD h:mm a')}
+                        {moment.parseZone(element._starting).format('DD/MM/YYYY h:mm a')}
                       </span>
                       <div className="LatestEvent-text">
                         Event member(s) : <span className="number">{element._player_count}</span>

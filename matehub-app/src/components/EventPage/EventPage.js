@@ -92,7 +92,7 @@ const EventPage = ({
   <div className="evt-title">Event by {eventData._creator}</div>
     <div className="toflex">
         <Card className="card-evt-page">
-          <Card.Content><Card.Header className="evt-creator">{moment.parseZone(eventData._starting).format('YYYY/MM/DD h:mm a')}</Card.Header></Card.Content>
+          <Card.Content><Card.Header className="evt-creator">{moment.parseZone(eventData._starting).format('DD/MM/YYYY h:mm a')}</Card.Header></Card.Content>
           <Card.Content description={eventData._description} className="div-descript-evt-span" />
           <Card.Content className='evt-footer'>
           <span className="lol-account">

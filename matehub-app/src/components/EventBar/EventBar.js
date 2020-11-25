@@ -137,7 +137,7 @@ const EventBar = ({
                   </div>
 
                   <div className="eventbar-event-infos">
-                    {moment.parseZone(event.event_time).format('YYYY/MM/DD h:mm a')}
+                    {moment.parseZone(event.event_time).format('DD/MM/YYYY h:mm a')}
 
                     <div>{event.player_count} players</div>
 
