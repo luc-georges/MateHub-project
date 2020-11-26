@@ -11,7 +11,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleLogout: () => {
-    console.log('logout');
     dispatch(logout());
   },
   getSelectedEvent: (changedData) => {

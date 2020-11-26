@@ -13,7 +13,7 @@ export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case REGISTER_SUBMIT:
-      // console.log(store.getState().register.registerData);
+
       axios({
         method: 'post',
         url: `${host}registration`,
@@ -32,7 +32,6 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          // console.log("la réponse reçu: " + res);
           store.dispatch(registerSubmitSuccess(res.data))
           Toastify({
             text: `Registration Successfull`,
@@ -48,8 +47,6 @@ export default (store) => (next) => (action) => {
           // store.dispatch(push('/login'));
         })
         .catch((err) => {
-          console.log('On passe dans le catch de la requête register :', err);
-          console.log(err.response.data.error);
           store.dispatch(registerSubmitError(err.response.data.error));
         })
       break;

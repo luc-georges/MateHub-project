@@ -63,7 +63,6 @@ const SearchEventPage = ({
   ];
 
   const handleGetSelectedEvent = (evt, data) => {
-    // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
   };
 
@@ -75,7 +74,6 @@ const SearchEventPage = ({
   };
 
   const handleSelectInputChange = (evt, data) => {
-    // console.log('objet data entier :', data);
     const { name, value } = data;
     onChangeField({
       [name]: value,
@@ -83,7 +81,6 @@ const SearchEventPage = ({
   };
 
   const handleAddIsRanked = (evt, data) => {
-    // console.log('objet data entier :', data);
     const { name, checked } = data;
     onIsRankedCheckboxSearchEventChangeField({
       [name]: checked,

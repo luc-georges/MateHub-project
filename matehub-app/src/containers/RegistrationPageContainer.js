@@ -17,13 +17,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeField: (changedData) => {
-    // console.log(changedData);
+
     dispatch(changeField(changedData));
   },
   onFormSubmit: () => {
-    console.log('Submit dans register');
     dispatch(registerSubmit());
-    // dispatch(push('/login'))
   },
 });
 

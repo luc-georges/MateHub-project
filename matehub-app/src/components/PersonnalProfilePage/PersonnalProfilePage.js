@@ -31,7 +31,6 @@ const PersonnalProfilePage = ({
   summonerStats,
   onValidateAccount,
 }) => {
-  // console.log(personnalData);
 
   const handleGetSummonerInfo = () => {
     onGetSummonerInfo();
@@ -57,7 +56,7 @@ const PersonnalProfilePage = ({
   }
 
   const handleGetSelectedEvent = (evt, data) => {
-    // console.log(evt.currentTarget.id);
+
     getSelectedEvent(evt.currentTarget.id);
   };
 
@@ -69,14 +68,10 @@ const PersonnalProfilePage = ({
 
   const handleInputChange = (evt) => {
     evt.preventDefault();
-    console.log('name >>', evt.target.name);
-    console.log('value >>', evt.target.value);
     const { name, value } = evt.target;
-    // console.log(name)
-    // console.log(evt.target.files[0])
+
 
     if (evt.target.files) {
-      console.log(evt.target.files[0]);
       onChangeField({
         [name]: [evt.target.files[0]],
       });
@@ -97,14 +92,12 @@ const PersonnalProfilePage = ({
     evt.preventDefault();
     if (evt.target.files) {
       editProfilBanner(evt.target.files[0]);
-      // console.log(evt.target.files);
     }
   };
   const handleUpload2 = (evt) => {
     evt.preventDefault();
     if (evt.target.files) {
       editProfilAvatar(evt.target.files[0]);
-      console.log(evt.target.files);
     }
   };
   const [open, setOpen] = React.useState(false);
@@ -441,7 +434,7 @@ const PersonnalProfilePage = ({
               return (
                
                 <div className="game-container" key={game.id}>
-                   {console.log(game)}
+
                   <h2 className="profilepage-titre-game">{game.game_name} :</h2>
                  
                     <div className="profilepage-game-user-info">
@@ -467,7 +460,7 @@ const PersonnalProfilePage = ({
             {personnalData._event_created ? (
               filteredPerso_created.slice(0, 10).map((event, index) => {
                 let rankClass;
-                //console.log(event.rank);
+
                 if (event.rank.slice(0, 4) === 'iron') {
                   rankClass = 'iron';
                 } else if (event.rank.slice(0, 6) === 'bronze') {

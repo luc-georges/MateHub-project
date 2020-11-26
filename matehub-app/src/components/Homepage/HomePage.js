@@ -20,7 +20,7 @@ const HomePage = () => {
 
 
       <TopPlayers className="TopPlayers"/>
-      <LastestNews className="LastestNews" />
+
 
 
 

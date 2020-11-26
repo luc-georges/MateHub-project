@@ -16,8 +16,6 @@ const host = `${process.env.REACT_APP_URL}`
 
 export default (store) => (next) => (action) => {
   next(action);
-  // console.log("Region --->", store.getState().lol.sumInputData.summonerRegion);
-  // console.log("Name --->", store.getState().lol.sumInputData.summonerName);
   switch (action.type) {
     case GET_SUMMONER_INFO:
       axios({
@@ -28,7 +26,6 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           // emplacement de la seconde requete
-          console.log(res.data);
           store.dispatch(getSummonerInfoSuccess(res.data.data));
 
           axios({
@@ -38,11 +35,9 @@ export default (store) => (next) => (action) => {
             }/${store.getState().lol.IGN.id}`,
           })
             .then((res) => {
-              console.log('res de la seconde requête >>>>', res.data);
               store.dispatch(getSummonerStatsSuccess(res.data));
             })
             .catch(() => {
-              console.log();
             });
         })
         .catch((err) => {

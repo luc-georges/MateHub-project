@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo-ok_matehub.svg';
 
 const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
-  // console.log('NavBar');
+
 
   const handleGetSelectedUser = (evt) => {
     getSelectedUser(evt.currentTarget.id);

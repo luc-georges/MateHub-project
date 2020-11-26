@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getSelectedEvent(changedData));
   },
   onChangeField: (changedData) => {
-    console.log(changedData);
     dispatch(searchEventChangeField(changedData));
   },
   onIsRankedCheckboxSearchEventChangeField: (changedData) => {

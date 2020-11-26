@@ -9,7 +9,6 @@ import './style.scss';
 
 const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
   const handleGetSelectedEvent = (evt, data) => {
-    // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
     getEventById();
   };
@@ -23,7 +22,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
   const filteredLatestEvents = list.filter((date=>{
     return new Date(date._starting).getTime() >= d.getTime();
   })) 
-  console.log("filtered list: ",filteredLatestEvents)
+
   return (
     <div className="LastestEvent-cards">
       <h2 className="titre homeTitle">Lastest event</h2>
@@ -75,7 +74,6 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
                     <div className="LatestEvent-text">
                       Starting date and time:{' '} <br />
                       <span className="starting">
-                        {console.log(moment.locale())}
                         {moment.parseZone(element._starting).format('DD/MM/YYYY h:mm a')}
                       </span>
                       <div className="LatestEvent-text">

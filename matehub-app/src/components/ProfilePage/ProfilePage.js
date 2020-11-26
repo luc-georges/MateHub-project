@@ -25,7 +25,6 @@ const ProfilePage = ({
   //connectedUserId,
 }) => {
   const handleGetSelectedEvent = (evt, data) => {
-    // console.log(evt.currentTarget.id);
     getSelectedEvent(evt.currentTarget.id);
   };
 
@@ -35,10 +34,8 @@ const ProfilePage = ({
     // eslint-disable-next-line
   }, []);
 
-  //const [open, setOpen] = useState(false);
-  // const [open2, setopen2] = useState(false);
 
-  console.log(userData);
+
 
   return (
     <div className="personnalprofilepage">
@@ -108,7 +105,6 @@ const ProfilePage = ({
               return (
                
                 <div className="game-container" key={game.id}>
-                   {console.log(game)}
                   <h2 className="profilepage-titre-game">{game.game_name} :</h2>
                  
                     <div className="profilepage-game-user-info">

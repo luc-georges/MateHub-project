@@ -231,7 +231,6 @@ const eventsRequestMW = (store) => (next) => (action) => {
           store.dispatch(getEventByIdSuccess(res.data.data));
         })
         .catch((err) => {
-          console.log('Catch de la requete get event by id >>>', err);
           // store.dispatch(getEventByIdError());
         });
       break;

@@ -142,7 +142,6 @@ const CreateEventPage = ({
     }
     if(!flagError && !durationError && !gameIdError && !playerMaxError && !eventStartHourError && !eventStartDateError && !rankError && !descriptionError ){
     onFormSubmit(evt);
-    console.log("sent")
   } else{
 
   }

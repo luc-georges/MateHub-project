@@ -11,7 +11,6 @@ import {
 const host = `${process.env.REACT_APP_URL}`
 
 export default (store) => (next) => (action) => {
-  // console.log("Passage dans le usersRequestMW");
   next(action);
   switch (action.type) {
     case GET_TOP_USERS:
@@ -21,11 +20,9 @@ export default (store) => (next) => (action) => {
         url: `${host}users/top`,
       })
         .then((res) => {
-          // console.log(res.data);
           store.dispatch(getTopUsersSuccess(res.data.data));
         })
         .catch((err) => {
-          console.log(err);
           store.dispatch(
             getTopUsersError('Impossible de récupérer les user...')
           );
@@ -38,7 +35,6 @@ export default (store) => (next) => (action) => {
         url: `${host}user/profile/${selectedUser}`,
       })
         .then((res) => {
-          console.log("in my response",res.data.data)
           store.dispatch(getUserSuccess(res.data.data));
         })
         .catch((err) => {

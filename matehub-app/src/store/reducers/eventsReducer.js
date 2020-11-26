@@ -342,7 +342,6 @@ export default (state = initialState, action = {}) => {
         },
       };
     case APPLY_TO_EVENT_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         eventData: {

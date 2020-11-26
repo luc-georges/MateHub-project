@@ -28,7 +28,7 @@ const EventPage = ({
   onDeleteEvent,
   applyToEventErrorMessage,
 }) => {
-  // console.log(eventData);
+
 
   useEffect(() => {
     getEventById();

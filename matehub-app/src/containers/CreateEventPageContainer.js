@@ -11,8 +11,7 @@ import { getPersonnalData } from '../store/actions/authActions';
 // import moment from 'moment';
 
 const mapStateToProps = (state) => {
-  // const eventTime = `${state.events.eventCreationData.event_time_date} ${state.events.eventCreationData.event_time_hour}:00`;
-  // console.log(eventTime);
+
   return {
     eventCreationData: {
       user_id: state.events.eventCreationData.user_id,
@@ -49,11 +48,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(flagCheckboxChangeField(changedData));
   },
   onChangeField: (changedData) => {
-    // console.log(changedData);
+
     dispatch(eventChangeField(changedData));
   },
   onFormSubmit: (evt) => {
-    console.log('Submit dans le create event');
+
     evt.preventDefault();
     dispatch(CreateEventSubmit());
   },

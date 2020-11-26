@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   getApplyToEvent: (changedData) => {
-    // console.log(changedData)
+
     dispatch(applyToEvent(changedData));
   },
 
@@ -33,12 +33,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onApplyAccept: () => {
-    console.log("Accepté dans l'event");
+
     dispatch(applyAccept());
   },
 
   onApplyRefuse: () => {
-    console.log("Refusé dans l'event");
+
     dispatch(applyRefuse());
   },
 

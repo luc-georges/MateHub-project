@@ -17,11 +17,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getPersonnalData());
   },
   onChangeField: (changedData) => {
-    // console.log(changedData);
+
     dispatch(modifyPersonnalDataChangeField(changedData));
   },
   onFormSubmit: () => {
-    console.log('Il y a eu un submit !');
+
     dispatch(getPersonnalDataSubmit());
   },
   editProfilBanner: (bannerImg) => {

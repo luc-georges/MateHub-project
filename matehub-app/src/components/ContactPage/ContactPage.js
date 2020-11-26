@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Form, Input, TextArea, Button, Checkbox } from 'semantic-ui-react';
 
 const ContactPage = () => {
-  console.log('ContactPage');
+
   return (
     <div className="contactPage">
       <Form className="contactpage" inverted>

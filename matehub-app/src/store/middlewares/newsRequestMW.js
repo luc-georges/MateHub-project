@@ -22,12 +22,9 @@ const newsRequestMW = (store) => (next) => (action) => {
     //     url: `${host}lol/news`,
     //   })
     //     .then((res) => {
-    //       // console.log("res.data dans le MW: ", res.data);
-    //       // console.log("res.data: "+ res)
     //       store.dispatch(getNewsSuccess(res.data.data));
     //     })
     //     .catch((err) => {
-    //       console.log(err);
     //       store.dispatch(
     //         getNewsError('Impossible des récupérer les données')
     //       );

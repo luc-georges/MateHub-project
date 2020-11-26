@@ -31,7 +31,6 @@ const EventBar = ({
     acceptedEvents = personnalData.has_events.filter((event)=>{
       return event.status = 2;
     })
-    console.log(acceptedEvents)
     follow_event.push(...acceptedEvents);
   }
   if (follow_event.length) {

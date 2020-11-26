@@ -3,7 +3,7 @@ import './style.scss';
 import { Form, Button, Message } from 'semantic-ui-react';
 
 const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged, loginErrorMessage }) => {
-  // console.log('LoginPage');
+
 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -13,7 +13,6 @@ const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged, loginErro
   };
 
   const handleSubmit = (evt) => {
-    // evt.preventDefault();
     onFormSubmit();
   };
 
