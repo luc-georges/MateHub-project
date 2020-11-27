@@ -1,47 +1,51 @@
 @import 'src/styles/vars';
 
 .personnalprofilepage {
-  width: 80%;
   box-sizing: border-box;
   background-color: #0b0c10;
   color: white;
-
+  padding-top: 1em;
+  margin-bottom:1em;
   background-image: url(../../assets/04322d63.png);
-  margin-left: 180px;
-}
 
+  &-header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  &-body{
+    display: flex;
+    flex-direction: column;
+  }
+}
+.profilepage{
+  &-button{
+    align-self: center;
+  }
+}
 .personnalprofilepage-titre {
-  margin-left: 2%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  font-size: 2.5em;
+  padding-top: 2em;
+
 }
 
 .personnalprofilepage-description {
-  margin-bottom: 5%;
-  margin-left: 5%;
-  margin-right: 2%;
-  font-size: 1.5em;
+
+
 }
 
 .personnalprofilepage-game-user {
-  margin-left: 5%;
-  margin-right: 2%;
-  font-size: 1.5em;
+
+
 }
 
 .personnalprofilepage-game-user-info {
-  margin-bottom: 1%;
-  margin-left: 5%;
+
 }
 
 .button-modal {
-  margin-top: 1% !important;
   border: solid #66fcf1 !important;
   background: none !important;
   color: #66fcf1 !important;
-  width: 20%;
-  margin-left: 40% !important;
 }
 
 .button-modal:hover {
@@ -50,22 +54,17 @@
 }
 
 .Event-modules {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+ margin-bottom: 2em;
 }
 
 .banner-modal {
   border: solid #66fcf285 !important;
   background: #161c2481 !important;
   color: white !important;
-  height: 50vh;
 }
 
 .banner-input {
-  // background: #161c2485 !important;
-  padding-top: 2%;
-  width: 40%;
+ 
 }
 
 .banner-modal-titre {
@@ -75,18 +74,12 @@
 
 .banner-actions {
   background: #0c101500!important;
-  padding-top: inherit !important;
-  width: 100%;
-  margin-left: 50%;
-  position: relative !important;
-  // bottom: 89px
 }
 
 .banner-buttonData {
   border: solid #66fcf1 !important;
   background: none !important;
   color: #66fcf1 !important;
-  width: 30%;
 }
 
 .banner-buttonData:hover {
@@ -94,22 +87,6 @@
   color: #2b8484 !important;
 }
 
-/* .banner-file-label {
-  background: #161c248a !important;
-  margin-left: 4%;
-  margin-top: 2% !important;
-  font-size: 1.3em;
-}
-
-.banner-file-button {
-  appearance: inherit !important;
-  cursor: pointer !important;
-  border: solid 1px #66fcf1 !important;
-  background: none !important;
-  color: #66fcf1 !important;
-  padding: .5rem;
-}
- */
 .modal-info {
   border: solid #66fcf28e !important;
   background: #161c24c0 !important;
@@ -125,21 +102,13 @@
   background: #161c2481 !important;
 }
 
-// .information-form {
-//   margin-left: 10%;
-// }
 
 .modal-info-content {
-  // margin-top: 3%;
-  height: 30vh;
-  width: 100%;
-  // margin-left: 150px; c'est ça qui fait sortir les input
+ 
   background-image: url(../../assets/tresh.png);
   background-size: 30%;
   background-repeat: no-repeat;
   background-position: 98% 150%;
-  padding-right: 200px;
-  margin: 0 auto;
 }
 
 .information-input {
@@ -170,7 +139,6 @@
 
 .modal-game-select {
   background: #10161c8a !important;
-
   font-size: 1.3em;
 }
 
@@ -178,95 +146,67 @@
   background: #10161c8a !important;
 }
 .container-modal-avatar {
-  position: absolute;
-  height: 260px;
-  width: 180px;
-  z-index: 1;
+
 }
 .Button-avatar {
-  width: 50px;
   position: absolute;
-  bottom: 50px;
-  right: 0;
-  z-index: 1;
-  display: none !important;
+  bottom: 50%;
+  right: 20%;
   background: none !important;
   border-radius: 50% !important;
   color: #66fcf1 !important;
 }
 .container-modal-avatar:hover > .Button-avatar {
-  display: block !important;
+ 
 }
 .Button-banner {
-  width: 50px;
-  position: absolute;
-  top: 80%;
-  left: 90%;
-  z-index: 1;
-  display: none !important;
+  display: none!important;
   background: none !important;
   border-radius: 50% !important;
   color: #66fcf1 !important;
 }
 
 .container-modal-banner {
-  position: absolute;
-  height: 260px;
-  width: 100%;
-  z-index: 1;
+
 }
 .container-modal-banner:hover > .Button-banner {
-  display: block !important;
+
 }
 .container-banner {
-  height: 260px;
+
 }
-.personnalprofilepage-header {
-  position: relative;
-}
+
 .banner-modal-img {
-  max-height: 260px;
-  width: 100%;
+display: none;
 }
 .banner {
-  height: 35vh;
-  width: 100%;
+
 
 }
 .details{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 }
 .test-description{
-  position: absolute;
-  width:600px;
-  bottom: 0;
 
-  left: 150px;
-  font-size: 1.5em;
   text-shadow: 2px 2px 2px #000000;
 }
 .details h1 {
-  font-size: 2em;
-  text-shadow: 2px 2px 2px #000000;
-  display: inline-block;
-  position: absolute;
-  left: 150px;
-  bottom: 1.2em;
+
 }
 
 .default-mess {
   font-style: italic;
 }
 .avatar {
-  width: 120px;
-  height: 120px;
   border-radius: 50%;
+  max-width: 150px;
+  
 }
 .avatar-modal-img {
-  height: 150px;
-  width: 150px;
+ 
 }
 
 /******************************/
@@ -274,21 +214,21 @@
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
-.custom-file-input::before {
-  margin-top: 2rem !important; // passage en dessous de "aucun"fichier choisi
-  margin-left: 5.8rem !important; // décalage gauche par rapport a "aucun fichier choisi"
-  content: 'Select some files' !important;
-  display: inline-block !important;
-  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 2px #6dffff93!important;
-  border-radius: 3px !important;
-  padding: 0.5rem 1rem !important;
-  white-space: nowrap !important;
-  -webkit-user-select: none !important;
-  cursor: pointer !important;
-  font-weight: bold !important;
-  font-size: 1.2rem !important;
-  color: #66fcf1;
-}
+// .custom-file-input::before {
+//   margin-top: 2rem !important; // passage en dessous de "aucun"fichier choisi
+//   margin-left: 5.8rem !important; // décalage gauche par rapport a "aucun fichier choisi"
+//   content: 'Select some files' !important;
+//   display: inline-block !important;
+//   box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 2px #6dffff93!important;
+//   border-radius: 3px !important;
+//   padding: 0.5rem 1rem !important;
+//   white-space: nowrap !important;
+//   -webkit-user-select: none !important;
+//   cursor: pointer !important;
+//   font-weight: bold !important;
+//   font-size: 1.2rem !important;
+//   color: #66fcf1;
+// }
 
 
 .custom-file-input:active::before {
@@ -301,10 +241,7 @@
 }
 
 .testouillage {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: nowrap;
+ 
 }
 .avatar-modal {
   border: solid #66fcf285 !important;
@@ -314,7 +251,7 @@
 
 .avatar-input {
   background: #0c0f14  !important;
-  padding-top: 2%;
+
 }
 
 .avatar-modal-titre {
@@ -330,7 +267,6 @@
   border: solid #66fcf1 !important;
   background: none !important;
   color: #66fcf1 !important;
-  width: 30%;
 }
 
 .avatar-buttonData:hover {
@@ -340,7 +276,5 @@
 
 .avatar-file-label {
   background: #0c0f14  !important;
-  margin-left: 4%;
-  margin-top: 2% !important;
   font-size: 1.3em;
 }

@@ -319,7 +319,7 @@ const PersonnalProfilePage = ({
         </div>
         </div>
       </div>
-      <div className="profilepage-body">
+      <div className="personnalprofilepage-body">
         <div className="profilepage-button">
           <Modal
             onClose={() => setOpen(false)}
@@ -547,8 +547,8 @@ const PersonnalProfilePage = ({
         <h2 className="personnalprofilepage-titre homeTitle">
           Event Registered{' '}
         </h2>
-        <Card.Group className="event-card-group">
           <div className="Event-modules">
+        <Card.Group className="event-card-group">
             {personnalData.has_events ? (
               filteredPerso_registered.map((h_event) => {
                 let rankClasshev;
@@ -636,11 +636,11 @@ const PersonnalProfilePage = ({
                 you waiting for?{' '}
               </p>
             )}
-          </div>
         </Card.Group>
+          </div>
         <h2 className="personnalprofilepage-titre homeTitle">Event History </h2>
-        <Card.Group className="event-card-group">
           <div className="Event-modules">
+        <Card.Group className="event-card-group">
             {personnalData._event_created ? (
               filteredPast_history.map((h_event) => {
                 let rankClasshev;
@@ -728,8 +728,8 @@ const PersonnalProfilePage = ({
                 you waiting for?{' '}
               </p>
             )}
-          </div>
         </Card.Group>
+          </div>
       </div>
     </div>
   );

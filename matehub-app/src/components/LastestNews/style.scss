@@ -1,82 +1,32 @@
 .LastestNews{
-  margin-bottom: 2em;
-
-  flex-direction: column;
-  width: 99%;
 
 }
 
 .titre{
-  width:100%;
-  
+
 
 }
 .test{
-width: 100%;
+
 
 
 }
 .slide_container{
-height: 300px;
+
 
 }
 
 
 .slider_first{
-  display: inline-block;
-  margin-right: 100px;
 
 }
 .slider_first img{
-  display: inline-block;
 
   }
 
 .slider_second{
-  position: absolute;
-  bottom: 0;
-  padding: 2em;
-  width:100%;
-  text-align: left;
 
 
 }   .slider_image{
-  position:absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left:0;
-  right:0;
-  scale: 1;
-  top: 0;
-  z-index: -1;
 
 }
-
-// .slick-slide img{
-// display: inline-block;
-// position: relative;
-// }
-
-// .inner-div{
-//   position: relative;
-//   }
-
-// .test h3{
-// position: absolute;
-// bottom: 5em;
-// left: 550px;
-
-// }
-// .test h4{
-//   position: absolute;
-//   bottom: 4.5em;
-//   left: 550px;
-//   }
-//   .test p{
-//     position: absolute;
-//     bottom: 2em;
-//     left: 550px;
-//     width: 40%;
-//     }
-

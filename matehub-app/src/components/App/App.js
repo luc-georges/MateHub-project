@@ -45,12 +45,16 @@ function App({
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="App">
-      <NavBar />
+    <div className="App outer-container">
+
+    <EventBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'}/>
+
+    <div id="page-wrap">
       <Switch>
         <Route exact path="/">
           <HomePage className="main" />
         </Route>
+
         <Route exact path="/profile/:name" component={ProfilePage} />
         <Route
           exact
@@ -82,10 +86,9 @@ function App({
         </Route>
         <Route component={NotFound} />
       </Switch>
-
-      <div className="eventbar">
-        <EventBar />
+<NavBar />
       </div>
+      
     </div>
   );
 }

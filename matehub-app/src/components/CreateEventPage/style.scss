@@ -1,53 +1,39 @@
 .CreateEventPage {
-  width: 85%;
-  height: 100vh;
-  margin-left: 180px;
+  
   background-size: 50%;
   background-image: url(../../assets/gather.png);
   background-repeat: no-repeat;
   background-position: bottom right;
+  padding-bottom:2em ;
 }
 
 .titreCreateEventPage {
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
+ 
 }
 
 .CreateEventPage .form {
-  width: 40%;
-  margin: 2em 20%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+ 
   
   &-select {
-
-    margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
+    justify-content: center;
 
     &-title {
-      padding-bottom: 1em;
+      margin-bottom: 1em;
       font-size: 1.5em;
     }
 
     &-language {
-      display: flex;
-      flex-direction: column !important;
-      align-items: center;
-      margin-right: 1em !important;
+      padding: .7em;
     }
   }
 }
-
-.button {
-  width: 100%;
-  padding: 2em;
-  margin: auto;
+.fields{
   display: flex;
   justify-content: center;
+}
+.button {
+
 }

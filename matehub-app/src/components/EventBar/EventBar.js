@@ -6,12 +6,15 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 import uuid from 'react-uuid';
 import moment from 'moment';
+
+import { slide as Menu } from 'react-burger-menu';
 const EventBar = ({
   personnalData,
   isLogged,
   handleLogout,
   getSelectedEvent,
-  getEventById
+  getEventById,
+
 }) => {
   const handleGetSelectedEvent = (evt) => {
     getSelectedEvent(evt.currentTarget.id);
@@ -43,10 +46,12 @@ const EventBar = ({
     });
   }
   return (
-    <div className="eventbar">
+    <Menu>
+    <div className="eventbar menu-item" >
+
       {!isLogged && (
         <NavLink  exact to="/registration">
-          <Button content="Registration" inverted color="teal" className="eventbar-auth-button" />
+          <Button content="Registration" inverted color="teal" className="eventbar-auth-button menu-item" />
         </NavLink>
       )}
 
@@ -78,44 +83,7 @@ const EventBar = ({
       )}
 
       {isLogged && <div className="eventbar-eventedition">Events</div>}
-      {isLogged && (
-        <div className="eventbar-link-container">
-          <div className="eventbar-link-button">
-            <NavLink exact to="/createevent">
-              <Button
-                animated
-                fluid
-                className="createEvent"
-                size="medium"
-                inverted
-                color="teal"
-              >
-                <Button.Content visible>Create event</Button.Content>
-                <Button.Content hidden>
-                  <Icon name="add" />
-                </Button.Content>
-              </Button>
-            </NavLink>
-          </div>
-          <div className="eventbar-link-button">
-            <NavLink exact to="/searchevent">
-              <Button
-                animated
-                fluid
-                className="searchEvent"
-                size="medium"
-                inverted
-                color="teal"
-              >
-                <Button.Content visible>Search event</Button.Content>
-                <Button.Content hidden>
-                  <Icon name="search" />
-                </Button.Content>
-              </Button>
-            </NavLink>
-          </div>
-        </div>
-      )}
+      
       {isLogged && (
         <div className="eventbar-eventlist">
           {filteredData &&
@@ -152,6 +120,7 @@ const EventBar = ({
         </div>
       )}
     </div>
+      </Menu>
   );
 };
 EventBar.propTypes = {

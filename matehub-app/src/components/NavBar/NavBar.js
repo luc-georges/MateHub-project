@@ -20,10 +20,10 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
         <NavLink className="navbar-nav-link " exact to="/">
           <Button
             fluid
-            className="home"
+            className="navbar-nav-link"
             content="Home"
             icon="home"
-            size="large"
+            size="tiny"
             inverted
             color="teal"
           />
@@ -38,23 +38,23 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
           >
             <Button
               fluid
+              className="navbar-nav-link"
               content="Profile"
               icon="user"
-              size="large"
+              size="tiny"
               inverted
               color="teal"
             />
           </NavLink>
+          
         )}
-       
-
         <NavLink className="navbar-nav-link " exact to="/gettingstarted">
           <Button
             fluid
-            className="home"
+            className="navbar-nav-link"
             content="Q&A"
             icon="question"
-            size="large"
+            size="tiny"
             inverted
             color="teal"
           />
@@ -62,14 +62,44 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
         <NavLink className="navbar-nav-link " exact to="/contact">
           <Button
             fluid
-            className="home"
+            className="navbar-nav-link"
             content="Contact"
             icon="mail"
-            size="large"
+            size="tiny"
             inverted
             color="teal"
           />
         </NavLink>
+        
+
+        {isLogged && (
+          <NavLink className="navbar-nav-link " exact to="/createevent">
+          <Button
+            fluid
+            className="navbar-nav-link"
+            content="Event"
+            icon="add"
+            size="tiny"
+            inverted
+            color="teal"
+          />
+        </NavLink>
+        
+        )}
+        {isLogged && (
+          <NavLink className="navbar-nav-link " exact to="/searchevent">
+          <Button
+            fluid
+            className="navbar-nav-link"
+            content="Search"
+            icon="search"
+            size="tiny"
+            inverted
+            color="teal"
+          />
+        </NavLink>
+        
+        )}
       </div>
     </div>
   );

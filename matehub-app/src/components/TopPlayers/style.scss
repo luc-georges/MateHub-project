@@ -1,36 +1,35 @@
 .TopPlayers{
 
-  flex-direction: row;
+  
 
 }
 .user-card-group{
-  display: flex;
-  justify-content: center;
+  flex-wrap: wrap!important;
+  padding: 1em;
+  flex-wrap: nowrap!important;
+  overflow: auto;
+  margin: 3em;
 }
 .user-card{
 
-    padding: 1em 1em;
-    margin: 1em!important;
-    margin-top: 2em!important;
-    font-size: 0.8em;
-    background: none!important;
-    color: white!important;
-    box-shadow: 0 1px 3px 0 #6dffff00, 0 0 0 1px #6dffff00!important;
-    background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
-    transition: transform .3s ease-out;
-    border: none!important;
-    width: 280px!important;
-    height: 190px!important;
+  background: none!important;
+  background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  color: white!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  border: none!important;
+  margin-left:1em!important ;
+  margin-bottom: 1em!important;
+
 }
 .user-card:hover{
   transform: translate(0, -5px);
 }
 .user-image{
-  border-radius: 50%;
+
 }
 
 .slide_container{
-  position: relative;
+
 }
 .playerRank{
   color: #d1b450;

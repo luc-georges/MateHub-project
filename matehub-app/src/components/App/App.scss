@@ -3,13 +3,9 @@
 
 
 .App {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
   box-sizing: border-box;
-  margin: 0!important;
   font-family: 'Orbitron', sans-serif;
 }
 
 
-.stretched.row .column { padding: 0; }
+.stretched.row .column {  }

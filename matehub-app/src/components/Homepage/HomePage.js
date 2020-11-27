@@ -9,10 +9,10 @@ import {Image} from 'semantic-ui-react'
 import logo from '../../assets/logo-ok_matehub.svg';
 const HomePage = () => {
   return (
-    <div className="HomePage">
+    <div className="HomePage" id="page-wrap">
       <div className="header-home">
    <Image
-                size='medium'
+                className='header-home--img'
                 src={logo}
                 />
       </div>

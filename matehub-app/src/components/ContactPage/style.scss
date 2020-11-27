@@ -1,21 +1,16 @@
 .contactPage {
-  // display: flex;
-  // flex-direction: column;
-  margin-top: 7%;
-  width: 100%;
-  margin-left: 150px;
+
 background-image: url(../../assets/test.png);
 background-size: 30%;
 background-repeat: no-repeat;
 background-position: 20%;
+padding-bottom: 2em;
 }
 
 .contactpage {
-  width: 40%!important;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  h1{
+    padding-left:2em ;
+  }
   background:#161c24d0 !important;
   color: white!important;
   box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffffd0!important;

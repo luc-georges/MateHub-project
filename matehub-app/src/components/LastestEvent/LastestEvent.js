@@ -27,7 +27,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
     <div className="LastestEvent-cards">
       <h2 className="titre homeTitle">Lastest event</h2>
 
-      <Card.Group className="event-card-group" centered>
+      <Card.Group className="event-card-group"  >
         {filteredLatestEvents.slice(0, 10).map((element, index) => {
           let rankClass;
           
@@ -57,7 +57,7 @@ const LastestEvent = ({ list, getSelectedEvent, getEventById }) => {
               onClick={handleGetSelectedEvent}
             >
               <div className={`slide-in${index}`}>
-                <Card className="event-card">
+                <Card className="event-card"  >
                   <Card.Content>
                     <Image floated="right" size="mini" src={logolol} />
 

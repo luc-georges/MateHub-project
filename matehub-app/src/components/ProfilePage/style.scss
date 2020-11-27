@@ -1,74 +1,49 @@
 @import 'src/styles/vars';
 
 .profilepage{
-  width: 80%;
-  margin-left: 180px;
-  box-sizing: border-box;
-  background-color: #0B0C10;
+
   color: rgb(226, 220, 220);
   background-image: url(../../assets/04322d63.png);
 }
 
 .details{
-  position: absolute;
-  top: 130px;
-  left:1em;
-  color: white;
-  height: 8em;
-  width: 600px;
+ 
 
 }
 .profilepage-titre-game{
-  font-size: 1.3em;
-  padding-left: 1.5em;
+
 }
 .title-profile-small{
-  padding: 1em;
+
 }
 .avatar{
-  height: 18vh;
-  position: absolute;
-  bottom: -10px;
-  left: .5em;
+
 
 }
 .container-avatar{
-  position: relative;
+
 
 }
 .container-banner{
-  position: relative;
-  height: 35vh;
+
 }
 .profilepage-header{
-  position: relative;
+
 } 
 
 .banner{
-  height: 35vh;
-  width: 100%;
-  position: absolute;
+
 }
 
 .profilepage-titre{
-  margin-left: 2%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  font-size: 2.5em;
+
 }
 
 .profilepage-description{
 
-  margin-bottom: 5%;
-  margin-left: 5%;
-  margin-right: 2%;
-  font-size: 1.5em;
  }
 .game-container{
-  display: flex;
-  justify-content: space-around;
-  padding-top: 1em;
-  width: 101%;
+ 
   background: radial-gradient(
     circle,
     #6dffff11,
@@ -80,21 +55,15 @@
 }
  .profilepage-game-user{
 
-  margin-left: 5%;
-  margin-right: 2%;
-  font-size: 1.1em;
  }
 .blue-text{
-  color: #35bff7;
-  font-size: 1.2em;
 }
 .cyan-text{
-  color:#55c2b0 ;
-  font-size: 1.1em;
+
 }
 
  .profilepage-game-user-info{
-  margin-bottom: 1%;
+
  }
 
  .modal-invitation-titre{
