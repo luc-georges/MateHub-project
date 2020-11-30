@@ -15,29 +15,12 @@
   right: 0;
   position: fixed;
 
- 
-
-  &-link-container {
-  
-  }
-  &-link-button {
-   
-  }
-
-  &-auth-button {
-    
-  }
 
   &-eventedition {
     padding-top: 1em ;
     font-size: 1.2em;
     font-weight: bold;
    
-  }
-
-  &-eventlist {
-   
-
   }
 
   &-event-container {
@@ -63,10 +46,6 @@
 .createEvent {
  
   font-size: 0.9em !important;
-}
-.regist,
-.login {
- 
 }
 
 .pOr {

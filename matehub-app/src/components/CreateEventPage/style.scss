@@ -9,10 +9,6 @@
   justify-content: center;
 }
 
-.titreCreateEventPage {
- 
-}
-
 .CreateEventPage .form {
     width: 80vw;
   
@@ -36,16 +32,13 @@
   display: flex;
   justify-content: center;
 }
-.button {
 
-}
 @media screen and (max-width:1100px){
   .CreateEventPage .form {
 
     background-size: 50%;
   }
  
-
 }
 @media screen and (min-width:1100px){
   .CreateEventPage  {
@@ -54,5 +47,4 @@
 
   }
  
-
 }

@@ -4,21 +4,6 @@
 .eventpage {
   background-image: url(../../assets/bgtexture.png);
  
-  &-title {
-
-  }
-
-  &-informations {
-  
-  }
-
-  &-form {
-  
-  }
-
-  &-apply-btn {
- 
-  }
 }
 .titreCreateEventPage{
   h1{
@@ -31,12 +16,31 @@
   background-image: url(../../assets/background-event.jpg);
  
 }
-.evt-title{
-  font-family: 'Righteous', cursive; 
-  font-size: 1.8em;
-  padding-left:1em ;
-  text-shadow: 2px 2px 2px #000000;
+.evt{
+  &-title{
+    font-family: 'Righteous', cursive; 
+    font-size: 1.8em;
+    padding-left:1em ;
+    text-shadow: 2px 2px 2px #000000;
+  }
+  &-creator{
+    color: #66fcf2 !important;
+    font-size: 1.4em;
+    background-color: #00000098;
+   
+    text-align: center;
+  
+  }
+  &-vocal{
+    font-size: 1.5em;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right;
+    text-shadow: 2px 2px 2px #000000;
+    padding-right:1em ;
+  }
 }
+
 .toflex{
   display: flex;
   justify-content: center;
@@ -44,10 +48,6 @@
 }
 .event {
 
-
-  &-apply-btn {
- 
-  }
 
   &-members {
     
@@ -74,9 +74,6 @@
    
     }
 
-    &-apply-btns {
-   
-    }
   }
   
   &-playercard-member {
@@ -90,29 +87,23 @@
   }
 }
 
-.evt-creator{
-  color: #66fcf2 !important;
-  font-size: 1.4em;
-  background-color: #00000098;
- 
-  text-align: center;
 
-}
 .span-it{
   font-style: italic;
 }
-.evt-start{
+.lol{
+  &-account, &-rank{
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000000;
+  }
+  &-rank{
+    color: blue;
+  }
+}
 
-}
-.lol-account, .lol-rank{
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 2px 2px 2px #000000;
-}
-.lol-rank{
- color: blue;
-}
+
 .eye-a{
   text-align: center;
 }
@@ -124,14 +115,14 @@
   font-size: 1.4em;
   text-align: center;
   color: rgb(46, 46, 54);
-
+    &-span{
+      font-weight: bold;
+      font-style: italic;
+    
+      color: #fff;
+    }
 }
-.div-descript-evt-span{
-  font-weight: bold;
-  font-style: italic;
 
-  color: #fff;
-}
 .card-evt-page{
   margin-top: 2em!important;
   margin-bottom: 2em!important;
@@ -140,18 +131,7 @@
 
 }
 
-.evt-vocal{
-  font-size: 1.5em;
-  font-weight: bold;
-  font-style: italic;
-  text-align: right;
-  text-shadow: 2px 2px 2px #000000;
-  padding-right:1em ;
-}
 
-.kick-button {
-
-};
 @media screen and (min-width:1200px){
   .eventpage {
     padding-left:10vw ;

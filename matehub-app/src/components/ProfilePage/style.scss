@@ -10,38 +10,7 @@
  z-index: 2;
 
 }
-.profilepage-titre-game{
 
-}
-.title-profile-small{
-
-}
-.avatar{
-
-
-}
-.container-avatar{
-
-
-}
-.container-banner{
-
-}
-.profilepage-header{
-
-} 
-
-.banner{
-
-}
-
-.profilepage-titre{
-
-}
-
-.profilepage-description{
-
- }
 .game-container{
  
   background: radial-gradient(
@@ -53,31 +22,19 @@
   color: white !important;
   box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
 }
- .profilepage-game-user{
 
- }
-.blue-text{
-}
-.cyan-text{
-
-}
-
- .profilepage-game-user-info{
-
- }
-
- .modal-invitation-titre{
-  background:#10161c8a !important;
-  color: white !important;
-}
-
-.modal-invitation-action{
-  background:#10161c8a !important;
-}
 .modal-invitation{
   border: solid #66fcf28e !important;
   background:#161c24c0 !important;
   color: white !important;
+    &-titre{
+      background:#10161c8a !important;
+      color: white !important;
+    }
+    &-action{
+      background:#10161c8a !important;
+    }
+    
 }
 @media screen and (min-width:1200px){
   .profilepage {
@@ -85,6 +42,4 @@
     width: 90vw;
     padding-top:0 ;
   }
-
-
 }

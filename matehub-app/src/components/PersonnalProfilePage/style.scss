@@ -19,6 +19,9 @@
     display: flex;
     flex-direction: column;
   }
+  &-titre {
+    padding-top: 2em;
+  }
 }
 .profilepage{
   &-button{
@@ -27,94 +30,107 @@
     z-index: 2;
   }
 }
-.personnalprofilepage-titre {
-  padding-top: 2em;
-
+.button{
+  &-modal {
+    z-index: 3!important;
+    border: solid #66fcf1 !important;
+    background: none !important;
+    color: #66fcf1 !important;
+    &:hover {
+      z-index: 3!important;
+      background: #66fcf1 !important;
+      color: #2b8484 !important;
+    }
+    &-img {
+      display: none;
+      z-index: 2;
+      }
+  }
+  
+  &-avatar {
+    position: absolute;
+    bottom: 50%;
+    right:40%;
+    background: none !important;
+    border-radius: 50% !important;
+    color: #66fcf1 !important;
+    z-index: 2;
+  }
+  
+  &-banner {
+    display: none!important;
+    background: none !important;
+    border-radius: 50% !important;
+    color: #66fcf1 !important;
+    z-index: 2;
+  }
+  
 }
 
-.personnalprofilepage-description {
 
-
-}
-
-.personnalprofilepage-game-user {
-
-
-}
-
-.personnalprofilepage-game-user-info {
-
-}
-
-.button-modal {
-  z-index: 3!important;
-  border: solid #66fcf1 !important;
-  background: none !important;
-  color: #66fcf1 !important;
-}
-
-.button-modal:hover {
-  z-index: 3!important;
-  background: #66fcf1 !important;
-  color: #2b8484 !important;
-}
 
 .Event-modules {
  margin-bottom: 2em;
 }
-
-.banner-modal {
-  border: solid #66fcf285 !important;
-  background: #161c2481 !important;
-  color: white !important;
+.banner{
+  &-modal {
+    border: solid #66fcf285 !important;
+    background: #161c2481 !important;
+    color: white !important;
+      &-titre {
+        background: #161c248a !important;
+        color: white !important;
+      }
+  }
+  &-actions {
+    background: #0c101500!important;
+  }
+  &-buttonData {
+    border: solid #66fcf1 !important;
+    background: none !important;
+    color: #66fcf1 !important;
+      &:hover {
+        background: #66fcf1 !important;
+        color: #2b8484 !important;
+      }
+  }
 }
-
-.banner-input {
+.modal{
+  &-info {
+    border: solid #66fcf28e !important;
+    background: #161c24c0 !important;
+    color: white !important;
+      &-titre {
+        background: #10161c8a !important;
+        color: white !important;
+      }
+      &-action {
+        background: #161c2481 !important;
+      }
+      &-content {
  
-}
-
-.banner-modal-titre {
-  background: #161c248a !important;
-  color: white !important;
-}
-
-.banner-actions {
-  background: #0c101500!important;
-}
-
-.banner-buttonData {
-  border: solid #66fcf1 !important;
-  background: none !important;
-  color: #66fcf1 !important;
-}
-
-.banner-buttonData:hover {
-  background: #66fcf1 !important;
-  color: #2b8484 !important;
-}
-
-.modal-info {
-  border: solid #66fcf28e !important;
-  background: #161c24c0 !important;
-  color: white !important;
-}
-
-.modal-info-titre {
-  background: #10161c8a !important;
-  color: white !important;
-}
-
-.modal-info-action {
-  background: #161c2481 !important;
-}
-
-
-.modal-info-content {
- 
-  background-image: url(../../assets/tresh.png);
-  background-size: 30%;
-  background-repeat: no-repeat;
-  background-position: 98% 150%;
+        background-image: url(../../assets/tresh.png);
+        background-size: 30%;
+        background-repeat: no-repeat;
+        background-position: 98% 150%;
+      }
+  }
+  &-game {
+    border: solid #66fcf28e !important;
+    background: #161c24c0 !important;
+    color: white !important;
+      &-titre {
+        background: #10161c8a !important;
+        color: white !important;
+      }
+      &-select {
+        background: #10161c8a !important;
+        font-size: 1.3em;
+      }
+      &-action {
+        background: #10161c8a !important;
+      }
+  }
 }
 
 .information-input {
@@ -132,66 +148,7 @@
   box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
 }
 
-.modal-game {
-  border: solid #66fcf28e !important;
-  background: #161c24c0 !important;
-  color: white !important;
-}
 
-.modal-game-titre {
-  background: #10161c8a !important;
-  color: white !important;
-}
-
-.modal-game-select {
-  background: #10161c8a !important;
-  font-size: 1.3em;
-}
-
-.modal-game-action {
-  background: #10161c8a !important;
-}
-.container-modal-avatar {
-
-}
-.Button-avatar {
-  position: absolute;
-  bottom: 50%;
-  right:40%;
-  background: none !important;
-  border-radius: 50% !important;
-  color: #66fcf1 !important;
-  z-index: 2;
-}
-.container-modal-avatar:hover > .Button-avatar {
- 
-}
-.Button-banner {
-  display: none!important;
-  background: none !important;
-  border-radius: 50% !important;
-  color: #66fcf1 !important;
-  z-index: 2;
-}
-
-.container-modal-banner {
-
-}
-.container-modal-banner:hover > .Button-banner {
-
-}
-.container-banner {
-
-}
-
-.banner-modal-img {
-display: none;
-z-index: 2;
-}
-.banner {
-
-
-}
 .details{
 display: flex;
 justify-content: center;
@@ -215,80 +172,48 @@ z-index: 2;
   border-radius: 50%;
   max-width: 150px;
   z-index: 2;
+    &-modal {
+      border: solid #66fcf285 !important;
+      background: #161c2481 !important;
+      color: white !important;
+        &-titre {
+          background: #0c0f14 !important;
+          color: white !important;
+        }
+    }
+    &-input {
+      background: #0c0f14  !important;
+    
+    }
+    &-actions {
+      background:  #0c0f14 !important;
+    }
+    &-buttonData {
+      border: solid #66fcf1 !important;
+      background: none !important;
+      color: #66fcf1 !important;
+        &:hover {
+          background: #66fcf1 !important;
+          color: #2b8484 !important;
+        }
+    }
+    &-file-label {
+      background: #0c0f14  !important;
+      font-size: 1.3em;
+    }
   
 }
-.avatar-modal-img {
- 
-}
-
-/******************************/
 
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
-// .custom-file-input::before {
-//   margin-top: 2rem !important; // passage en dessous de "aucun"fichier choisi
-//   margin-left: 5.8rem !important; // décalage gauche par rapport a "aucun fichier choisi"
-//   content: 'Select some files' !important;
-//   display: inline-block !important;
-//   box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 2px #6dffff93!important;
-//   border-radius: 3px !important;
-//   padding: 0.5rem 1rem !important;
-//   white-space: nowrap !important;
-//   -webkit-user-select: none !important;
-//   cursor: pointer !important;
-//   font-weight: bold !important;
-//   font-size: 1.2rem !important;
-//   color: #66fcf1;
-// }
 
 
 .custom-file-input:active::before {
-  // background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-  // margin: inherit !important;
   border: none !important;
   background-color: #66fcf1 !important;
   color: #2b8484 !important;
   box-shadow: none !important;
-}
-
-.testouillage {
- 
-}
-.avatar-modal {
-  border: solid #66fcf285 !important;
-  background: #161c2481 !important;
-  color: white !important;
-}
-
-.avatar-input {
-  background: #0c0f14  !important;
-
-}
-
-.avatar-modal-titre {
-  background: #0c0f14 !important;
-  color: white !important;
-}
-
-.avatar-actions {
-  background:  #0c0f14 !important;
-}
-
-.avatar-buttonData {
-  border: solid #66fcf1 !important;
-  background: none !important;
-  color: #66fcf1 !important;
-}
-
-.avatar-buttonData:hover {
-  background: #66fcf1 !important;
-  color: #2b8484 !important;
-}
-
-.avatar-file-label {
-  background: #0c0f14  !important;
-  font-size: 1.3em;
 }
 
 @media screen and (min-width:1200px){

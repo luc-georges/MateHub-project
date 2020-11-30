@@ -4,64 +4,58 @@
 
 
   color: $color-bleu-fonce;
-}
-.gettingstarted-bloc{
-  border: 2px solid $color-bleu-fonce;
-  border-radius: 20px;
-  background-image: url(../../assets/gathering.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  margin: 2em 1em;
-}
-.gettingstarted-bloc2{
-  border: 2px solid $color-bleu-fonce;
-  border-radius: 20px;
 
-  background-image: url(../../assets/gather2.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  margin: 2em 1em;
+    &-bloc{
+      border: 2px solid $color-bleu-fonce;
+      border-radius: 20px;
+      background-image: url(../../assets/gathering.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      margin: 2em 1em;
+    }
+    &-bloc2{
+      border: 2px solid $color-bleu-fonce;
+      border-radius: 20px;
+    
+      background-image: url(../../assets/gather2.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      margin: 2em 1em;
+    }
+    &-bloc{
+      &-textFirst{
+        padding: 1em;
+       
+         background-color: #0b0c10b0;
+       }
+      &-textSecond{
+        padding: 1em;
+        background-color: #0b0c10b0;
+      }
+      &-titre {
+        font-size: 3em;
+        font-family: 'Orbitron', sans-serif;
+        font-style: italic;
+        text-decoration: underline;
+        color: #66fcf2
+      }
+      &-text2{
+
+        background-color: #0b0c10b0;
+      }
+    }
 }
+
 .textInBlock{
   font-size: 1.5em;
   padding: .5em;
   color: #66fcf2ce
 }
-.gettingstarted-bloc-textFirst{
- padding: 1em;
-
-  background-color: #0b0c10b0;
-}
-.gettingstarted-bloc-textSecond{
-  padding: 1em;
-  background-color: #0b0c10b0;
-}
-.gettingstarted-bloc-image{
-
-}
-.gettingstarted-bloc-titre {
-  font-size: 3em;
-  font-family: 'Orbitron', sans-serif;
-}
 
 .gettingstarted-bloc2{
   display: inline-block;
-}
-.gettingstarted-bloc-text2{
-
-  background-color: #0b0c10b0;
-}
-.gettingstarted-bloc-image2{
-
-  
-}
-
-.gettingstarted-bloc-titre {
-  font-style: italic;
-  text-decoration: underline;
-  color: #66fcf2
 }
 
 @media screen and (min-width:1200px){

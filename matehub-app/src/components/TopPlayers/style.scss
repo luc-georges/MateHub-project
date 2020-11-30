@@ -1,15 +1,3 @@
-.TopPlayers{
-
-  
-
-}
-.user-card-group{
-  flex-wrap: wrap!important;
-  padding: 1em;
-  flex-wrap: nowrap!important;
-  overflow: auto;
-  margin: 3em;
-}
 .user-card{
 
   background: none!important;
@@ -19,18 +7,18 @@
   border: none!important;
   margin-left:1em!important ;
   margin-bottom: 1em!important;
-
+    &-group{
+      flex-wrap: wrap!important;
+      padding: 1em;
+      flex-wrap: nowrap!important;
+      overflow: auto;
+      margin: 3em;
+    }
+    &:hover{
+      transform: translate(0, -5px);
+    }
 }
-.user-card:hover{
-  transform: translate(0, -5px);
-}
-.user-image{
 
-}
-
-.slide_container{
-
-}
 .playerRank{
   color: #d1b450;
   font-weight: bold;
