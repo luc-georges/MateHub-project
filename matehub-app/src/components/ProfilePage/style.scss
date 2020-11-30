@@ -7,7 +7,7 @@
 }
 
 .details{
- 
+ z-index: 2;
 
 }
 .profilepage-titre-game{
@@ -78,4 +78,13 @@
   border: solid #66fcf28e !important;
   background:#161c24c0 !important;
   color: white !important;
+}
+@media screen and (min-width:1200px){
+  .profilepage {
+    padding-left:10vw ;
+    width: 90vw;
+    padding-top:0 ;
+  }
+
+
 }

@@ -35,3 +35,13 @@
   color: #d1b450;
   font-weight: bold;
 }
+
+@media screen and (min-width:900px){
+  .user-card-group{
+
+    padding: 1em;
+    flex-wrap: wrap!important;
+    overflow: auto;
+    margin: 3em;
+  }
+}

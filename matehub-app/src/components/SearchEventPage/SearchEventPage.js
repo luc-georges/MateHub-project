@@ -8,7 +8,6 @@ import {
   Checkbox,
   Image,
   Flag,
-  Icon
 } from 'semantic-ui-react';
 import logolol from '../../assets/logolol.png';
 import { Link } from 'react-router-dom';
@@ -169,22 +168,22 @@ const SearchEventPage = ({
       <div className="result-side">
         <h2 className="searchResults-title">Search Results</h2>
        
-        <Card.Group className="event-card-group" >
+        <Card.Group centered>
           {filterGotResults && eventSearchResults.map((element,index) => {
 
             let rankClass;
                       
-            if( element._rank.slice(0,4) === "iron"){
+            if( element._rank.slice(0,4) === "Iron"){
               rankClass = "iron"
-            }else if (element._rank.slice(0,6) === "bronze"){
+            }else if (element._rank.slice(0,6) === "Bronze"){
               rankClass = "bronze"
-            }else if (element._rank.slice(0,4) === "silv"){
+            }else if (element._rank.slice(0,4) === "Silv"){
               rankClass = "silv"
-            }else if (element._rank.slice(0,4) === "gold"){
+            }else if (element._rank.slice(0,4) === "Gold"){
               rankClass = "gold"
-            }else if (element._rank.slice(0,4) === "plat"){
+            }else if (element._rank.slice(0,4) === "Plat"){
               rankClass = "plat"
-            }else if (element._rank.slice(0,4) === "diam"){
+            }else if (element._rank.slice(0,4) === "Diam"){
               rankClass = "diam"
             } else {
               rankClass = "chal"
@@ -192,39 +191,50 @@ const SearchEventPage = ({
 
             return (
               <div className={`slide-up${index}`} >
-               <Card className="event-card"  >
-                  <Card.Content>
-                    <Image floated="right" size="mini" src={logolol} />
-
-                    <Card.Header>{element.game_name}</Card.Header>
-
-          <Card.Meta ><span className="nickname">{element._creator}</span><br /><span className={`rank ${rankClass}`}>{element._rank}</span></Card.Meta>
-                  {/* <Segment inverted>{element._description}</Segment> */}
-                    <Card.Description className="descript">                    
-                    "{element._description.length > 25
-                      ? `${element._description.slice(0, 25)}...`
+              <Card key={element._event_id} className={`searchResults-card event-card `}>
+                  <Card.Header >
+                    <span className="elm-star">
+                    {moment.parseZone(element._starting).format("YYYY/MM/DD h:mm a")}
+                    </span>
+                  </Card.Header>
+                <Card.Content className="card-container">
+                <Link
+                    id={element._event_id}
+                    to={`/event/${element._event_id}`}
+                    onClick={handleGetSelectedEvent}
+                  >
+                    <Button className="card-button" inverted color="teal" content="Go" size="mini" />
+                  </Link>
+                  <Card.Meta ><Image  size="mini" src={logolol} /></Card.Meta>
+                  <Card.Meta className="nick-search">
+                   <span className="nickname ">{element._creator}</span><span className={`rank ${rankClass}`}> {element._rank}</span>
+                  </Card.Meta>
+                  <Card.Description className="descript descript-spe desc-search">                    
+                    "{element._description.length > 40
+                      ? `${element._description.slice(0, 40)}...`
                       : element._description}"{/* "{element._description}" */}</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <div className="LatestEvent-text">
-                      Starting date and time:{' '} <br />
-                      <span className="starting">
-                        {moment.parseZone(element._starting).format('DD/MM/YYYY h:mm a')}
-                      </span>
-                      <div className="LatestEvent-text">
-                        Event member(s) : <span className="number">{element._player_count}</span>
-                      </div>
-                      <div className="LatestEvent-text">
-                        Looking for : <span className="number">{element._player_max}</span> players
-                      </div>
-                      <span>Lang: </span>
+                  <Card.Description>
+                    Event member: <span className="number">{element._player_count}</span>
+                  </Card.Description>
+                  <Card.Description>
+                    Looking for {element._player_max - element._player_count}{' '}
+                    more players
+                  </Card.Description>
+                  <Card.Description className="lang-search">
                       {element._langs && element._langs.map((lang) => {
-                        return <Flag name={lang.icon} key={`${uuid()}`}/>;
+                        return <Flag name={lang.icon} key={uuid()} />;
                       })}
-                      <div className="view-details">GO{" "}<Icon name="rocket"/></div>
-                    </div>
-                  </Card.Content>
-                </Card>
+                  </Card.Description>
+                  {/* {element._langs && (
+                      <div>
+                        {element._langs.forEach((flag) => {
+                          return (<Flag name={flag.label.toLowerCase()} />)
+                        })}
+                      </div>
+                    )} */}
+                  
+                </Card.Content>
+              </Card>
               </div>
             );
           })}

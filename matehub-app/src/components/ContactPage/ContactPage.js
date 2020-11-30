@@ -1,13 +1,25 @@
 import React from 'react';
 import './style.scss';
 import 'semantic-ui-css/semantic.min.css';
-
+import logo from '../../assets/logo-ok_matehub.svg';
+import {Image} from 'semantic-ui-react'
 import { Form, Input, TextArea, Button, Checkbox } from 'semantic-ui-react';
-
+import banner from '../../assets/header-banner.png';
 const ContactPage = () => {
 
   return (
     <div className="contactPage">
+       <div className="header-home">
+      <Image
+                className='header-home--bannerimg'
+                src={banner}
+                />
+    
+   <Image
+                className='header-home--img'
+                src={logo}
+                />
+      </div>
       <Form className="contactpage" inverted>
         <h1 style={{ marginBottom: '2em', margin: '0 auto 2em auto' }}>
           Contact form

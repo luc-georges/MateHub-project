@@ -94,8 +94,8 @@ const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
             content="Search"
             icon="search"
             size="tiny"
-            inverted
             color="teal"
+            inverted
           />
         </NavLink>
         

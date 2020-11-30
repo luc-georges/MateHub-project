@@ -1,19 +1,5 @@
 @import 'src/styles/vars';
-.header-home{
-  box-shadow: 3px 2px 8px 2px rgba(0, 0, 0, 0.2);
-  width: 100vw;
-  height: 15vw;
-  background-image: url(../../assets/header-banner.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
- 
-  background-color:#161c24d0;
-  img{
-    margin:auto ;
-    width: 30%!important;
-    padding-top:2em ;
-  }
-}
+
 .gettingstarted{
 
 
@@ -78,3 +64,17 @@
   color: #66fcf2
 }
 
+@media screen and (min-width:1200px){
+  .gettingstarted {
+    padding-left:10vw ;
+    width: 90vw;
+  }
+  .header-home{
+    width: 80vw;
+    &--bannerimg{
+
+      width: 80vw;
+    }
+  }
+
+}

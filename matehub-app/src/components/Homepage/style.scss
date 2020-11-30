@@ -1,29 +1,55 @@
 @import 'src/styles/vars';
 .HomePage{
-  background-image: url(../../assets/bgtexture.png);
-
+  background-image: url(../../assets/bgtexture.png) repeat;
+  background-size: 100%;
   background-attachment: fixed;
   color: $color-bleu-fonce;
-  height: 100vh;
+  padding-bottom: 10em ;
 
 }
 
 .header-home{
   box-shadow: 3px 2px 8px 2px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  height: 12vw;
+  max-height:200px;
   width: 100vw;
-  height: 15vw;
-  background-image: url(../../assets/header-banner.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
  
   background-color:#161c24d0;
   &--img{
-    margin:auto ;
-    width: 30%;
-    padding-top:2em ;
+    position: absolute!important;
+    height: 10vh;
+    width: 20vw;
+    top: 1vw;
+    align-self: center;
+
+
+  }
+  &--bannerimg{
+    max-height:200px;
+    width: 100%;
+    position: absolute!important;
+    top: 0;
+    background-color:#161c24d0;
   }
 }
 .titre {
   font-family: 'Righteous', sans-serif;
 }
 
+@media screen and (min-width:1200px){
+  .HomePage{
+    width: 80vw;
+    padding-left:10vw ;
+  
+  }
+  .header-home{
+    width: 80vw;
+    &--bannerimg{
+
+      width: 80vw;
+    }
+  }
+  }

@@ -34,10 +34,12 @@
 .evt-title{
   font-family: 'Righteous', cursive; 
   font-size: 1.8em;
- 
+  padding-left:1em ;
   text-shadow: 2px 2px 2px #000000;
 }
 .toflex{
+  display: flex;
+  justify-content: center;
 
 }
 .event {
@@ -82,6 +84,9 @@
     color: $color-blanc !important;
     font-size: 0.8rem;
     box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
+  }
+  &-main{
+    padding-bottom: 5em;
   }
 }
 
@@ -128,8 +133,10 @@
   color: #fff;
 }
 .card-evt-page{
+  margin-top: 2em!important;
+  margin-bottom: 2em!important;
   background-color: #00000090!important;
- 
+  width: 60vw!important;
 
 }
 
@@ -139,8 +146,17 @@
   font-style: italic;
   text-align: right;
   text-shadow: 2px 2px 2px #000000;
+  padding-right:1em ;
 }
 
 .kick-button {
 
 };
+@media screen and (min-width:1200px){
+  .eventpage {
+    padding-left:10vw ;
+    width: 90vw;
+  }
+
+
+}

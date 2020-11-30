@@ -22,6 +22,8 @@ import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 import GettingStarted from '../GettingStarted/GettingStarted';
 import NotFound from '../NotFound/NotFound';
+import { Sidebar } from 'semantic-ui-react';
+import SideBar from '../../containers/SideBarContainer';
 
 /**
  * composant principale de l'application
@@ -45,9 +47,9 @@ function App({
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="App outer-container">
+    <div className="App " id="outer-container">
 
-    <EventBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'}/>
+    <SideBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'}/>
 
     <div id="page-wrap">
       <Switch>
@@ -86,7 +88,8 @@ function App({
         </Route>
         <Route component={NotFound} />
       </Switch>
-<NavBar />
+      <NavBar />
+      <EventBar />
       </div>
       
     </div>

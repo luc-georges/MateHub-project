@@ -8,7 +8,7 @@ import uuid from 'react-uuid';
 import moment from 'moment';
 
 import { slide as Menu } from 'react-burger-menu';
-const EventBar = ({
+const SideBar = ({
   personnalData,
   isLogged,
   handleLogout,
@@ -46,12 +46,12 @@ const EventBar = ({
     });
   }
   return (
-
-    <div className="eventbar" >
+    <Menu id="sidebar">
+    <div className="sidebar menu-item" >
 
       {!isLogged && (
         <NavLink  exact to="/registration">
-          <Button content="Registration" inverted color="teal" className="eventbar-auth-button menu-item" />
+          <Button content="Registration" inverted color="teal" className="sidebar-auth-button menu-item" />
         </NavLink>
       )}
 
@@ -59,7 +59,7 @@ const EventBar = ({
 
       {!isLogged && (
         <NavLink exact to="/login">
-          <Button content="Login" inverted color="teal" className="eventbar-auth-button" />
+          <Button content="Login" inverted color="teal" className="sidebar-auth-button" />
         </NavLink>
       )}
 
@@ -77,19 +77,19 @@ const EventBar = ({
             color="teal"
             content="Logout"
             onClick={handleLogout}
-            className="eventbar-auth-button"
+            className="sidebar-auth-button"
           />{' '}
         </NavLink>
       )}
 
-      {isLogged && <div className="eventbar-eventedition">Events</div>}
+      {isLogged && <div className="sidebar-eventedition">Events</div>}
       
       {isLogged && (
-        <div className="eventbar-eventlist">
+        <div className="sidebar-eventlist">
           {filteredData &&
             filteredData.map((event) => {
               return (
-                <div className="eventbar-event-container" key={event.event_id}>
+                <div className="sidebar-event-container" key={event.event_id}>
                     <NavLink
                       id={event.event_id}
                       to={`/event/${event.event_id}`}
@@ -103,7 +103,7 @@ const EventBar = ({
                       : event.description}
                   </div>
 
-                  <div className="eventbar-event-infos">
+                  <div className="sidebar-event-infos">
                     {moment.parseZone(event.event_time).format('DD/MM/YYYY h:mm a')}
 
                     <div>{event.player_count} players</div>
@@ -120,10 +120,10 @@ const EventBar = ({
         </div>
       )}
     </div>
-
+      </Menu>
   );
 };
-EventBar.propTypes = {
+SideBar.propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -136,4 +136,4 @@ EventBar.propTypes = {
     })
   ),
 };
-export default EventBar;
+export default SideBar;

@@ -167,18 +167,7 @@ const CreateEventPage = ({
     // disabled={fieldsError}
   />
   }
-  if (created && !globalError){
-    sendButton = "";
-    createdMessage = <Container>
-    <Message size="large" className="input-success-message">
-      <Message.Header>
-        Event created successfully, click{' '}
-        <Link to={`/event/${selectedEvent}`}>here</Link> to go on the
-        event page
-      </Message.Header>
-    </Message>
-  </Container> ;
-  }
+ 
 
 
   // Options for select input

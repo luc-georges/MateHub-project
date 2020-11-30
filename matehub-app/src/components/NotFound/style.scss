@@ -6,3 +6,17 @@
   background-repeat: no-repeat;
   background-position: -100px -250px;
 }
+@media screen and (min-width:1200px){
+  .notfoundpage {
+    padding-left:10vw ;
+    width: 90vw;
+  }
+  .header-home{
+    width: 80vw;
+    &--bannerimg{
+
+      width: 80vw;
+    }
+  }
+
+}

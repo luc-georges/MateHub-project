@@ -162,7 +162,7 @@ const EventPage = ({
       <Divider />
 
       {eventData._participant && (
-        <div>
+        <div className="event-main">
           {/* ! Membre de l'événements */}
           <div className="event-members">Event members</div>
           <Card.Group centered>

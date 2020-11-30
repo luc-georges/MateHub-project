@@ -460,13 +460,13 @@ export default (state = initialState, action = {}) => {
         },
         selectedEvent: action.payload,
         eventCreationErrorMessage: '',
-        created: true,
+
       };
     case CREATE_EVENT_SUBMIT_ERROR:
       return {
         ...state,
         eventCreationErrorMessage: action.payload,
-        created: false,
+
       };
 
     // * GET ALL EVENT

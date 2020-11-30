@@ -1,14 +1,20 @@
 import React from 'react';
 import './style.scss';
 import { Image } from 'semantic-ui-react';
-import logo from '../../assets/logo-matehub.svg';
+import logo from '../../assets/logo-ok_matehub.svg';
+import banner from '../../assets/header-banner.png';
 const GettingStarted = () => {
   return (
    
     <div className="gettingstarted">
- <div className="header-home">
+  <div className="header-home">
+      <Image
+                className='header-home--bannerimg'
+                src={banner}
+                />
+    
    <Image
-                size='medium'
+                className='header-home--img'
                 src={logo}
                 />
       </div>
