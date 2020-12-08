@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import './style.scss';
 import {
   Form,
@@ -9,7 +9,6 @@ import {
   Select,
   Checkbox,
   Message,
-  Container,
 } from 'semantic-ui-react';
 
 const CreateEventPage = ({

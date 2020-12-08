@@ -22,7 +22,6 @@ import ProfilePage from '../../containers/ProfilePageContainer';
 import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
 import GettingStarted from '../GettingStarted/GettingStarted';
 import NotFound from '../NotFound/NotFound';
-import { Sidebar } from 'semantic-ui-react';
 import SideBar from '../../containers/SideBarContainer';
 
 /**

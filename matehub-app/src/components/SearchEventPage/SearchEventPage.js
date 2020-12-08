@@ -192,7 +192,7 @@ const SearchEventPage = ({
             };
 
             return (
-              <div className={`slide-up${index}`} >
+              <div key={uuid()} className={`slide-up${index}`} >
               <Card key={element._event_id} className={`searchResults-card event-card `}>
                   <Card.Header >
                     <span className="elm-star">

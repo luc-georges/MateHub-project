@@ -7,7 +7,6 @@ import './style.scss';
 import uuid from 'react-uuid';
 import moment from 'moment';
 
-import { slide as Menu } from 'react-burger-menu';
 const EventBar = ({
   personnalData,
   isLogged,
