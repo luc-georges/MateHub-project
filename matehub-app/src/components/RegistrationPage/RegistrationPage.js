@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import {
@@ -78,7 +78,9 @@ const RegistrationPage = ({
 
     onFormSubmit();
   };
-
+  useEffect(() => {
+    document.title = `MateHub: Register`
+ }, []);
   return (
     <div className="global">
       <Form inverted className="RegistrationPage" onSubmit={handleSubmit}>

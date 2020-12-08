@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './style.scss';
 import {
   Form,
@@ -86,7 +86,9 @@ const SearchEventPage = ({
       [name]: checked,
     });
   };
-
+  useEffect(() => {
+    document.title = `MateHub: Search Event`
+ }, []);
   return (
     <div className="SearchEventPage">
       <div className="form-side">

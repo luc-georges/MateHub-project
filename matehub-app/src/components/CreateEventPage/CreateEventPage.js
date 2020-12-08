@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import {
@@ -23,6 +23,10 @@ const CreateEventPage = ({
   eventCreationErrorMessage,
 }) => {
  
+    useEffect(() => {
+      document.title = "MateHub: Create your event"
+   }, []);
+
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
     onChangeField({

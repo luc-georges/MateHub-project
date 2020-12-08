@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './style.scss';
 import { Form, Button, Message } from 'semantic-ui-react';
 
@@ -16,6 +16,9 @@ const LoginPage = ({ loginData, onChangeField, onFormSubmit, isLogged, loginErro
     onFormSubmit();
   };
 
+  useEffect(() => {
+    document.title = `MateHub: Login`
+ }, []);
   return (
     <div className="loginpage">
       <Form inverted className="loginform" onSubmit={handleSubmit}>

@@ -152,6 +152,9 @@ const PersonnalProfilePage = ({
     });
   }
 
+  useEffect(() => {
+    document.title = `MateHub: Profile`
+ }, []);
   return (
     <div className="personnalprofilepage">
       <div className="personnalprofilepage-header">

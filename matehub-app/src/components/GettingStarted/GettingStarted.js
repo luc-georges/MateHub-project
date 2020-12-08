@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.scss';
 import { Image } from 'semantic-ui-react';
 import logo from '../../assets/logo-ok_matehub.svg';
 import banner from '../../assets/header-banner.png';
 const GettingStarted = () => {
+  useEffect(() => {
+    document.title = `MateHub: Getting started`
+ }, []);
   return (
    
     <div className="gettingstarted">

@@ -29,7 +29,6 @@ const EventPage = ({
   applyToEventErrorMessage,
 }) => {
 
-
   useEffect(() => {
     getEventById();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,6 +84,9 @@ const EventPage = ({
   } else {
     rankClass = "chal"
   };
+  useEffect(() => {
+    document.title = `MateHub: Event Page`
+ }, []);
 
   return (
     <div className="eventpage">

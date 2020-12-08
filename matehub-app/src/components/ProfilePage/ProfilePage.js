@@ -33,7 +33,9 @@ const ProfilePage = ({
     getUser();
     // eslint-disable-next-line
   }, []);
-
+  useEffect(() => {
+    document.title = `MateHub: Profile`
+ }, []);
 
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.scss';
 import 'semantic-ui-css/semantic.min.css';
 import logo from '../../assets/logo-ok_matehub.svg';
@@ -6,7 +6,9 @@ import {Image} from 'semantic-ui-react'
 import { Form, Input, TextArea, Button, Checkbox } from 'semantic-ui-react';
 import banner from '../../assets/header-banner.png';
 const ContactPage = () => {
-
+  useEffect(() => {
+    document.title = "MateHub: Contact-us"
+ }, []);
   return (
     <div className="contactPage">
        <div className="header-home">

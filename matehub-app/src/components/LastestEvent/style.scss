@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-.event-card-group{
 
-  flex-wrap: wrap!important;
-  padding: 1em;
-  flex-wrap: nowrap!important;
-  overflow: auto;
-  margin-bottom: 1em!important;
-
-
-}
 .event-card{
   background: none!important;
   background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
@@ -18,6 +9,20 @@
   border: none!important;
   margin-left:1em!important ;
   margin-bottom: 1em!important;
+    &-group{
+
+      flex-wrap: wrap!important;
+      padding: 1em;
+      flex-wrap: nowrap!important;
+      overflow: auto;
+      margin-bottom: 1em!important;
+    
+    
+    }
+}
+.event-card:hover{
+  transform: translate(0, -5px);
+  background-position: right center!important; 
 }
 
 .nickname{
@@ -129,10 +134,7 @@
   animation:fadeIn  4s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
 }
 
-.event-card:hover{
-  transform: translate(0, -5px);
-  background-position: right center!important; 
-}
+
 .ui.card>.content>.description, .ui.cards>.card>.content>.description,.ui.card>.content {
   clear: both;
   color: rgba(255, 255, 255, 0.68);
@@ -146,15 +148,15 @@
 .view-details{
   text-align: right;
 }
-.homeTitle:hover{
-  color: #66fcf2;
-}
+
 .homeTitle{
   font-family: 'Righteous', cursive, sans-serif; 
   font-size: 1.5em;
   padding: 1em;
 }
-
+.homeTitle:hover{
+  color: #66fcf2;
+}
 @media screen and (min-width:900px){
 
 .event-card-group{
