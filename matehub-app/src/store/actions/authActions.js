@@ -4,14 +4,6 @@ export const MODIFY_PERSONNAL_DATA_CHANGE_FIELD = 'MODIFY_PERSONNAL_DATA_CHANGE_
 export const EDIT_PROFIL_BANNER = 'EDIT_PROFIL_BANNER';
 export const EDIT_PROFIL_AVATAR = 'EDIT_PROFIL_AVATAR';
 
-export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
-export const LOGIN_SUBMIT_SUCCESS = 'LOGIN_SUBMIT_SUCCESS';
-export const LOGIN_SUBMIT_ERROR = 'LOGIN_SUBMIT_ERROR';
-export const LOGOUT = 'LOGOUT';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-
-export const CHECK_AUTH = 'CHECK_AUTH';
-
 export const GET_PERSONNAL_DATA_SUBMIT = 'GET_PERSONNAL_DATA_SUBMIT'
 export const GET_PERSONNAL_DATA = 'GET_PERSONNAL_DATA';
 export const GET_PERSONNAL_DATA_SUCCESS = 'GET_PERSONNAL_DATA_SUCCESS';
@@ -53,6 +45,13 @@ export const editProfilAvatar = (payload) => ({
   type: EDIT_PROFIL_AVATAR,
   payload
 });
+
+export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
+export const LOGIN_SUBMIT_SUCCESS = 'LOGIN_SUBMIT_SUCCESS';
+export const LOGIN_SUBMIT_ERROR = 'LOGIN_SUBMIT_ERROR';
+export const LOGOUT = 'LOGOUT';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const CHECK_AUTH = 'CHECK_AUTH';
 
 export const loginSubmit = () => ({
   type: LOGIN_SUBMIT,
