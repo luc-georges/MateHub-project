@@ -218,15 +218,14 @@ z-index: 2;
 
 @media screen and (min-width:1200px){
   .personnalprofilepage {
-    padding-left:10vw ;
+    padding-left:180px ;
     width: 90vw;
     padding-top:0 ;
   }
   .header-home{
-    width: 80vw;
+    width: 100%;
     &--bannerimg{
-
-      width: 80vw;
+      width: calc(100% - 346px);
     }
   }
   .banner-modal-img {

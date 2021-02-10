@@ -41,15 +41,15 @@
 
 @media screen and (min-width:1200px){
   .HomePage{
-    width: 80vw;
-    padding-left:10vw ;
+    width: calc(100% - 166px);
+    padding-left:180px ;
   
   }
   .header-home{
-    width: 80vw;
+    width: 100%;
     &--bannerimg{
 
-      width: 80vw;
+      width: calc(100% - 346px);
     }
   }
   }
