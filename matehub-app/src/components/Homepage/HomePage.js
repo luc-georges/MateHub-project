@@ -1,18 +1,39 @@
-import React from 'react';
-import LastestEvent from '../../containers/LatestEventContainer';
+import React, {useEffect} from 'react';
+import LastestEvent from '../../containers/LastestEventContainer';
 // import TopPlayer from '../TopPlayers/TopPlayer';
 import TopPlayers from '../../containers/TopPlayersContainer';
-import LastestNews from '../LastestNews/LastestNews';
+
 import './style.scss';
 
+import {Image} from 'semantic-ui-react'
+import logo from '../../assets/logo-ok_matehub.svg';
+import banner from '../../assets/header-banner.png';
 
-const HomePage = ({}) => {
+const HomePage = () => {
+  useEffect(() => {
+    document.title = `MateHub: Homepage`
+ }, []);
   return (
-    <div className="HomePage">
-      <h1 className="titre">Welcome on PlayTogether Connard !</h1>
-      <LastestEvent />
-      <TopPlayers /* list={list} *//>
-      <LastestNews />
+    <div className="HomePage" id="page-wrap">
+      <div className="header-home">
+      <Image
+                className='header-home--bannerimg'
+                src={banner}
+                />
+    
+   <Image
+                className='header-home--img'
+                src={logo}
+                />
+      </div>
+      <LastestEvent className="LastestEvent"/>
+
+
+      <TopPlayers className="TopPlayers"/>
+
+
+
+
     </div>
   );
 };

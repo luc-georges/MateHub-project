@@ -1,5 +1,6 @@
 @use 'reset';
 @use 'vars';
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 body {
   margin: 0;
@@ -8,9 +9,138 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(../assets/bgtexture.png) !important;
+  color: #ffffff !important;
+
+}
+::-webkit-scrollbar {
+  width: 2px !important; /* Remove scrollbar space */
+  background: transparent !important; /* Optional: just make scrollbar invisible */
 }
 
+::-webkit-scrollbar-thumb {
+  background:#66fcf1!important;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* input[type="file" i] {
+  appearance: initial;
+  background-color: initial;
+  color: #66fcf1;
+  cursor: pointer;
+  align-items: center;
+  color: inherit;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+}
+
+::-webkit-input[type="file" i] {
+  background-color: #f0f;
+} */
+
+.ui.inverted.form input:not([type]),
+ .ui.inverted.form input[type=date],
+  .ui.inverted.form input[type=datetime-local],
+   .ui.inverted.form input[type=email],
+    .ui.inverted.form input[type=file],
+     .ui.inverted.form input[type=number],
+      .ui.inverted.form input[type=password],
+       .ui.inverted.form input[type=search],
+        .ui.inverted.form input[type=tel],
+         .ui.inverted.form input[type=text],
+          .ui.inverted.form input[type=time],
+           .ui.inverted.form input[type=url] ,
+           .ui.dropdown ,.ui.form input:not([type]), 
+           .ui.form input[type=date], .ui.form input[type=datetime-local], 
+           .ui.form input[type=email], .ui.form input[type=file], 
+           .ui.form input[type=number], .ui.form input[type=password], 
+           .ui.form input[type=search], .ui.form input[type=tel], 
+           .ui.form input[type=text], .ui.form input[type=time], 
+           .ui.form input[type=url],.ui.form select, .ui.form textarea 
+           { background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+            box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+            color:white!important;
+          }
+optgroup{ background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;}
+option{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+}
+optgroup[label="Iron"]
+{
+  background: #10181f!important;
+
+}
+optgroup[label="Bronze"]
+{
+  background: #10181f!important;
+
+}
+optgroup[label="Silver"]
+{
+  background: #10181f!important;
+
+}optgroup[label="Gold"]
+{
+  background: #10181f!important;
+
+}
+optgroup[label="Platinum"]
+{
+  background: #10181f!important;
+
+}optgroup[label="Diamond"]
+{
+  background: #10181f!important;
+
+}optgroup[label="Master"]
+{
+  background: #10181f!important;
+
+}optgroup[label="GrandMaster"]
+{
+  background: #10181f!important;
+
+}
+optgroup[label="Challenger"]
+{
+  background: #10181f!important;
+
+}
+
+.info{
+
+  width: 100%;
+  white-space: nowrap;
+}
+
+
+.input-error-message {
+  text-align: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0) !important;
+  box-shadow: 0 1px 3px 0 #ff0000, 0 0 0 1px #ff0000 !important;
+  color: #ff0000 !important;
+  // font-size: 2em;
+}
+
+.input-success-message {
+  text-align: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0) !important;
+  box-shadow: 0 1px 3px 0 #09ff00, 0 0 0 1px #09ff00 !important;
+  color: #09ff00 !important;
+  // font-size: 2em;
+}
+.form{
+  padding: 2em;
+
+}
+
+input[type="file"] {
+  outline: none;
+  content: none !important;
 }

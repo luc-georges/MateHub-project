@@ -1,0 +1,50 @@
+.CreateEventPage {
+  
+  background-size: 30%;
+  background-image: url(../../assets/gather.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  padding-bottom:2em ;
+  display: flex;
+  justify-content: center;
+}
+
+.CreateEventPage .form {
+    width: 80vw;
+  
+  &-select {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    &-title {
+      margin-bottom: 1em;
+      font-size: 1.5em;
+    }
+
+    &-language {
+      padding: .7em;
+    }
+  }
+}
+.fields{
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width:1100px){
+  .CreateEventPage .form {
+
+    background-size: 50%;
+  }
+ 
+}
+@media screen and (min-width:1100px){
+  .CreateEventPage  {
+    padding-left:10vw ;
+    width: 90vw;
+
+  }
+ 
+}

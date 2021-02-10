@@ -1,26 +1,35 @@
-.TopPlayers{
-  margin:2em;
+.user-card{
+
+  background: none!important;
+  background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  color: white!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  border: none!important;
+  margin-left:1em!important ;
+  margin-bottom: 1em!important;
+    &-group{
+      flex-wrap: wrap!important;
+      padding: 1em;
+      flex-wrap: nowrap!important;
+      overflow: auto;
+      margin: 3em;
+    }
+    &:hover{
+      transform: translate(0, -5px);
+    }
 }
 
-.TopPlayers-modules{
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.playerRank{
+  color: #d1b450;
+  font-weight: bold;
 }
 
-.TopPlayers-module{
-  align-items: center;
-  border-radius: 10px;
-  border: 3px solid #949494;
-  background-color: rgb(173, 173, 173);
-  margin: 1.5%;
-}
+@media screen and (min-width:900px){
+  .user-card-group{
 
-.user{
-  max-height: 40%;
-}
-
-.user-text{
-  margin-top: 2%;
-  margin-left: 10%;
+    padding: 1em;
+    flex-wrap: wrap!important;
+    overflow: auto;
+    margin: 3em;
+  }
 }

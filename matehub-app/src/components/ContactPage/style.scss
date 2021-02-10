@@ -1,18 +1,48 @@
-.global {
-  // display: flex;
-  // flex-direction: column;
-  width: 100%;
-  margin-left: 10%;
-  margin-right: 15%;
+.contactPage {
+
+background-image: url(../../assets/test.png);
+background-size: 30%;
+background-repeat: no-repeat;
+background-position: 75%;
+background-position-y: 50%;
+padding-bottom: 5em;
+display: flex;
+flex-direction: column;
+justify-content: center;
 }
 
 .contactpage {
-  width: 50%;
-  padding: 2em;
-  margin: auto;
-  margin-top: 50vh;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 3em ;
+  width: 70vw;
+  align-self: center;
+  h1{
+    padding-left:2em ;
+  }
+  background:#161c24d0 !important;
+  color: white!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffffd0!important;
+}
+.contactpage>.ui .input{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+}
+.ui.form textarea {
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  align-self: center;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+}
+@media screen and (min-width:1200px){
+  .contactPage {
+    padding-left:10vw ;
+    width: 90vw;
+  }
+  .header-home{
+    width: 80vw;
+    &--bannerimg{
+
+      width: 80vw;
+    }
+  }
+
 }

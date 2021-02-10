@@ -1,60 +1,105 @@
 import React from 'react';
-import { Icon, Button } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
-
 import './style.scss';
+import { Button, Image } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+import logo from '../../assets/logo-ok_matehub.svg';
 
-const NavBar = () => {
-  // console.log('NavBar');
+const NavBar = ({ isLogged, connectedUserId, getSelectedUser }) => {
+
+
+  const handleGetSelectedUser = (evt) => {
+    getSelectedUser(evt.currentTarget.id);
+  };
+
   return (
     <div className="navbar">
-      <div className="navbar-logo">MATE HUB</div>
+      <div className="header-nav">
+        <Image centered size="small" src={logo} className="navbar-logo"/>
+      </div>
       <div className="navbar-nav" id="top-menu">
-        <NavLink className="navbar-nav-link" exact to="/">
+        <NavLink className="navbar-nav-link " exact to="/">
           <Button
             fluid
-            className="home"
-            content="home"
+            className="navbar-nav-link"
+            content="Home"
             icon="home"
-            size="large"
+            size="tiny"
+            inverted
+            color="teal"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/">
+        {isLogged && (
+          <NavLink
+            id={connectedUserId}
+            className="navbar-nav-link "
+            exact
+            to={`/personnalprofile/`}
+            onClick={handleGetSelectedUser}
+          >
+            <Button
+              fluid
+              className="navbar-nav-link"
+              content="Profile"
+              icon="user"
+              size="tiny"
+              inverted
+              color="teal"
+            />
+          </NavLink>
+          
+        )}
+        <NavLink className="navbar-nav-link " exact to="/gettingstarted">
           <Button
             fluid
-            className="home"
-            content="Profile"
-            icon="user"
-            size="large"
-          />
-        </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/">
-          <Button
-            fluid
-            className="home"
-            content="Games"
-            icon="game"
-            size="large"
-          />
-        </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/">
-          <Button
-            fluid
-            className="home"
+            className="navbar-nav-link"
             content="Q&A"
             icon="question"
-            size="large"
+            size="tiny"
+            inverted
+            color="teal"
           />
         </NavLink>
-        <NavLink className="navbar-nav-link" exact to="/contact">
+        <NavLink className="navbar-nav-link " exact to="/contact">
           <Button
             fluid
-            className="home"
+            className="navbar-nav-link"
             content="Contact"
             icon="mail"
-            size="large"
+            size="tiny"
+            inverted
+            color="teal"
           />
         </NavLink>
+        
+
+        {isLogged && (
+          <NavLink className="navbar-nav-link " exact to="/createevent">
+          <Button
+            fluid
+            className="navbar-nav-link"
+            content="Event"
+            icon="add"
+            size="tiny"
+            inverted
+            color="teal"
+          />
+        </NavLink>
+        
+        )}
+        {isLogged && (
+          <NavLink className="navbar-nav-link " exact to="/searchevent">
+          <Button
+            fluid
+            className="navbar-nav-link"
+            content="Search"
+            icon="search"
+            size="tiny"
+            color="teal"
+            inverted
+          />
+        </NavLink>
+        
+        )}
       </div>
     </div>
   );

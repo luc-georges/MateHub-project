@@ -1,41 +1,76 @@
+@import 'src/styles/vars';
+
+
+
 .eventbar {
-  position: fixed;
+  display: none;
+  box-shadow: 3px 0px 8px 0px rgba(0, 0, 0, 0.2);
+  background-image: url(../../assets/bgtexture.png);
+  background-attachment: fixed;
+  background-color: $color-gris-fonce;
+  color: white;
+  height: 100vh;
+  width: 10vw;
+  top: 0;
   right: 0;
-  padding: 1em 0;
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: -3px 0px 8px 0px rgba(0,0,0,0.20);
-  height: 100%;
+  position: fixed;
+
 
   &-eventedition {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    padding-top: 1em ;
     font-size: 1.2em;
-    width: 100%;
-    margin-top: 1em;
+    font-weight: bold;
+   
   }
 
-  &-eventlist {
-    margin: 1em 0;
-    padding: 0 1em;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-  }
+  &-event-container {
+    margin-top:.5em;
+    background-image: radial-gradient(
+      circle,
+      #6dffff11,
+      #6dffff10,
+      #6dffff00
+    ) !important;
 
-  &-event {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding: 1em 0;
     border-bottom: 1px solid black;
 
-    &-infos {
-      margin-left: 1.2em;
-    }
   }
 }
+.eventbar:focus{
+  outline: black;
+}
+.searchEvent {
+ 
+  font-size: 0.9em !important;
+}
+.createEvent {
+ 
+  font-size: 0.9em !important;
+}
 
+.pOr {
+  text-align: center;
+  padding: 1em;
+  font-weight: bolder;
+  font-style: italic;
+  color: $color-bleu-fluo;
+}
+.ui.inverted.teal.button,
+.ui.inverted.teal.buttons .button {
+  box-shadow: 0 0 0 1px #6dffff inset !important;
+}
+
+.icon-eye:hover {
+  transform: scale(1.2);
+}
+@media screen and (min-width:1200px){
+.eventbar{
+  display: flex!important;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 2em ;
+  a{
+    padding: 1em;
+  }
+}
+}

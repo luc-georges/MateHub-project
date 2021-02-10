@@ -1,0 +1,142 @@
+@import 'src/styles/vars';
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.eventpage {
+  background-image: url(../../assets/bgtexture.png);
+ 
+}
+.titreCreateEventPage{
+  h1{
+
+    padding-left:2em ;
+  }
+}
+.for-bg{
+ 
+  background-image: url(../../assets/background-event.jpg);
+ 
+}
+.evt{
+  &-title{
+    font-family: 'Righteous', cursive; 
+    font-size: 1.8em;
+    padding-left:1em ;
+    text-shadow: 2px 2px 2px #000000;
+  }
+  &-creator{
+    color: #66fcf2 !important;
+    font-size: 1.4em;
+    background-color: #00000098;
+   
+    text-align: center;
+  
+  }
+  &-vocal{
+    font-size: 1.5em;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right;
+    text-shadow: 2px 2px 2px #000000;
+    padding-right:1em ;
+  }
+}
+
+.toflex{
+  display: flex;
+  justify-content: center;
+
+}
+.event {
+
+
+  &-members {
+    
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  &-applicants {
+  
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  &-playercard {
+  
+    background-color: $color-gris-fonce !important;
+    color: $color-blanc !important;
+    font-size: 0.8rem;
+    box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
+
+    &-nickname {
+      font-size: 1.5rem !important;
+      color: $color-blanc !important;
+   
+    }
+
+  }
+  
+  &-playercard-member {
+    background-color: $color-gris-fonce !important;
+    color: $color-blanc !important;
+    font-size: 0.8rem;
+    box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
+  }
+  &-main{
+    padding-bottom: 5em;
+  }
+}
+
+
+.span-it{
+  font-style: italic;
+}
+.lol{
+  &-account, &-rank{
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000000;
+  }
+  &-rank{
+    color: blue;
+  }
+}
+
+
+.eye-a{
+  text-align: center;
+}
+.input-event{
+  background-color:#00000090;
+  color: #fff;
+}
+.div-descript-evt{
+  font-size: 1.4em;
+  text-align: center;
+  color: rgb(46, 46, 54);
+    &-span{
+      font-weight: bold;
+      font-style: italic;
+    
+      color: #fff;
+    }
+}
+
+.card-evt-page{
+  margin-top: 2em!important;
+  margin-bottom: 2em!important;
+  background-color: #00000090!important;
+  width: 60vw!important;
+
+}
+
+
+@media screen and (min-width:1200px){
+  .eventpage {
+    padding-left:10vw ;
+    width: 90vw;
+  }
+
+
+}

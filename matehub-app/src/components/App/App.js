@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
+// import { Grid, Image, GridRow, GridColumn,Sidebar, Menu , Segment,Icon, Header} from 'semantic-ui-react'
 /**
  * Import css
  */
@@ -8,39 +9,88 @@ import './App.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 /* Import components */
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../../containers/NavBarContainer';
 import EventBar from '../../containers/EventBarContainer';
-import HomePage from '../Homepage/HomePage';
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+import HomePage from '../../containers/HomePageContainer';
+import RegistrationPage from '../../containers/RegistrationPageContainer';
+import LoginPage from '../../containers/LoginPageContainer';
 import ContactPage from '../ContactPage/ContactPage';
+import EventPage from '../../containers/EventPageContainer';
+import CreateEventPage from '../../containers/CreateEventPageContainer';
+import SearchEventPage from '../../containers/searchEventPageContainer';
+import ProfilePage from '../../containers/ProfilePageContainer';
+import PersonnalProfilePage from '../../containers/PersonnalProfilePageContainer';
+import GettingStarted from '../GettingStarted/GettingStarted';
+import NotFound from '../NotFound/NotFound';
+import SideBar from '../../containers/SideBarContainer';
 
 /**
  * composant principale de l'application
  * @component
- * @param {Object} param0 
+ * @param {Object} param0
  */
-function App({ getEvents, getTopUsers }) {
+function App({
+  getAllEvents,
+  getTopUsers,
+  checkAuth,
+  getNews,
+  isLogged,
+}) {
   // eslint-disable-next-line
   useEffect(() => {
-    getEvents();
+    getNews();
+    getAllEvents();
     getTopUsers();
+    checkAuth();
+    // getUser();
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="App">
-      <NavBar />
+    <div className="App " id="outer-container">
+
+    <SideBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'}/>
+
+    <div id="page-wrap">
       <Switch>
         <Route exact path="/">
-          <HomePage />
+          <HomePage className="main" />
         </Route>
-        <Route exact path="/registration">
-          <RegistrationPage />
-        </Route>
+
+        <Route exact path="/profile/:name" component={ProfilePage} />
+        <Route
+          exact
+          path="/personnalprofile"
+          component={PersonnalProfilePage}
+        />
         <Route exact path="/contact">
           <ContactPage />
         </Route>
+        <Route exact path="/registration">
+          {/* {registered ? <Redirect to="/login" /> : <RegistrationPage />} */}
+          <RegistrationPage />
+        </Route>
+        <Route exact path="/login">
+          {isLogged ? <Redirect to="/personnalprofile" /> : <LoginPage />}
+        </Route>
+        {/* <Route exact path="/event/:id" component={EventPage} /> */}
+        <Route exact path="/event/:id">
+          {isLogged ? <EventPage /> : <Redirect to="/" />}
+        </Route>
+        <Route exact path="/createevent">
+          {isLogged ? <CreateEventPage /> : <Redirect to="/" />}
+        </Route>
+        <Route exact path="/searchevent">
+          <SearchEventPage />
+        </Route>
+        <Route exact path="/gettingstarted">
+          <GettingStarted />
+        </Route>
+        <Route component={NotFound} />
       </Switch>
+      <NavBar />
       <EventBar />
+      </div>
+      
     </div>
   );
 }

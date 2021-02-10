@@ -1,0 +1,242 @@
+@import 'src/styles/vars';
+
+.personnalprofilepage {
+
+  box-sizing: border-box;
+  background-color: #0b0c10;
+  color: white;
+  padding-top: 1em;
+  margin-bottom:1em;
+  background-image: url(../../assets/04322d63.png);
+
+  &-header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+  }
+  &-body{
+    display: flex;
+    flex-direction: column;
+  }
+  &-titre {
+    padding-top: 2em;
+  }
+}
+.profilepage{
+  &-button{
+    padding-top: 2em;
+    align-self: center;
+    z-index: 2;
+  }
+}
+.button{
+  &-modal {
+    z-index: 3!important;
+    border: solid #66fcf1 !important;
+    background: none !important;
+    color: #66fcf1 !important;
+    &:hover {
+      z-index: 3!important;
+      background: #66fcf1 !important;
+      color: #2b8484 !important;
+    }
+    &-img {
+      display: none;
+      z-index: 2;
+      }
+  }
+  
+  &-avatar {
+    position: absolute;
+    bottom: 50%;
+    right:40%;
+    background: none !important;
+    border-radius: 50% !important;
+    color: #66fcf1 !important;
+    z-index: 2;
+  }
+  
+  &-banner {
+    display: none!important;
+    background: none !important;
+    border-radius: 50% !important;
+    color: #66fcf1 !important;
+    z-index: 2;
+  }
+  
+}
+
+
+
+.Event-modules {
+ margin-bottom: 2em;
+}
+.banner{
+  &-modal {
+    border: solid #66fcf285 !important;
+    background: #161c2481 !important;
+    color: white !important;
+      &-titre {
+        background: #161c248a !important;
+        color: white !important;
+      }
+  }
+  &-actions {
+    background: #0c101500!important;
+  }
+  &-buttonData {
+    border: solid #66fcf1 !important;
+    background: none !important;
+    color: #66fcf1 !important;
+      &:hover {
+        background: #66fcf1 !important;
+        color: #2b8484 !important;
+      }
+  }
+}
+.modal{
+  &-info {
+    border: solid #66fcf28e !important;
+    background: #161c24c0 !important;
+    color: white !important;
+      &-titre {
+        background: #10161c8a !important;
+        color: white !important;
+      }
+      &-action {
+        background: #161c2481 !important;
+      }
+      &-content {
+ 
+        background-image: url(../../assets/tresh.png);
+        background-size: 30%;
+        background-repeat: no-repeat;
+        background-position: 98% 150%;
+      }
+  }
+  &-game {
+    border: solid #66fcf28e !important;
+    background: #161c24c0 !important;
+    color: white !important;
+      &-titre {
+        background: #10161c8a !important;
+        color: white !important;
+      }
+      &-select {
+        background: #10161c8a !important;
+        font-size: 1.3em;
+      }
+      &-action {
+        background: #10161c8a !important;
+      }
+  }
+}
+
+.information-input {
+  color: white !important;
+}
+
+.ui.form input[type='text'] {
+  background: radial-gradient(
+    circle,
+    #6dffff11,
+    #6dffff10,
+    #6dffff00
+  ) !important;
+  color: white !important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
+}
+
+
+.details{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+z-index: 2;
+}
+.test-description{
+  z-index: 2;
+  text-shadow: 2px 2px 2px #000000;
+}
+.details h1 {
+  margin-top: 0em;
+  z-index: 2;
+}
+
+.default-mess {
+  font-style: italic;
+}
+.avatar {
+  border-radius: 50%;
+  max-width: 150px;
+  z-index: 2;
+    &-modal {
+      border: solid #66fcf285 !important;
+      background: #161c2481 !important;
+      color: white !important;
+        &-titre {
+          background: #0c0f14 !important;
+          color: white !important;
+        }
+    }
+    &-input {
+      background: #0c0f14  !important;
+    
+    }
+    &-actions {
+      background:  #0c0f14 !important;
+    }
+    &-buttonData {
+      border: solid #66fcf1 !important;
+      background: none !important;
+      color: #66fcf1 !important;
+        &:hover {
+          background: #66fcf1 !important;
+          color: #2b8484 !important;
+        }
+    }
+    &-file-label {
+      background: #0c0f14  !important;
+      font-size: 1.3em;
+    }
+  
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+
+.custom-file-input:active::before {
+  border: none !important;
+  background-color: #66fcf1 !important;
+  color: #2b8484 !important;
+  box-shadow: none !important;
+}
+
+@media screen and (min-width:1200px){
+  .personnalprofilepage {
+    padding-left:10vw ;
+    width: 90vw;
+    padding-top:0 ;
+  }
+  .header-home{
+    width: 80vw;
+    &--bannerimg{
+
+      width: 80vw;
+    }
+  }
+  .banner-modal-img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    max-height: 30vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    }
+
+}

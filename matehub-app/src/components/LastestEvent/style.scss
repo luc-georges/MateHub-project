@@ -1,29 +1,172 @@
-.LastestEvent{
-  margin: 2em;
-  margin-top: 6%;
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.event-card{
+  background: none!important;
+  background-image: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  color: white!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  border: none!important;
+  margin-left:1em!important ;
+  margin-bottom: 1em!important;
+    &-group{
+
+      flex-wrap: wrap!important;
+      padding: 1em;
+      flex-wrap: nowrap!important;
+      overflow: auto;
+      margin-bottom: 1em!important;
+    
+    
+    }
+}
+.event-card:hover{
+  transform: translate(0, -5px);
+  background-position: right center!important; 
 }
 
-.LastestEvent-modules{
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.nickname{
+  font-weight: bold;
+  color: #164f6c;
+}
+.rank{
+  font-weight: bold;
+  color: #fece66; 
+}
+.descript, .view-details{
+  font-style: italic;
+}
+.starting, .number{
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.view-details{
+  font-weight: bold;
+  color: #66fcf2;
+} 
+
+.iron{
+  color: #d7d7d4
+}
+.bronze{
+  color: #93573a
+}
+.silv{
+  color: #8d9fa5
+}
+.gold{
+  color: #d1b450
+}
+.plat{
+  color: #55c2b0
+}
+.diam{
+  color: #8758d5
+}
+.chal{
+  color: #35bff7
 }
 
-.LastestEvent-module{
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  border: 3px solid #949494;
-  background-color: rgb(173, 173, 173);
-  margin: 1.5%;
-  width:200px;
+@keyframes fadeIn {
+  0% {opacity: 0;
+    transform: translate(200px);}
+    50%{opacity: 0;}
+  100% {opacity: 1;
+    transform: translate(0px);}}
+.slide-in0
+{
+
+  animation:fadeIn 0.3s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+
 }
 
-.LastestEvent-module-image{
-  width: 30%;
+.slide-in1
+{
+ 
+  animation:fadeIn  0.7s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
 }
 
-.LatestEvent-text{
-  margin-top: 2%;
-  margin-left: 10%;
+.slide-in2
+{
+  animation:fadeIn  1.1s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in3
+{
+  animation:fadeIn  1.4s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in4
+{
+  animation:fadeIn  1.7s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in5
+{
+  animation:fadeIn  2s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in6
+{
+  animation:fadeIn  2.3s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+
+.slide-in7
+{
+  animation:fadeIn  2.6s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+
+.slide-in8
+{
+  animation:fadeIn  2.9s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in9
+{
+  animation:fadeIn  3.2s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in10
+{
+  animation:fadeIn  3.5s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in11
+{
+  animation:fadeIn  3.8s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+.slide-in12
+{
+  animation:fadeIn  4s cubic-bezier(0.02, 0.79, 0.34, 0.98)  !important;
+}
+
+
+.ui.card>.content>.description, .ui.cards>.card>.content>.description,.ui.card>.content {
+  clear: both;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1em;
+}
+.ui.card>.content>.meta{
+
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1.1em;
+}
+.view-details{
+  text-align: right;
+}
+
+.homeTitle{
+  font-family: 'Righteous', cursive, sans-serif; 
+  font-size: 1.5em;
+  padding: 1em;
+}
+.homeTitle:hover{
+  color: #66fcf2;
+}
+@media screen and (min-width:900px){
+
+.event-card-group{
+
+
+  padding: 1em;
+  flex-wrap: wrap!important;
+  overflow: auto;
+  margin-bottom: 1em!important;
+
+
+}
 }

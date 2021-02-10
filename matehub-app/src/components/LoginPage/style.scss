@@ -1,0 +1,66 @@
+.loginpage {
+  background-image: url(../../assets/tresh.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position-x: 95%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.loginform {
+  background:#161c24d0 !important;
+  color: white!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffffd0!important;
+
+    width: 50vw;
+    align-self: center;
+   
+}
+.loginform>.ui.input{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+}
+.ui.form textarea {
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+}
+.ui.inverted.form input[type=text]{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  color:white;
+}
+.ui.inverted.form input[type=email], .ui.inverted.form input[type=password]{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  color:white!important;
+}
+.ui.inverted.form input[type=date], .ui.inverted.form input[type=password]{
+  background: radial-gradient(circle, #6dffff11 , #6dffff10  , #6dffff00  )!important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93!important;
+  color:white;
+}
+
+@media screen and (min-width:1200px){
+  .loginpage {
+    padding-left:10vw ;
+    width: 90vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+  .header-home{
+    width: 80vw;
+    &--bannerimg{
+
+      width: 80vw;
+    }
+  }
+  .loginform {
+   width: 50vw;
+   align-self: center;
+  }
+
+}

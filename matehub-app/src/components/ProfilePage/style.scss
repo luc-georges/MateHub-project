@@ -1,0 +1,45 @@
+@import 'src/styles/vars';
+
+.profilepage{
+
+  color: rgb(226, 220, 220);
+  background-image: url(../../assets/04322d63.png);
+}
+
+.details{
+ z-index: 2;
+
+}
+
+.game-container{
+ 
+  background: radial-gradient(
+    circle,
+    #6dffff11,
+    #6dffff10,
+    #6dffff00
+  ) !important;
+  color: white !important;
+  box-shadow: 0 1px 3px 0 #6dffff85, 0 0 0 1px #6dffff93 !important;
+}
+
+.modal-invitation{
+  border: solid #66fcf28e !important;
+  background:#161c24c0 !important;
+  color: white !important;
+    &-titre{
+      background:#10161c8a !important;
+      color: white !important;
+    }
+    &-action{
+      background:#10161c8a !important;
+    }
+    
+}
+@media screen and (min-width:1200px){
+  .profilepage {
+    padding-left:10vw ;
+    width: 90vw;
+    padding-top:0 ;
+  }
+}

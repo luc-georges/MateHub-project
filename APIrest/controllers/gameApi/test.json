@@ -1,0 +1,62 @@
+{
+    "data": {
+      "_event_id": 3,
+      "_user_id": 2,
+      "_creator": "test2",
+      "_creator_IGN": [
+        {
+          "id": "yEHKyl16z0gpEorYHF4XtjV4fm3Z8MZvttmaKE3vxy0hM6s",
+          "accountId": "CH3etixT72tGR72mKwLbQh59LO6KPxRS3NmHPI1TxcN57g",
+          "puuid": "RsgVwviJnbRWtTh-hSwDDoohEt1CctDWnWAm0c6Pw15GFWE2kAHFRIEhgrXdiB-OsYoDZuFln89nHg",
+          "name": "Marvela",
+          "profileIconId": 3014,
+          "revisionDate": 1611235547000,
+          "summonerLevel": 231
+        }
+      ],
+      "_creator_stats": [
+        {
+          "leagueId": "9a453e2d-fdef-4323-9047-f23e098a4f22",
+          "queueType": "RANKED_SOLO_5x5",
+          "tier": "SILVER",
+          "rank": "II",
+          "summonerId": "yEHKyl16z0gpEorYHF4XtjV4fm3Z8MZvttmaKE3vxy0hM6s",
+          "summonerName": "Marvela",
+          "leaguePoints": 32,
+          "wins": 37,
+          "losses": 37,
+          "veteran": false,
+          "inactive": false,
+          "freshBlood": false,
+          "hotStreak": true
+        }
+      ],
+      "_game_name": "League of legends",
+      "_game_id": 1,
+      "_rank": "Silver 3",
+      "_is_ranked": true,
+      "_starting": "2021-01-25T09:00:00.000Z",
+      "_duration": {
+        "hours": 1
+      },
+      "_player_count": 1,
+      "_player_max": 5,
+      "_description": "Bonjour, n'hésitez pas à postuler !",
+      "_status": 0,
+      "_langs": [
+        {
+          "id": 1,
+          "label": "Fr",
+          "icon": "fr"
+        },
+        {
+          "id": 2,
+          "label": "En",
+          "icon": "uk"
+        }
+      ],
+      "_end": "2021-01-25T10:00:00.000Z",
+      "_vocal": "Discord/aaazzz",
+      "_participant": null
+    }
+  }

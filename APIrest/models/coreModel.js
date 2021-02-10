@@ -48,13 +48,12 @@ class CoreModel {
      */
     static async findById(id) {
         try {
-            const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE id = $1`, [id])
+            const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE id = $1 `,[id])
             if(result.rows.length === 0){
                 return null
             };
-            
             return new this(result.rows[0]);
-
+           
         } catch (error) {
             console.log(error)
         }
@@ -73,10 +72,12 @@ class CoreModel {
             const prop = Object.keys(params);
             const value = Object.values(params);
     
-            console.log(prop[0],value[0])
-    
             const result = await client.query(`SELECT * FROM ${this.schema}"${this.tablename}" WHERE ${prop[0]} = $1`,[value[0]]);
-            
+
+            if(result.rows.length === 0){
+                return null
+            };
+
             return new this(result.rows[0]);
         } catch (error) {
             console.log('error:', error)
@@ -94,7 +95,7 @@ class CoreModel {
             const query = {
                 text: `
                     DELETE FROM ${this.constructor.schema}"${this.constructor.tablename}"
-                    WHERE "id" = $1
+                    WHERE "id" = $1 
                 `,
                 values: [this.id]
             };
@@ -154,8 +155,6 @@ class CoreModel {
         }
 
         const result = await client.query(preparedQuery);
-        console.log('result:', result)
-
 
         this.id = result.rows[0].id;
         return this;

@@ -5,5 +5,5 @@ module.exports = Joi.object({
     password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/).required(),
     passwordConfirm: Joi.string().required(),
     nickname: Joi.string().alphanum().min(3).max(30).required(),
-    DOB: Joi.date().required()
+    dateofbirth: Joi.date().required()
 });
