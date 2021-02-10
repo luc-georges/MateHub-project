@@ -1,6 +1,3 @@
-<<<<<<< HEAD
 node_module
 .env
-=======
-node_modules
->>>>>>> develop
+/APIrest/.env

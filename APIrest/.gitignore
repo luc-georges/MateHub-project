@@ -3,4 +3,4 @@ sqitch.conf
 logs/
 access.log
 .env
-APIrest/.env
+/APIrest/.env
