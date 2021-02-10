@@ -2,3 +2,4 @@ node_modules
 sqitch.conf
 logs/
 access.log
+.env
